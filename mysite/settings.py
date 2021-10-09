@@ -25,7 +25,7 @@ SECRET_KEY = 'x&7$)!$nj9#ca(3s%xln!m_^18_$+=5nt$z8s^chlntq570m6u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -80,6 +80,31 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+# **** Local Database Settings ****
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'adminltebase-01-db',
+#         'USER': 'sizingadmin',
+#         'PASSWORD': 'Malware12345',
+#         'HOST': '127.0.0.1',
+#         'PORT': '23836',
+#     }
+# }
+
+# **** Cloud Database Settings ****
+#
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'esstools88db',
+        'USER': 'sizingadmin',
+        'PASSWORD': 'Malware12345',
+        'HOST': '10.131.4.48',
+        'PORT': '3306',
     }
 }
 
