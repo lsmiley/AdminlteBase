@@ -1,6 +1,7 @@
-{% extends 'index.html' %} {% load render_table from django_tables2 %}
+{% extends 'base.html' %} {% load render_table from django_tables2 %}
+{% load static %}
 
-{% block content %}
+{% block content_wrapper %}
                 
     <form method="post">
         
@@ -18,4 +19,4 @@
         
     </form>
 
-{% endblock content %}
+{% endblock content_wrapper %}

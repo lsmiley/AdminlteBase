@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% load render_table from django_tables2 %}
+
+{% load static %}
+
+{% block content_wrapper %}
+                
+    <form method="post">
+        
+        {% csrf_token %}
+        
+        <fieldset class="form-group">
+            <div style="color:#ea2088; font-style: bold; font-size: 3rem; border-bottom: 1px solid white;">Delete Prodvendor</div> <br>
+            <h2>Are you sure you want to delete the prodvendor item "{{ object.prodvendorname }}"?</h2>
+        </fieldset>
+
+        <div class="form-group">  
+            <button type="submit" class="btn ghost-red">Yes, Delete</button>
+            <a href="{% url 'prodvendor' %}" class="btn ghost-button">Cancel</a>
+        </div>
+        
+    </form>
+
+{% endblock content_wrapper %}
