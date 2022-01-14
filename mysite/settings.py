@@ -110,29 +110,29 @@ DATABASES = {
 }
 
 # **** Local Database Settings ****
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'adminltebase-01-db',
-        'USER': 'sizingadmin',
-        'PASSWORD': 'Malware12345',
-        'HOST': '127.0.0.1',
-        'PORT': '1308',
-    }
-}
-
-# **** Cloud Database Settings ****
-#
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'adminltebase-01-db',
 #         'USER': 'sizingadmin',
 #         'PASSWORD': 'Malware12345',
-#         'HOST': '10.131.4.48',
-#         'PORT': '3306',
+#         'HOST': '127.0.0.1',
+#         'PORT': '1308',
 #     }
 # }
+
+# **** Cloud Database Settings ****
+#
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'adminltebase-01-db',
+        'USER': 'sizingadmin',
+        'PASSWORD': 'Malware12345',
+        'HOST': '10.131.4.48',
+        'PORT': '3306',
+    }
+}
 
 
 # Password validation
