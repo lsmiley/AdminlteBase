@@ -129,7 +129,7 @@ DATABASES = {
         'NAME': 'adminltebase-01-db',
         'USER': 'sizingadmin',
         'PASSWORD': 'Malware12345',
-        'HOST': '10.131.4.48',
+        'HOST': 'mysql.lsmiley-dev.svc.cluster.local',
         'PORT': '3306',
     }
 }
