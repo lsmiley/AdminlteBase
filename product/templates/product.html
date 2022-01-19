@@ -3,23 +3,12 @@
 {% load static %}
 
 {% block content_wrapper %}
-<div class="page-wrapper">
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Product List</h4>
-                    <div class="ml-auto text-right">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">List</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
+<div class="content-wrapper">
+
+
+
+
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -39,7 +28,11 @@
 
     <br>
 
-    <table class="table table-css">
+<div class="row">
+
+        <div class="col-md-1">.</div>
+        <div class="col-md-10">
+                <table class="table table-css">
 
         <form method="get">
             <div class="input-group search">
@@ -50,15 +43,15 @@
             </div>
         </form>
 
-        <br>
+
 
         <thead class="thead-inverse align-middle">
             <tr>
                 <th width="30%">Title</th>
-                <th width="30%">Vendor</th>
-                <th width="40%">Category</th>
-                <th width="40%">Hours</th>
-
+                <th width="25%">Vendor</th>
+                <th width="20%%">Category</th>
+                <th width="20%">Hours</th>
+                <th width="5%">Action</th>
             </tr>
         </thead>
 
@@ -83,6 +76,12 @@
         </tbody>
 
     </table>
+        </div>
+        <div class="col-md-1">.</div>
+
+
+</div>
+
 
     <div class="align-middle">
         {% if is_paginated %}
@@ -122,8 +121,7 @@
                 </div>
 
             </div>
-        </div>
-</div>
+
 
 
 

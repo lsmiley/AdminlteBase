@@ -3,22 +3,9 @@
 {% load static %}
 
 {% block content_wrapper %}
-<div class="page-wrapper">
-        <div class="page-breadcrumb">
-            <div class="row">
-                <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Vendors List</h4>
-                    <div class="ml-auto text-right">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">List</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="content-wrapper">
+
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -38,8 +25,10 @@
     <div style="border-bottom: 1px solid white;"></div>
 
     <br>
-
-    <table class="table table-css">
+<div class="row">
+        <div class="col-md-1">.</div>
+        <div class="col-md-10">
+                <table class="table table-css">
 
         <form method="get">
             <div class="input-group search">
@@ -76,14 +65,19 @@
 
                     <td class="align-middle">
                         <a href="{% url 'edit-prodvendor' prodvendor.pk %}" class="btn btn-app"><i class="fas fa-edit"></i> Edit</a>
-                        <a href="{% url 'edit-prodvendor' prodvendor.pk %}" class="btn ghost-button">Edit Details</a>
-                        <a href="{% url 'delete-prodvendor' prodvendor.pk %}" class="btn ghost-red"> Delete Status </a>
+<!--                        <a href="{% url 'edit-prodvendor' prodvendor.pk %}" class="btn btn-app"><i class="fas fa-eraser">Edit Details</a>-->
+                        <a href="{% url 'delete-prodvendor' prodvendor.pk %}" class="btn btn-app"><i class="fas fa-eraser"></i> Delete Status </a>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
 
     </table>
+        </div>
+        <div class="col-md-1">.</div>
+
+</div>
+
 
     <div class="align-middle">
         {% if is_paginated %}
