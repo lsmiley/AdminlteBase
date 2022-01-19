@@ -1,4 +1,4 @@
-django==2.2.24
+django==4.0.1
 mysqlclient==2.1.0
 django-filter==21.1
 django-tables2==2.4.1
@@ -14,3 +14,4 @@ Markdown==3.3.6
 reportlab==3.6.3
 pillow==8.4.0
 autopep8
+django-ckeditor==6.2.0
