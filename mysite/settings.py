@@ -53,7 +53,9 @@ INSTALLED_APPS = [
     'labordelivery',
     'labordeliverytype',
     'order',
+    'order_mgr',
     'orderitem',
+    'orderitem_mgr',
     'product',
     'prodvendor',
     'statusstate',
@@ -112,29 +114,29 @@ DATABASES = {
 }
 
 # **** Local Database Settings ****
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'adminltebase-01-db',
-#         'USER': 'sizingadmin',
-#         'PASSWORD': 'Malware12345',
-#         'HOST': '127.0.0.1',
-#         'PORT': '7350',
-#     }
-# }
-
-# **** Cloud Database Settings ****
-#
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'adminltebase-01-db',
         'USER': 'sizingadmin',
         'PASSWORD': 'Malware12345',
-        'HOST': 'mysql.lsmiley-dev.svc.cluster.local',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
+
+# **** Cloud Database Settings ****
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'adminltebase-01-db',
+#         'USER': 'sizingadmin',
+#         'PASSWORD': 'Malware12345',
+#         'HOST': 'mysql.lsmiley-dev.svc.cluster.local',
+#         'PORT': '3306',
+#     }
+# }
 
 
 # Password validation
@@ -173,7 +175,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
 ]

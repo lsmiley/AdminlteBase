@@ -721,7 +721,9 @@
                           Tools
 <!--                        </button>-->
                     </div>
-                   <div class="row">.</div>
+                   <div class="row">.
+<a href="{% url 'orderitem_mgr_app:create' order.id %}" class="btn btn-info btn-sm"><i class="fas fa-plus"></i></a>
+                   </div>
                     <div class="row" content="align-center">
                            <!-- Button trigger modal -->
                        <button type="<button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateSizingleModal">
@@ -2364,8 +2366,7 @@
 
 {% block extra_js %}
     {% include 'include/ajax_calls.html' %}
-
-{% endblock extra_js %}
+{% endblock %}
 
 
 <script>
@@ -2506,6 +2507,6 @@ $('#exampleModal').on('shown.bs.modal', function () {
 
 
 {% block javascript %}
-
+\
 {% endblock javascript %}
 

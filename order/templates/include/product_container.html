@@ -5,7 +5,7 @@
 </div>
 
 <script type="text/javascript">
-    $('.add_button').click(function (evt) {
+    $('#add_button').click(function (evt) {
         evt.preventDefault();
         const btn = $(this);
         const url = btn.attr('data-href');
@@ -18,5 +18,31 @@
             }
         })
     });
-    
+
+</script>
+
+
+<script type="text/javascript">
+<!--    $('.add_button').click(function (evt) {-->
+<!--        evt.preventDefault();-->
+<!--        const btn = $(this);-->
+<!--        const url = btn.attr('data-href');-->
+<!--        $.ajax({-->
+<!--          url: url,-->
+<!--          type: "Get",-->
+<!--          dataType: "json",-->
+<!--          data: JSON.stringify({payload: payload,}),-->
+<!--          headers: {-->
+<!--            "X-Requested-With": "XMLHttpRequest",-->
+<!--            "X-CSRFToken": getCookie("csrftoken"),  // don't forget to include the 'getCookie' function-->
+<!--          },-->
+<!--          success: (data) => {-->
+<!--            console.log(data);-->
+<!--          },-->
+<!--          error: (error) => {-->
+<!--            console.log(error);-->
+<!--          }-->
+<!--        });-->
+
+
 </script>

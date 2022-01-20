@@ -1,4 +1,5 @@
 from django.contrib.messages.views import SuccessMessageMixin
+from django.http import JsonResponse, HttpResponse, QueryDict, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, CreateView, UpdateView, View
 from django.utils.decorators import method_decorator
@@ -9,7 +10,7 @@ from django.db.models import Q
 from django.template import loader
 from django.contrib import messages
 from django.template.loader import render_to_string
-from django.http import JsonResponse, HttpResponse, QueryDict, HttpResponseRedirect
+# from django.http import JsonResponse, HttpResponse, QueryDict, HttpResponseRedirect
 from django.db.models import Sum
 from django.views.generic.detail import SingleObjectMixin
 from django_tables2 import RequestConfig
@@ -18,8 +19,10 @@ from rest_framework.templatetags.rest_framework import data
 from django.core.files.storage import FileSystemStorage
 
 from .models import Order, OrderItem, CURRENCY
+
 from .forms import OrderCreateForm, OrderEditForm, OrderItemEditForm, OrderItemForm
 from product.models import Product, Category, Prodvendor
+from acctcust.models import Acctcust
 from .tables import ProductTable, OrderItemTable, OrderTable
 from .utils import set_pagination
 
@@ -71,6 +74,66 @@ def auto_create_order_view(request):
 
 
 @method_decorator(staff_member_required, name='dispatch')
+class DashboardMainView(ListView):
+    template_name = 'dashboard-main.html'
+    model = Order
+    queryset = Order.objects.all()[:10]
+
+    # acctcusts = Acctcust.objects.all()
+    # total_acctcusts = acctcusts.count()
+
+    # products = Product.objects.all()
+    # total_products = products.count()
+
+    prodvendors = Prodvendor.objects.all()
+    total_prodvendors = prodvendors.count()
+
+    sizings = Order.objects.all()
+    total_sizings = sizings.count()
+
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        orders = Order.objects.all()
+
+        acctcusts = Acctcust.objects.all()
+        total_acctcusts = acctcusts.count()
+
+        products = Product.objects.all()
+        total_products = products.count()
+
+        prodvendors = Prodvendor.objects.all()
+        total_prodvendors = prodvendors.count()
+
+        total_sales = orders.aggregate(Sum('final_value'))['final_value__sum'] if orders.exists() else 0
+        paid_value = orders.filter(is_paid=True).aggregate(Sum('final_value'))['final_value__sum']\
+            if orders.filter(is_paid=True).exists() else 0
+        remaining = total_sales - paid_value
+        diviner = total_sales if total_sales > 0 else 1
+        paid_percent, remain_percent = round((paid_value/diviner)*100, 1), round((remaining/diviner)*100, 1)
+        total_sales = f'{total_sales} {CURRENCY}'
+        paid_value = f'{paid_value} {CURRENCY}'
+        remaining = f'{remaining} {CURRENCY}'
+        orders = OrderTable(orders)
+        RequestConfig(self.request).configure(orders)
+        context.update(locals())
+        return context
+
+
+# @staff_member_required
+# def auto_create_order_view(request):
+#     new_order = Order.objects.create(
+#         title='Order 66',
+#         date=datetime.datetime.now()
+#
+#     )
+#     new_order.title = f'Order - {new_order.id}'
+#     new_order.save()
+#     return redirect(new_order.get_edit_url())
+
+
+@method_decorator(staff_member_required, name='dispatch')
 class OrderListView(ListView):
     template_name = 'list.html'
     model = Order
@@ -112,6 +175,7 @@ class OrderUpdateView(UpdateView):
     model = Order
     template_name = 'order_update.html'
     form_class = OrderEditForm
+    order_num = Order.id
 
     def get_success_url(self):
         return reverse('update_order', kwargs={'pk': self.object.id})
@@ -336,6 +400,7 @@ class OrderItemUpdateView(UpdateView):
     # template_name = 'orderitem_update.html'
     form_class = OrderItemEditForm
 
+
     def get_success_url(self):
         self.object.refresh_from_db()
         return reverse('edit_orderitem', kwargs={'pk': self.object.id})
@@ -527,3 +592,27 @@ def saveorderitem(request):
 
     orderitem.save()
     return JsonResponse({"success": "Updated"})
+
+
+def sizing_ord_view(request, oid):
+    # order = Order.objects.filter(customer__first_name="Shankar")
+    # -->I am retrieving  the order the  particular person
+
+    order = get_object_or_404(Order, pk=oid)  # use to get beautiful error -u can also use below
+    # customer = Customer.objects.get(pk = cid)#return a particular customer name according to choosen primary key
+    orderitem = order.orderitem_set.all()  # particular customer ko particular order select garxa--It is possible with customer id
+    # here order in  order_set is attribute
+    # Order ma Customer is foreign key so ot os possible to use order_set with customer
+    orderitem_count = orderitem.count()
+    orderitem_count = orderitem.count()
+    order_total_orderitem_price = 0.00
+
+    for orderitem in order.orderitem_set.all():
+        per_total_price = float(orderitem.product.price) * orderitem.quantity
+        # customer.per_total = per_total_price--to get the price of respective products
+        # return value of first product i.e first row
+        order_total_orderitem_price += per_total_price
+
+    context = {'order_total_price': order_total_orderitem_price, 'order': order, 'orderitem': orderitem,
+               'orderitem_count': orderitem_count, 'orderitem_num': orderitem_count}
+    return render(request, 'order/list.html', context)

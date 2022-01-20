@@ -1,0 +1,1048 @@
+{% extends 'base.html' %} {% load render_table from django_tables2 %} {% load static %}
+
+{% load static %}
+
+{% block content_wrapper %}
+
+<style type="text/css">
+	/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-
+monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}
+</style>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-9">
+
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+    <!-- vendor css -->
+    <link href="/static/assets/lib/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/static/assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="/static/assets/lib/typicons.font/typicons.css" rel="stylesheet">
+    <link href="/static/assets/lib/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+
+    <!-- azia CSS -->
+    <link rel="stylesheet" href="/static/assets/css/azia.css">
+
+
+              <div class="az-content az-content-dashboard">
+      <div class="container">
+        <div class="az-content-body">
+          <div class="az-dashboard-one-title">
+            <div>
+              <h2 class="az-dashboard-title">Hi, welcome back! <a style="font-style:italic; color:blue; font-size:25px"> {{request.user.username}} </a>  </h2>
+              <p class="az-dashboard-text">Your Sizing (analytics) Dashboard.</p>
+            </div>
+            <div class="az-content-header-right">
+              <div class="media">
+                <div class="media-body">
+                  <label>Start Date</label>
+                  <h6>Oct 10, 2018</h6>
+                </div><!-- media-body -->
+              </div><!-- media -->
+              <div class="media">
+                <div class="media-body">
+                  <label>End Date</label>
+                  <h6>Oct 23, 2018</h6>
+                </div><!-- media-body -->
+              </div><!-- media -->
+              <div class="media">
+                <div class="media-body">
+                  <label>Event Category</label>
+                  <h6>All Categories</h6>
+                </div><!-- media-body -->
+              </div><!-- media -->
+              <a href="" class="btn btn-purple">Export</a>
+            </div>
+          </div><!-- az-dashboard-one-title -->
+
+          <div class="az-dashboard-nav">
+            <nav class="nav">
+              <a class="nav-link active" data-toggle="tab" href="#">Overview</a>
+              <a class="nav-link" data-toggle="tab" href="#">Team</a>
+              <a class="nav-link" data-toggle="tab" href="#">Geography</a>
+              <a class="nav-link" data-toggle="tab" href="#">More</a>
+            </nav>
+
+            <nav class="nav">
+              <a class="nav-link" href="#"><i class="far fa-save"></i> Save Report</a>
+              <a class="nav-link" href="#"><i class="far fa-file-pdf"></i> Export to PDF</a>
+              <a class="nav-link" href="#"><i class="far fa-envelope"></i>Send to Email</a>
+              <a class="nav-link" href="#"><i class="fas fa-ellipsis-h"></i></a>
+            </nav>
+          </div>
+
+        <div class="row justify-content-md-center">
+
+            <div class="col-12 col-sm-6 col-xl-2 mb-3">
+                <div class="card border-light shadow-sm">
+                    <div class="card-body">
+                        <div class="row d-block d-xl-flex align-items-center">
+<!--                            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">-->
+<!--                                <div class="icon icon-shape icon-md icon-shape-blue rounded mr-4 mr-sm-0"><span class="fas fa-chart-line"></span></div>-->
+<!--                                <div class="d-sm-none">-->
+<!--                                    <h2 class="h5">Customers</h2>-->
+<!--                                    <h3 class="mb-1">345,678</h3>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <div class="col-12 col-xl-12 align-items-center">
+                                <div class="d-none d-sm-block">
+                                    <h2 class="h6" >Customers</h2>
+                                    <h5 class="mb-1" >{{ total_acctcusts }}</h5>
+                                </div>
+                                <small>Feb 1 - Apr 1,  <span class="icon icon-small"><span class="fas fa-globe-europe"></span></span> WorldWide</small>
+                                <div class="small mt-2">
+<!--                                    <span class="fas fa-angle-up text-success"></span>-->
+<!--                                    <span class="text-success font-weight-bold">18.2%</span> Since last month-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-2 mb-3">
+                <div class="card border-light shadow-sm">
+                    <div class="card-body">
+                        <div class="row d-block d-xl-flex align-items-center">
+<!--                            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">-->
+<!--                                <div class="icon icon-shape icon-md icon-shape-secondary rounded mr-4"><span class="fas fa-cash-register"></span></div>-->
+<!--                                <div class="d-sm-none">-->
+<!--                                    <h2 class="h5">Security Products</h2>-->
+<!--                                    <h3 class="mb-1">$43,594</h3>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <div class="col-12 col-xl-12 align-items-center">
+                                <div class="d-none d-sm-block">
+                                    <h2 class="h6">Products</h2>
+                                    <h5 class="mb-1">{{  total_products  }}</h5>
+                                </div>
+                                <div class="row"> <small>Category List,  <span class="icon icon-small"><span class="fas fa-globe-europe"></span></span> View</small></div>
+                                <div class="row"> <small>New,  <span class="icon icon-small"><span class="fas fa-globe-europe"></span></span> Add</small></div>
+<!--                                <small>Feb 1 - Apr 1,  <span class="icon icon-small"><span class="fas fa-globe-europe"></span></span> View</small>-->
+                                <div class="small mt-2">
+<!--                                    <span class="fas fa-angle-up text-success"></span>-->
+<!--                                    <span class="text-success font-weight-bold">28.2%</span> Since last month-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-2 mb-3">
+                <div class="card border-light shadow-sm">
+                    <div class="card-body">
+                        <div class="row d-block d-xl-flex align-items-center">
+<!--                            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">-->
+<!--                                <div class="icon icon-shape icon-md icon-shape-secondary rounded mr-4"><span class="fas fa-cash-register"></span></div>-->
+<!--                                <div class="d-sm-none">-->
+<!--                                    <h2 class="h5">Sec. Vendors</h2>-->
+<!--                                    <h3 class="mb-1">$43,594</h3>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <div class="col-12 col-xl-12 align-items-center">
+                                <div class="d-none d-sm-block">
+                                    <h2 class="h6">Vendors</h2>
+                                    <h5 class="mb-1">{{  total_prodvendors  }}</h5>
+                                </div>
+                                <small>Feb 1 - Apr 1,  <span class="icon icon-small"><span class="fas fa-globe-europe"></span></span> Worldwide</small>
+                                <div class="small mt-2">
+<!--                                    <span class="fas fa-angle-up text-success"></span>-->
+<!--                                    <span class="text-success font-weight-bold">28.2%</span> Since last month-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-2 mb-3">
+                <div class="card border-light shadow-sm">
+                    <div class="card-body">
+                        <div class="row d-block d-xl-flex align-items-center">
+<!--                            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">-->
+<!--                                <div class="ct-chart-traffic-share ct-golden-section ct-series-a"></div>-->
+<!--                            </div>-->
+                            <div class="col-12 col-xl-12 align-items-center">
+                                <h2 class="h6 mb-3">Activity / Status</h2>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-secondary mr-1"><span class="fas fa-desktop"></span></span> Open <a href="#" class="h6">60%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-primary mr-1"><span class="fas fa-mobile-alt"></span></span> In-Progress <a href="#" class="h6">30%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary mr-1"><span class="fas fa-tablet-alt"></span></span> Pending <a href="#" class="h6">10%</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-2 mb-3">
+                <div class="card border-light shadow-sm">
+                    <div class="card-body">
+                        <div class="row d-block d-xl-flex align-items-center">
+<!--                            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">-->
+<!--                                <div class="ct-chart-traffic-share ct-golden-section ct-series-a"></div>-->
+<!--                            </div>-->
+                            <div class="col-12 col-xl-12 align-items-center">
+                                <h2 class="h6 mb-3">GBO Submission %:</h2>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-secondary mr-1"><span class="fas fa-desktop"></span></span> Desktop <a href="#" class="h6">60%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-primary mr-1"><span class="fas fa-mobile-alt"></span></span> Mobile Web <a href="#" class="h6">30%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary mr-1"><span class="fas fa-tablet-alt"></span></span> Tablet Web <a href="#" class="h6">10%</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-2 mb-3">
+                <div class="card border-light shadow-sm">
+                    <div class="card-body">
+                        <div class="row d-block d-xl-flex align-items-center">
+<!--                            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">-->
+<!--                                <div class="ct-chart-traffic-share ct-golden-section ct-series-a"></div>-->
+<!--                            </div>-->
+                            <div class="col-12 col-xl-12 align-items-center">
+                                <h2 class="h6 mb-3">GBO Approval %:</h2>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-secondary mr-1"><span class="fas fa-desktop"></span></span> Desktop <a href="#" class="h6">60%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-primary mr-1"><span class="fas fa-mobile-alt"></span></span> Mobile Web <a href="#" class="h6">30%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary mr-1"><span class="fas fa-tablet-alt"></span></span> Tablet Web <a href="#" class="h6">10%</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <div class="row row-sm mg-b-20">
+            <div class="col-lg-7 ht-lg-100p">
+              <div class="card card-dashboard-one">
+                <div class="card-header">
+                  <div>
+                    <h6 class="card-title">Open Sizings</h6>
+                    <p class="card-text">Audience to which the users belonged while on the current date range.</p>
+                  </div>
+                  <div class="btn-group">
+                    <button class="btn active">Week</button>
+                    <button class="btn">Month</button>
+                    <button class="btn">Year</button>
+                  </div>
+                </div><!-- card-header -->
+                <div class="card-body">
+<!--                  <div class="card-body-top">-->
+<!--                    <div>-->
+<!--                      <label class="mg-b-0"># Sizings</label>-->
+<!--                      <h2>3</h2>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                      <label class="mg-b-0">GBO Bounce Rate</label>-->
+<!--                      <h2>0%</h2>-->
+<!--                    </div>-->
+<!--                      <div>-->
+<!--                      <label class="mg-b-0">GBO Approval Rate</label>-->
+<!--                      <h2>0%</h2>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                      <label class="mg-b-0"> Reviews</label>-->
+<!--                      <h2>3</h2>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                      <label class="mg-b-0">Cycles</label>-->
+<!--                      <h2>7</h2>-->
+<!--                    </div>-->
+<!--                  </div>&lt;!&ndash; card-body-top &ndash;&gt;-->
+<!--                  <div class="flot-chart-wrapper">-->
+<!--                    <div id="flotChart" class="flot-chart"></div>-->
+<!--                  </div>-->
+                    <!-- flot-chart-wrapper -->
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <div class="comment-widgets scrollable ">
+                                {% render_table orders %}
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                </div><!-- card-body -->
+              </div><!-- card -->
+            </div><!-- col -->
+            <div class="col-lg-5 mg-t-20 mg-lg-t-0">
+              <div class="row row-sm">
+                <div class="col-sm-6">
+                  <div class="card card-dashboard-two">
+                    <div class="card-header">
+                      <h6>33.50% <i class="icon ion-md-trending-up tx-success"></i> <small>18.02%</small></h6>
+                      <p>Submissions by Technology:</p>
+                    </div><!-- card-header -->
+                    <div class="card-body">
+                         <div class="col-12 col-xl-12 align-items-center">
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-secondary mr-1"><span class="fas fa-desktop"></span></span> Anti-Virus <a href="#" class="h6">60%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-primary mr-1"><span class="fas fa-mobile-alt"></span></span> EndPoint Security <a href="#" class="h6">30%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary mr-1"><span class="fas fa-tablet-alt"></span></span> URL/Content <a href="#" class="h6">10%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary mr-1"><span class="fas fa-tablet-alt"></span></span> Email / Spam <a href="#" class="h6">10%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary mr-1"><span class="fas fa-tablet-alt"></span></span> UTM <a href="#" class="h6">10%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary mr-1"><span class="fas fa-tablet-alt"></span></span> Cloud Security<a href="#" class="h6">10%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary mr-1"><span class="fas fa-tablet-alt"></span></span> Vulnerability <a href="#" class="h6">10%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary mr-1"><span class="fas fa-tablet-alt"></span></span> Other <a href="#" class="h6">10%</a></h6>
+                            </div>
+<!--                      <div class="chart-wrapper">-->
+<!--                        <div id="flotChart1" class="flot-chart"></div>-->
+<!--                      </div>&lt;!&ndash; chart-wrapper &ndash;&gt;-->
+                    </div><!-- card-body -->
+                  </div><!-- card -->
+                </div><!-- col -->
+                <div class="col-sm-6 mg-t-20 mg-sm-t-0">
+                  <div class="card card-dashboard-two">
+                    <div class="card-header">
+                      <h6>86k <i class="icon ion-md-trending-down tx-danger"></i> <small>0.86%</small></h6>
+                      <p>Total Endpoints</p>
+                    </div><!-- card-header -->
+                    <div class="card-body">
+                        <div class="col-12 col-xl-12 align-items-center">
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-secondary mr-1"><span class="fas fa-desktop"></span></span> Consoles <a href="#" class="h6">60%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-primary mr-1"><span class="fas fa-mobile-alt"></span></span> Servers <a href="#" class="h6">30%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary mr-1"><span class="fas fa-tablet-alt"></span></span> Workstation <a href="#" class="h6">10%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary mr-1"><span class="fas fa-tablet-alt"></span></span> IP Address / Scan <a href="#" class="h6">10%</a></h6>
+                            </div>
+
+                      <div class="chart-wrapper">
+                        <div id="flotChart2" class="flot-chart"></div>
+                      </div><!-- chart-wrapper -->
+                    </div><!-- card-body -->
+                  </div><!-- card -->
+                </div><!-- col -->
+                <div class="col-sm-12 mg-t-20">
+                  <div class="card card-dashboard-three">
+                    <div class="card-header">
+                      <p>All Sessions</p>
+                      <h6>16,869 <small class="tx-success"><i class="icon ion-md-arrow-up"></i> 2.87%</small></h6>
+                      <small>The total number of sessions within the date range. It is the period time a user is actively engaged with your website, page or app, etc.</small>
+                    </div><!-- card-header -->
+                    <div class="card-body">
+                      <div class="chart"><canvas id="chartBar5"></canvas></div>
+
+                    </div>
+                  </div>
+                </div>
+              </div><!-- row -->
+            </div><!--col -->
+
+          </div><!-- row -->
+
+          <div class="row row-sm mg-b-20">
+            <div class="col-lg-4">
+              <div class="card card-dashboard-pageviews">
+                <div class="card-header">
+                  <h6 class="card-title">Awaiting "GBO" Response / Approval</h6>
+                  <p class="card-text">This report .</p>
+                </div><!-- card-header -->
+                <div class="card-body">
+                  <div class="az-list-item">
+                    <div>
+                      <h6>Admin Home</h6>
+                      <span>/demo/admin/index.html</span>
+                    </div>
+                    <div>
+                      <h6 class="tx-primary">7,755</h6>
+                      <span>31.74% (-100.00%)</span>
+                    </div>
+                  </div><!-- list-group-item -->
+                  <div class="az-list-item">
+                    <div>
+                      <h6>Form Elements</h6>
+                      <span>/demo/admin/forms.html</span>
+                    </div>
+                    <div>
+                      <h6 class="tx-primary">5,215</h6>
+                      <span>28.53% (-100.00%)</span>
+                    </div>
+                  </div><!-- list-group-item -->
+                  <div class="az-list-item">
+                    <div>
+                      <h6>Utilities</h6>
+                      <span>/demo/admin/util.html</span>
+                    </div>
+                    <div>
+                      <h6 class="tx-primary">4,848</h6>
+                      <span>25.35% (-100.00%)</span>
+                    </div>
+                  </div><!-- list-group-item -->
+                  <div class="az-list-item">
+                    <div>
+                      <h6>Form Validation</h6>
+                      <span>/demo/admin/validation.html</span>
+                    </div>
+                    <div>
+                      <h6 class="tx-primary">3,275</h6>
+                      <span>23.17% (-100.00%)</span>
+                    </div>
+                  </div><!-- list-group-item -->
+                  <div class="az-list-item">
+                    <div>
+                      <h6>Modals</h6>
+                      <span>/demo/admin/modals.html</span>
+                    </div>
+                    <div>
+                      <h6 class="tx-primary">3,003</h6>
+                      <span>22.21% (-100.00%)</span>
+                    </div>
+                  </div><!-- list-group-item -->
+                </div><!-- card-body -->
+              </div><!-- card -->
+
+            </div><!-- col -->
+            <div class="col-lg-8 mg-t-20 mg-lg-t-0">
+              <div class="card card-dashboard-four">
+                <div class="card-header">
+                  <h6 class="card-title">Sizing by Technoloy</h6>
+                </div><!-- card-header -->
+                <div class="card-body row">
+                  <div class="col-md-6 d-flex align-items-center">
+                    <div class="chart"><canvas id="chartDonut"></canvas></div>
+                  </div><!-- col -->
+                  <div class="col-md-6 col-lg-5 mg-lg-l-auto mg-t-20 mg-md-t-0">
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Endpoint Security</span>
+                        <span>1,320 <span>(25%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-purple wd-25p" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Anti-Virus</span>
+                        <span>987 <span>(20%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-primary wd-20p" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>URL/Spam Filtering</span>
+                        <span>2,010 <span>(30%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-info wd-30p" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Email / Spam</span>
+                        <span>654 <span>(15%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-teal wd-15p" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>UTM</span>
+                        <span>400 <span>(10%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-gray-500 wd-10p" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                  </div><!-- col -->
+                </div><!-- card-body -->
+              </div><!-- card-dashboard-four -->
+            </div><!-- col -->
+          </div><!-- row -->
+
+          <div class="row row-sm mg-b-20 mg-lg-b-0">
+            <div class="col-lg-5 col-xl-4">
+              <div class="row row-sm">
+                <div class="col-md-6 col-lg-12 mg-b-20 mg-md-b-0 mg-lg-b-20">
+                  <div class="card card-dashboard-five">
+                    <div class="card-header">
+                      <h6 class="card-title">Acquisition</h6>
+                      <span class="card-text">Tells you where your visitors originated from, such as search engines, social networks or website referrals.</span>
+                    </div><!-- card-header -->
+                    <div class="card-body row row-sm">
+                      <div class="col-6 d-sm-flex align-items-center">
+                        <div class="card-chart bg-primary">
+                          <span class="peity-bar" data-peity='{"fill": ["#fff"], "width": 20, "height": 20 }'>6,4,7,5,7</span>
+                        </div>
+                        <div>
+                          <label>Bounce Rate</label>
+                          <h4>33.50%</h4>
+                        </div>
+                      </div><!-- col -->
+                      <div class="col-6 d-sm-flex align-items-center">
+                        <div class="card-chart bg-purple">
+                          <span class="peity-bar" data-peity='{"fill": ["#fff"], "width": 21, "height": 20 }'>7,4,5,7,2</span>
+                        </div>
+                        <div>
+                          <label>Sessions</label>
+                          <h4>9,065</h4>
+                        </div>
+                      </div><!-- col -->
+                    </div><!-- card-body -->
+                  </div><!-- card-dashboard-five -->
+                </div><!-- col -->
+                <div class="col-md-6 col-lg-12">
+                  <div class="card card-dashboard-five">
+                    <div class="card-header">
+                      <h6 class="card-title">Sessions</h6>
+                      <span class="card-text"> A session is the period time a user is actively engaged with your website, app, etc.</span>
+                    </div><!-- card-header -->
+                    <div class="card-body row row-sm">
+                      <div class="col-6 d-sm-flex align-items-center">
+                        <div class="mg-b-10 mg-sm-b-0 mg-sm-r-10">
+                          <span class="peity-donut" data-peity='{ "fill": ["#007bff", "#cad0e8"],  "innerRadius": 14, "radius": 20 }'>4/7</span>
+                        </div>
+                        <div>
+                          <label>% New Sessions</label>
+                          <h4>26.80%</h4>
+                        </div>
+                      </div><!-- col -->
+                      <div class="col-6 d-sm-flex align-items-center">
+                        <div class="mg-b-10 mg-sm-b-0 mg-sm-r-10">
+                          <span class="peity-donut" data-peity='{ "fill": ["#00cccc", "#cad0e8"],  "innerRadius": 14, "radius": 20 }'>2/7</span>
+                        </div>
+                        <div>
+                          <label>Pages/Session</label>
+                          <h4>1,005</h4>
+                        </div>
+                      </div><!-- col -->
+                    </div><!-- card-body -->
+                  </div><!-- card-dashboard-five -->
+                </div><!-- col -->
+              </div><!-- row -->
+            </div><!-- col-lg-3 -->
+            <div class="col-lg-7 col-xl-8 mg-t-20 mg-lg-t-0">
+              <div class="card card-table-one">
+                <h6 class="card-title">Delivery GEO</h6>
+                <p class="az-content-text mg-b-20">Part of this date range occurs before the new users metric had been calculated, so the old users metric is displayed.</p>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th class="wd-5p">&nbsp;</th>
+                        <th class="wd-45p">Country</th>
+                        <th>Entrances</th>
+                        <th>Bounce Rate</th>
+                        <th>Exits</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><i class="flag-icon flag-icon-us flag-icon-squared"></i></td>
+                        <td><strong>United States</strong></td>
+                        <td><strong>134</strong> (1.51%)</td>
+                        <td>33.58%</td>
+                        <td>15.47%</td>
+                      </tr>
+                      <tr>
+                        <td><i class="flag-icon flag-icon-gb flag-icon-squared"></i></td>
+                        <td><strong>United Kingdom</strong></td>
+                        <td><strong>290</strong> (3.30%)</td>
+                        <td>9.22%</td>
+                        <td>7.99%</td>
+                      </tr>
+                      <tr>
+                        <td><i class="flag-icon flag-icon-in flag-icon-squared"></i></td>
+                        <td><strong>India</strong></td>
+                        <td><strong>250</strong> (3.00%)</td>
+                        <td>20.75%</td>
+                        <td>2.40%</td>
+                      </tr>
+                      <tr>
+                        <td><i class="flag-icon flag-icon-ca flag-icon-squared"></i></td>
+                        <td><strong>Canada</strong></td>
+                        <td><strong>216</strong> (2.79%)</td>
+                        <td>32.07%</td>
+                        <td>15.09%</td>
+                      </tr>
+                      <tr>
+                        <td><i class="flag-icon flag-icon-fr flag-icon-squared"></i></td>
+                        <td><strong>France</strong></td>
+                        <td><strong>216</strong> (2.79%)</td>
+                        <td>32.07%</td>
+                        <td>15.09%</td>
+                      </tr>
+                      <tr>
+                        <td><i class="flag-icon flag-icon-ph flag-icon-squared"></i></td>
+                        <td><strong>Philippines</strong></td>
+                        <td><strong>197</strong> (2.12%)</td>
+                        <td>32.07%</td>
+                        <td>15.09%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div><!-- table-responsive -->
+              </div><!-- card -->
+            </div><!-- col-lg -->
+
+          </div><!-- row -->
+        </div><!-- az-content-body -->
+      </div>
+    </div><!-- az-content -->
+
+
+        <div class="row justify-content-md-center">
+
+            <div class="col-12 col-sm-6 col-xl-3 mb-3">
+                <div class="card border-light shadow-sm">
+                    <div class="card-body">
+                        <div class="row d-block d-xl-flex align-items-center">
+                            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+                                <div class="icon icon-shape icon-md icon-shape-blue rounded mr-4 mr-sm-0"><span class="fas fa-chart-line"></span></div>
+                                <div class="d-sm-none">
+                                    <h2 class="h5">Customers</h2>
+                                    <h3 class="mb-1">345,678</h3>
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-7 px-xl-0">
+                                <div class="d-none d-sm-block">
+                                    <h2 class="h5">Customers2</h2>
+                                    <h3 class="mb-1">345k</h3>
+                                </div>
+                                <small>Feb 1 - Apr 1,  <span class="icon icon-small"><span class="fas fa-globe-europe"></span></span> WorldWide</small>
+                                <div class="small mt-2">
+                                    <span class="fas fa-angle-up text-success"></span>
+                                    <span class="text-success font-weight-bold">18.2%</span> Since last month
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3 mb-3">
+                <div class="card border-light shadow-sm">
+                    <div class="card-body">
+                        <div class="row d-block d-xl-flex align-items-center">
+                            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+                                <div class="icon icon-shape icon-md icon-shape-secondary rounded mr-4"><span class="fas fa-cash-register"></span></div>
+                                <div class="d-sm-none">
+                                    <h2 class="h5">Security Products</h2>
+                                    <h3 class="mb-1">$43,594</h3>
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-7 px-xl-0">
+                                <div class="d-none d-sm-block">
+                                    <h2 class="h5">Security Products</h2>
+                                    <h3 class="mb-1">$43,594</h3>
+                                </div>
+                                <small>Feb 1 - Apr 1,  <span class="icon icon-small"><span class="fas fa-globe-europe"></span></span> Worldwide</small>
+                                <div class="small mt-2">
+                                    <span class="fas fa-angle-up text-success"></span>
+                                    <span class="text-success font-weight-bold">28.2%</span> Since last month
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3 mb-3">
+                <div class="card border-light shadow-sm">
+                    <div class="card-body">
+                        <div class="row d-block d-xl-flex align-items-center">
+                            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+                                <div class="ct-chart-traffic-share ct-golden-section ct-series-a"></div>
+                            </div>
+                            <div class="col-12 col-xl-7 px-xl-0">
+                                <h2 class="h5 mb-3">Status: My Sizings</h2>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-secondary mr-1"><span class="fas fa-desktop"></span></span> Anti-Virus <a href="#" class="h6">60%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-primary mr-1"><span class="fas fa-mobile-alt"></span></span> Email/Spam <a href="#" class="h6">30%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary mr-1"><span class="fas fa-tablet-alt"></span></span> URL/Content <a href="#" class="h6">10%</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3 mb-3">
+                <div class="card border-light shadow-sm">
+                    <div class="card-body">
+                        <div class="row d-block d-xl-flex align-items-center">
+                            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+                                <div class="ct-chart-traffic-share ct-golden-section ct-series-a"></div>
+                            </div>
+                            <div class="col-12 col-xl-7 px-xl-0">
+                                <h2 class="h5 mb-3">Physical Assets</h2>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-secondary mr-1"><span class="fas fa-desktop"></span></span> Consoles <a href="#" class="h6">60%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-primary mr-1"><span class="fas fa-mobile-alt"></span></span> Servers <a href="#" class="h6">30%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary mr-1"><span class="fas fa-tablet-alt"></span></span> Workstation <a href="#" class="h6">10%</a></h6>
+                                <h6 class="font-weight-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary mr-1"><span class="fas fa-tablet-alt"></span></span> IP Address / Scan <a href="#" class="h6">10%</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-md-3">
+                        <div class="card card-hover">
+                            <a href="{% url 'create-order' %}">
+                            <div class="box bg-cyan text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-view-dashboard"></i></h1>
+                                <h6 class="text-white">New Sizing</h6>
+                            </div>
+                                </a>
+                        </div>
+                    </div>
+                     <!-- Column -->
+                    <div class="col-md-3">
+                        <div class="card card-hover">
+                            <a href="{% url 'dashboard_main' %}">
+                            <div class="box bg-warning text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-collage"></i></h1>
+                                <h6 class="text-white">Team Dashboard</h6>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-3">
+                        <div class="card card-hover">
+                            <a href="{% url 'create_auto' %}">
+                            <div class="box bg-success text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
+                                <h6 class="text-white">Sizing: Quick Create</h6>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                     <!-- Column -->
+                    <div class="col-md-3">
+                        <div class="card card-hover">
+                            <a href="{% url 'create_auto' %}">
+                            <div class="box bg-success text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
+                                <h6 class="text-white">Sizing: Quick Create</h6>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                         <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Latest Sizings</h4>
+
+                            </div>
+                            <div class="comment-widgets scrollable">
+                                {% render_table orders %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                         <!-- card -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title m-b-0">Status</h4>
+                                <div class="m-t-20">
+                                    <div class="d-flex no-block align-items-center">
+                                        <span>100% Total Incomes</span>
+                                        <div class="ml-auto">
+                                            <span>{{ total_sales }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 100%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="d-flex no-block align-items-center m-t-25">
+                                        <span>{{ paid_percent }}% Paid Value</span>
+                                        <div class="ml-auto">
+                                            <span>{{ paid_value }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{ paid_percent }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="d-flex no-block align-items-center m-t-25">
+                                        <span>{{ remain_percent }}% Dept</span>
+                                        <div class="ml-auto">
+                                            <span>{{ remaining }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{ remain_percent }}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+    </div>
+    <div class="col-md-i"></div>
+</div>
+
+
+
+{% endblock content_wrapper %}
+
+{% block extra_js %}
+
+    <script type="text/javascript" src="/static/assets/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/static/assets/js/cookie.js"></script>
+
+    <script src="/static/assets/lib/jquery.flot/jquery.flot.js"></script>
+    <script src="/static/assets/lib/jquery.flot/jquery.flot.resize.js"></script>
+    <script src="/static/assets/lib/chart.js/Chart.bundle.min.js"></script>
+    <script src="/static/assets/lib/peity/jquery.peity.min.js"></script>
+    <script src="/static/assets/js/azia.js"></script>
+
+    <script src="/static/assets/js/chart.flot.sampledata.js"></script>
+    <script src="/static/assets/js/dashboard.sampledata.js"></script>
+
+
+
+
+
+    <script>
+      $(function(){
+        'use strict'
+
+    		var plot = $.plot('#flotChart', [{
+          data: flotSampleData3,
+          color: '#007bff',
+          lines: {
+            fillColor: { colors: [{ opacity: 0 }, { opacity: 0.2 }]}
+          }
+        },{
+          data: flotSampleData4,
+          color: '#560bd0',
+          lines: {
+            fillColor: { colors: [{ opacity: 0 }, { opacity: 0.2 }]}
+          }
+        }], {
+    			series: {
+    				shadowSize: 0,
+            lines: {
+              show: true,
+              lineWidth: 2,
+              fill: true
+            }
+    			},
+          grid: {
+            borderWidth: 0,
+            labelMargin: 8
+          },
+    			yaxis: {
+            show: true,
+    				min: 0,
+    				max: 100,
+            ticks: [[0,''],[20,'20K'],[40,'40K'],[60,'60K'],[80,'80K']],
+            tickColor: '#eee'
+    			},
+    			xaxis: {
+            show: true,
+            color: '#fff',
+            ticks: [[25,'OCT 21'],[75,'OCT 22'],[100,'OCT 23'],[125,'OCT 24']],
+          }
+        });
+
+        $.plot('#flotChart1', [{
+          data: dashData2,
+          color: '#00cccc'
+        }], {
+    			series: {
+    				shadowSize: 0,
+            lines: {
+              show: true,
+              lineWidth: 2,
+              fill: true,
+              fillColor: { colors: [ { opacity: 0.2 }, { opacity: 0.2 } ] }
+            }
+    			},
+          grid: {
+            borderWidth: 0,
+            labelMargin: 0
+          },
+    			yaxis: {
+            show: false,
+            min: 0,
+            max: 35
+          },
+    			xaxis: {
+            show: false,
+            max: 50
+          }
+    		});
+
+        $.plot('#flotChart2', [{
+          data: dashData2,
+          color: '#007bff'
+        }], {
+    			series: {
+    				shadowSize: 0,
+            bars: {
+              show: true,
+              lineWidth: 0,
+              fill: 1,
+              barWidth: .5
+            }
+    			},
+          grid: {
+            borderWidth: 0,
+            labelMargin: 0
+          },
+    			yaxis: {
+            show: false,
+            min: 0,
+            max: 35
+          },
+    			xaxis: {
+            show: false,
+            max: 20
+          }
+    		});
+
+
+        //-------------------------------------------------------------//
+
+
+        // Line chart
+        $('.peity-line').peity('line');
+
+        // Bar charts
+        $('.peity-bar').peity('bar');
+
+        // Bar charts
+        $('.peity-donut').peity('donut');
+
+        var ctx5 = document.getElementById('chartBar5').getContext('2d');
+        new Chart(ctx5, {
+          type: 'bar',
+          data: {
+            labels: [0,1,2,3,4,5,6,7],
+            datasets: [{
+              data: [2, 4, 10, 20, 45, 40, 35, 18],
+              backgroundColor: '#560bd0'
+            }, {
+              data: [3, 6, 15, 35, 50, 45, 35, 25],
+              backgroundColor: '#cad0e8'
+            }]
+          },
+          options: {
+            maintainAspectRatio: false,
+            tooltips: {
+              enabled: false
+            },
+            legend: {
+              display: false,
+                labels: {
+                  display: false
+                }
+            },
+            scales: {
+              yAxes: [{
+                display: false,
+                ticks: {
+                  beginAtZero:true,
+                  fontSize: 11,
+                  max: 80
+                }
+              }],
+              xAxes: [{
+                barPercentage: 0.6,
+                gridLines: {
+                  color: 'rgba(0,0,0,0.08)'
+                },
+                ticks: {
+                  beginAtZero:true,
+                  fontSize: 11,
+                  display: false
+                }
+              }]
+            }
+          }
+        });
+
+        // Donut Chart
+        var datapie = {
+          labels: ['Search', 'Email', 'Referral', 'Social', 'Other'],
+          datasets: [{
+            data: [25,20,30,15,10],
+            backgroundColor: ['#6f42c1', '#007bff','#17a2b8','#00cccc','#adb2bd']
+          }]
+        };
+
+        var optionpie = {
+          maintainAspectRatio: false,
+          responsive: true,
+          legend: {
+            display: false,
+          },
+          animation: {
+            animateScale: true,
+            animateRotate: true
+          }
+        };
+
+        // For a doughnut chart
+        var ctxpie= document.getElementById('chartDonut');
+        var myPieChart6 = new Chart(ctxpie, {
+          type: 'doughnut',
+          data: datapie,
+          options: optionpie
+        });
+
+      });
+    </script>
+
+
+    <script src="{% static 'assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
+<script>
+
+        $('.demo').each(function() {
+        $(this).minicolors({
+                control: $(this).attr('data-control') || 'hue',
+                position: $(this).attr('data-position') || 'bottom left',
+
+                change: function(value, opacity) {
+                    if (!value) return;
+                    if (opacity) value += ', ' + opacity;
+                    if (typeof console === 'object') {
+                        console.log(value);
+                    }
+                },
+                theme: 'bootstrap'
+            });
+
+        });
+        /*datwpicker*/
+        jQuery('.mydatepicker').datepicker();
+        jQuery('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+
+    </script>
+
+    <script>
+        $('.result_button').click(function (event) {
+            event.preventDefault();
+            const btn = $(this);
+            const href = btn.attr('data-href');
+            const params = window.location.search.substr(1);
+            const url = href + '?' + params;
+            $.ajax({
+                method: 'GET',
+                dataType: 'json',
+                url: url,
+
+                success: function (daresult_containerta) {
+                    $('#').html(data.result)
+                }
+            })
+        })
+    </script>
+{% endblock %}
+
+   {% include 'include/js.html' %}

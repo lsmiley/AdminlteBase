@@ -1,4 +1,4 @@
-django==4.0.1
+django==3.2.5
 mysqlclient==2.1.0
 django-filter==21.1
 django-tables2==2.4.1

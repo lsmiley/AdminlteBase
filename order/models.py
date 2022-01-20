@@ -84,7 +84,7 @@ class Order(models.Model):
     transformationsubtotalshoursitems = models.FloatField(default='0.0')
 
     executetransitionplan_count = models.FloatField(default='1.0')
-    executetransitionplan_transitionhoursitem = models.FloatField(default='0.0')
+    executetransitionplan_transitionhoursitem = models.FloatField(default='0.30952380952381')
     executetransitionplan_transitionhours = models.FloatField(default='0.0')
     executetransitionplan_transformationhoursitem = models.FloatField(default='250.0')
     executetransitionplan_transformationhours = models.FloatField(default='250.0')
@@ -253,8 +253,8 @@ class Order(models.Model):
 
     totaltransitionhoursitem = models.FloatField(default='0.0')
     totaltransformationhoursitem = models.FloatField(default='0.0')
-    numtransitionweeks = models.FloatField(default='0.0')
-    numtransformationweeks = models.FloatField(default='0.0')
+    numtransitionweeks = models.FloatField(default='12.0')
+    numtransformationweeks = models.FloatField(default='12.0')
 
 
     # # Account Details
@@ -293,6 +293,8 @@ class Order(models.Model):
         ordering = ['-date']
 
     def save(self, *args, **kwargs):
+        totaltransitionhoursitem_BZ = 525
+
         order_items = self.order_items.all()
         self.value = order_items.aggregate(Sum('total_price'))['total_price__sum'] if order_items.exists() else 0.00
         self.final_value = Decimal(self.value) - Decimal(self.discount)
@@ -312,6 +314,11 @@ class Order(models.Model):
 
         # self.sum_hours = order_items.aggregate(Sum('hours'))['hours__sum'] if order_items.exists() else 0.00
         # self.sum_fte = order_items.aggregate(Sum('fte'))['fte__sum'] if order_items.exists() else 0.00
+
+        # self.executetransitionplan_transitionhoursitem = (0.30952380952381 * totaltransitionhoursitem_BZ)
+        # self.executetransitionplan_transitionhours = (self.executetransitionplan_transitionhours * self.executetransitionplan_count)
+
+
 
         super().save(*args, **kwargs)
 

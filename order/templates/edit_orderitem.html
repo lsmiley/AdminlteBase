@@ -5,7 +5,10 @@
 {% block content_wrapper %}
 
 <div class="page-wrapper">
-        <div class="page-breadcrumb">
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-9">
+          <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
                     <h4 class="page-title">Sizing Items</h4>
@@ -2133,11 +2136,14 @@
                     <a href="{% url 'orderitem' %}" class="btn ghost-button">Cancel</a>
 
                 </div>
-                <a href="{{ 'order.id' }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                <a href="{{ '/update_order/1'  }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                <a href="{{ '/update/1' }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
 
-
+<input type="hidden" name="next" value="{{ request.path }}">
                 <button onclick="goBack2()">Update</button>
 <button type="submit" class="btn btn-success">Save</button>
+
+
 
 </form>
 
@@ -2172,6 +2178,15 @@ function goBack2() {
 
 
 </div>
+
+
+    </div>
+    <div class="col-md-1"></div>
+
+</div>
+
+
+
 
 
 </div>
