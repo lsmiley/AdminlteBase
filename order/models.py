@@ -256,6 +256,11 @@ class Order(models.Model):
     numtransitionweeks = models.FloatField(default='12.0')
     numtransformationweeks = models.FloatField(default='12.0')
 
+    SpecialItemsDesc1 = models.CharField(blank=True, max_length=150)
+    SpecialItemsDesc2 = models.CharField(blank=True, max_length=150)
+    SpecialItemsDesc3 = models.CharField(blank=True, max_length=150)
+    SpecialItemsDesc4 = models.CharField(blank=True, max_length=150)
+    SpecialItemsDesc5 = models.CharField(blank=True, max_length=150)
 
     # # Account Details
     # rfs_num = models.CharField(blank=True, max_length=150)
@@ -321,6 +326,7 @@ class Order(models.Model):
 
 
         super().save(*args, **kwargs)
+
 
     def __str__(self):
         return self.title if self.title else 'New Order'
@@ -468,7 +474,7 @@ class OrderItem(models.Model):
 
 
     # Component #1
-    prodcomponent1_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent1_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent1_wkstn = models.BooleanField(default=False)
     prodcomponent1_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent1_svr = models.BooleanField(default=False)
@@ -479,7 +485,7 @@ class OrderItem(models.Model):
     prodcomponent1_ttl_fte = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
 
     # Component #2
-    prodcomponent2_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent2_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent2_wkstn = models.BooleanField(default=False)
     prodcomponent2_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent2_svr = models.BooleanField(default=False)
@@ -490,7 +496,7 @@ class OrderItem(models.Model):
     prodcomponent2_ttl_fte = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
 
     # Component #3
-    prodcomponent3_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent3_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent3_wkstn = models.BooleanField(default=False)
     prodcomponent3_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent3_svr = models.BooleanField(default=False)
@@ -501,7 +507,7 @@ class OrderItem(models.Model):
     prodcomponent3_ttl_fte = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
 
     # Component #4
-    prodcomponent4_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent4_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent4_wkstn = models.BooleanField(default=False)
     prodcomponent4_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent4_svr = models.BooleanField(default=False)
@@ -512,7 +518,7 @@ class OrderItem(models.Model):
     prodcomponent4_ttl_fte = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
 
     # Component #5
-    prodcomponent5_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent5_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent5_wkstn = models.BooleanField(default=False)
     prodcomponent5_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent5_svr = models.BooleanField(default=False)
@@ -523,7 +529,7 @@ class OrderItem(models.Model):
     prodcomponent5_ttl_fte = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
 
     # Component #6
-    prodcomponent6_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent6_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent6_wkstn = models.BooleanField(default=False)
     prodcomponent6_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent6_svr = models.BooleanField(default=False)
@@ -534,7 +540,7 @@ class OrderItem(models.Model):
     prodcomponent6_ttl_fte = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
 
     # Component #7
-    prodcomponent7_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent7_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent7_wkstn = models.BooleanField(default=False)
     prodcomponent7_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent7_svr = models.BooleanField(default=False)
@@ -545,7 +551,7 @@ class OrderItem(models.Model):
     prodcomponent7_ttl_fte = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
 
     # Component #8
-    prodcomponent8_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent8_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent8_wkstn = models.BooleanField(default=False)
     prodcomponent8_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent8_svr = models.BooleanField(default=False)
@@ -556,7 +562,7 @@ class OrderItem(models.Model):
     prodcomponent8_ttl_fte = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
 
     # Component #9
-    prodcomponent9_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent9_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent9_wkstn = models.BooleanField(default=False)
     prodcomponent9_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent9_svr = models.BooleanField(default=False)
@@ -567,7 +573,7 @@ class OrderItem(models.Model):
     prodcomponent9_ttl_fte = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
 
     # Component #10
-    prodcomponent10_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent10_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent10_wkstn = models.BooleanField(default=False)
     prodcomponent10_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent10_svr = models.BooleanField(default=False)
@@ -578,7 +584,7 @@ class OrderItem(models.Model):
     prodcomponent10_ttl_fte = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
 
     # Component #11
-    prodcomponent11_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent11_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent11_wkstn = models.BooleanField(default=False)
     prodcomponent11_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent11_svr = models.BooleanField(default=False)
@@ -589,7 +595,7 @@ class OrderItem(models.Model):
     prodcomponent11_ttl_fte = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
 
     # Component #12
-    prodcomponent12_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent12_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent12_wkstn = models.BooleanField(default=False)
     prodcomponent12_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent12_svr = models.BooleanField(default=False)
@@ -600,7 +606,7 @@ class OrderItem(models.Model):
     prodcomponent12_ttl_fte = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
 
     # Component #13
-    prodcomponent13_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent13_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent13_wkstn = models.BooleanField(default=False)
     prodcomponent13_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent13_svr = models.BooleanField(default=False)
@@ -611,7 +617,7 @@ class OrderItem(models.Model):
     prodcomponent13_ttl_fte = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
 
     # Component #14
-    prodcomponent14_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent14_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent14_wkstn = models.BooleanField(default=False)
     prodcomponent14_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent14_svr = models.BooleanField(default=False)
@@ -622,7 +628,7 @@ class OrderItem(models.Model):
     prodcomponent14_ttl_fte = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
 
     # Component #15
-    prodcomponent15_desc = models.CharField(blank=True, max_length=150)
+    prodcomponent15_desc = models.CharField(blank=True, null=True, max_length=150)
     prodcomponent15_wkstn = models.BooleanField(default=False)
     prodcomponent15_wkstnhours = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     prodcomponent15_svr = models.BooleanField(default=False)
@@ -655,6 +661,37 @@ class OrderItem(models.Model):
         self.defaultfte_year = Decimal(self.labordelivery.defaultfte_year)
         self.workweek = self.labordelivery.workweek
         self.deliveryctrcostfactor = self.labordelivery.deliveryctrcostfactor
+        self.base = self.product.productcomplexitybase
+
+        self.prodcomponent1_desc = self.product.component1desc
+        self.prodcomponent2_desc = self.product.component2desc
+        self.prodcomponent3_desc = self.product.component3desc
+        self.prodcomponent4_desc = self.product.component4desc
+        self.prodcomponent5_desc = self.product.component5desc
+        self.prodcomponent6_desc = self.product.component6desc
+        self.prodcomponent7_desc = self.product.component7desc
+        self.prodcomponent8_desc = self.product.component8desc
+        self.prodcomponent9_desc = self.product.component9desc
+        self.prodcomponent10_desc = self.product.component10desc
+        self.prodcomponent11_desc = self.product.component11desc
+        self.prodcomponent12_desc = self.product.component12desc
+        self.prodcomponent13_desc = self.product.component13desc
+        self.prodcomponent14_desc = self.product.component14desc
+        self.prodcomponent15_desc = self.product.component15desc
+
+        # Hours Calculation for Component#1 HoursLine
+
+
+        # if self.prodcomponent1_wkstn == True:
+        #     self.prodcomponent1_wkstnhours = (self.wkstnshourscalc * int(self.product.componentcomplexityfac1))
+        # else:
+        #     self.prodcomponent1_wkstnhours = 0
+        #
+        # if self.prodcomponent1_svr == True:
+        #     self.prodcomponent15_svrHours = (self.srvshourscalc * int(self.product.componentcomplexityfac1))
+        # else:
+        #     self.prodcomponent15_svrHours = 0
+
 
         # Component Hours and Factor Calculations
         #
@@ -888,13 +925,15 @@ class OrderItem(models.Model):
             self.srvshourscalc = (self.numserver * .30 / 12) * self.nummonths
         elif enterednumserver >= 50:
             self.srvshourscalc = (self.numserver * .31 / 12) * self.nummonths
+        elif enterednumserver <= 50:
+            self.srvshourscalc = (self.numserver * .31 / 12) * self.nummonths
         # else:
         #     self.srvshourscalc = self.base
 
         # Workstation Hours Calculation
 
         enterednumworkstation = int(self.numworkstation)
-        # Hours Calculation for Server Line Item
+        # Hours Calculation for Workstation Line Item
 
         if enterednumworkstation >= 200500:
             self.wkstnshourscalc = int(((0.0285 * self.productcomplexityfac) * self.numworkstation) * (
@@ -1172,6 +1211,185 @@ class OrderItem(models.Model):
         else:
             self.prodcomponent15_wkstnhours = Decimal(self.wkstnshourscalc) * Decimal(self.product.componentcomplexityfac15)
 
+        # Componemt Factor Calc
+        # Servers
+
+        if self.prodcomponent1_svr == False:
+            self.prodcomponent1_svrHours = 0
+        else:
+            self.prodcomponent1_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac1)
+
+        if self.prodcomponent2_svr == False:
+            self.prodcomponent2_svrHours = 0
+        else:
+            self.prodcomponent2_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac2)
+
+
+        if self.prodcomponent3_svr == False:
+            self.prodcomponent3_svrHours = 0
+        else:
+            self.prodcomponent3_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac3)
+
+        if self.prodcomponent4_svr == False:
+            self.prodcomponent4_svrHours = 0
+        else:
+            self.prodcomponent4_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac4)
+
+
+        if self.prodcomponent5_svr == False:
+            self.prodcomponent5_svrHours = 0
+        else:
+            self.prodcomponent5_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac5)
+
+
+        if self.prodcomponent6_svr == False:
+            self.prodcomponent6_svrHours = 0
+        else:
+            self.prodcomponent6_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac6)
+
+
+        if self.prodcomponent7_svr == False:
+            self.prodcomponent7_svrHours = 0
+        else:
+            self.prodcomponent7_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac7)
+
+
+        if self.prodcomponent8_svr == False:
+            self.prodcomponent8_svrHours = 0
+        else:
+            self.prodcomponent8_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac8)
+
+
+        if self.prodcomponent9_svr == False:
+            self.prodcomponent9_svrHours = 0
+        else:
+            self.prodcomponent9_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac9)
+
+
+        if self.prodcomponent10_svr == False:
+            self.prodcomponent10_svrHours = 0
+        else:
+            self.prodcomponent10_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac10)
+
+
+        if self.prodcomponent11_svr == False:
+            self.prodcomponent11_svrHours = 0
+        else:
+            self.prodcomponent11_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac11)
+
+
+        if self.prodcomponent12_svr == False:
+            self.prodcomponent12_svrHours = 0
+        else:
+            self.prodcomponent12_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac12)
+
+
+        if self.prodcomponent13_svr == False:
+            self.prodcomponent13_svrHours = 0
+        else:
+            self.prodcomponent13_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac13)
+
+
+        if self.prodcomponent14_svr == False:
+            self.prodcomponent14_svrHours = 0
+        else:
+            self.prodcomponent14_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac14)
+
+
+        if self.prodcomponent15_svr == False:
+            self.prodcomponent15_svrHours = 0
+        else:
+            self.prodcomponent15_svrHours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac15)
+
+
+
+        # Componemt Factor Calc
+        # IP/ Endpoint
+
+        if self.prodcomponent1_IP is False:
+            self.prodcomponent1_iphours = 0
+        else:
+            self.prodcomponent1_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac1)
+
+
+        if self.prodcomponent2_IP is False:
+            self.prodcomponent2_iphours = 0
+        else:
+            self.prodcomponent2_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac2)
+
+
+        if self.prodcomponent3_IP is False:
+            self.prodcomponent3_iphours = 0
+        else:
+            self.prodcomponent3_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac3)
+
+
+        if self.prodcomponent4_IP is False:
+            self.prodcomponent4_iphours = 0
+        else:
+            self.prodcomponent4_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac4)
+
+        if self.prodcomponent5_IP is False:
+            self.prodcomponent5_iphours = 0
+        else:
+            self.prodcomponent5_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac5)
+
+        if self.prodcomponent6_IP is False:
+            self.prodcomponent6_iphours = 0
+        else:
+            self.prodcomponent6_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac6)
+
+
+        if self.prodcomponent7_IP is False:
+            self.prodcomponent7_iphours = 0
+        else:
+            self.prodcomponent7_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac7)
+
+
+        if self.prodcomponent8_IP is False:
+            self.prodcomponent8_iphours = 0
+        else:
+            self.prodcomponent8_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac8)
+
+
+        if self.prodcomponent9_IP is False:
+            self.prodcomponent9_iphours = 0
+        else:
+            self.prodcomponent9_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac9)
+
+
+        if self.prodcomponent10_IP is False:
+            self.prodcomponent10_iphours = 0
+        else:
+            self.prodcomponent10_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac10)
+
+
+        if self.prodcomponent11_IP is False:
+            self.prodcomponent11_iphours = 0
+        else:
+            self.prodcomponent11_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac11)
+
+
+        if self.prodcomponent12_IP is False:
+            self.prodcomponent12_iphours = 0
+        else:
+            self.prodcomponent12_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac12)
+
+        if self.prodcomponent13_IP is False:
+            self.prodcomponent13_iphours = 0
+        else:
+            self.prodcomponent13_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac13)
+
+        if self.prodcomponent14_IP is False:
+            self.prodcomponent14_iphours = 0
+        else:
+            self.prodcomponent14_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac14)
+
+        if self.prodcomponent15_IP is False:
+            self.prodcomponent15_iphours = 0
+        else:
+            self.prodcomponent15_iphours = float(self.srvshourscalc) * float(self.product.componentcomplexityfac15)
+
         # self.prodcomponent2_wkstnhours = Decimal(self.wkstnshourscalc) * Decimal(self.product.componentcomplexityfac2)
         # self.prodcomponent3_wkstnhours = Decimal(self.wkstnshourscalc) * Decimal(self.product.componentcomplexityfac3)
         # self.prodcomponent4_wkstnhours = Decimal(self.wkstnshourscalc) * Decimal(self.product.componentcomplexityfac4)
@@ -1183,22 +1401,49 @@ class OrderItem(models.Model):
         # self.prodcomponent1_iphours = (self.ipshourscalc * self.componentcomplexityfac1)
         #
         self.prodcomponent1_ttl_hours = (
-                    Decimal(self.prodcomponent1_wkstnhours) + Decimal(self.prodcomponent1_svrHours) + Decimal(self.prodcomponent1_iphours))
+                    float(self.prodcomponent1_wkstnhours) + float(self.prodcomponent1_svrHours) + float(self.prodcomponent1_iphours))
+
         self.prodcomponent2_ttl_hours = (
-                    Decimal(self.prodcomponent2_wkstnhours) + Decimal(self.prodcomponent2_svrHours) + Decimal(self.prodcomponent2_iphours))
+                    float(self.prodcomponent2_wkstnhours) + float(self.prodcomponent2_svrHours) + float(self.prodcomponent2_iphours))
 
         self.prodcomponent3_ttl_hours = (
-                    Decimal(self.prodcomponent3_wkstnhours) + Decimal(self.prodcomponent3_svrHours) + Decimal(self.prodcomponent3_iphours))
+                    float(self.prodcomponent3_wkstnhours) + float(self.prodcomponent3_svrHours) + float(self.prodcomponent3_iphours))
 
         self.prodcomponent4_ttl_hours = (
-                    Decimal(self.prodcomponent4_wkstnhours) + Decimal(self.prodcomponent4_svrHours) + Decimal(self.prodcomponent4_iphours))
+                    float(self.prodcomponent4_wkstnhours) + float(self.prodcomponent4_svrHours) + float(self.prodcomponent4_iphours))
 
         self.prodcomponent5_ttl_hours = (
-                    Decimal(self.prodcomponent5_wkstnhours) + Decimal(self.prodcomponent5_svrHours) + Decimal(self.prodcomponent5_iphours))
+                    float(self.prodcomponent5_wkstnhours) + float(self.prodcomponent5_svrHours) + float(self.prodcomponent5_iphours))
 
         self.prodcomponent6_ttl_hours = (
-                    Decimal(self.prodcomponent6_wkstnhours) + Decimal(self.prodcomponent6_svrHours) + Decimal(self.prodcomponent6_iphours))
+                    float(self.prodcomponent6_wkstnhours) + float(self.prodcomponent6_svrHours) + float(self.prodcomponent6_iphours))
 
+        self.prodcomponent7_ttl_hours = (
+                    float(self.prodcomponent7_wkstnhours) + float(self.prodcomponent7_svrHours) + float(self.prodcomponent7_iphours))
+
+        self.prodcomponent8_ttl_hours = (
+                    float(self.prodcomponent8_wkstnhours) + float(self.prodcomponent8_svrHours) + float(self.prodcomponent8_iphours))
+
+        self.prodcomponent9_ttl_hours = (
+                    float(self.prodcomponent9_wkstnhours) + float(self.prodcomponent9_svrHours) + float(self.prodcomponent9_iphours))
+
+        self.prodcomponent10_ttl_hours = (
+                    float(self.prodcomponent10_wkstnhours) + float(self.prodcomponent10_svrHours) + float(self.prodcomponent10_iphours))
+
+        self.prodcomponent11_ttl_hours = (
+                    float(self.prodcomponent11_wkstnhours) + float(self.prodcomponent11_svrHours) + float(self.prodcomponent11_iphours))
+
+        self.prodcomponent12_ttl_hours = (
+                    float(self.prodcomponent12_wkstnhours) + float(self.prodcomponent12_svrHours) + float(self.prodcomponent12_iphours))
+
+        self.prodcomponent13_ttl_hours = (
+                    float(self.prodcomponent13_wkstnhours) + float(self.prodcomponent13_svrHours) + float(self.prodcomponent13_iphours))
+
+        self.prodcomponent14_ttl_hours = (
+                    float(self.prodcomponent14_wkstnhours) + float(self.prodcomponent14_svrHours) + float(self.prodcomponent14_iphours))
+
+        self.prodcomponent15_ttl_hours = (
+                    float(self.prodcomponent15_wkstnhours) + float(self.prodcomponent15_svrHours) + float(self.prodcomponent15_iphours))
 
 
         if enterednumappchange >= 1:

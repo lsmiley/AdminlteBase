@@ -1,0 +1,21 @@
+{
+    "name": "adminltebase",
+    "mastertemplate": "boilerplate-code-django-dashboard",
+    "version": "1.0.3",
+    "description": "Template project - Django Boilerplate Code",
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lsmiley/AdminlteBase.git"
+    },
+    "bugs": {
+        "url": "https://github.com/lsmiley/AdminlteBase/issues",
+        "email": "lsmiley@us.ibm.com"
+    },
+    "author": "Managed Security Services <lsmiley@us.ibm.com> (https://ibm.com)",
+    "engines": {
+        "node": ">=10.0.0"
+    },
+    "dependencies": {},
+    "devDependencies": {}
+}

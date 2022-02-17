@@ -387,7 +387,7 @@ def edit_orderitem(request):
 
             messages.success(request, "Updated Successfully")
             # return HttpResponseRedirect("update_orderitem/"+str(orderitem.id)+"")
-            return HttpResponseRedirect("update1/"+str(order_num)+"")
+            return HttpResponseRedirect("update/"+str(order_num)+"")
 
 
 
@@ -403,8 +403,9 @@ class OrderItemUpdateView(UpdateView):
 
     def get_success_url(self):
         self.object.refresh_from_db()
-        return reverse('edit_orderitem', kwargs={'pk': self.object.id})
-        # return reverse('update_orderitem', kwargs={'pk': self.object.id})
+        # return reverse('edit_orderitem', kwargs={'pk': self.object.id})
+        # return reverse('update', kwargs={'pk': self.object.id})
+        return reverse('update', kwargs={'pk': self.object.order.id})
 
 # class OrderItemUpdateView(SuccessMessageMixin,
 #                              UpdateView):  # updateview class to edit orderitem, mixin used to display message

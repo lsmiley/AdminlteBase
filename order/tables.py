@@ -48,7 +48,7 @@ class OrderItemTable(tables.Table):
     Options = tables.TemplateColumn('''
       
             <a href="{% url 'orderitem' %}orderitem/{{ record.id }}/edit" class="btn btn-block btn-info btn-xs">Details</a>
-            <a href="{% url 'orderitem' %}orderitem/{{ record.id }}/edit">Update</a>
+           
             
            
            

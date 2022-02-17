@@ -25,7 +25,7 @@ SECRET_KEY = 'x&7$)!$nj9#ca(3s%xln!m_^18_$+=5nt$z8s^chlntq570m6u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://django-admilte-3-git-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps.com']
+ALLOWED_HOSTS = ['*', 'http://django-admilte-3-git-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps.com']
 
 
 # Application definition
@@ -106,24 +106,24 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-# **** Local Database Settings ****
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'adminltebase-01-db',
-#         'USER': 'sizingadmin',
-#         'PASSWORD': 'Malware12345',
-#         'HOST': '127.0.0.1',
-#         'PORT': '3306',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+
+# **** Local Database Settings ****
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'adminltebase-01-db',
+        'USER': 'sizingadmin',
+        'PASSWORD': 'Malware12345',
+        'HOST': '127.0.0.1',
+        'PORT': '53405',
+    }
+}
 
 # **** Cloud Database Settings ****
 #
@@ -141,16 +141,16 @@ DATABASES = {
 
 # **** Cloud Database Settings #2 Dev  ****
 #
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'adminltebase-01-db',
-        'USER': 'aspadmin',
-        'PASSWORD': 'Malware12345',
-        'HOST': '10.131.2.60',
-        'PORT': '3306',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'adminltebase-01-db',
+#         'USER': 'aspadmin',
+#         'PASSWORD': 'Malware12345',
+#         'HOST': '10.131.2.60',
+#         'PORT': '3306',
+#     }
+# }
 
 
 # Password validation

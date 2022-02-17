@@ -2,13 +2,13 @@
 
 {% load static %}
 
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
-<script
-			  src="https://code.jquery.com/jquery-3.6.0.js"
-			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-			  crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--<script-->
+<!--			  src="https://code.jquery.com/jquery-3.6.0.js"-->
+<!--			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="-->
+<!--			  crossorigin="anonymous">-->
 
-</script>
+<!--</script>-->
 
 
 {% block content_wrapper %}
@@ -811,7 +811,7 @@
                         </div>
 
                     </div>
-                    <div class="row">
+                    <div class="row"  style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
                         <div class="col-md-1">#</div>
                         <div class="col-md-6">Description</div>
                         <div class="col-md-1">Count</div>
@@ -820,19 +820,21 @@
                         <div class="col-md-1">Transformation Hrs/Item</div>
                         <div class="col-md-1">Transformation Hrs</div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
                         <div class="col-md-1">1</div>
-                        <div class="col-md-6">Execute transition plan, task tracking, conferences, minutes, communication, status reporting, etc</div>
-                        <div class="col-md-1">
+                        <div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">Execute transition plan, task tracking, conferences, minutes, communication, status reporting, etc</div>
+                        <div class="col-md-1" >
                                          <div class="form-group ">
-            {{ form.executetransitionplan_count.errors }}
+
+                                          {{ form.executetransitionplan_count.errors }}
 
             {{ form.executetransitionplan_count }}
+
         </div>
 
                         </div>
-                        <div class="col-md-1">
-                                          <div class="form-group ">
+                        <div class="col-md-1" >
+                                          <div class="form-group"  style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
             {{ form.executetransitionplan_transitionhoursitem.errors }}
 
             {{ form.executetransitionplan_transitionhoursitem }}
@@ -840,9 +842,9 @@
                         </div>
                         <div class="col-md-1">
                                           <div class="form-group ">
-            {{ form.executetransitionplan_transitionhoursitem.errors }}
+            {{ form.executetransitionplan_transitionhours.errors }}
 
-            {{ form.executetransitionplan_transitionhoursitem }}
+            {{ form.executetransitionplan_transitionhours }}
         </div>
                         </div>
                         <div class="col-md-1">
@@ -860,7 +862,7 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
                         <div class="col-md-1">2</div>
                         <div class="col-md-6">Create (best practice/custom), Review, Deploy and Document initial policies (incl. QA test of policies on endpoints)</div>
                         <div class="col-md-1">
@@ -898,7 +900,7 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row"  style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
                         <div class="col-md-1">3</div>
                         <div class="col-md-6">Test infrastructure (POC test, non-production data test, stress test, server/console failover, etc.).</div>
                         <div class="col-md-1">
@@ -938,8 +940,48 @@
         </div>
                         </div>
                     </div>
-                   	<div class="row">
+        <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
                         <div class="col-md-1">4</div>
+                        <div class="col-md-6">Troubleshoot/tune infrastructure. Engage vendor and other teams as needed</div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.troubleshoottune_count.errors }}
+
+            {{ form.troubleshoottune_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                         <div class="form-group ">
+            {{ form.troubleshoottune_transitionhoursitem.errors }}
+
+            {{ form.troubleshoottune_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                <div class="form-group ">
+            {{ form.troubleshoottune_transitionhours.errors }}
+
+            {{ form.troubleshoottune_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.troubleshoottune_transformationhoursitem.errors }}
+
+            {{ form.troubleshoottune_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                   <div class="form-group ">
+            {{ form.troubleshoottune_transformationhours.errors }}
+
+            {{ form.troubleshoottune_transformationhours }}
+        </div>
+
+                        </div>
+                    </div>
+                   	<div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">5</div>
                         <div class="col-md-6">Install/configure product on infrastructure servers; patch or hotfix</div>
                         <div class="col-md-1">
                                             <div class="form-group ">
@@ -978,8 +1020,8 @@
 
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">5</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">6</div>
                         <div class="col-md-6">Administrator training of GDC pooled resources</div>
                         <div class="col-md-1">
 							<div class="form-group ">
@@ -1019,8 +1061,8 @@
                         </div>
 
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">6</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">7</div>
                         <div class="col-md-6">Develop Service Responsibility Matrix; review among stakeholders</div>
                         <div class="col-md-1">
                                             <div class="form-group ">
@@ -1061,8 +1103,8 @@
 
 
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">7</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">8</div>
                         <div class="col-md-6">Establish any needed service accounts, business justifications, approval processes, testing.</div>
                         <div class="col-md-1">
                                      <div class="form-group ">
@@ -1101,8 +1143,8 @@
                         </div>
 
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">8</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">9</div>
                         <div class="col-md-6">Research and setup email automation (SMTP or via special triggers) - includes alerts, failure notifications, etc. as needed.</div>
                         <div class="col-md-1">
                                            <div class="form-group ">
@@ -1140,8 +1182,8 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">9</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">10</div>
                         <div class="col-md-6">Install/configure remote consoles</div>
                         <div class="col-md-1">
                                            <div class="form-group ">
@@ -1179,8 +1221,8 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">10</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">11</div>
                         <div class="col-md-6">Work with SECOPS to ensure proper performance; understanding of error codes, baseline performance expectation, etc.</div>
                         <div class="col-md-1">
                                             <div class="form-group ">
@@ -1219,8 +1261,8 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">11</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">12</div>
                         <div class="col-md-6">Staffing (coordinating)</div>
                         <div class="col-md-1">
                                           <div class="form-group ">
@@ -1258,8 +1300,8 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">12</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">13</div>
                         <div class="col-md-6">Identify/test/document onboarding procedures.</div>
                         <div class="col-md-1">
                                             <div class="form-group ">
@@ -1297,8 +1339,8 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">13</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">14</div>
                         <div class="col-md-6">Obtain network and OS access - Wave 1 (Initial staffing needed for Knowledge Transfer)</div>
                         <div class="col-md-1">
                                             <div class="form-group ">
@@ -1336,8 +1378,8 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">14</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">15</div>
                         <div class="col-md-6">Obtain network and OS access - Wave 2 (Staffing needed for Steady State)</div>
                         <div class="col-md-1">
                                             <div class="form-group ">
@@ -1376,8 +1418,8 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-1">15</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">16</div>
                         <div class="col-md-6">Develop/provide agent to software deployment group; oversee agent deployment (manual install required)</div>
                         <div class="col-md-1">
                                             <div class="form-group ">
@@ -1420,8 +1462,8 @@
 
 
 
-                    <div class="row">
-                        <div class="col-md-1">16</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">17</div>
                         <div class="col-md-6">Install/configure ODBC or other connectors to metaconsoles; </div>
                         <div class="col-md-1">
                                             <div class="form-group ">
@@ -1459,8 +1501,8 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">17</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">18</div>
                         <div class="col-md-6">Customer review and sign-off on infrastructure set up, test results, etc.</div>
                         <div class="col-md-1">
                                            <div class="form-group ">
@@ -1498,8 +1540,8 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">18</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">19</div>
                         <div class="col-md-6">Establish Health check regimen for product and infrastructure</div>
                         <div class="col-md-1">
                                            <div class="form-group ">
@@ -1537,8 +1579,8 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">19</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">20</div>
                         <div class="col-md-6">Develop workflows for patch management, change management, incident management, policy review</div>
                         <div class="col-md-1">
 							                <div class="form-group ">
@@ -1577,8 +1619,8 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">20</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">21</div>
                         <div class="col-md-6">Operational documentation</div>
                         <div class="col-md-1">
                                           <div class="form-group ">
@@ -1616,8 +1658,8 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">21</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">22</div>
                         <div class="col-md-6">Shadow/Establish/Review all procedures, monitoring of console, health check, support ticket queue, etc.</div>
                         <div class="col-md-1">
                                             <div class="form-group ">
@@ -1655,8 +1697,8 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">22</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">23</div>
                         <div class="col-md-6">Other (details available in project plan)</div>
                         <div class="col-md-1">
 
@@ -1697,9 +1739,15 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">23</div>
-                        <div class="col-md-6">Special Items 1</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">24</div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                {{ form.SpecialItemsDesc1.errors }}
+
+                                {{ form.SpecialItemsDesc1 }}
+                            </div>
+                        </div>
                         <div class="col-md-1">
                                             <div class="form-group ">
             {{ form.specialitem1_count.errors }}
@@ -1736,9 +1784,15 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">24</div>
-                        <div class="col-md-6">Special Items 2</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">25</div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                {{ form.SpecialItemsDesc2.errors }}
+
+                                {{ form.SpecialItemsDesc2 }}
+                            </div>
+                        </div>
                         <div class="col-md-1">
                                          <div class="form-group ">
             {{ form.specialitem2_count.errors }}
@@ -1775,10 +1829,17 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
 
-                        <div class="col-md-1">25</div>
-                        <div class="col-md-6">Special Items 3</div>
+                        <div class="col-md-1">26</div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                {{ form.SpecialItemsDesc3.errors }}
+
+                                {{ form.SpecialItemsDesc3 }}
+                            </div>
+
+                        </div>
                         <div class="col-md-1">
                                                  <div class="form-group ">
             {{ form.specialitem3_count.errors }}
@@ -1816,9 +1877,15 @@
                         </div>
 
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">26</div>
-                        <div class="col-md-6">Special Items 4</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">27</div>
+                        <div class="col-md-6">
+                             <div class="form-group ">
+                                {{ form.SpecialItemsDesc4.errors }}
+
+                                {{ form.SpecialItemsDesc4 }}
+                            </div>
+                        </div>
                         <div class="col-md-1">
                                            <div class="form-group ">
             {{ form.specialitem4_count.errors }}
@@ -1841,7 +1908,7 @@
         </div>
                         </div>
                         <div class="col-md-1">
-                            S                <div class="form-group ">
+                                    <div class="form-group ">
             {{ form.specialitem4_transformationhoursitem.errors }}
 
             {{ form.specialitem4_transformationhoursitem }}
@@ -1855,9 +1922,15 @@
         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1">27</div>
-                        <div class="col-md-6">Special Item 5</div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">28</div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                {{ form.SpecialItemsDesc5.errors }}
+
+                                {{ form.SpecialItemsDesc5 }}
+                            </div>
+                        </div>
                         <div class="col-md-1">
                                             <div class="form-group ">
             {{ form.specialitem5_count.errors }}
@@ -2234,6 +2307,8 @@
                         <div class="header">Edit</div>
                         <div class="card-body">
                             <form method="post" class="form">{% csrf_token %}
+
+                                pppp
                                 {{ form }}
                                 <br>
                                 <button type="submit" class="btn btn-success">Save</button>

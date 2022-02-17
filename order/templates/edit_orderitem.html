@@ -11,7 +11,7 @@
           <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
-                    <h4 class="page-title">Sizing Items</h4>
+                    <h4 class="page-title">Sizing Itemspppp</h4>
                     <div class="ml-auto text-right">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -1145,9 +1145,9 @@
 
                         <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
-                                    {{ form.prodcomponent11_svrHours.errors }}
+                                    {{ form.prodcomponent11_ttl_hours.errors }}
 
-                                    {{ form.prodcomponent11_svrHours }}
+                                    {{ form.prodcomponent11_ttl_hours }}
                                 </div>
                         </div>
 
@@ -1198,9 +1198,9 @@
 
                                 <div class="col-md-1" style="font-size:12px">
                                         <div class="form-group">
-                                            {{ form.prodcomponent12_svrHours.errors }}
+                                            {{ form.prodcomponent12_ttl_hours.errors }}
 
-                                            {{ form.prodcomponent12_svrHours }}
+                                            {{ form.prodcomponent12_ttl_hours }}
                                         </div>
                                 </div>
 
@@ -1251,9 +1251,9 @@
 
                                 <div class="col-md-1" style="font-size:12px">
                                         <div class="form-group">
-                                            {{ form.prodcomponent13_svrHours.errors }}
+                                            {{ form.prodcomponent13_ttl_hours.errors }}
 
-                                            {{ form.prodcomponent13_svrHours }}
+                                            {{ form.prodcomponent13_ttl_hours }}
                                         </div>
                                 </div>
 
@@ -1304,9 +1304,9 @@
 
                                 <div class="col-md-1" style="font-size:12px">
                                         <div class="form-group">
-                                            {{ form.prodcomponent14_svrHours.errors }}
+                                            {{ form.prodcomponent14_ttl_hours.errors }}
 
-                                            {{ form.prodcomponent14_svrHours }}
+                                            {{ form.prodcomponent14_ttl_hours }}
                                         </div>
                                 </div>
 
@@ -1357,9 +1357,9 @@
 
                                 <div class="col-md-1" style="font-size:12px">
                                         <div class="form-group">
-                                            {{ form.prodcomponent15_svrHours.errors }}
+                                            {{ form.prodcomponent15_ttl_hours.errors }}
 
-                                            {{ form.prodcomponent15_svrHours }}
+                                            {{ form.prodcomponent15_ttl_hours }}
                                         </div>
                                 </div>
 
@@ -2138,10 +2138,13 @@
                 </div>
                 <a href="{{ '/update_order/1'  }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
                 <a href="{{ '/update/1' }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
-
+                <a href="{{ 'javascript:history.go(-1)' }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
 <input type="hidden" name="next" value="{{ request.path }}">
                 <button onclick="goBack2()">Update</button>
+
+<input type="hidden" name="next" value="{{ request.path }}">
 <button type="submit" class="btn btn-success">Save</button>
+
 
 
 
