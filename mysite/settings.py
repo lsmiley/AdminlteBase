@@ -121,7 +121,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #         'USER': 'sizingadmin',
 #         'PASSWORD': 'Malware12345',
 #         'HOST': '127.0.0.1',
-#         'PORT': '53405',
+#         'PORT': '3306',
 #     }
 # }
 
@@ -134,7 +134,7 @@ DATABASES = {
         'USER': 'sizingadmin',
         'PASSWORD': 'Malware12345',
         'HOST': '172.30.21.135',
-        # 'HOST':  'essapps10-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps.com',
+        # 'HOST':  'esstools-db-mysql-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps.com',
         # 'HOST': 'mysql.lsmiley-dev.svc.cluster.local',
         'PORT': '3306',
     }

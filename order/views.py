@@ -85,8 +85,8 @@ class DashboardMainView(ListView):
     # products = Product.objects.all()
     # total_products = products.count()
 
-    prodvendors = Prodvendor.objects.all()
-    total_prodvendors = prodvendors.count()
+    # prodvendors = Prodvendor.objects.all()
+    # total_prodvendors = prodvendors.count()
 
     sizings = Order.objects.all()
     total_sizings = sizings.count()

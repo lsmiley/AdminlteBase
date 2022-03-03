@@ -2,23 +2,41 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import (
     View,
     CreateView,
-    UpdateView
+    UpdateView,
+    ListView
 )
+from django_tables2 import RequestConfig
 from rest_framework import viewsets
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
-from product.models import Product
+from product.models import Product, Prodvendor, Category
 from .serializers import ProductSerializer
 from .forms import ProductForm
 from django_filters.views import FilterView
 from .filters import ProductFilter
 
 
-class ProductListView(FilterView):
-    filterset_class = ProductFilter
-    queryset = Product.objects.filter()
+class ProductListView(ListView):
+    # filterset_class = ProductFilter
+    # queryset = Product.objects.filter()
+    model = Product
+    queryset = Product.objects.all()[:10]
     template_name = 'product.html'
-    paginate_by = 20
+    # paginate_by = 20
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        products = Product.objects.all()
+        total_products = products.count()
+
+        prodvendors = Prodvendor.objects.all()
+        total_prodvendors = prodvendors.count()
+
+        categories = Category.objects.all()
+        total_categories = categories.count()
+
+        context.update(locals())
+        return context
 
 
 class ProductCreateView(SuccessMessageMixin,

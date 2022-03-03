@@ -31,6 +31,52 @@ monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-rend
               <div class="az-content az-content-dashboard">
       <div class="container">
         <div class="az-content-body">
+          <div class="row">
+                    <!-- Column -->
+                    <div class="col-md-3">
+                        <div class="card card-hover">
+                            <a href="{% url 'create-order' %}">
+                            <div class="box bg-cyan text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-view-dashboard"></i></h1>
+                                <h6 class="text-white">New Sizing</h6>
+                            </div>
+                                </a>
+                        </div>
+                    </div>
+                     <!-- Column -->
+                    <div class="col-md-3">
+                        <div class="card card-hover">
+                            <a href="{% url 'dashboard_main' %}">
+                            <div class="box bg-warning text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-collage"></i></h1>
+                                <h6 class="text-white">Team Dashboard</h6>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-3">
+                        <div class="card card-hover">
+                            <a href="{% url 'create_auto' %}">
+                            <div class="box bg-success text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
+                                <h6 class="text-white">Sizing: Quick Create</h6>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                     <!-- Column -->
+                    <div class="col-md-3">
+                        <div class="card card-hover">
+                            <a href="{% url 'create_auto' %}">
+                            <div class="box bg-success text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
+                                <h6 class="text-white">Sizing: Quick Create</h6>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
           <div class="az-dashboard-one-title">
             <div>
               <h2 class="az-dashboard-title">Hi, welcome back! <a style="font-style:italic; color:blue; font-size:25px"> {{request.user.username}} </a>  </h2>
