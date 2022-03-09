@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.dispatch import receiver
 from django.db.models.signals import post_delete
 import datetime
+from django.db.models import F
 
 import labordelivery
 from labordelivery.models import Labordelivery
@@ -326,6 +327,51 @@ class Order(models.Model):
         # Need to fix the two Calcs Below
         # self.totaltransitionhoursitem = (Sum(self.executetransitionplan_transitionhoursitem + self.createbestpracticecustom_transitionhoursitem + self.testinfrastructurepoc_transitionhoursitem + self.troubleshoottune_transitionhoursitem + self.installconfigure_transitionhoursitem + self.administratortraining_transitionhoursitem + self.developserviceresponsibilitymatrix_transitionhoursitem + self.establishanyneededserviceaccounts_transitionhoursitem + self.researchandsetupemailautomation_transitionhoursitem + self.installconfigureremoteconsoles_transitionhoursitem + self.workwithsecops_transitionhoursitem + self.staffingccoordinating_transitionhoursitem + self.identifytestdocument_transitionhoursitem + self.obtainnetworkandosaccesswave1_transitionhoursitem + self.developprovideagentsoftware_transitionhoursitem + self.installconfigureodbc_transitionhoursitem + self.customerreviewsignoff_transitionhoursitem + self.establishhealthcheck_transitionhoursitem + self.developworkflows_transitionhoursitem + self.operationaldocumentation_transitionhoursitem + self.shadowestablishreviewallprocedures_transitionhoursitem + self.otherdetail_transitionhoursitem + self.specialitem1_transitionhoursitem + self.specialitem2_transitionhoursitem + self.specialitem3_transitionhoursitem + self.specialitem4_transitionhoursitem + self.specialitem5_transitionhoursitem))
         # self.totaltransformationhoursitem = (Sum(self.executetransitionplan_transformationhoursitem + self.createbestpracticecustom_transformationhoursitem + self.testinfrastructurepoc_transformationhoursitem + self.troubleshoottune_transformationhoursitem + self.installconfigure_transformationhoursitem + self.administratortraining_transformationhoursitem + self.developserviceresponsibilitymatrix_transformationhoursitem + self.establishanyneededserviceaccounts_transformationhoursitem + self.researchandsetupemailautomation_transformationhoursitem + self.installconfigureremoteconsoles_transformationhoursitem + self.workwithsecops_transformationhoursitem + self.staffingccoordinating_transformationhoursitem + self.identifytestdocument_transformationhoursitem + self.obtainnetworkandosaccesswave1_transformationhoursitem + self.developprovideagentsoftware_transformationhoursitem + self.installconfigureodbc_transformationhoursitem + self.customerreviewsignoff_transformationhoursitem + self.establishhealthcheck_transformationhoursitem + self.developworkflows_transformationhoursitem + self.operationaldocumentation_transformationhoursitem + self.shadowestablishreviewallprocedures_transformationhoursitem + self.otherdetail_transformationhoursitem + self.specialitem1_transformationhoursitem + self.specialitem2_transformationhoursitem + self.specialitem3_transformationhoursitem + self.specialitem4_transformationhoursitem + self.specialitem5_transformationhoursitem))
+
+        tnt_totaltransitionhoursitem_results = Order.objects.annotate(
+            my_sum1=F('executetransitionplan_transitionhoursitem') + F(
+                'createbestpracticecustom_transitionhoursitem') + F('testinfrastructurepoc_transitionhoursitem') + F(
+                'troubleshoottune_transitionhoursitem') + F('installconfigure_transitionhoursitem') + F(
+                'administratortraining_transitionhoursitem') + F(
+                'developserviceresponsibilitymatrix_transitionhoursitem') + F(
+                'establishanyneededserviceaccounts_transitionhoursitem') + F(
+                'researchandsetupemailautomation_transitionhoursitem') + F(
+                'installconfigureremoteconsoles_transitionhoursitem') + F('workwithsecops_transitionhoursitem') + F(
+                'staffingccoordinating_transitionhoursitem') + F('identifytestdocument_transitionhoursitem') + F(
+                'obtainnetworkandosaccesswave1_transitionhoursitem') + F(
+                'developprovideagentsoftware_transitionhoursitem') + F('installconfigureodbc_transitionhoursitem') + F(
+                'customerreviewsignoff_transitionhoursitem') + F('establishhealthcheck_transitionhoursitem') + F(
+                'developworkflows_transitionhoursitem') + F('operationaldocumentation_transitionhoursitem') + F(
+                'shadowestablishreviewallprocedures_transitionhoursitem') + F('otherdetail_transitionhoursitem') + F(
+                'specialitem1_transitionhoursitem') + F('specialitem2_transitionhoursitem') + F(
+                'specialitem3_transitionhoursitem') + F('specialitem4_transitionhoursitem') + F(
+                'specialitem5_transitionhoursitem'),)
+
+        tnt_totaltransformationhoursitem_results = Order.objects.annotate(
+            my_sum2=F('executetransitionplan_transformationhoursitem') + F(
+                'createbestpracticecustom_transformationhoursitem') + F(
+                'testinfrastructurepoc_transformationhoursitem') + F('troubleshoottune_transformationhoursitem') + F(
+                'installconfigure_transformationhoursitem') + F('administratortraining_transformationhoursitem') + F(
+                'developserviceresponsibilitymatrix_transformationhoursitem') + F(
+                'establishanyneededserviceaccounts_transformationhoursitem') + F(
+                'researchandsetupemailautomation_transformationhoursitem') + F(
+                'installconfigureremoteconsoles_transformationhoursitem') + F(
+                'workwithsecops_transformationhoursitem') + F('staffingccoordinating_transformationhoursitem') + F(
+                'identifytestdocument_transformationhoursitem') + F(
+                'obtainnetworkandosaccesswave1_transformationhoursitem') + F(
+                'developprovideagentsoftware_transformationhoursitem') + F(
+                'installconfigureodbc_transformationhoursitem') + F(
+                'customerreviewsignoff_transformationhoursitem') + F(
+                'establishhealthcheck_transformationhoursitem') + F('developworkflows_transformationhoursitem') + F(
+                'operationaldocumentation_transformationhoursitem') + F(
+                'shadowestablishreviewallprocedures_transformationhoursitem') + F(
+                'otherdetail_transformationhoursitem') + F('specialitem1_transformationhoursitem') + F(
+                'specialitem2_transformationhoursitem') + F('specialitem3_transformationhoursitem') + F(
+                'specialitem4_transformationhoursitem') + F('specialitem5_transformationhoursitem'),)
+
+        # self.totaltransitionhoursitem = tnt_totaltransitionhoursitem_results,
+        # self.totaltransformationhoursitem = tnt_totaltransformationhoursitem_results,
+
 
         # self.totaltransformationtotalhours = (self.numtransitionweeks * self.labordelivery.workweek)
 
