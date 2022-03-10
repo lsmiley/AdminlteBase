@@ -466,7 +466,7 @@ class OrderItem(models.Model):
 
     numappchange = models.IntegerField(default='0')
 
-    srvshourscalc = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
+    srvshourscalc = models.FloatField(default=0.00)
     wkstnshourscalc = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     ipshourscalc = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     addlconhourscalc = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
@@ -520,7 +520,7 @@ class OrderItem(models.Model):
     bandstotalpercentage = models.FloatField(default='0.0')
 
     # Contract number of Months
-    nummonths = models.IntegerField(default='12')
+    nummonths = models.FloatField(default='12')
 
 
     # Component #1
@@ -915,7 +915,7 @@ class OrderItem(models.Model):
 
         # Server Hours Calculations
 
-        enterednumserver = int(self.numserver)
+        enterednumserver = self.numserver
         # Hours Calculation for Server Line Item
 
         if enterednumserver >= 200500:

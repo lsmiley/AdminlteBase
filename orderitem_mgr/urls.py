@@ -9,6 +9,7 @@ app_name = 'orderitem_mgr_app'
 
 urlpatterns = [
     path('create/<int:oid>/', views.create, name="create"),  # I pass oid as for instance to show customer name when i click Add Order
+    path('createnew/<int:oid>/', views.create, name="createnew"),  # I pass oid as for instance to show customer name when i click Add Order
     path('edit/order<int:cid>/orderitem-id-<int:oid>/', views.edit, name="edit"),
 
 

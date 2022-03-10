@@ -1,6 +1,7 @@
 from django import forms
 
 import labordelivery
+from django.forms import inlineformset_factory  # Facilitates multiple form in group
 from .models import Order, OrderItem
 
 
@@ -507,3 +508,24 @@ class OrderItemForm(forms.ModelForm):
     class Meta:
         model = OrderItem
         fields = '__all__'
+
+
+NewOrderItemFormSet = inlineformset_factory(Order, OrderItem,
+                                 # # fields='__all__',
+                                 fields=['product', 'labordelivery', 'qty', 'numworkstation', 'numserver', 'numipaddress', ],
+                                 # exclude=('total_price',),
+                        extra=1)  # access both customer and order form
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #
+    #     # TNT Line #1
+    #     self.fields['product'].widget.attrs['style'] = 'width:80px; height:20px; font-size: 10px;'
+    #     self.fields['labordelivery'].widget.attrs['style'] = 'width:80px; height:20px; font-size: 10px;'
+    #
+    #     self.fields['qty'].widget.attrs['style'] = 'width:80px; height:20px; font-size: 10px;'
+    #     self.fields['numworkstation'].widget.attrs['style'] = 'width:80px; height:20px; font-size: 10px;'
+    #     self.fields['numserver'].widget.attrs['style'] = 'width:80px; height:20px; font-size: 10px;'
+    #     self.fields['numipaddress'].widget.attrs['style'] = 'width:80px; height:20px; font-size: 10px;',
+    #
+    #
+
