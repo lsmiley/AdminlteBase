@@ -496,6 +496,12 @@ class OrderEditForm(BaseForm, forms.ModelForm):
         self.fields['specialitem5_transformationhours'].widget.attrs['style'] = 'width:80px; height:20px; font-size: 10px;'
         self.fields['specialitem5_transformationhours'].disabled = True
 
+        self.fields['totaltransitionhoursitem'].widget.attrs['style'] = 'width:80px; height:20px; font-size: 10px;'
+        self.fields['totaltransitionhoursitem'].disabled = True
+
+
+
+
 class OrderItemEditForm(BaseForm, forms.ModelForm):
 
     class Meta:

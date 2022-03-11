@@ -193,6 +193,7 @@ class OrderUpdateView(UpdateView):
         context.update(locals())
         return context
 
+# ***** GBO Sections  *****
 
 @method_decorator(staff_member_required, name='dispatch')
 class GboUpdateView(UpdateView):
@@ -216,6 +217,122 @@ class GboUpdateView(UpdateView):
         context.update(locals())
         return context
 
+
+# ***** Questionaire Section *****
+
+@method_decorator(staff_member_required, name='dispatch')
+class QuestionaireView(ListView):
+    template_name = 'questionaire.html'
+    model = Order
+    queryset = Order.objects.all()[:10]
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        orders = Order.objects.all()
+        total_sales = orders.aggregate(Sum('final_value'))['final_value__sum'] if orders.exists() else 0
+        paid_value = orders.filter(is_paid=True).aggregate(Sum('final_value'))['final_value__sum']\
+            if orders.filter(is_paid=True).exists() else 0
+        remaining = total_sales - paid_value
+        diviner = total_sales if total_sales > 0 else 1
+        paid_percent, remain_percent = round((paid_value/diviner)*100, 1), round((remaining/diviner)*100, 1)
+        total_sales = f'{total_sales} {CURRENCY}'
+        paid_value = f'{paid_value} {CURRENCY}'
+        remaining = f'{remaining} {CURRENCY}'
+        orders = OrderTable(orders)
+        RequestConfig(self.request).configure(orders)
+        context.update(locals())
+        return context
+
+@method_decorator(staff_member_required, name='dispatch')
+class DashboardQuestionaireView(ListView):
+    template_name = 'dashboard-questionaire.html'
+    model = Order
+    queryset = Order.objects.all()[:10]
+
+    # acctcusts = Acctcust.objects.all()
+    # total_acctcusts = acctcusts.count()
+
+    # products = Product.objects.all()
+    # total_products = products.count()
+
+    # prodvendors = Prodvendor.objects.all()
+    # total_prodvendors = prodvendors.count()
+
+    sizings = Order.objects.all()
+    total_sizings = sizings.count()
+
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        orders = Order.objects.all()
+
+        acctcusts = Acctcust.objects.all()
+        total_acctcusts = acctcusts.count()
+
+        products = Product.objects.all()
+        total_products = products.count()
+
+        prodvendors = Prodvendor.objects.all()
+        total_prodvendors = prodvendors.count()
+
+        total_sales = orders.aggregate(Sum('final_value'))['final_value__sum'] if orders.exists() else 0
+        paid_value = orders.filter(is_paid=True).aggregate(Sum('final_value'))['final_value__sum']\
+            if orders.filter(is_paid=True).exists() else 0
+        remaining = total_sales - paid_value
+        diviner = total_sales if total_sales > 0 else 1
+        paid_percent, remain_percent = round((paid_value/diviner)*100, 1), round((remaining/diviner)*100, 1)
+        total_sales = f'{total_sales} {CURRENCY}'
+        paid_value = f'{paid_value} {CURRENCY}'
+        remaining = f'{remaining} {CURRENCY}'
+        orders = OrderTable(orders)
+        RequestConfig(self.request).configure(orders)
+        context.update(locals())
+        return context
+
+
+@method_decorator(staff_member_required, name='dispatch')
+class QuestionaireUpdateView(UpdateView):
+    model = Order
+    template_name = 'questionaire_update.html'
+    form_class = OrderEditForm
+    order_num = Order.id
+
+    def get_success_url(self):
+        return reverse('update_questionaire', kwargs={'pk': self.object.id})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        instance = self.object
+        qs_p = Product.objects.filter(active=True)[:12]
+        products = ProductTable(qs_p)
+        order_items = OrderItemTable(instance.order_items.all())
+        # orderitems = OrderItem.objects.all()  # show the list
+        # orderitem_count = orderitems.count()
+        RequestConfig(self.request).configure(products)
+        RequestConfig(self.request).configure(order_items)
+        context.update(locals())
+        return context
+
+
+@method_decorator(staff_member_required, name='dispatch')
+class CreateQuestionaireView(CreateView):
+    template_name = 'questionaire_form.html'
+    form_class = OrderCreateForm
+    model = Order
+
+    def get_success_url(self):
+        self.new_object.refresh_from_db()
+        return reverse('update_questionaire', kwargs={'pk': self.new_object.id})
+
+    def form_valid(self, form):
+        object = form.save()
+        object.refresh_from_db()
+        self.new_object = object
+        return super().form_valid(form)
+
+
+# ***** Ajax Buttons *****
 
 @staff_member_required
 def delete_order(request, pk):
@@ -321,9 +438,6 @@ def ajax_get_products(request):
                 return JsonResponse(data)
             return JsonResponse(list(product.values('id', 'title')), safe=False)
 
-
-
-
 @staff_member_required
 def order_action_view(request, pk, action):
     instance = get_object_or_404(Order, id=pk)
@@ -368,6 +482,8 @@ def ajax_calculate_category_view(request):
     return JsonResponse(data)
 
 
+
+
 # @login_required(login_url="/login_user/")
 def edit_orderitem(request):
     if request.method!="POST":
@@ -388,8 +504,6 @@ def edit_orderitem(request):
             messages.success(request, "Updated Successfully")
             # return HttpResponseRedirect("update_orderitem/"+str(orderitem.id)+"")
             return HttpResponseRedirect("update/"+str(order_num)+"")
-
-
 
 
 

@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% load render_table from django_tables2 %}
+
+{% load static %}
+
+
+
+{% block content_wrapper %}
+
+
+    
+    <br>
+
+<div class="row">
+ <div class="col-md-1">.</div>
+<div class="col-md-1">.</div>
+<div class="col-md-8">
+        <div style="color:#ea2088; font-style: bold; font-size: 3rem; border-bottom: 1px solid white;">{{title}}</div>
+    <form method="post">
+        {{ myform.media }}
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div class="form-group">
+            {{ form.Sizingtypename.errors }}
+            <label for="{{ form.Sizingtypename.id_for_label }}">Name:</label>
+            {{ form.Sizingtypename }}
+        </div>
+
+        <div class="form-group">
+            {{ form.Sizingtypedesc.errors }}
+            <label for="{{ form.Sizingtypedesc.id_for_label }}">Code/Short Name:</label>
+            {{ form.Sizingtypedesc }}
+        </div>
+
+        <div class="form-group ">
+            {{ form.Sizingtypetype.errors }}
+            <label for="{{ form.Sizingtypetype.id_for_label }}">Category/Type:</label>
+            {{ form.Sizingtypetype  }}
+        </div>
+
+        <div class="form-group ">
+            {{ form.memo.errors }}
+            <label for="{{ form.memo.id_for_label }}">Memo/Note:</label>
+            {{ form.memo }}
+        </div>
+
+
+
+
+        <br>
+
+        <div class="align-middle">
+            <button type="submit" class="btn ghost-green">{{ savebtn }}</button>
+            {% if title == "New Sizing Type" %}
+                <button type="reset" class="btn ghost-blue" >Reset</button>
+            {% endif %}
+            {% if delbtn %}
+                <a href="{% url 'delete-sizingtype' object.pk %}" class="btn ghost-red"> Delete Type</a>
+            {% endif %}
+            <a href="{% url 'sizingtype' %}" class="btn ghost-button">Cancel</a>
+        </div>
+
+    </form>
+
+</div>
+<div class="col-md-1">.</div>
+<div class="col-md-1">.</div>
+
+</div>
+
+
+
+
+{% endblock content_wrapper %}
+

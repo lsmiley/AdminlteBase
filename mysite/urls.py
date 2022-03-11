@@ -26,10 +26,8 @@ from order import apiViews, views
 from order.views import (HomepageView, OrderUpdateView, CreateOrderView, GboUpdateView, delete_order,
                          OrderListView, done_order_view, auto_create_order_view, DashboardMainView,
                          ajax_add_product, ajax_modify_order_item, ajax_search_products, ajax_calculate_results_view,
-                         order_action_view, ajax_calculate_category_view, OrderItemUpdateView, sizing_ord_view,
+                         order_action_view, ajax_calculate_category_view, OrderItemUpdateView, sizing_ord_view, QuestionaireUpdateView, DashboardQuestionaireView,  CreateQuestionaireView, QuestionaireView
                          )
-
-
 
 
 urlpatterns = [
@@ -37,44 +35,51 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
     path('category/', include('category.urls')),
-
     path('acctcust/', include('acctcust.urls')),
     path('labordeliverytype/', include('labordeliverytype.urls')),
     path('labordelivery/', include('labordelivery.urls')),
     path('tntworksheet/', include('tntworksheet.urls')),
+    path('sizingtype/', include('sizingtype.urls')),
     path('statusstate/', include('statusstate.urls')),
     path('prodvendor/', include('prodvendor.urls')),
-    path('orderitem/', include('orderitem.urls')),
-    path('orderitem_mgr/', include('orderitem_mgr.urls')),
-    path('order_mgr/', include('order_mgr.urls')),
-
     path('product/', include('product.urls')),
     path('category/', include('category.urls')),
 
+    #  Code to swith beteen and update Orders
     # path('orders/', include('orders.urls', namespace="order_app")),
     path('order/', include('order.urls', namespace="order_app")),
-
-
-    #  Code to swith beteen and update Orders
     path('order-id-<int:cid>/orderitem/', views.sizing_ord_view, name="view"),
-
     path('dashboard-main/', DashboardMainView.as_view(), name='dashboard_main'),
     path('order-list/', OrderListView.as_view(), name='order_list'),
     path('create/', CreateOrderView.as_view(), name='create-order'),
     path('create-auto/', auto_create_order_view, name='create_auto'),
     path('update/<int:pk>/', OrderUpdateView.as_view(), name='update_order'),
-    path('updategbo/<int:pk>/', GboUpdateView.as_view(), name='update_gbo'),
-    path('gbo/<int:pk>/', GboUpdateView.as_view(), name='gbo'),
-
-    path('ckeditor/', include('ckeditor_uploader.urls')),
-
-    # path('orderitem/edit', OrderItemUpdateView.as_view(), name='edit-orderitem'),
-    # path('orderitem/orderitem/<pk>/edit', OrderItemUpdateView.as_view(), name='edit-orderitem'),
-    path('orderitem/<pk>/edit', views.OrderItemUpdateView.as_view(), name='edit-orderitem'),
-
     path('done/<int:pk>/', done_order_view, name='done_order'),
     path('delete/<int:pk>/', delete_order, name='delete_order'),
     path('action/<int:pk>/<slug:action>/', order_action_view, name='order_action'),
+    path('order_mgr/', include('order_mgr.urls')),
+
+    # ***** OrderItem URL Section  ***
+    # path('orderitem/edit', OrderItemUpdateView.as_view(), name='edit-orderitem'),
+    # path('orderitem/orderitem/<pk>/edit', OrderItemUpdateView.as_view(), name='edit-orderitem'),
+    path('orderitem/<pk>/edit', views.OrderItemUpdateView.as_view(), name='edit-orderitem'),
+    path('orderitem/', include('orderitem.urls')),
+    path('orderitem_mgr/', include('orderitem_mgr.urls')),
+
+    # ***** Questionaire URL Section  ***
+    path('questionaire', QuestionaireView.as_view(), name='questionaire'),
+    path('dashboard-questionaire/', DashboardQuestionaireView.as_view(), name='dashboard_questionaire'),
+    path('create_questionaire/', CreateQuestionaireView.as_view(), name='create-order'),
+    path('update_questionaire/<int:pk>/', QuestionaireUpdateView.as_view(), name='update_questionaire'),
+
+    # ***** GBO URL Section  ***
+    path('updategbo/<int:pk>/', GboUpdateView.as_view(), name='update_gbo'),
+    path('gbo/<int:pk>/', GboUpdateView.as_view(), name='gbo'),
+
+    # ***** CKEditor Required Section  ***
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
+
 
     # path('edit_orderitem/<int:pk>/', OrderItemEditView.as_view(), name='edit_orderitem'),
     #
@@ -95,7 +100,7 @@ urlpatterns = [
     # path('saveorderitem', saveorderitem, name='saveorderitem'),
     path('saveorderitem', apiViews.saveorderitem, name='saveorderitem'),
 
-    #  Redirect from OrderItem when adding Products
+    #  Redirect from OrderItem when adding Products - test
     path('order-id-<int:oid>/orderitem/', views.sizing_ord_view, name="view"),
 
 ]

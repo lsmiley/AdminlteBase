@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
+    'chartjs',
 
 
     # apps
@@ -58,6 +59,7 @@ INSTALLED_APPS = [
     'orderitem_mgr',
     'product',
     'prodvendor',
+    'sizingtype',
     'statusstate',
     'tntworksheet',
 
@@ -121,7 +123,7 @@ DATABASES = {
         'USER': 'sizingadmin',
         'PASSWORD': 'Malware12345',
         'HOST': '127.0.0.1',
-        'PORT': '30483',
+        'PORT': '33054',
     }
 }
 
@@ -134,8 +136,8 @@ DATABASES = {
 #         'NAME': 'adminltebase-01-db',
 #         'USER': 'sizingadmin',
 #         'PASSWORD': 'Malware12345',
-#         'HOST': '172.30.120.141',
-#         # 'HOST':  'esstools-db-mysql-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps.com',
+#         # 'HOST': '172.30.120.141',
+#         'HOST':  'esstools-db-mysql-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps.com',
 #         'PORT': '3306',
 #     }
 # }
@@ -210,8 +212,26 @@ CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'Basic',
+#     },
+# }
+
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'Custom',
+#         'toolbar_Custom': [
+#             ['Bold', 'Italic', 'Underline'],
+#             ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'clipboard,'],
+#             ['Link', 'Unlink'],
+#             ['RemoveFormat', 'Source']
+#         ]
+#     }
+# }
+
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'Basic',
+        'toolbar': 'full',
     },
 }
