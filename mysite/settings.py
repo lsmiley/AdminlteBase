@@ -114,31 +114,31 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # }
 
 # **** Local Database Settings ****
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'adminltebase-01-db',
-        'USER': 'sizingadmin',
-        'PASSWORD': 'Malware12345',
-        'HOST': '127.0.0.1',
-        'PORT': '30483',
-    }
-}
-
-
-# **** Cloud Database Settings ****
-#
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'adminltebase-01-db',
 #         'USER': 'sizingadmin',
 #         'PASSWORD': 'Malware12345',
-#         'HOST': '172.30.120.141',
-#         # 'HOST':  'esstools-db-mysql-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps.com',
-#         'PORT': '3306',
+#         'HOST': '127.0.0.1',
+#         'PORT': '30483',
 #     }
 # }
+
+
+# **** Cloud Database Settings ****
+#
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'adminltebase-01-db',
+        'USER': 'sizingadmin',
+        'PASSWORD': 'Malware12345',
+        # 'HOST': '172.30.120.141',
+        'HOST':  'esstools-db-mysql-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps.com',
+        'PORT': '3306',
+    }
+}
 
 # **** Cloud Database Settings #2 Dev  ****
 #
