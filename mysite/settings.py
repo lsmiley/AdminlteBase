@@ -137,7 +137,7 @@ DATABASES = {
         'USER': 'sizingadmin',
         'PASSWORD': 'Malware12345',
         # 'HOST': '172.30.120.141',
-        'HOST':  'esstools-db-mysql-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps.com',
+        'HOST':  'http://adminltebase-05-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps.com',
         'PORT': '3306',
     }
 }
