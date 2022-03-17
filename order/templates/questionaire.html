@@ -6,28 +6,41 @@
 
 
 {% block content_wrapper %}
-                        <div class="form__container">
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+                                <div class="form__container">
     <div class="title__container">
-        <h1>Example UI container</h1>
-        <p>Follow the 4 simple steps to complete your mapping</p>
+
+        <div class="row">
+            <div class="col-md-9"><h1>IBM Endpoint Security Services | Questionaire</h1></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2"><img src="{% static 'images/ibm/IBM_Secuirty-Small-2018-10-16_18-57-34.gif' %}" alt="MSS" style="opacity: .8"></div>
+<!--            <div class="col-md-1"><img src="{% static 'images/ibm/ESS_Tools_Logo4.png' %}" alt="MSS" style="opacity: .8"></div>-->
+
+        </div>
+
+        <p>Follow the 4 simple steps to complete your service request</p>
+        <p>REQUEST FOR IES CUSTOM SERVICE</p>
     </div>
     <div class="body__container">
         <div class="left__container">
             <div class="side__titles">
                 <div class="title__name">
-                    <h3>Your name</h3>
+                    <h3>REQUESTOR'S INFORMATION</h3>
                     <p>Enter & press next</p>
                 </div>
                 <div class="title__name">
-                    <h3>Desctibes</h3>
+                    <h3>CUSTOMER'S INFORMATION</h3>
                     <p>select & press next</p>
                 </div>
                 <div class="title__name">
-                    <h3>Services</h3>
+                    <h3>PRODUCTS TO SUPPORT</h3>
                     <p>select & press next</p>
                 </div>
                 <div class="title__name">
-                    <h3>Budget</h3>
+                    <h3>ADDITIONAL NOTES</h3>
                     <p>Select & press next</p>
                 </div>
                 <div class="title__name">
@@ -59,37 +72,88 @@
             <fieldset id="form1">
                 <div class="sub__title__container ">
                     <p>Step 1/5</p>
-                    <h2>Let's start with your name</h2>
+<!--                    <h2>REQUESTOR'S INFORMATION</h2>-->
                     <p>Please fill the details below so that we can we can get in contacat with you about our product</p>
                 </div>
-                <div class="input__container"> <label for="name">Enter your name</label> <input type="text"> <a class="nxt__btn" onclick="nextForm();"> Next</a> </div>
+                <div class="input__container">
+<!--                    <label for="name">Enter your name</label> -->
+<!--                    <input type="text"> <a class="nxt__btn" onclick="nextForm();"> Next</a>-->
+                      <div class="card bg-dark">
+                                  <div class="card-header">
+                                    <h3 class="card-title">Requesters Information</h3>
+                                    <div class="card-tools">
+                                      <!-- Buttons, labels, and many other things can be placed here! -->
+                                      <!-- Here is a label for example -->
+                                      <span class="badge badge-primary">Help</span>
+                                    </div>
+                                    <!-- /.card-tools -->
+                                  </div>
+                                  <!-- /.card-header -->
+                                  <div class="card-body">
+                                    The body of the card
+                                  </div>
+                                  <!-- /.card-body -->
+                                  <div class="card-footer">
+                                    <div class="buttons">  <a class="nxt__btn" onclick="nextForm();">Next</a> </div>
+                                  </div>
+                                  <!-- /.card-footer -->
+                                </div>
+                                <!-- /.card -->
+
+
+
+                </div>
+
             </fieldset>
             <fieldset class="active__form" id="form2">
                 <div class="sub__title__container">
                     <p>Step 2/5</p>
-                    <h2>What best describes you ?</h2>
+                    <h2>CUSTOMER'S INFORMATION</h2>
                     <p>Please let us know what type of business best describes you as entreprenuer or businessman.</p>
                 </div>
                 <div class="input__container">
-                    <div class="selection newB">
-                        <div class="imoji">
-                            <ion-icon name="happy"></ion-icon>
-                        </div>
-                        <div class="descriptionTitle">
-                            <h3>New Business</h3>
-                            <p>Started trading in last 12 months</p>
-                        </div>
-                    </div>
-                    <div class="selection exitB">
-                        <div class="imoji">
-                            <ion-icon name="business"></ion-icon>
-                        </div>
-                        <div class="descriptionTitle">
-                            <h3>Existing Business</h3>
-                            <p>Have been operating beyond 12 months</p>
-                        </div>
-                    </div>
-                    <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" onclick="nextForm();">Next</a> </div>
+<!--                    <div class="selection newB">-->
+<!--                        <div class="imoji">-->
+<!--                            <ion-icon name="happy"></ion-icon>-->
+<!--                        </div>-->
+<!--                        <div class="descriptionTitle">-->
+<!--                            <h3>New Business</h3>-->
+<!--                            <p>Started trading in last 12 months</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="selection exitB">-->
+<!--                        <div class="imoji">-->
+<!--                            <ion-icon name="business"></ion-icon>-->
+<!--                        </div>-->
+<!--                        <div class="descriptionTitle">-->
+<!--                            <h3>Existing Customer</h3>-->
+<!--                            <p>Please record APTTUS # and current Service Delivery team in Notes</p>-->
+<!--                        </div>-->
+
+
+<!--                    </div>-->
+                        <div class="card bg-dark">
+                                  <div class="card-header">
+                                    <h3 class="card-title">Customer Information</h3>
+                                    <div class="card-tools">
+                                      <!-- Buttons, labels, and many other things can be placed here! -->
+                                      <!-- Here is a label for example -->
+                                      <span class="badge badge-primary">Label</span>
+                                    </div>
+                                    <!-- /.card-tools -->
+                                  </div>
+                                  <!-- /.card-header -->
+                                  <div class="card-body">
+                                    The body of the card
+                                  </div>
+                                  <!-- /.card-body -->
+                                  <div class="card-footer">
+                                    <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" onclick="nextForm();">Next</a> </div>
+                                  </div>
+                                  <!-- /.card-footer -->
+                                </div>
+                                <!-- /.card -->
+
                 </div>
             </fieldset>
             <fieldset class="active__form" id="form3">
@@ -144,6 +208,14 @@
         </div>
     </div>
 </div>
+
+    </div>
+    <div class="col-md-2"></div>
+
+</div>
+
+
+
                <style>* {
     margin: 0;
     padding: 0;
@@ -152,7 +224,8 @@
 }
 
 :root {
-    --primary-color: #02044A;
+    --primary-color: #343a40;
+    --primary-color-old: #02044A;
     --secondery-color: #25CC88;
     --shadow-color: #9d9fb3
 }
@@ -553,11 +626,13 @@
         transform: rotate(90deg)
     }
 }</style>
+
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
                                 <script type='text/javascript' src=''></script>
                                 <script type='text/javascript' src=''></script>
                                 <script type='text/javascript' src=''></script>
+
                                 <script type='text/Javascript'>const nxtBtn = document.querySelector('#submitBtn');
 const form1 = document.querySelector('#form1');
 const form2 = document.querySelector('#form2');
