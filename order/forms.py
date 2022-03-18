@@ -5,8 +5,6 @@ from django.forms import inlineformset_factory  # Facilitates multiple form in g
 from .models import Order, OrderItem
 
 
-
-
 class BaseForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
@@ -21,6 +19,67 @@ class OrderCreateForm(BaseForm, forms.ModelForm):
     class Meta:
         model = Order
         fields = ['date', 'title']
+
+
+class QuestionaireCreateForm(BaseForm, forms.ModelForm):
+    date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    due_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'due_date'}))
+
+    class Meta:
+        model = Order
+        fields = ['date',
+                  'title',
+                  'due_date',
+                  'prepardedby',
+                  'team',
+                  'RequesterFirstName',
+                  'RequesterLastName',
+                  'RequesterRole',
+                  'RequesterEmail',
+                  'CustomerName',
+                  'SalesContactName',
+                  'SalesContactEmail',
+                  'TranStartDate',
+                  'Revenue_Structure_Select',
+                  'Revenue_Structure_Cost_Explain',
+                  'rfs_num',
+                  'appttus_num',
+                  'Solution_Design',
+                  'Solution_Owner',
+                  'Service_Delivery_Requirements',
+                  'Restricted_Delivery',
+                  'Questionaire_num_consoles',
+                  'Questionaire_num_workstation',
+                  'Questionaire_num_server',
+
+                  'AntiVirusMalware',
+                  'DLP_on_Workstations',
+                  'DLP_on_Servers',
+                  'Encryption_on_Workstations',
+                  'Encryption_on_Servers',
+                  'NAS_Storage',
+                  'Windows',
+                  'AIX',
+                  'VDI',
+                  'URL_Filtering',
+                  'HIPs_on_Workstations',
+                  'HIPs_on_Servers',
+                  'Firewall_on_Workstations',
+                  'Firewall_on_Servers',
+                  'BigFix_Patching_Scanning',
+                  'Linux',
+                  'Integrity_Monitoring',
+                  'Citrix',
+                  'Other_Features_or_Platforms_Note',
+                  'Questionaire_num_server',
+                  'Questionaire_num_server',
+                  ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # # TNT Line #1
+        # self.fields['prepardedby'].widget.attrs['style'] = 'width:80px; height:20px; font-size: 10px;'
 
 
 class OrderEditForm(BaseForm, forms.ModelForm):

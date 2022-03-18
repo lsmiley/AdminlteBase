@@ -9,6 +9,7 @@ import datetime
 from django.db.models import F
 from django.db.models import Sum
 
+
 import labordelivery
 from labordelivery.models import Labordelivery
 from product.models import Product
@@ -16,6 +17,9 @@ from product.models import Product
 from decimal import Decimal
 
 CURRENCY = settings.CURRENCY
+
+from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor.fields import RichTextField
 
 
 class OrderManager(models.Manager):
@@ -25,6 +29,62 @@ class OrderManager(models.Manager):
 
 
 class Order(models.Model):
+
+    # Revenue Structure Choices
+    Revenue_CHOICES = (
+        ('---Select one ---', '---Select one ---'),
+        ('Cost Recovery', 'Cost Recovery'),
+        ('Revenue Share', 'Revenue Share'),
+    )
+
+    # Customer Status Choices
+    Customer_Status_CHOICES = (
+        ('---Select one ---', '---Select one ---'),
+        ('New Customer', 'New Customer'),
+        ('Existing Customer', 'Existing Customer'),
+        ('Returning Customer', 'Returning Customer'),
+    )
+
+    # Restricted Delivery Choices
+    Restricted_Delivery_CHOICES = (
+        ('Yes', 'Yes'),
+        ('No', 'No'),
+    )
+
+    # Firm_Price_NBIE_Choices
+    Firm_Price_NBIE_CHOICES = (
+        ('Firm', 'Firm'),
+        ('NBIE', 'NBIE'),
+    )
+
+    # Service Delivery Requirement_Choices
+    Service_Delivery_Requirement_CHOICES = (
+        ('---Select one ---', '---Select one ---'),
+        ('Asia/Pacific', 'Asia/Pacific'),
+        ('Europe', 'Europe'),
+        ('Latin America', 'latin America'),
+        ('North America', 'North America'),
+        ('None', 'None'),
+    )
+
+    # Solution Design Choices
+    Solution_Design_CHOICES = (
+        ('---Select one ---', '---Select one ---'),
+        ('Priyadarshi Achar - AP', 'Asia/Pacific'),
+        ('David Lugg - Europe', 'David Lugg - Europe'),
+        ('Julie Keane - Europe', 'Julie Keane - Europe'),
+        ('Marek Wolsan - Europe', 'Marek Wolsan'),
+        ('Steve Chew - Europe', 'Steve Chew'),
+        ('Kiyomi Miura - Japan', 'Kiyomi Miura - Japan'),
+        ('Marcello Belloni Gomes - LA', 'Marcello Belloni Gomes'),
+        ('Greg Sinclair - MEA', 'Greg Sinclair - MEA'),
+        ('David Cunningham - NA', 'David Cunningham - NA'),
+        ('Page Farmer - NA', 'Page Farmer - NA'),
+        ('Gerry Comeau - WW', 'Gerry Comeau - WW'),
+        ('Jonathan Planko - WW', 'Jonathan Planko - WW'),
+        ('None', 'None'),
+    )
+
     # date = models.DateField(default=datetime.datetime.now())
     date = models.DateTimeField(default=timezone.now)
     # date = models.DateTimeField(auto_now_add=True)
@@ -351,6 +411,7 @@ class Order(models.Model):
     appttus_num = models.CharField(blank=True, max_length=150)
     sizingtype = models.CharField(blank=True, max_length=150)
     due_date = models.DateTimeField(default=timezone.now)
+    # date = models.DateTimeField(default=timezone.now)
 
     # Owner/Team Info
     prepardedby = models.CharField(blank=True, max_length=150)
@@ -368,27 +429,85 @@ class Order(models.Model):
     transformation_weeks = models.FloatField(default='12')
 
     #
-    # # OTC- One Time Cost: Hours
-    # transition_hours = models.FloatField(default='0.0')
-    # transformation_hours = models.FloatField(default='0.0')
-    # sum_transition_hours = models.FloatField(default='0.0')
-    # sum_transformation_hours = models.FloatField(default='0.0')
-    # first_line_mgr_hrs = models.FloatField(default='0.0')
-    # second_line_mgr_hrs = models.FloatField(default='0.0')
+    # OTC- One Time Cost: Hours
+    transition_hours = models.FloatField(default='0.0')
+    transformation_hours = models.FloatField(default='0.0')
+    sum_transition_hours = models.FloatField(default='0.0')
+    sum_transformation_hours = models.FloatField(default='0.0')
+    first_line_mgr_hrs = models.FloatField(default='0.0')
+    second_line_mgr_hrs = models.FloatField(default='0.0')
 
-    # # Steady State Hours / FTE
-    # combined_Svcs = models.FloatField(default='0.0')
-    # components = models.FloatField(default='0.0')
-    # custom_Optns = models.FloatField(default='0.0')
-    # addl_Services = models.FloatField(default='0.0')
-    # first_line_mgr_steadystate_hrs = models.FloatField(default='0.0')
-    # second_line_mgr_steadystate_hrs = models.FloatField(default='0.0')
-    # total_steadystate_hours = models.FloatField(default='0.0')
-    #
-    # # FTE
-    # transition_fte = models.FloatField(default='0.0')
-    # transformation_fte = models.FloatField(default='0.0')
-    # total_fte  = models.FloatField(default='0.0')
+    # Steady State Hours / FTE
+    combined_Svcs = models.FloatField(default='0.0')
+    components = models.FloatField(default='0.0')
+    custom_Optns = models.FloatField(default='0.0')
+    addl_Services = models.FloatField(default='0.0')
+    first_line_mgr_steadystate_hrs = models.FloatField(default='0.0')
+    second_line_mgr_steadystate_hrs = models.FloatField(default='0.0')
+    total_steadystate_hours = models.FloatField(default='0.0')
+
+    # FTE
+    transition_fte = models.FloatField(default='0.0')
+    transformation_fte = models.FloatField(default='0.0')
+    total_fte  = models.FloatField(default='0.0')
+
+    # Questionaire Extra Fields
+
+    # Requester Information section
+    RequesterFirstName = models.CharField(blank=True, max_length=150)
+    RequesterLastName = models.CharField(blank=True, max_length=150)
+    RequesterRole = models.CharField(blank=True, max_length=150)
+    RequesterEmail = models.CharField(blank=True, max_length=150)
+
+    # Customer Information section
+    CustomerName = models.CharField(blank=True, max_length=150)
+    CustomerStatus = models.CharField(max_length=150, choices=Customer_Status_CHOICES, default='Select-One')
+
+    Solution_Design = models.CharField(max_length=150, choices=Solution_Design_CHOICES, default='Select-One')
+    SalesContactName = models.CharField(blank=True, max_length=150)
+    SalesContactEmail = models.CharField(blank=True, max_length=150)
+    TranStartDate = models.DateTimeField(default=timezone.now)
+    Firm_Price_or_NBIE = models.CharField(max_length=150, choices=Firm_Price_NBIE_CHOICES, default='Select-One')
+    Service_Delivery_Requirements = models.CharField(max_length=150, choices=Service_Delivery_Requirement_CHOICES, default='Select-One')
+    Solution_Owner = models.CharField(blank=True, max_length=150)
+
+    Revenue_Structure_Select = models.CharField(max_length=150, choices=Revenue_CHOICES, default='Select-One')
+    Revenue_Structure_Cost_Explain = models.CharField(blank=True, max_length=150)
+
+    Restricted_Delivery = models.BooleanField(default=False)
+    Restricted_Delivery_Explanation = models.CharField(blank=True, max_length=150)
+
+    Questionaire_num_consoles = models.IntegerField(default='0')
+    Questionaire_num_workstation = models.IntegerField(default='0')
+    Questionaire_num_server = models.IntegerField(db_column='Numserver', default='0')
+    Questionaire_num_ipaddress = models.IntegerField(default='0')
+    Questionaire_num_total_endpoints = models.IntegerField(default='0')
+
+    # Questionaire - Endpoint Security section
+    AntiVirusMalware = models.BooleanField(default=False,)
+    DLP_on_Workstations = models.BooleanField(default=False,)
+    DLP_on_Servers = models.BooleanField(default=False,)
+    Encryption_on_Workstations = models.BooleanField(default=False,)
+    Encryption_on_Servers = models.BooleanField(default=False,)
+    prodcomponent1_wkstn = models.BooleanField(default=False,)
+    NAS_Storage = models.BooleanField(default=False,)
+    Windows = models.BooleanField(default=False,)
+    AIX = models.BooleanField(default=False,)
+    VDI = models.BooleanField(default=False,)
+    URL_Filtering = models.BooleanField(default=False,)
+    HIPs_on_Workstations = models.BooleanField(default=False,)
+    HIPs_on_Servers = models.BooleanField(default=False,)
+    Firewall_on_Workstations = models.BooleanField(default=False,)
+    Firewall_on_Servers = models.BooleanField(default=False,)
+    BigFix_Patching_Scanning = models.BooleanField(default=False,)
+    Linux = models.BooleanField(default=False,)
+    Integrity_Monitoring = models.BooleanField(default=False,)
+    Citrix = models.BooleanField(default=False,)
+    Other_Features_or_Platforms = models.BooleanField(default=False,)
+    Other_Features_or_Platforms_Note = RichTextUploadingField(blank=True, null=True)
+
+    # Questionaire - Environment and Platforms Section
+    Environment_and_Platforms_Note = RichTextUploadingField(blank=True, null=True)
 
     class Meta:
         ordering = ['-date']

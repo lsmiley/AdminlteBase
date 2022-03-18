@@ -7,8 +7,10 @@
 <script type="text/javascript">
     $('#add_button').click(function (evt) {
         evt.preventDefault();
-        const btn = $(this);
-        const url = btn.attr('data-href');
+<!--        const btn = $(this);-->
+<!--        const url = btn.attr('data-href');-->
+        var const btn = $(this).serialize()
+        var const url = btn.attr('data-href') window.location
         $.ajax({
             method: 'GET',
             dataType: 'json',

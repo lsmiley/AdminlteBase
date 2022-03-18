@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django_tables2',
+    'django_filters',
     'rest_framework',
     'django_ajax',
     'crispy_forms',
@@ -123,13 +124,13 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #         'USER': 'sizingadmin',
 #         'PASSWORD': 'Malware12345',
 #         'HOST': '127.0.0.1',
-#         'PORT': '28389',
+#         'PORT': '32754',
 #     }
 # }
 
 
 # **** Cloud Database Settings ****
-#
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
