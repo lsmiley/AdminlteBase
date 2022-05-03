@@ -25,7 +25,7 @@ SECRET_KEY = 'x&7$)!$nj9#ca(3s%xln!m_^18_$+=5nt$z8s^chlntq570m6u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'http://django-admilte-3-git-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps.com']
+ALLOWED_HOSTS = ['*', 'https://esstools-dev-099-lsmiley-dev.apps.sandbox.x8i5.p1.openshiftapps.com']
 
 
 # Application definition
