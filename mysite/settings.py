@@ -138,7 +138,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'adminltebase-01-db',
+        'NAME': 'adminltebase02db',
         'USER': 'sizingadmin',
         'PASSWORD': 'Malware12345',
         'HOST': '172.30.231.45',
