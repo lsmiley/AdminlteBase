@@ -16,114 +16,188 @@
          <form method="post">
 
         {% csrf_token %}
-        {{ form.non_field_errors }}
+<!--        {{ form.non_field_errors }}-->
+        {{form.errors}}
 
-        <div class="form-group">
-            {{ form.acctname.errors }}
-            <label for="{{ form.acctname.id_for_label }}">Name:</label>
-            {{ form.acctname }}
-        </div>
-        <div class="form-group ">
-            {{ form.businesssec.errors }}
-            <label for="{{ form.businesssec.id_for_label }}">Business Sector:</label>
-            {{ form.businesssec }}
-        </div>
+           <div class="row">
+               <div class="col-md-6">
+                   <div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Account / Customer Info:</h3>
+    <div class="card-tools">
+      <!-- Buttons, labels, and many other things can be placed here! -->
+      <!-- Here is a label for example -->
+      <span class="badge badge-primary">Label</span>
+    </div>
+    <!-- /.card-tools -->
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+      
+  <div class="form-group row">
+  <label class="col-sm-4 col-form-label" for="acctname">acctname: </label>
+  <input class="form-control col-sm-8" id="acctname" type="text" name="acctname" value="{{ object.acctname }}">
+  </div>
+      
+  <div class="form-group row">
+  <label class="col-sm-4 col-form-label" for="address1">address1: </label>
+  <input class="form-control col-sm-8" id="address1" type="text" name="address1" value="{{ object.address1 }}">
+  </div>
 
-        <div class="form-group ">
-            {{ form.regulatory.errors }}
-            <label for="{{ form.regulatory.id_for_label }}">Regulatory:</label>
-            {{ form.regulatory }}
-        </div>
+    <div class="form-group row">
+  <label class="col-sm-4 col-form-label" for="address2">address2: </label>
+  <input class="form-control col-sm-8" id="address2" type="text" name="address2" value="{{ object.address2 }}">
+  </div>
 
-        <div class="form-group ">
-            {{ form.created.errors }}
-            <label for="{{ form.created.id_for_label }}">Created:</label>
-            {{ form.created }}
-        </div>
+  <div class="form-group row">
+  <label class="col-sm-4 col-form-label" for="city">city: </label>
+  <input class="form-control col-sm-8" id="city" type="text" name="city" value="{{ object.city }}">
+  </div>
 
-        <div class="form-group ">
-            {{ form.address1.errors }}
-            <label for="{{ form.address1.id_for_label }}">Address1:</label>
-            {{ form.address1 }}
-        </div>
+  <div class="form-group row">
+  <label class="col-sm-4 col-form-label" for="state">state: </label>
+  <input class="form-control col-sm-8" id="state" type="text" name="state" value="{{ object.state }}">
+  </div>
 
-        <div class="form-group ">
-            {{ form.address2.errors }}
-            <label for="{{ form.address2.id_for_label }}">Address2:</label>
-            {{ form.address2 }}
-        </div>
+  <div class="form-group row">
+  <label class="col-sm-4 col-form-label" for="country">country: </label>
+  <input class="form-control col-sm-8" id="country" type="text" name="country" value="{{ object.country }}">
+  </div>
 
-        <div class="form-group ">
-            {{ form.city.errors }}
-            <label for="{{ form.city.id_for_label }}">city:</label>
-            {{ form.city }}
-        </div>
+  <div class="form-group row">
+  <label class="col-sm-4 col-form-label" for="contact1name">contact1name: </label>
+  <input class="form-control col-sm-8" id="contact1name" type="text" name="contact1name" value="{{ object.contact1name }}">
+  </div>
 
-        <div class="form-group ">
-            {{ form.state.errors }}
-            <label for="{{ form.state.id_for_label }}">State:</label>
-            {{ form.state }}
-        </div>
+  <div class="form-group row">
+  <label class="col-sm-4 col-form-label" for="contact1phone">contact1phone: </label>
+  <input class="form-control col-sm-8" id="contact1phone" type="text" name="contact1phone" value="{{ object.contact1phone }}">
+  </div>
 
-        <div class="form-group ">
-            {{ form.country.errors }}
-            <label for="{{ form.country.id_for_label }}">Country:</label>
-            {{ form.country }}
-        </div>
+  <div class="form-group row">
+  <label class="col-sm-4 col-form-label" for="contact1email">contact1email: </label>
+  <input class="form-control col-sm-8" id="contact1email" type="text" name="contact1email" value="{{ object.contact1email }}">
+  </div>
 
-        <div class="form-group ">
-            {{ form.contact1name.errors }}
-            <label for="{{ form.contact1name.id_for_label }}">Contact1 Name:</label>
-            {{ form.contact1name }}
-        </div>
+  <div class="form-group row">
+  <label class="col-sm-4 col-form-label" for="contact2name">contact2name: </label>
+  <input class="form-control col-sm-8" id="contact2name" type="text" name="contact2name" value="{{ object.contact2name }}">
+  </div>
 
-        <div class="form-group ">
-            {{ form.contact1phone.errors }}
-            <label for="{{ form.contact1phone.id_for_label }}">Phone:</label>
-            {{ form.contact1phone }}
-        </div>
+  <div class="form-group row">
+  <label class="col-sm-4 col-form-label" for="contact2phone">contact2phone: </label>
+  <input class="form-control col-sm-8" id="contact2phone" type="text" name="contact2phone" value="{{ object.contact2phone }}">
+  </div>
 
-        <div class="form-group ">
-            {{ form.contact1email.errors }}
-            <label for="{{ form.contact1email.id_for_label }}">Contact1 Email:</label>
-            {{ form.contact1email }}
-        </div>
+  <div class="form-group row">
+  <label class="col-sm-4 col-form-label" for="contact2email">contact2email: </label>
+  <input class="form-control col-sm-8" id="contact2email" type="text" name="contact2email" value="{{ object.contact2email }}">
+  </div>
 
-        <div class="form-group ">
-            {{ form.contact2name.errors }}
-            <label for="{{ form.contact2name.id_for_label }}">Contact2 Name:</label>
-            {{ form.contact2name }}
-        </div>
+      
+        
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+    The footer of the card
+  </div>
+  <!-- /.card-footer -->
+</div>
+<!-- /.card -->
 
-                <div class="form-group ">
-            {{ form.contact2phone.errors }}
-            <label for="{{ form.contact2phone.id_for_label }}">Phone:</label>
-            {{ form.contact2phone }}
-        </div>
+               </div>
+               <div class="col-md-3">
+                   <div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Industry</h3>
+    <div class="card-tools">
+      <!-- Buttons, labels, and many other things can be placed here! -->
+      <!-- Here is a label for example -->
+      <span class="badge badge-primary">Label</span>
+    </div>
+    <!-- /.card-tools -->
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+      
+  <div class="form-group row">
+      
+      <label class="col-sm-4 col-form-label" for="businesssec">businesssec: </label>
+      <input class="form-control col-sm-8" id="businesssec" type="text" name="businesssec" value="{{ object.businesssec }}">
+      </div>
+          
+      <div class="form-group row">
+      <label class="col-sm-4 col-form-label" for="regulatory">regulatory: </label>
+      <input class="form-control col-sm-8" id="regulatory" type="text" name="regulatory" value="{{ object.regulatory }}">
+      </div>
+          
+      <div class="form-group row">
+      <label class="col-sm-4 col-form-label" for="wbsiteurl">wbsiteurl: </label>
+      <input class="form-control col-sm-8" id="wbsiteurl" type="text" name="wbsiteurl" value="{{ object.wbsiteurl }}">
+      </div>
 
-                <div class="form-group ">
-            {{ form.contact2email.errors }}
-            <label for="{{ form.contact2email.id_for_label }}">Contact2 Email:</label>
-            {{ form.contact2email }}
-        </div>
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+    The footer of the card
+  </div>
+  <!-- /.card-footer -->
+</div>
+<!-- /.card -->
 
-                <div class="form-group ">
-            {{ form.wbsiteurl.errors }}
-            <label for="{{ form.wbsiteurl.id_for_label }}">Website/URL:</label>
-            {{ form.wbsiteurl }}
-        </div>
+               </div>
+               <div class="col-md-3">
+                   <div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Detail</h3>
+    <div class="card-tools">
+      <!-- Buttons, labels, and many other things can be placed here! -->
+      <!-- Here is a label for example -->
+      <span class="badge badge-primary">Label</span>
+    </div>
+    <!-- /.card-tools -->
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+      <div class="form-group row">
+      <label class="col-sm-4 col-form-label" for="created">created: </label>
+      <input class="form-control col-sm-8" id="created" type="text" name="created" value="{{ object.created }}">
+      </div>
 
-                <div class="form-group ">
-            {{ form.createdby.errors }}
-            <label for="{{ form.createdby.id_for_label }}">Created By:</label>
-            {{ form.createdby }}
-        </div>
+      <div class="form-group row">
+      <label class="col-sm-4 col-form-label" for="createdby">createdby: </label>
+      <input class="form-control col-sm-8" id="createdby" type="text" name="createdby" value="{{ object.createdby }}">
+      </div>
 
-                <div class="form-group ">
-            {{ form.modifydate.errors }}
-            <label for="{{ form.modifydate.id_for_label }}">Modify Date:</label>
-            {{ form.modifydate }}
-        </div>
+      <div class="form-group row">
+      <label class="col-sm-4 col-form-label" for="modifydate">modifydate: </label>
+      <input class="form-control col-sm-8" id="modifydate" type="text" name="modifydate" value="{{ object.modifydate }}">
+      </div>
+
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+    The footer of the card
+  </div>
+  <!-- /.card-footer -->
+</div>
+<!-- /.card -->
+</div>
+
+           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <br>
 

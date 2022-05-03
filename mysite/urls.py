@@ -49,22 +49,23 @@ from order.views import (
     GenerateQuestionairePdf,
 )
 
-
 urlpatterns = [
     path('', HomepageView.as_view(), name='homepage'),
-    path('polls/', include('polls.urls')),
-    path('admin/', admin.site.urls),
+    path('sizing/', include('sizing.urls')),
+    path('polls/', include('polls.urls')),    path('admin/', admin.site.urls),
     path('category/', include('category.urls')),
     path('acctcust/', include('acctcust.urls')),
     path('labordeliverytype/', include('labordeliverytype.urls')),
     path('labordelivery/', include('labordelivery.urls')),
     path('tntworksheet/', include('tntworksheet.urls')),
     path('sizingtype/', include('sizingtype.urls')),
+
+#
     path('statusstate/', include('statusstate.urls')),
     path('prodvendor/', include('prodvendor.urls')),
     path('product/', include('product.urls')),
     path('category/', include('category.urls')),
-
+#
     #  Code to swith beteen and update Orders
     # path('orders/', include('orders.urls', namespace="order_app")),
     path('order/', include('order.urls', namespace="order_app")),
@@ -112,7 +113,7 @@ urlpatterns = [
         'update_questionaire/<int:pk>/',
         QuestionaireUpdateView.as_view(),
         name='update_questionaire'),
-
+#
     # ***** GBO URL Section  ***
     path('updategbo/<int:pk>/', GboUpdateView.as_view(), name='update_gbo'),
     path('gbo/<int:pk>/', GboUpdateView.as_view(), name='gbo'),
@@ -126,7 +127,7 @@ urlpatterns = [
     #
     # re_path(r'^ordertitem/(?:(?P<pk>\d+)/)?(?:(?P<action>\w+)/)?', views.OrderItemEditView.as_view(),
     #         name='orderitem'),
-
+    #
     # path('orderitem_update/<int:pk>/', OrderItemUpdateView.as_view(), name='orderitem_update'),
 
 
@@ -145,5 +146,5 @@ urlpatterns = [
     path('order-id-<int:oid>/orderitem/', views.sizing_ord_view, name="view"),
 
 ]
-
+#
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

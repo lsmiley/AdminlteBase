@@ -6,11 +6,17 @@
     <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/assets/css/style.css" rel="stylesheet">
 
+<!--  ***** CKEditor ****** -->
+  <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+  <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+
 
     <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="/static/assets/js/tether.min.js"></script>
     <script src="/static/assets/js/jquery.min.js"></script>
     <script src="/static/assets/js/bootstrap.min.js"></script>
+
+
 <!--    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
 <div class="row">
     <div class="col-md-1"></div>
@@ -21,11 +27,13 @@
 <!--                <div class="col-md-12">-->
 
             <div class="row">
-            <div class="col-md-1">.</div>
+            <div class="col-md-2">.</div>
 
-            <div class="col-md-10">
+            <div class="col-md-9">
                                 <div style="color:#ea2088; font-style: bold; font-size: 3rem; border-bottom: 1px solid white;">{{title}}</div>
                             <form method="post" enctype="multipart/form-data">
+
+<!--                                <form method="post">-->
 
                                 {% csrf_token %}
                                 {{ form.non_field_errors }}
@@ -34,6 +42,7 @@
                                     {{ form.active.errors }}
                                     <label for="{{ form.active.id_for_label }}"> Is Active:</label>
                                     {{ form.active }}
+
 
 
 
@@ -58,9 +67,9 @@
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                         <div class="card">
-                                                            <h5 class="card-header">
-                                                                Status/Vendor/Category
-                                                            </h5>
+                                                            <h6 class="card-header">
+                                                                Vendor/Category
+                                                            </h6>
                                                             <div class="card-body">
                                                                 <p class="card-text">
 
@@ -91,9 +100,9 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="card">
-                                                            <h5 class="card-header">
+                                                            <h6 class="card-header">
                                                                 Description
-                                                            </h5>
+                                                            </h6>
                                                             <div class="card-body">
                                                                 <p class="card-text">
                                                                     <div class="container-fluid">
@@ -127,9 +136,17 @@
                                                                         <label for="{{ form.numcomponent.id_for_label }}"># Number of Components</label>
                                                                         {{ form.numcomponent }}
                                                                     </div>
+                                                            <div class="form-group">
+                                                                        {{ form.producttype.errors }}
+                                                                        <label for="{{ form.producttype.id_for_label }}">Product Type</label>
+                                                                        {{ form.producttype }}
+                                                                    </div>
 
-
-
+                                                            <div class="form-group">
+                                                                        {{ form.producttypefamily.errors }}
+                                                                        <label for="{{ form.producttypefamily.id_for_label }}">Product Family</label>
+                                                                        {{ form.producttypefamily }}
+                                                                    </div>
 
                                                                                     </div>
                                                                                 </div>
@@ -145,9 +162,9 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="card">
-                                                            <h5 class="card-header">
+                                                            <h6 class="card-header">
                                                                 Base Hrs / Complexity
-                                                            </h5>
+                                                            </h6>
                                                             <div class="card-body">
                                                                 <p class="card-text">
                                                                                                     <div class="form-group">
@@ -160,6 +177,11 @@
                                                                         {{ form.productcomplexityfac.errors }}
                                                                         <label for="{{ form.productcomplexityfac.id_for_label }}">Complexity Factor:</label>
                                                                         {{ form.productcomplexityfac }}
+                                                                    </div>
+                                                                                                                          <div class="form-group">
+                                                                        {{ form.primarycomplexity.errors }}
+                                                                        <label for="{{ form.primarycomplexity.id_for_label }}">Primary Complexity:</label>
+                                                                        {{ form.primarycomplexity }}
                                                                     </div>
 
                                                                     <div class="form-group">
@@ -188,16 +210,17 @@
                                     	<div class="row">
 
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<div class="card">
 						<h5 class="card-header">
-							Standard / Default Components
+							Features / Default Components
 						</h5>
 						<div class="card-body">
 
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
-                            Default
+
+                        <div class="col-md-1" style="font-size:6px">
+                            D
                         </div>
                         <div class="col-md-4" style="font-size:12px">
                             Name
@@ -209,11 +232,12 @@
                         <div class="col-md-3" style="font-size:12px">
                             Hrs
                         </div>
-
+                        <div class="col-md-1"></div>
                 </div>
 
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component1.errors }}
 
@@ -241,11 +265,12 @@
                                     {{ form.componentcomplexityhrs1 }}
                                 </div>
                         </div>
+                        <div class="col-md-1"></div>
 
 
                 </div>
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component2.errors }}
 
@@ -273,11 +298,11 @@
                                     {{ form.componentcomplexityhrs2 }}
                                 </div>
                         </div>
-
+                        <div class="col-md-1"></div>
 
                 </div>
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component3.errors }}
 
@@ -305,11 +330,11 @@
                                     {{ form.componentcomplexityhrs3 }}
                                 </div>
                         </div>
-
+                        <div class="col-md-1"></div>
 
                 </div>
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component4.errors }}
 
@@ -337,11 +362,11 @@
                                     {{ form.componentcomplexityhrs4 }}
                                 </div>
                         </div>
-
+                        <div class="col-md-1"></div>
 
                 </div>
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component5.errors }}
 
@@ -369,11 +394,27 @@
                                     {{ form.componentcomplexityhrs5 }}
                                 </div>
                         </div>
-
+                        <div class="col-md-1"></div>
 
                 </div>
+
+
+
+						</div>
+						<div class="card-footer">
+<!--							Card footer-->
+						</div>
+					</div>
+				</div>
+                <div class="col-md-4">
+					<div class="card">
+						<h5 class="card-header">
+							Features / Default Components
+						</h5>
+						<div class="card-body">
+							<p class="card-text"></p>
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component6.errors }}
 
@@ -401,11 +442,12 @@
                                     {{ form.componentcomplexityhrs6 }}
                                 </div>
                         </div>
+                        <div class="col-md-1"></div>
 
 
                 </div>
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component7.errors }}
 
@@ -433,11 +475,11 @@
                                     {{ form.componentcomplexityhrs7 }}
                                 </div>
                         </div>
-
+                        <div class="col-md-1"></div>
 
                 </div>
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component8.errors }}
 
@@ -465,11 +507,11 @@
                                     {{ form.componentcomplexityhrs8 }}
                                 </div>
                         </div>
-
+                        <div class="col-md-1"></div>
 
                 </div>
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component9.errors }}
 
@@ -497,11 +539,11 @@
                                     {{ form.componentcomplexityhrs9 }}
                                 </div>
                         </div>
-
+                        <div class="col-md-1"></div>
 
                 </div>
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component10.errors }}
 
@@ -529,26 +571,26 @@
                                     {{ form.componentcomplexityhrs10 }}
                                 </div>
                         </div>
-
+                        <div class="col-md-1"></div>
 
                 </div>
 
-
 						</div>
 						<div class="card-footer">
-							Card footer
+<!--							Card footer-->
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<div class="card">
 						<h5 class="card-header">
-							Complex Features / Add-Ons / Custom
+							Add-Ons / Custom
 						</h5>
 						<div class="card-body">
 							<p class="card-text">
-								                <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+				<div class="row">
+
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component11.errors }}
 
@@ -576,11 +618,13 @@
                                     {{ form.componentcomplexityhrs11 }}
                                 </div>
                         </div>
+                        <div class="col-md-1"></div>
+
 
 
                 </div>
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component12.errors }}
 
@@ -608,11 +652,11 @@
                                     {{ form.componentcomplexityhrs12 }}
                                 </div>
                         </div>
-
+                        <div class="col-md-1"></div>
 
                 </div>
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component13.errors }}
 
@@ -640,11 +684,11 @@
                                     {{ form.componentcomplexityhrs13 }}
                                 </div>
                         </div>
-
+                        <div class="col-md-1"></div>
 
                 </div>
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component14.errors }}
 
@@ -672,11 +716,11 @@
                                     {{ form.componentcomplexityhrs14 }}
                                 </div>
                         </div>
-
+                        <div class="col-md-1"></div>
 
                 </div>
                 <div class="row">
-                        <div class="col-md-2" style="font-size:12px">
+                        <div class="col-md-1" style="font-size:12px">
                                 <div class="form-group">
                                     {{ form.component15.errors }}
 
@@ -704,13 +748,13 @@
                                     {{ form.componentcomplexityhrs15 }}
                                 </div>
                         </div>
-
+                        <div class="col-md-1"></div>
 
                 </div>
 							</p>
 						</div>
 						<div class="card-footer">
-							Card footer
+<!--							Card footer-->
 						</div>
 					</div>
 				</div>
@@ -724,12 +768,69 @@
 
                     </div>
                     <div class="tab-pane fade" id="nav-technical-data" role="tabpanel" aria-labelledby="nav-technical-data-tab">
-                      Contact Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
 
+                        <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+                                        <div class="form-group">
+                                    {{ form.memoproductnote.errors }}
+                                       Product Service Delivery Notes
+                                    {{ form.memoproductnote }}
+                                </div>
+                          <script>
+    CKEDITOR.replace('memoproductnote', {
+      toolbar: 'Full',
+      width: '98%',
+      height: 250,
+      removeButtons: 'PasteFromWord, Save',
+    });
+  </script>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+                        <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+                                <div class="form-group">
+
+                                    {{ form.memotechnicalnote.errors }}
+                                        Technical Notes
+                                    {{ form.memotechnicalnote }}
+                                </div>
+                  <script>
+    CKEDITOR.replace('memotechnicalnote', {
+      toolbar: 'Full',
+      width: '98%',
+      height: 250,
+      removeButtons: 'PasteFromWord, Save'
+    });
+  </script>
+
+    </div>
+    <div class="col-md-1"></div>
+</div>
 
                     </div>
                     <div class="tab-pane fade" id="nav-memo-notes" role="tabpanel" aria-labelledby="nav-memo-notes-tab">
-                     About Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+
+                        <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-11">
+                                        <div class="form-group">
+                                    {{ form.productnote.errors }}
+                                        productnote
+                                    {{ form.productnote }}
+                                </div>
+          <script>
+    CKEDITOR.replace('productnote', {
+      toolbar: 'Full',
+      width: '98%',
+      height: 250,
+      removeButtons: 'PasteFromWord, Save'
+    });
+  </script>
+    </div>
+</div>
 
 
                     </div>
@@ -820,652 +921,13 @@
                         </div>
                                     <div class="col-md-3" style="font-size:12px">
                                 <div class="form-group">
-                                    {{ form.productnote.errors }}
-                                        productnote
-                                    {{ form.productnote }}
+<!--                                    {{ form.productnote.errors }}-->
+<!--                                        productnote-->
+<!--                                    {{ form.productnote }}-->
                                 </div>
                         </div>
 
 
-        </div>
-
-        <div class="col-md-3">
-                        <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours1.errors }}
-                                        ComponentHours1
-                                    {{ form.ComponentHours1 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component1_Wkstn.errors }}
-                                        Component1_Wkstn
-                                    {{ form.Component1_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component1_Svr.errors }}
-                                        Component1_Svr
-                                    {{ form.Component1_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component1_IP.errors }}
-                                        Component1_IP
-                                    {{ form.Component1_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component1_Qty.errors }}
-                                        Component1_Qty
-                                    {{ form.Component1_Qty }}
-                                </div>
-                        </div>
-                                .........
-<!--          Componet #2 Hours Selection and Calc    .....-->
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours2.errors }}
-                                        ComponentHours2
-                                    {{ form.ComponentHours2 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component2_Wkstn.errors }}
-                                        Component2_Wkstn
-                                    {{ form.Component2_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component2_Svr.errors }}
-                                        Component2_Svr
-                                    {{ form.Component2_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component2_IP.errors }}
-                                        Component2_IP
-                                    {{ form.Component2_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component2_Qty.errors }}
-                                        Component2_Qty
-                                    {{ form.Component2_Qty }}
-                                </div>
-                        </div>
-
-
-.........
-<!--          Componet #3 Hours Selection and Calc    .....-->
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours3.errors }}
-                                        ComponentHours3
-                                    {{ form.ComponentHours3 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component3_Wkstn.errors }}
-                                        Component3_Wkstn
-                                    {{ form.Component3_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component3_Svr.errors }}
-                                        Component3_Svr
-                                    {{ form.Component3_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component3_IP.errors }}
-                                        Component3_IP
-                                    {{ form.Component3_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component3_Qty.errors }}
-                                        Component3_Qty
-                                    {{ form.Component3_Qty }}
-                                </div>
-                        </div>
-
-
-.........
-            <!--          Componet #4 Hours Selection and Calc    .....-->
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours4.errors }}
-                                        ComponentHours4
-                                    {{ form.ComponentHours4 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component4_Wkstn.errors }}
-                                        Component4_Wkstn
-                                    {{ form.Component4_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component4_Svr.errors }}
-                                        Component4_Svr
-                                    {{ form.Component4_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component4_IP.errors }}
-                                        Component4_IP
-                                    {{ form.Component4_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component4_Qty.errors }}
-                                        Component4_Qty
-                                    {{ form.Component4_Qty }}
-                                </div>
-                        </div>
-
-.........
-                        <!--          Componet #5 Hours Selection and Calc    .....-->
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours5.errors }}
-                                        ComponentHours5
-                                    {{ form.ComponentHours5 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component5_Wkstn.errors }}
-                                        Component5_Wkstn
-                                    {{ form.Component5_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component5_Svr.errors }}
-                                        Component5_Svr
-                                    {{ form.Component5_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component5_IP.errors }}
-                                        Component5_IP
-                                    {{ form.Component5_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component5_Qty.errors }}
-                                        Component5_Qty
-                                    {{ form.Component5_Qty }}
-                                </div>
-                        </div>
-
-
-            .........
-                        <!--          Componet #6 Hours Selection and Calc    .....-->
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours6.errors }}
-                                        ComponentHours6
-                                    {{ form.ComponentHours6 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component6_Wkstn.errors }}
-                                        Component6_Wkstn
-                                    {{ form.Component6_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component6_Svr.errors }}
-                                        Component6_Svr
-                                    {{ form.Component6_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component6_IP.errors }}
-                                        Component6_IP
-                                    {{ form.Component6_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component6_Qty.errors }}
-                                        Component6_Qty
-                                    {{ form.Component6_Qty }}
-                                </div>
-                        </div>
-
-
-            .........
-                        <!--          Componet #7 Hours Selection and Calc    .....-->
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours7.errors }}
-                                        ComponentHours7
-                                    {{ form.ComponentHours7 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component7_Wkstn.errors }}
-                                        Component7_Wkstn
-                                    {{ form.Component7_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component7_Svr.errors }}
-                                        Component7_Svr
-                                    {{ form.Component7_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component7_IP.errors }}
-                                        Component7_IP
-                                    {{ form.Component7_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component7_Qty.errors }}
-                                        Component7_Qty
-                                    {{ form.Component7_Qty }}
-                                </div>
-                        </div>
-
-
-                        .........
-                        <!--          Componet #8 Hours Selection and Calc    .....-->
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours8.errors }}
-                                        ComponentHours8
-                                    {{ form.ComponentHours8 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component8_Wkstn.errors }}
-                                        Component8_Wkstn
-                                    {{ form.Component8_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component8_Svr.errors }}
-                                        Component8_Svr
-                                    {{ form.Component8_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component8_IP.errors }}
-                                        Component8_IP
-                                    {{ form.Component8_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component8_Qty.errors }}
-                                        Component8_Qty
-                                    {{ form.Component8_Qty }}
-                                </div>
-                        </div>
-
-
-                        .........
-                        <!--          Componet #9 Hours Selection and Calc    .....-->
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours9.errors }}
-                                        ComponentHours9
-                                    {{ form.ComponentHours9 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component9_Wkstn.errors }}
-                                        Component9_Wkstn
-                                    {{ form.Component9_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component9_Svr.errors }}
-                                        Component9_Svr
-                                    {{ form.Component9_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component9_IP.errors }}
-                                        Component9_IP
-                                    {{ form.Component9_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component9_Qty.errors }}
-                                        Component9_Qty
-                                    {{ form.Component9_Qty }}
-                                </div>
-                        </div>
-
-
-                        .........
-                        <!--          Componet #10 Hours Selection and Calc    .....-->
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours10.errors }}
-                                        ComponentHours10
-                                    {{ form.ComponentHours10 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component10_Wkstn.errors }}
-                                        Component10_Wkstn
-                                    {{ form.Component10_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component10_Svr.errors }}
-                                        Component10_Svr
-                                    {{ form.Component10_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component10_IP.errors }}
-                                        Component10_IP
-                                    {{ form.Component10_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component10_Qty.errors }}
-                                        Component10_Qty
-                                    {{ form.Component10_Qty }}
-                                </div>
-                        </div>
-
-                        .........
-                        <!--          Componet #11 Hours Selection and Calc    .....-->
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours11.errors }}
-                                        ComponentHours11
-                                    {{ form.ComponentHours11 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component11_Wkstn.errors }}
-                                        Component11_Wkstn
-                                    {{ form.Component11_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component11_Svr.errors }}
-                                        Component11_Svr
-                                    {{ form.Component11_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component11_IP.errors }}
-                                        Component11_IP
-                                    {{ form.Component11_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component11_Qty.errors }}
-                                        Component11_Qty
-                                    {{ form.Component11_Qty }}
-                                </div>
-                        </div>
-
-                        .........
-                        <!--          Componet #12 Hours Selection and Calc    .....-->
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours12.errors }}
-                                        ComponentHours12
-                                    {{ form.ComponentHours12 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component12_Wkstn.errors }}
-                                        Component12_Wkstn
-                                    {{ form.Component12_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component12_Svr.errors }}
-                                        Component12_Svr
-                                    {{ form.Component12_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component12_IP.errors }}
-                                        Component12_IP
-                                    {{ form.Component12_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component12_Qty.errors }}
-                                        Component12_Qty
-                                    {{ form.Component12_Qty }}
-                                </div>
-                        </div>
-
-                                    .........
-                        <!--          Componet #13 Hours Selection and Calc    .....-->
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours13.errors }}
-                                        ComponentHours13
-                                    {{ form.ComponentHours13 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component13_Wkstn.errors }}
-                                        Component13_Wkstn
-                                    {{ form.Component13_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component13_Svr.errors }}
-                                        Component13_Svr
-                                    {{ form.Component13_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component13_IP.errors }}
-                                        Component13_IP
-                                    {{ form.Component13_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component13_Qty.errors }}
-                                        Component13_Qty
-                                    {{ form.Component13_Qty }}
-                                </div>
-                        </div>
-
-                                              .........
-                        <!--          Componet #14 Hours Selection and Calc    .....-->
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours14.errors }}
-                                        ComponentHours14
-                                    {{ form.ComponentHours14 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component14_Wkstn.errors }}
-                                        Component14_Wkstn
-                                    {{ form.Component14_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component14_Svr.errors }}
-                                        Component14_Svr
-                                    {{ form.Component14_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component14_IP.errors }}
-                                        Component14_IP
-                                    {{ form.Component14_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component14_Qty.errors }}
-                                        Component14_Qty
-                                    {{ form.Component14_Qty }}
-                                </div>
-                        </div>
-
-                                              .........
-                        <!--          Componet #15 Hours Selection and Calc    .....-->
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.ComponentHours15.errors }}
-                                        ComponentHours15
-                                    {{ form.ComponentHours15 }}
-                                </div>
-                        </div>
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component15_Wkstn.errors }}
-                                        Component15_Wkstn
-                                    {{ form.Component15_Wkstn }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component15_Svr.errors }}
-                                        Component15_Svr
-                                    {{ form.Component15_Svr }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component15_IP.errors }}
-                                        Component15_IP
-                                    {{ form.Component15_IP }}
-                                </div>
-                        </div>
-
-                                    <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.Component15_Qty.errors }}
-                                        Component15_Qty
-                                    {{ form.Component15_Qty }}
-                                </div>
-                        </div>
-
-
-
-        </div>
 
         <div class="col-md-3">
                          <div class="col-md-3" style="font-size:12px">
@@ -1576,18 +1038,18 @@
             ..............
                                                  <div class="col-md-3" style="font-size:12px">
                                 <div class="form-group">
-                                    {{ form.memoproductnote.errors }}
-                                        Memo-Product-Note
-                                    {{ form.memoproductnote }}
+<!--                                    {{ form.memoproductnote.errors }}-->
+<!--                                        Memo-Product-Note-->
+<!--                                    {{ form.memoproductnote }}-->
                                 </div>
                         </div>
                         ..............
                                                  <div class="col-md-3" style="font-size:12px">
-                                <div class="form-group">
-                                    {{ form.memotechnicalnote.errors }}
-                                        Memotechnicalnote
-                                    {{ form.memotechnicalnote }}
-                                </div>
+<!--                                <div class="form-group">-->
+<!--                                    {{ form.memotechnicalnote.errors }}-->
+<!--                                        Memotechnicalnote-->
+<!--                                    {{ form.memotechnicalnote }}-->
+<!--                                </div>-->
                         </div>
 
                                     ..............
@@ -1616,13 +1078,524 @@
                                     {{ form.addlconsole  }}
                                 </div>
                         </div>
- 
+                                                            ..............
+                                                 <div class="col-md-3" style="font-size:12px">
+                                <div class="form-group">
+                                    {{ form.componentcomplexityhrstotal.errors }}
+                                        component complexity hrs total
+                                    {{ form.componentcomplexityhrstotal  }}
+                                </div>
+                        </div>
         </div>
 
     </div>
+			<div class="row">
+                <div Class="col-md-1">.</div>
+				<div class="col-md-2">
+					<div class="card">
+						<h5 class="card-header">
+							Office/use:
+						</h5>
+						<div class="card-body">
+
+                            <div class="row">
+                                        {{ form.ComponentHours1.errors }}
+                                        ComponentHours1
+                                    {{ form.ComponentHours1  }}
+                            </div>
+
+                            <div class="row">
+                                        {{ form.ComponentHours2.errors }}
+                                        ComponentHours2
+                                    {{ form.ComponentHours2  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.ComponentHours3.errors }}
+                                        ComponentHours3
+                                    {{ form.ComponentHours3  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.ComponentHours4.errors }}
+                                        ComponentHours4
+                                    {{ form.ComponentHours4  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.ComponentHours5.errors }}
+                                        ComponentHours5
+                                    {{ form.ComponentHours5  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.ComponentHours6.errors }}
+                                        ComponentHours6
+                                    {{ form.ComponentHours6  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.ComponentHours7.errors }}
+                                        ComponentHours7
+                                    {{ form.ComponentHours7  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.ComponentHours8.errors }}
+                                        ComponentHours8
+                                    {{ form.ComponentHours8  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.ComponentHours9.errors }}
+                                        ComponentHours9
+                                    {{ form.ComponentHours9  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.ComponentHours10.errors }}
+                                        ComponentHours10
+                                    {{ form.ComponentHours10  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.ComponentHours11.errors }}
+                                        ComponentHours11
+                                    {{ form.ComponentHours11  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.ComponentHours12.errors }}
+                                        ComponentHours12
+                                    {{ form.ComponentHours12  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.ComponentHours13.errors }}
+                                        ComponentHours13
+                                    {{ form.ComponentHours13  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.ComponentHours14.errors }}
+                                        ComponentHours14
+                                    {{ form.ComponentHours14  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.ComponentHours15.errors }}
+                                        ComponentHours15
+                                    {{ form.ComponentHours15  }}
+                            </div>
+                                                        <div class="row">
+
+                            </div>
 
 
-    </form>
+
+
+
+
+						</div>
+						<div class="card-footer">
+<!--							Card footer-->
+						</div>
+					</div>
+				</div>
+                <div class="col-md-2">
+					<div class="card">
+						<h5 class="card-header">
+							Office/use:
+						</h5>
+						<div class="card-body">
+
+
+                            <div class="row">
+                                        {{ form.Component1_Wkstn.errors }}
+                                        Component1_Wkstn
+                                    {{ form.Component1_Wkstn  }}
+                            </div>
+
+                            <div class="row">
+                                        {{ form.Component2_Wkstn.errors }}
+                                        Component2_Wkstn
+                                    {{ form.Component2_Wkstn  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.Component3_Wkstn.errors }}
+                                        Component3_Wkstn
+                                    {{ form.Component3_Wkstn  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.Component4_Wkstn.errors }}
+                                        Component4_Wkstn
+                                    {{ form.Component4_Wkstn  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.Component5_Wkstn.errors }}
+                                        Component5_Wkstn
+                                    {{ form.Component5_Wkstn  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.Component6_Wkstn.errors }}
+                                        Component6_Wkstn
+                                    {{ form.Component6_Wkstn  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.Component7_Wkstn.errors }}
+                                        Component7_Wkstn
+                                    {{ form.Component7_Wkstn  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.Component8_Wkstn.errors }}
+                                        Component8_Wkstn
+                                    {{ form.Component8_Wkstn  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.Component9_Wkstn.errors }}
+                                        Component9_Wkstn
+                                    {{ form.Component9_Wkstn  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.Component10_Wkstn.errors }}
+                                        Component10_Wkstn
+                                    {{ form.Component10_Wkstn  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.Component11_Wkstn.errors }}
+                                        Component11_Wkstn
+                                    {{ form.Component11_Wkstn  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.Component12_Wkstn.errors }}
+                                        Component12_Wkstn
+                                    {{ form.Component12_Wkstn  }}
+                            </div>
+                            <div class="row">
+                                        {{ form.Component13_Wkstn.errors }}
+                                        Component13_Wkstn
+                                    {{ form.Component13_Wkstn  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.Component14_Wkstn.errors }}
+                                        Component14_Wkstn
+                                    {{ form.Component14_Wkstn  }}
+                            </div>
+                                                        <div class="row">
+                                        {{ form.Component15_Wkstn.errors }}
+                                        Component15_Wkstn
+                                    {{ form.Component15_Wkstn  }}
+                            </div>
+
+
+
+
+
+						</div>
+						<div class="card-footer">
+<!--							Card footer-->
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-2">
+					<div class="card">
+						<h5 class="card-header">
+							Office/use:
+						</h5>
+						<div class="card-body">
+							<p class="card-text">
+
+							</p>
+                             <div class="row">
+                                        {{ form.Component1_Svr.errors }}
+                                        Component1_Svr
+                                    {{ form.Component1_Svr  }}
+                            </div>
+                                                         <div class="row">
+                                        {{ form.Component2_Svr.errors }}
+                                        Component2_Svr
+                                    {{ form.Component2_Svr  }}
+                            </div>
+                                                         <div class="row">
+                                        {{ form.Component3_Svr.errors }}
+                                        Component3_Svr
+                                    {{ form.Component3_Svr  }}
+                            </div>
+                                                         <div class="row">
+                                        {{ form.Component4_Svr.errors }}
+                                        Component4_Svr
+                                    {{ form.Component4_Svr  }}
+                            </div>                             <div class="row">
+                                        {{ form.Component5_Svr.errors }}
+                                        Component5_Svr
+                                    {{ form.Component5_Svr  }}
+                            </div>
+                                                         <div class="row">
+                                        {{ form.Component6_Svr.errors }}
+                                        Component6_Svr
+                                    {{ form.Component6_Svr  }}
+                            </div>                             <div class="row">
+                                        {{ form.Component7_Svr.errors }}
+                                        Component7_Svr
+                                    {{ form.Component7_Svr  }}
+                            </div>                             <div class="row">
+                                        {{ form.Component8_Svr.errors }}
+                                        Component8_Svr
+                                    {{ form.Component8_Svr  }}
+                            </div>
+                                     <div class="row">
+                                        {{ form.Component9_Svr.errors }}
+                                        Component9_Svr
+                                    {{ form.Component9_Svr  }}
+                            </div>                             <div class="row">
+                                        {{ form.Component10_Svr.errors }}
+                                        Component10_Svr
+                                    {{ form.Component10_Svr  }}
+                            </div>                             <div class="row">
+                                        {{ form.Component11_Svr.errors }}
+                                        Component11_Svr
+                                    {{ form.Component11_Svr  }}
+                            </div>                             <div class="row">
+                                        {{ form.Component12_Svr.errors }}
+                                        Component12_Svr
+                                    {{ form.Component12_Svr  }}
+                            </div>                             <div class="row">
+                                        {{ form.Component13_Svr.errors }}
+                                        Component13_Svr
+                                    {{ form.Component13_Svr  }}
+                            </div>                             <div class="row">
+                                        {{ form.Component14_Svr.errors }}
+                                        Component14_Svr
+                                    {{ form.Component14_Svr  }}
+                            </div>
+                                                         <div class="row">
+                                        {{ form.Component15_Svr.errors }}
+                                        Component15_Svr
+                                    {{ form.Component15_Svr  }}
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+						</div>
+						<div class="card-footer">
+<!--							Card footer-->
+						</div>
+					</div>
+				</div>
+                <div class="col-md-2">
+					<div class="card">
+						<h5 class="card-header">
+							Office/use:
+						</h5>
+						<div class="card-body">
+							<p class="card-text"></p>
+                <div class="row">
+                                    {{ form.Component1_Qty.errors }}
+                                        Component1_Qty
+                                    {{ form.Component1_Qty  }}
+
+
+                </div>
+                                            <div class="row">
+                                    {{ form.Component2_Qty.errors }}
+                                        Component2_Qty
+                                    {{ form.Component2_Qty  }}
+
+
+                </div>
+                                            <div class="row">
+                                    {{ form.Component3_Qty.errors }}
+                                        Component3 Qty
+                                    {{ form.Component3_Qty  }}
+
+
+                </div>
+                                            <div class="row">
+                                    {{ form.Component4_Qty.errors }}
+                                        Component4_Qty
+                                    {{ form.Component4_Qty  }}
+
+
+                </div>
+                                            <div class="row">
+                                    {{ form.Component5_Qty.errors }}
+                                        Component5_Qty
+                                    {{ form.Component5_Qty  }}
+
+
+                </div>
+                                            <div class="row">
+                                    {{ form.Component6_Qty.errors }}
+                                        Component6_Qty
+                                    {{ form.Component6_Qty  }}
+
+
+                </div>
+                                            <div class="row">
+                                    {{ form.Component7_Qty.errors }}
+                                        Component7_Qty
+                                    {{ form.Component7_Qty  }}
+
+
+                </div>
+                                            <div class="row">
+                                    {{ form.Component8_Qty.errors }}
+                                        Component8_Qty
+                                    {{ form.Component8_Qty  }}
+
+
+                </div>
+                                            <div class="row">
+                                    {{ form.Component9_Qty.errors }}
+                                        Component9_Qty
+                                    {{ form.Component9_Qty  }}
+
+
+                </div>
+                                            <div class="row">
+                                    {{ form.Component10_Qty.errors }}
+                                        Component10_Qty
+                                    {{ form.Component10_Qty  }}
+
+
+                </div>
+                                            <div class="row">
+                                    {{ form.Component11_Qty.errors }}
+                                        Component11_Qty
+                                    {{ form.Component11_Qty  }}
+
+
+                </div>
+                                            <div class="row">
+                                    {{ form.Component12_Qty.errors }}
+                                        Component12_Qty
+                                    {{ form.Component12_Qty  }}
+
+
+                </div>
+                                            <div class="row">
+                                    {{ form.Component13_Qty.errors }}
+                                        Component13_Qty
+                                    {{ form.Component13_Qty  }}
+
+
+                </div>
+                                            <div class="row">
+                                    {{ form.Component14_Qty.errors }}
+                                        Component14_Qty
+                                    {{ form.Component14_Qty  }}
+
+
+                </div>
+                                            <div class="row">
+                                    {{ form.Component15_Qty.errors }}
+                                        Component15_Qty
+                                    {{ form.Component15_Qty  }}
+
+
+                </div>
+
+
+						</div>
+						<div class="card-footer">
+<!--							Card footer-->
+						</div>
+					</div>
+				</div>
+                <div Class="col-md-1">
+                <div class="row">
+                    {{ form.Component1_IP.errors }}
+                        Component1_IP
+                    {{ form.Component1_IP  }}
+
+                </div>
+                <div class="row">
+{{ form.Component2_IP.errors }}
+    Component2_IP
+{{ form.Component2_IP  }}
+
+</div>
+                <div class="row">
+{{ form.Component3_IP.errors }}
+    Component3_IP
+{{ form.Component3_IP  }}
+
+</div>
+                <div class="row">
+{{ form.Component4_IP.errors }}
+    Component4_IP
+{{ form.Component4_IP  }}
+
+</div>
+                <div class="row">
+{{ form.Component5_IP.errors }}
+    Component5_IP
+{{ form.Component5_IP  }}
+
+</div>
+                <div class="row">
+{{ form.Component6_IP.errors }}
+    Component6_IP
+{{ form.Component6_IP  }}
+
+</div>
+                <div class="row">
+{{ form.Component7_IP.errors }}
+    Component7_IP
+{{ form.Component7_IP  }}
+
+</div>
+                <div class="row">
+{{ form.Component8_IP.errors }}
+    Component8_IP
+{{ form.Component8_IP  }}
+
+</div>
+                <div class="row">
+{{ form.Component9_IP.errors }}
+    Component9_IP
+{{ form.Component9_IP  }}
+
+</div>
+                <div class="row">
+{{ form.Component10_IP.errors }}
+    Component10_IP
+{{ form.Component10_IP  }}
+
+</div>
+                <div class="row">
+{{ form.Component11_IP.errors }}
+    Component11_IP
+{{ form.Component11_IP  }}
+
+</div>
+                <div class="row">
+{{ form.Component12_IP.errors }}
+    Component12_IP
+{{ form.Component12_IP  }}
+
+</div>
+                <div class="row">
+{{ form.Component13_IP.errors }}
+    Component13_IP
+{{ form.Component13_IP  }}
+
+</div>
+                <div class="row">
+{{ form.Component14_IP.errors }}
+    Component14_IP
+{{ form.Component14_IP  }}
+
+</div>
+                <div class="row">
+{{ form.Component154_IP.errors }}
+    Component15_IP
+{{ form.Component15_IP  }}
+
+</div>
+
+
+                </div>
+
+			</div>
+
+</form>
 
                             </div>
 
@@ -1655,5 +1628,7 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
 
 {% endblock %}

@@ -68,13 +68,13 @@ class HomepageView(ListView):
         remaining = f'{remaining} {CURRENCY}'
         orders = OrderTable(orders)
 
-        qs = self.model.objects.all()
-        dashboard_mainFilter = OrderFilter(self.request.GET, queryset=qs)
+        # qs = self.model.objects.all()
+        # dashboard_mainFilter = OrderFilter(self.request.GET, queryset=qs)
 
         RequestConfig(self.request).configure(orders)
         context.update(locals())
 
-        return dashboard_mainFilter.qs
+        return context
 
 
 @staff_member_required
@@ -116,6 +116,9 @@ class DashboardMainView(FilterView):
 
         acctcusts = Acctcust.objects.all()
         total_acctcusts = acctcusts.count()
+
+        categories = Category.objects.all()
+        total_categories = categories.count()
 
         products = Product.objects.all()
         total_products = products.count()
@@ -192,6 +195,9 @@ class OrderUpdateView(UpdateView):
     form_class = OrderEditForm
     order_num = Order.id
 
+    categories = Category.objects.all()
+    total_categories = categories.count()
+
     def get_success_url(self):
         return reverse('update_order', kwargs={'pk': self.object.id})
 
@@ -203,10 +209,27 @@ class OrderUpdateView(UpdateView):
         order_items = OrderItemTable(instance.order_items.all())
         # orderitems = OrderItem.objects.all()  # show the list
         # orderitem_count = orderitems.count()
+
+        categories = Category.objects.all()
+        total_categories = categories.count()
+
+
+        prods = Product.objects.all()
+        total_prods = prods.count()
+
         RequestConfig(self.request).configure(products)
         RequestConfig(self.request).configure(order_items)
+
         context.update(locals())
         return context
+
+
+def load_products(request):
+    category_id = request.GET.get('category')
+    products = Product.objects.filter(category_id=category_id).order_by('categoryname')
+    return render(request, 'product_dropdown_list_options.html', {'products': products})
+
+
 
 
 # ***** GBO Sections  *****
@@ -278,7 +301,6 @@ class GenerateQuestionairePdf(View):
 
         # rendering the template
         return HttpResponse(pdf, content_type='application/pdf')
-
 
 
 @method_decorator(staff_member_required, name='dispatch')
@@ -361,11 +383,11 @@ class CreateQuestionaireView(CreateView):
     form_class = QuestionaireCreateForm
     model = Order
 
-    products = Product.objects.all()
-    total_products = products.count()
-
-    qs_p = Product.objects.filter(active=True)[:12]
-    products = ProductTable(qs_p)
+    # products = Product.objects.all()
+    # total_products = products.count()
+    #
+    # qs_p = Product.objects.filter(active=True)[:12]
+    # products = ProductTable(qs_p)
 
     def get_success_url(self):
         self.new_object.refresh_from_db()

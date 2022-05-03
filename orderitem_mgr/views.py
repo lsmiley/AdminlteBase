@@ -13,7 +13,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from order.models import OrderItem, Order
 from order.tables import ProductTable, OrderItemTable
-from product.models import Product
+from product.models import Product, Prodvendor, Category
 from .serializers import OrderItemSerializer
 from .forms import OrderItemForm
 from order.forms import NewOrderItemFormSet
@@ -47,11 +47,18 @@ def create(request, oid):
                                                       },
 
                                              exclude=('total_price',),
-                                         extra=1)  # access both customer and order form
+                                         extra=2)  # access both customer and order form
 
     # it means maila customer lai click garda order ma bhako detail access garako xu with instance of customer
     # parent model and then child model---
     # we can have multiple order so we need to tell which to allow by fields
+
+    category_context = Category.objects.all()
+
+    product_context = Product.objects.all()
+
+    # category_id = request.GET.get('category')
+    # product1 = Product.objects.filter(category_id=category_id).order_by('productname')
 
     ordr = Order.objects.get(pk=oid)
     formset = OrderItemFormSet(queryset=OrderItem.objects.none(),
@@ -70,8 +77,13 @@ def create(request, oid):
         # return redirect('customer_app:view', oid)
         return redirect('update_order', oid)
 
-    return render(request, 'orderitem/create.html', {'formset': formset, 'order': ordr})
+    return render(request, 'orderitem/create.html', {'formset': formset, 'order': ordr, 'category': category_context, 'product' :product_context})
 
+
+def load_products(request):
+    category_id = request.GET.get('category')
+    products = Product.objects.filter(category_id=category_id).order_by('productname')
+    return render(request, 'c.html', {'products': products})
 
 def createnew(request, oid):
     '''Below I replace OrderForm with'''

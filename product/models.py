@@ -8,6 +8,8 @@ from .managers import ProductManager
 CURRENCY = settings.CURRENCY
 
 
+
+
 class Category(models.Model):
     title = models.CharField(max_length=150, unique=True)
     categoryname = models.CharField(
@@ -117,7 +119,7 @@ class Product(models.Model):
     Component1_Wkstn = models.BooleanField(default=False)
     Component1_Svr = models.BooleanField(default=False)
     Component1_IP = models.BooleanField(default=False)
-    Component1_Qty = models.FloatField(default='0.0')
+    Component1_Qty = models.FloatField(default=0.00)
 
     memocomponent1note = models.CharField(
 

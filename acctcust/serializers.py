@@ -7,7 +7,4 @@ class AcctcustSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Acctcust
-        # fields = '__all__'
-        fields = (
-            'id', 'acctname', 'businesssec', 'regulatory',
-        )
+        fields = '__all__'

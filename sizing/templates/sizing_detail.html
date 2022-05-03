@@ -1,0 +1,43 @@
+{% extends "base_sizer.html" %}
+{% block content %}
+<div class="card">
+        <div class="card-header">
+            <h1><b>Sizing ID {{ object }}</b></h1>
+        </div>
+        <div class="card-body">
+        <table class="table">
+        <!--for inline added titles-->
+        {% if object.has_items %}
+        {% for item in object.has_items.all %}
+        <tr>
+            <th>Item @{{item.language}}</th>
+            <td>{{item.name}}</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        <!--end-->
+    	{% if object.subject %}
+    	<tr>
+            <th>Subject</th>
+            <td>{{ object.subject }}</td>
+        </tr>
+    	{% endif %}
+    	{% if object.owner %}
+    	<tr>
+            <th>Owner</th>
+            <td>{{ object.owner }}</td>
+        </tr>
+    	{% endif %}
+    	{% if object.note %}
+    	<tr>
+            <th>Note</th>
+            <td>{{ object.note }}</td>
+        </tr>
+    	{% endif %}
+        </table>
+        <a class="btn btn-outline-info" href="{% url 'sizing:sizing_update' pk=object.id %}">Update</a>
+        <a class="btn btn-outline-danger" href="{% url 'sizing:sizing_delete' pk=object.id %}">Delete</a>
+        <a class="btn btn-outline-primary" href="{% url 'sizing:base_sizer'%}">Back to Dashboard</a>
+        </div>
+</div>
+{% endblock content %}

@@ -9,6 +9,10 @@ import datetime
 from django.db.models import F
 from django.db.models import Sum
 
+from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor.fields import RichTextField
+
+from django.contrib.auth.models import User
 
 import labordelivery
 from labordelivery.models import Labordelivery
@@ -17,9 +21,6 @@ from product.models import Product
 from decimal import Decimal
 
 CURRENCY = settings.CURRENCY
-
-from ckeditor_uploader.fields import RichTextUploadingField
-from ckeditor.fields import RichTextField
 
 
 class OrderManager(models.Manager):
@@ -83,6 +84,12 @@ class Order(models.Model):
         ('Gerry Comeau - WW', 'Gerry Comeau - WW'),
         ('Jonathan Planko - WW', 'Jonathan Planko - WW'),
         ('None', 'None'),
+    )
+
+    # Firm_Price_NBIE_Choices
+    Ems_Level = (
+        ('Essential', 'Essential'),
+        ('Enterprise', 'Enterprise'),
     )
 
     # date = models.DateField(default=datetime.datetime.now())
@@ -414,7 +421,8 @@ class Order(models.Model):
     # date = models.DateTimeField(default=timezone.now)
 
     # Owner/Team Info
-    prepardedby = models.CharField(blank=True, max_length=150)
+    # prepardedby = models.CharField(blank=True, max_length=150)
+    prepardedby = models.ForeignKey(User, related_name="orders", blank=True, null=True, on_delete=models.SET_NULL)
     team = models.CharField(blank=True, max_length=150)
     assigned_by = models.CharField(blank=True, max_length=150)
     assigned_to = models.CharField(blank=True, max_length=150)
@@ -504,10 +512,15 @@ class Order(models.Model):
     Integrity_Monitoring = models.BooleanField(default=False,)
     Citrix = models.BooleanField(default=False,)
     Other_Features_or_Platforms = models.BooleanField(default=False,)
-    Other_Features_or_Platforms_Note = RichTextUploadingField(blank=True, null=True)
+    Other_Features_or_Platforms_Note = RichTextUploadingField(blank=True, null=True, default=' Explain Other Features and Platform Requirements?')
 
     # Questionaire - Environment and Platforms Section
     Environment_and_Platforms_Note = RichTextUploadingField(blank=True, null=True)
+
+    # Questionaire Endpoint Managed Security on Cloud (EMS) Section
+    EmsServiceRequested = models.BooleanField(default=False,)
+    # Ems_Level_requested
+
 
     class Meta:
         ordering = ['-date']

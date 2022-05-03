@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_ajax',
     'crispy_forms',
+    'dynamic_formsets',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -63,9 +64,12 @@ INSTALLED_APPS = [
     'sizingtype',
     'statusstate',
     'tntworksheet',
+    'sizing'
 
 
 ]
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -116,15 +120,15 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #     }
 # }
 
-# **** Local Database Settings ****
+# # **** Local Database Settings ****
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'adminltebase-01-db',
+#         'NAME': 'adminltebase02db',
 #         'USER': 'sizingadmin',
 #         'PASSWORD': 'Malware12345',
 #         'HOST': '127.0.0.1',
-#         'PORT': '32754',
+#         'PORT': '22551',
 #     }
 # }
 
@@ -137,7 +141,7 @@ DATABASES = {
         'NAME': 'adminltebase-01-db',
         'USER': 'sizingadmin',
         'PASSWORD': 'Malware12345',
-        'HOST': '172.30.120.141',
+        'HOST': '172.30.231.45',
         # 'HOST':  'adminltebase-05-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps',
         'PORT': '3306',
     }
@@ -151,7 +155,7 @@ DATABASES = {
 #         'NAME': 'adminltebase-01-db',
 #         'USER': 'aspadmin',
 #         'PASSWORD': 'Malware12345',
-#         'HOST': '10.131.2.60',
+#         'HOST': '172.30.231.45',
 #         'PORT': '3306',
 #     }
 # }
@@ -213,11 +217,11 @@ CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
-# CKEDITOR_CONFIGS = {
-#     'default': {
-#         'toolbar': 'Basic',
-#     },
-# }
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Basic',
+    },
+}
 
 # CKEDITOR_CONFIGS = {
 #     'default': {
@@ -231,8 +235,8 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 #     }
 # }
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-    },
-}
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'full',
+#     },
+# }

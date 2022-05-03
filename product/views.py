@@ -59,7 +59,7 @@ class ProductUpdateView(SuccessMessageMixin,
     model = Product  # setting 'Product' model as model
     form_class = ProductForm  # setting 'ProductForm' form as form
     template_name = "edit_product.html"  # 'edit_product.html' used as the template
-    success_url = 'product'  # redirects to 'product' page in the url after submitting the form
+    success_url = '/product/product/'  # redirects to 'product' page in the url after submitting the form
     success_message = "Product has been updated successfully"  # displays message when form is submitted
 
     def get_context_data(self, **kwargs):  # used to send additional context
