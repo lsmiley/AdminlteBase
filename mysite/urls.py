@@ -97,7 +97,7 @@ urlpatterns = [
         'orderitem/<pk>/edit',
         views.OrderItemUpdateView.as_view(),
         name='edit-orderitem'),
-    path('orderitem/', include('orderitem.urls')),
+    # path('orderitem/', include('orderitem.urls')),
     path('orderitem_mgr/', include('orderitem_mgr.urls')),
 
     # ***** Questionaire URL Section  ***
