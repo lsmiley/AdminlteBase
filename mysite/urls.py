@@ -41,31 +41,38 @@ from order.views import (
     ajax_calculate_category_view,
     OrderItemUpdateView,
     sizing_ord_view,
-    QuestionaireUpdateView,
-    DashboardQuestionaireView,
-    CreateQuestionaireView,
-    QuestionaireView,
+    # QuestionnaireUpdateView,
+    # DashboardQuestionnaireView,
+    # CreateQuestionnaireView,
+    # QuestionanireView,
     GeneratePdf,
-    GenerateQuestionairePdf,
+    GenerateQuestionnairePdf,
+    OrderUpdate2View,
 )
 
+
+
 urlpatterns = [
+
+    path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
+
     path('', HomepageView.as_view(), name='homepage'),
     path('sizing/', include('sizing.urls')),
-    path('polls/', include('polls.urls')),    path('admin/', admin.site.urls),
+    path('polls/', include('polls.urls')),
     path('category/', include('category.urls')),
     path('acctcust/', include('acctcust.urls')),
     path('labordeliverytype/', include('labordeliverytype.urls')),
     path('labordelivery/', include('labordelivery.urls')),
     path('tntworksheet/', include('tntworksheet.urls')),
     path('sizingtype/', include('sizingtype.urls')),
-
-#
     path('statusstate/', include('statusstate.urls')),
     path('prodvendor/', include('prodvendor.urls')),
     path('product/', include('product.urls')),
     path('category/', include('category.urls')),
-#
+    path('questionnaire/', include('questionnaire.urls')),
+    path('testquestionnaire/', include('testquestionnaire.urls')),
+
     #  Code to swith beteen and update Orders
     # path('orders/', include('orders.urls', namespace="order_app")),
     path('order/', include('order.urls', namespace="order_app")),
@@ -78,6 +85,8 @@ urlpatterns = [
     path('create/', CreateOrderView.as_view(), name='create-order'),
     path('create-auto/', auto_create_order_view, name='create_auto'),
     path('update/<int:pk>/', OrderUpdateView.as_view(), name='update_order'),
+    path('update2/<int:pk>/', OrderUpdate2View.as_view(), name='update_order2'),
+
     path('done/<int:pk>/', done_order_view, name='done_order'),
     path('delete/<int:pk>/', delete_order, name='delete_order'),
     path(
@@ -87,7 +96,7 @@ urlpatterns = [
     path('order_mgr/', include('order_mgr.urls')),
 
     path('pdf/', GeneratePdf.as_view()),
-    path('questionairepdf/', GenerateQuestionairePdf.as_view()),
+    path('questionnairepdf/', GenerateQuestionnairePdf.as_view()),
 
 
     # ***** OrderItem URL Section  ***
@@ -97,22 +106,22 @@ urlpatterns = [
         'orderitem/<pk>/edit',
         views.OrderItemUpdateView.as_view(),
         name='edit-orderitem'),
-    # path('orderitem/', include('orderitem.urls')),
+    path('orderitem/', include('orderitem.urls')),
     path('orderitem_mgr/', include('orderitem_mgr.urls')),
 
-    # ***** Questionaire URL Section  ***
-    path('questionaire', QuestionaireView.as_view(), name='questionaire'),
-    path('dashboard-questionaire/',
-         DashboardQuestionaireView.as_view(),
-         name='dashboard_questionaire'),
-    path(
-        'create_questionaire/',
-        CreateQuestionaireView.as_view(),
-        name='create-questionaire'),
-    path(
-        'update_questionaire/<int:pk>/',
-        QuestionaireUpdateView.as_view(),
-        name='update_questionaire'),
+    # # ***** Questionnaire URL Section  ***
+    # path('questionnaire', QuestionnaireView.as_view(), name='questionnaire'),
+    # path('dashboard-questionnaire/',
+    #      DashboardQuestionnaireView.as_view(),
+    #      name='dashboard_questionnaire'),
+    # path(
+    #     'create_questionnaire/',
+    #     CreateQuestionnaireView.as_view(),
+    #     name='create-questionnaire'),
+    # path(
+    #     'update_questionnaire/<int:pk>/',
+    #     QuestionnaireUpdateView.as_view(),
+    #     name='update_questionnaire'),
 #
     # ***** GBO URL Section  ***
     path('updategbo/<int:pk>/', GboUpdateView.as_view(), name='update_gbo'),

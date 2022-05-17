@@ -1,49 +1,39 @@
-from django.contrib.messages.views import SuccessMessageMixin
 from django.http import JsonResponse, HttpResponse, QueryDict, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import ListView, CreateView, UpdateView, View
+from django.views.generic import ListView, View, CreateView, UpdateView
 from django.utils.decorators import method_decorator
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import get_object_or_404, redirect, reverse, render
-from django.urls import reverse_lazy
 from django.db.models import Q
 from django.template import loader
 from django.contrib import messages
 from django.template.loader import render_to_string
-# from django.http import JsonResponse, HttpResponse, QueryDict, HttpResponseRedirect
 from django.db.models import Sum
-from django.views.generic.detail import SingleObjectMixin
 from django_tables2 import RequestConfig
 from rest_framework.templatetags.rest_framework import data
 
-from django.core.files.storage import FileSystemStorage
-from xhtml2pdf import pisa
-
 from .models import Order, OrderItem, CURRENCY
 
-from product import models
-
 from django_filters.views import FilterView
-from .filters import OrderFilter, DashboardQuestionaireFilter
+from .filters import OrderFilter
 
-from .forms import OrderCreateForm, OrderEditForm, OrderItemEditForm, OrderItemForm, QuestionaireCreateForm
+from .forms import OrderCreateForm, OrderEditForm, OrderItemEditForm, OrderItemForm
 from product.models import Product, Category, Prodvendor
 from acctcust.models import Acctcust
-from .tables import ProductTable, OrderItemTable, OrderTable
+from order.tables import ProductTable, OrderItemTable, OrderTable
 from .utils import set_pagination
-
-from django.views.generic.edit import (
-    FormView,
-    View,
-    CreateView,
-    UpdateView
-)
+#
+# from django.views.generic.edit import (
+#     View,
+#     CreateView,
+#     UpdateView
+# )
 
 # PDF Requirements
 # from io import BytesIO
 from .process import html_to_pdf
-from django.template.loader import render_to_string
-# from django.template.loader import get_template
+
+
 
 import datetime
 
@@ -191,7 +181,7 @@ class CreateOrderView(CreateView):
 @method_decorator(staff_member_required, name='dispatch')
 class OrderUpdateView(UpdateView):
     model = Order
-    template_name = 'order_update.html'
+    template_name = 'order_update2.html'
     form_class = OrderEditForm
     order_num = Order.id
 
@@ -204,7 +194,7 @@ class OrderUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         instance = self.object
-        qs_p = Product.objects.filter(active=True)[:12]
+        qs_p = Product.objects.filter(active=True)[:1000]
         products = ProductTable(qs_p)
         order_items = OrderItemTable(instance.order_items.all())
         # orderitems = OrderItem.objects.all()  # show the list
@@ -220,6 +210,26 @@ class OrderUpdateView(UpdateView):
         RequestConfig(self.request).configure(products)
         RequestConfig(self.request).configure(order_items)
 
+        context.update(locals())
+        return context
+
+@method_decorator(staff_member_required, name='dispatch')
+class OrderUpdate2View(UpdateView):
+    model = Order
+    template_name = 'order_update2.html'
+    form_class = OrderEditForm
+
+    def get_success_url(self):
+        return reverse('update_order2', kwargs={'pk': self.object.id})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        instance = self.object
+        qs_p = Product.objects.filter(active=True)[:50]
+        products = ProductTable(qs_p)
+        order_items = OrderItemTable(instance.order_items.all())
+        RequestConfig(self.request).configure(products)
+        RequestConfig(self.request).configure(order_items)
         context.update(locals())
         return context
 
@@ -257,30 +267,30 @@ class GboUpdateView(UpdateView):
         return context
 
 
-# ***** Questionaire Section *****
+# ***** Questionnaire Section *****
 
-@method_decorator(staff_member_required, name='dispatch')
-class QuestionaireView(ListView):
-    template_name = 'questionaire.html'
-    model = Order
-    queryset = Order.objects.all()[:10]
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        orders = Order.objects.all()
-        total_sales = orders.aggregate(Sum('final_value'))['final_value__sum'] if orders.exists() else 0
-        paid_value = orders.filter(is_paid=True).aggregate(Sum('final_value'))['final_value__sum'] \
-            if orders.filter(is_paid=True).exists() else 0
-        remaining = total_sales - paid_value
-        diviner = total_sales if total_sales > 0 else 1
-        paid_percent, remain_percent = round((paid_value / diviner) * 100, 1), round((remaining / diviner) * 100, 1)
-        total_sales = f'{total_sales} {CURRENCY}'
-        paid_value = f'{paid_value} {CURRENCY}'
-        remaining = f'{remaining} {CURRENCY}'
-        orders = OrderTable(orders)
-        RequestConfig(self.request).configure(orders)
-        context.update(locals())
-        return context
+# @method_decorator(staff_member_required, name='dispatch')
+# class QuestionnaireView(ListView):
+#     template_name = 'questionnaire.html'
+#     model = Order
+#     queryset = Order.objects.all()[:10]
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         orders = Order.objects.all()
+#         total_sales = orders.aggregate(Sum('final_value'))['final_value__sum'] if orders.exists() else 0
+#         paid_value = orders.filter(is_paid=True).aggregate(Sum('final_value'))['final_value__sum'] \
+#             if orders.filter(is_paid=True).exists() else 0
+#         remaining = total_sales - paid_value
+#         diviner = total_sales if total_sales > 0 else 1
+#         paid_percent, remain_percent = round((paid_value / diviner) * 100, 1), round((remaining / diviner) * 100, 1)
+#         total_sales = f'{total_sales} {CURRENCY}'
+#         paid_value = f'{paid_value} {CURRENCY}'
+#         remaining = f'{remaining} {CURRENCY}'
+#         orders = OrderTable(orders)
+#         RequestConfig(self.request).configure(orders)
+#         context.update(locals())
+#         return context
 
 
 # Creating a class based view
@@ -294,110 +304,110 @@ class GeneratePdf(View):
 
 
 # Creating a class based view
-class GenerateQuestionairePdf(View):
+class GenerateQuestionnairePdf(View):
     def get(self, request, *args, **kwargs):
         # getting the template
-        pdf = html_to_pdf('questionairepdf.html')
+        pdf = html_to_pdf('questionnairepdf.html')
 
         # rendering the template
         return HttpResponse(pdf, content_type='application/pdf')
 
 
-@method_decorator(staff_member_required, name='dispatch')
-class DashboardQuestionaireView(ListView):
-    template_name = 'dashboard-questionaire.html'
-    model = Order
-    queryset = Order.objects.all()[:10]
-
-    # acctcusts = Acctcust.objects.all()
-    # total_acctcusts = acctcusts.count()
-
-    # products = Product.objects.all()
-    # total_products = products.count()
-
-    # prodvendors = Prodvendor.objects.all()
-    # total_prodvendors = prodvendors.count()
-
-    sizings = Order.objects.all()
-    total_sizings = sizings.count()
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        orders = Order.objects.all()
-
-        acctcusts = Acctcust.objects.all()
-        total_acctcusts = acctcusts.count()
-
-        products = Product.objects.all()
-        total_products = products.count()
-
-        prodvendors = Prodvendor.objects.all()
-        total_prodvendors = prodvendors.count()
-
-        total_sales = orders.aggregate(Sum('final_value'))['final_value__sum'] if orders.exists() else 0
-        paid_value = orders.filter(is_paid=True).aggregate(Sum('final_value'))['final_value__sum'] \
-            if orders.filter(is_paid=True).exists() else 0
-        remaining = total_sales - paid_value
-        diviner = total_sales if total_sales > 0 else 1
-        paid_percent, remain_percent = round((paid_value / diviner) * 100, 1), round((remaining / diviner) * 100, 1)
-        total_sales = f'{total_sales} {CURRENCY}'
-        paid_value = f'{paid_value} {CURRENCY}'
-        remaining = f'{remaining} {CURRENCY}'
-        orders = OrderTable(orders)
-
-        qs = self.model.objects.all()
-        dashboard_mainFilter = DashboardQuestionaireFilter(self.request.GET, queryset=qs)
-
-        RequestConfig(self.request).configure(orders)
-        context.update(locals())
-        return context
-
-
-@method_decorator(staff_member_required, name='dispatch')
-class QuestionaireUpdateView(UpdateView):
-    model = Order
-    template_name = 'questionaire_update.html'
-    form_class = OrderEditForm
-    order_num = Order.id
-
-    def get_success_url(self):
-        return reverse('update_questionaire', kwargs={'pk': self.object.id})
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        instance = self.object
-        qs_p = Product.objects.filter(active=True)[:12]
-        products = ProductTable(qs_p)
-        order_items = OrderItemTable(instance.order_items.all())
-        # orderitems = OrderItem.objects.all()  # show the list
-        # orderitem_count = orderitems.count()
-        RequestConfig(self.request).configure(products)
-        RequestConfig(self.request).configure(order_items)
-        context.update(locals())
-        return context
-
-
-@method_decorator(staff_member_required, name='dispatch')
-class CreateQuestionaireView(CreateView):
-    template_name = 'form_questionaire.html'
-    form_class = QuestionaireCreateForm
-    model = Order
-
-    # products = Product.objects.all()
-    # total_products = products.count()
-    #
-    # qs_p = Product.objects.filter(active=True)[:12]
-    # products = ProductTable(qs_p)
-
-    def get_success_url(self):
-        self.new_object.refresh_from_db()
-        return reverse('update_questionaire', kwargs={'pk': self.new_object.id})
-
-    def form_valid(self, form):
-        object = form.save()
-        object.refresh_from_db()
-        self.new_object = object
-        return super().form_valid(form)
+# @method_decorator(staff_member_required, name='dispatch')
+# class DashboardQuestionnaireView(ListView):
+#     template_name = 'dashboard-questionnaire.html'
+#     model = Order
+#     queryset = Order.objects.all()[:10]
+#
+#     # acctcusts = Acctcust.objects.all()
+#     # total_acctcusts = acctcusts.count()
+#
+#     # products = Product.objects.all()
+#     # total_products = products.count()
+#
+#     # prodvendors = Prodvendor.objects.all()
+#     # total_prodvendors = prodvendors.count()
+#
+#     sizings = Order.objects.all()
+#     total_sizings = sizings.count()
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         orders = Order.objects.all()
+#
+#         acctcusts = Acctcust.objects.all()
+#         total_acctcusts = acctcusts.count()
+#
+#         products = Product.objects.all()
+#         total_products = products.count()
+#
+#         prodvendors = Prodvendor.objects.all()
+#         total_prodvendors = prodvendors.count()
+#
+#         total_sales = orders.aggregate(Sum('final_value'))['final_value__sum'] if orders.exists() else 0
+#         paid_value = orders.filter(is_paid=True).aggregate(Sum('final_value'))['final_value__sum'] \
+#             if orders.filter(is_paid=True).exists() else 0
+#         remaining = total_sales - paid_value
+#         diviner = total_sales if total_sales > 0 else 1
+#         paid_percent, remain_percent = round((paid_value / diviner) * 100, 1), round((remaining / diviner) * 100, 1)
+#         total_sales = f'{total_sales} {CURRENCY}'
+#         paid_value = f'{paid_value} {CURRENCY}'
+#         remaining = f'{remaining} {CURRENCY}'
+#         orders = OrderTable(orders)
+#
+#         qs = self.model.objects.all()
+#         dashboard_mainFilter = DashboardQuestionnaireFilter(self.request.GET, queryset=qs)
+#
+#         RequestConfig(self.request).configure(orders)
+#         context.update(locals())
+#         return context
+#
+#
+# @method_decorator(staff_member_required, name='dispatch')
+# class QuestionnaireUpdateView(UpdateView):
+#     model = Order
+#     template_name = 'questionnaire_update.html'
+#     form_class = OrderEditForm
+#     order_num = Order.id
+#
+#     def get_success_url(self):
+#         return reverse('update_questionnaire', kwargs={'pk': self.object.id})
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         instance = self.object
+#         qs_p = Product.objects.filter(active=True)[:12]
+#         products = ProductTable(qs_p)
+#         order_items = OrderItemTable(instance.order_items.all())
+#         # orderitems = OrderItem.objects.all()  # show the list
+#         # orderitem_count = orderitems.count()
+#         RequestConfig(self.request).configure(products)
+#         RequestConfig(self.request).configure(order_items)
+#         context.update(locals())
+#         return context
+#
+#
+# @method_decorator(staff_member_required, name='dispatch')
+# class CreateQuestionnaireView(CreateView):
+#     template_name = 'form_questionnaire.html'
+#     form_class = QuestionnaireCreateForm
+#     model = Order
+#
+#     # products = Product.objects.all()
+#     # total_products = products.count()
+#     #
+#     # qs_p = Product.objects.filter(active=True)[:12]
+#     # products = ProductTable(qs_p)
+#
+#     def get_success_url(self):
+#         self.new_object.refresh_from_db()
+#         return reverse('update_questionnaire', kwargs={'pk': self.new_object.id})
+#
+#     def form_valid(self, form):
+#         object = form.save()
+#         object.refresh_from_db()
+#         self.new_object = object
+#         return super().form_valid(form)
 
 
 # ***** Ajax Buttons *****
@@ -415,7 +425,8 @@ def done_order_view(request, pk):
     instance = get_object_or_404(Order, id=pk)
     instance.is_paid = True
     instance.save()
-    return redirect(reverse('homepage'))
+    # return redirect(reverse('homepage'))
+    return redirect(reverse('dashboard_main'))
 
 
 @staff_member_required
@@ -796,3 +807,4 @@ def sizing_ord_view(request, oid):
     context = {'order_total_price': order_total_orderitem_price, 'order': order, 'orderitem': orderitem,
                'orderitem_count': orderitem_count, 'orderitem_num': orderitem_count}
     return render(request, 'order/list.html', context)
+

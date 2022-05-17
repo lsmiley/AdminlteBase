@@ -24,120 +24,120 @@ class OrderCreateForm(BaseForm, forms.ModelForm):
         fields = ['date', 'title']
 
 
-class QuestionaireCreateForm(BaseForm, forms.ModelForm):
-    # date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    due_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    TranStartDate = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    # aix = forms.BooleanField(widget=forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}))
-    # Other_Features_or_Platforms_Note = CKEditorWidget(attrs={'toolbar': 'Basic', 'height': 70, 'width': 430,})
-    # AntiVirusMalware = forms.BooleanField()
-
-    class Meta:
-        model = Order
-        fields = ['date',
-                  'title',
-                  'due_date',
-                  'prepardedby',
-                  'team',
-                  'RequesterFirstName',
-                  'RequesterLastName',
-                  'RequesterRole',
-                  'RequesterEmail',
-                  'CustomerName',
-                  'SalesContactName',
-                  'SalesContactEmail',
-                  'TranStartDate',
-                  'Revenue_Structure_Select',
-                  'Revenue_Structure_Cost_Explain',
-                  'rfs_num',
-                  'appttus_num',
-                  'Solution_Design',
-                  'Solution_Owner',
-                  'Service_Delivery_Requirements',
-                  'Restricted_Delivery',
-                  'Questionaire_num_consoles',
-                  'Questionaire_num_workstation',
-                  'Questionaire_num_server',
-
-                  'AntiVirusMalware',
-                  'DLP_on_Workstations',
-                  'DLP_on_Servers',
-                  'Encryption_on_Workstations',
-                  'Encryption_on_Servers',
-                  'NAS_Storage',
-                  'Windows',
-                  'AIX',
-                  'VDI',
-                  'URL_Filtering',
-                  'HIPs_on_Workstations',
-                  'HIPs_on_Servers',
-                  'Firewall_on_Workstations',
-                  'Firewall_on_Servers',
-                  'BigFix_Patching_Scanning',
-                  'Linux',
-                  'Integrity_Monitoring',
-                  'Citrix',
-                  'Other_Features_or_Platforms',
-                  'Other_Features_or_Platforms_Note',
-
-                  ]
-
-        widgets = {
-
-
-            'RequesterFirstName': forms.TextInput(attrs={'style': 'width:160px;height:25px; align:center;'}),
-            'RequesterLastName': forms.TextInput(attrs={'style': 'width:160px;height:25px; align:center;'}),
-            'RequesterEmail': forms.TextInput(attrs={'style': 'width:160px;height:25px; align:center;'}),
-            'due_date': forms.DateInput(attrs={'style': 'width:160px;height:20px; align:center;'}),
-
-            'date': forms.DateInput(attrs={'style': 'width:160px;height:20px; align:center;'}),
-            'TranStartDate': forms.DateInput(attrs={'style': 'width:160px;height:20px; align:center;'}),
-
-            'AntiVirusMalware': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'DLP_on_Workstations': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'DLP_on_Servers': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'Encryption_on_Workstations': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'Encryption_on_Servers': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'NAS_Storage': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'Windows': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'AIX': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'VDI': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'URL_Filtering': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'HIPs_on_Workstations': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'HIPs_on_Servers': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'Firewall_on_Workstations': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'Firewall_on_Servers': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'BigFix_Patching_Scanning': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'Linux': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'Integrity_Monitoring': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'Citrix': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'Other_Features_or_Platforms': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-            'Restricted_Delivery': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
-
-        }
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        # Customer's Infor section
-        self.fields['CustomerName'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
-        self.fields['SalesContactName'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
-        self.fields['SalesContactEmail'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
-        self.fields['TranStartDate'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
-        self.fields['rfs_num'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
-        self.fields['appttus_num'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
-        self.fields['Revenue_Structure_Select'].widget.attrs['style'] = 'width:160px; height:25px; font-size: 12px;'
-        self.fields['Revenue_Structure_Cost_Explain'].widget.attrs['style'] = 'width:160px; height:25px; font-size: 12px;'
-        self.fields['Solution_Design'].widget.attrs['style'] = 'width:160px; height:25px; font-size: 12px;'
-        self.fields['Solution_Owner'].widget.attrs['style'] = 'width:160px; height:25px; font-size: 12px;'
-        self.fields['Service_Delivery_Requirements'].widget.attrs['style'] = 'width:160px; height:25px; font-size: 12px;'
-        # self.fields['Restricted_Delivery'].widget.attrs['style'] = 'width:120px; height:20px; font-size: 12px;'
-        self.fields['Revenue_Structure_Cost_Explain'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
-
-        self.fields['prepardedby'].widget.attrs['style'] = 'width:120px; height:20px; font-size: 10px;'
-        self.fields['Questionaire_num_consoles'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
-        self.fields['Questionaire_num_workstation'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
-        self.fields['Questionaire_num_server'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
+# class QuestionnaireCreateForm(BaseForm, forms.ModelForm):
+#     # date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+#     due_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+#     TranStartDate = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+#     # aix = forms.BooleanField(widget=forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}))
+#     # Other_Features_or_Platforms_Note = CKEditorWidget(attrs={'toolbar': 'Basic', 'height': 70, 'width': 430,})
+#     # AntiVirusMalware = forms.BooleanField()
+#
+#     class Meta:
+#         model = Order
+#         fields = ['date',
+#                   'title',
+#                   'due_date',
+#                   'prepardedby',
+#                   'team',
+#                   'RequesterFirstName',
+#                   'RequesterLastName',
+#                   'RequesterRole',
+#                   'RequesterEmail',
+#                   'CustomerName',
+#                   'SalesContactName',
+#                   'SalesContactEmail',
+#                   'TranStartDate',
+#                   'Revenue_Structure_Select',
+#                   'Revenue_Structure_Cost_Explain',
+#                   'rfs_num',
+#                   'appttus_num',
+#                   'Solution_Design',
+#                   'Solution_Owner',
+#                   'Service_Delivery_Requirements',
+#                   'Restricted_Delivery',
+#                   'Questionaire_num_consoles',
+#                   'Questionaire_num_workstation',
+#                   'Questionaire_num_server',
+#
+#                   'AntiVirusMalware',
+#                   'DLP_on_Workstations',
+#                   'DLP_on_Servers',
+#                   'Encryption_on_Workstations',
+#                   'Encryption_on_Servers',
+#                   'NAS_Storage',
+#                   'Windows',
+#                   'AIX',
+#                   'VDI',
+#                   'URL_Filtering',
+#                   'HIPs_on_Workstations',
+#                   'HIPs_on_Servers',
+#                   'Firewall_on_Workstations',
+#                   'Firewall_on_Servers',
+#                   'BigFix_Patching_Scanning',
+#                   'Linux',
+#                   'Integrity_Monitoring',
+#                   'Citrix',
+#                   'Other_Features_or_Platforms',
+#                   'Other_Features_or_Platforms_Note',
+#
+#                   ]
+#
+#         widgets = {
+#
+#
+#             'RequesterFirstName': forms.TextInput(attrs={'style': 'width:160px;height:25px; align:center;'}),
+#             'RequesterLastName': forms.TextInput(attrs={'style': 'width:160px;height:25px; align:center;'}),
+#             'RequesterEmail': forms.TextInput(attrs={'style': 'width:160px;height:25px; align:center;'}),
+#             'due_date': forms.DateInput(attrs={'style': 'width:160px;height:20px; align:center;'}),
+#
+#             'date': forms.DateInput(attrs={'style': 'width:160px;height:20px; align:center;'}),
+#             'TranStartDate': forms.DateInput(attrs={'style': 'width:160px;height:20px; align:center;'}),
+#
+#             'AntiVirusMalware': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'DLP_on_Workstations': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'DLP_on_Servers': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'Encryption_on_Workstations': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'Encryption_on_Servers': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'NAS_Storage': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'Windows': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'AIX': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'VDI': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'URL_Filtering': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'HIPs_on_Workstations': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'HIPs_on_Servers': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'Firewall_on_Workstations': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'Firewall_on_Servers': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'BigFix_Patching_Scanning': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'Linux': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'Integrity_Monitoring': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'Citrix': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'Other_Features_or_Platforms': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#             'Restricted_Delivery': forms.CheckboxInput(attrs={'style': 'width:20px;height:20px; align:center;'}),
+#
+#         }
+#
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#
+#         # Customer's Infor section
+#         self.fields['CustomerName'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
+#         self.fields['SalesContactName'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
+#         self.fields['SalesContactEmail'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
+#         self.fields['TranStartDate'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
+#         self.fields['rfs_num'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
+#         self.fields['appttus_num'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
+#         self.fields['Revenue_Structure_Select'].widget.attrs['style'] = 'width:160px; height:25px; font-size: 12px;'
+#         self.fields['Revenue_Structure_Cost_Explain'].widget.attrs['style'] = 'width:160px; height:25px; font-size: 12px;'
+#         self.fields['Solution_Design'].widget.attrs['style'] = 'width:160px; height:25px; font-size: 12px;'
+#         self.fields['Solution_Owner'].widget.attrs['style'] = 'width:160px; height:25px; font-size: 12px;'
+#         self.fields['Service_Delivery_Requirements'].widget.attrs['style'] = 'width:160px; height:25px; font-size: 12px;'
+#         # self.fields['Restricted_Delivery'].widget.attrs['style'] = 'width:120px; height:20px; font-size: 12px;'
+#         self.fields['Revenue_Structure_Cost_Explain'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
+#
+#         self.fields['prepardedby'].widget.attrs['style'] = 'width:120px; height:20px; font-size: 10px;'
+#         self.fields['Questionaire_num_consoles'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
+#         self.fields['Questionaire_num_workstation'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
+#         self.fields['Questionaire_num_server'].widget.attrs['style'] = 'width:120px; height:25px; font-size: 12px;'
 
 class OrderEditForm(BaseForm, forms.ModelForm):
 
@@ -147,6 +147,10 @@ class OrderEditForm(BaseForm, forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        # TNT Line #1
+        self.fields['date'].widget.attrs['style'] = 'width:80px; height:20px; font-size: 10px;'
+
 
         # TNT Line #1
         self.fields['executetransitionplan_count'].widget.attrs['style'] = 'width:80px; height:20px; font-size: 10px;'
@@ -623,6 +627,7 @@ class OrderItemEditForm(BaseForm, forms.ModelForm):
     class Meta:
         model = OrderItem
         fields = '__all__'
+
 
 
 class OrderItemForm(forms.ModelForm):

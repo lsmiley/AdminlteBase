@@ -1,49 +1,138 @@
-{% extends 'base.html' %}
-
+{% extends 'index.html' %} {% load render_table from django_tables2 %}
 {% load static %}
-
 {% block content_wrapper %}
-    <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
 
-<div class="row" xmlns="http://www.w3.org/1999/html">
-    <div class="col-md-2"></div>
-    <div class="col-md-9">
-        <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">{{ form_title }}</h4>
-                        <div class="ml-auto text-right">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">{{ form_title }}</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <div class="row">
+
+
+    <br>
+
+<div class="row">
+ <div class="col-md-1">.</div>
+<div class="col-md-1">.</div>
+<div class="col-md-9">
+        <div style="color:#ea2088; font-style: bold; font-size: 3rem; border-bottom: 1px solid white;">{{title}}</div>
+<div class="card card-dark">
+  <div class="card-header">
+    <h3 class="card-title">Enter: Type, Reagion/Country, Currency </h3>
+    <div class="card-tools">
+      <!-- Buttons, labels, and many other things can be placed here! -->
+      <!-- Here is a label for example -->
+      <span class="badge badge-primary" data-toggle="collapse" href="#region_country" role="button" aria-expanded="false" aria-controls="collapseExample">Help</span>
+    </div>
+    <!-- /.card-tools -->
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+<p>
+<!--  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">-->
+<!--    Link with href-->
+<!--  </a>-->
+<!--  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">-->
+<!--    Button with data-target-->
+<!--  </button>-->
+</p>
+<div class="collapse" id="region_country">
+  <div class="card card-body">
+<div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Labor Type: #1
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        Select from the Drop-Down-List the Type of Delivery Geo or Project Labor you what to Create.
+          <div class="row">StdDeliveryGeo</div>
+          <div class="row">DedicatedOn</div>
+          <div class="row">CloudHybridGeo</div>
+          <div class="row">Prod-RFS-NBD</div>
+          <div class="row">CustomGeo</div>
+          <div class="row">SharedHostGeo</div>
+
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Region / Country: #2
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+     Refers to - The Country/Delivery Geo that all or most of the Support will be Delivered from.....,
+          This Option will dictate entries for the Currency and Default/Year.
+
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapsefour">
+          Delivery Options: #3
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+     Enter Generic/Common Name for the Delivery Geo currently in use.
+          - If this is for a new Delivery Geo...., use the name provided
+          - If this is for a Project/RFS/NBD etc you can make up a Name of you Choosing.
+          - If this is for a Hybrid Mixed-Support Delivery Geo for multiple Geographies or Shared Support,
+          create a name using the first two or three Characters from existing Delivery Geo
+          i.e. India, United States, Australia would be "INUSAU-Geo" or "INUSAU-Project...., etc.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingFour">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapseThree">
+          Currency: #4
+        </button>
+      </h5>
+    </div>
+    <div id="collapsefour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+      Enter - The primary Currency Value/Denomination in use for the Country Selected in the "Region / Country" field..!</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingFive">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsefive" aria-expanded="false" aria-controls="collapseFive">
+          Default/Yr: #5
+        </button>
+      </h5>
+    </div>
+    <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordionExample">
+      <div class="card-body">
+      Enter - The amount in Hours for the normal Work Week for the country entered in the "Region / Country" Field ..!</div>
+    </div>
+  </div>
+
+
+</div>
+  </div>
+</div>
+
+
+<form method="post" class="form-horizontal" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.errors}}
+
+         <div class="row">
                     <div class="col-md-12">
 
                         <div class="card">
-                            <form method="post" class="form-horizontal"> {% csrf_token %}
+<!--                            <form method="post" class="form-horizontal" > {% csrf_token %}-->
                                                                                         <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-11">
@@ -51,7 +140,7 @@
     <div class="title__container">
 
         <div class="row">
-            <div class="col-md-9"><h1>IBM Endpoint Security Services | Questionaire</h1></div>
+            <div class="col-md-9"><h1>IBM Endpoint Security Services | Questionnaire</h1></div>
             <div class="col-md-1"></div>
             <div class="col-md-2"><img src="{% static 'images/ibm/IBM_Secuirty-Small-2018-10-16_18-57-34.gif' %}" alt="MSS" style="opacity: .8"></div>
 <!--            <div class="col-md-1"><img src="{% static 'images/ibm/ESS_Tools_Logo4.png' %}" alt="MSS" style="opacity: .8"></div>-->
@@ -72,19 +161,23 @@
                     <p>select & press next</p>
                 </div>
                 <div class="title__name">
-                    <h3>PRODUCTS TO SUPPORT</h3>
+                    <h3>PRODUCT SELECTIONS</h3>
                     <p>select & press next</p>
                 </div>
                 <div class="title__name">
-                    <h3>ADDITIONAL NOTES</h3>
+                    <h3>DELIVERY NOTES</h3>
                     <p>Select & press next</p>
                 </div>
                 <div class="title__name">
-                    <h3>Complete</h3>
+                    <h3>RFS INFORMATION</h3>
+                    <p>Select & press next</p>
+                </div>
+                <div class="title__name">
+                    <h3>APPTUS: OFFERING CODES</h3>
                     <p>Finally press submit</p>
                 </div>
                 <div class="title__name">
-                    <h3>View PDF</h3>
+                    <h3>GENERATE PDF / EMAIL</h3>
                     <p>View Send and or Save as a PDF</p>
                 </div>
             </div>
@@ -105,8 +198,11 @@
                     <li id="icon5">
                         <ion-icon name="mail-outline"></ion-icon>
                     </li>
-                   <li id="icon6">
-                         <ion-icon name="newspaper-outline"></ion-icon
+                    <li id="icon6">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </li>
+                   <li id="icon7">
+                         <ion-icon name="newspaper-outline"></ion-icon>
                     </li>
                 </ul>
             </div>
@@ -114,7 +210,7 @@
         <div class="right__container">
             <fieldset id="form1">
                 <div class="sub__title__container ">
-                    <p>Step 1/6</p>
+                    <p>Step 1/7</p>
                     <h2>ENTER: Requesters Information</h2>
                     <p>Please fill the details below so that we can we can get in contacat with you about our product</p>
                 </div>
@@ -134,27 +230,27 @@
                                   <!-- /.card-header -->
                                   <div class="card-body">
                                     <div class="row">
-                                          <div class="col-md-6">
+                                        <div class="col-md-4">
         <div class="form-group">
             {{ form.RequesterFirstName.errors }}
-            <label for="{{ form.RequesterFirstName.id_for_label }}">First Name:</label>
+            <label for="{{ form.RequesterFirstName.id_for_label }}">F. Name:</label>
             {{ form.RequesterFirstName }}
         </div>
         <div class="form-group ">
             {{ form.RequesterLastName.errors }}
-            <label for="{{ form.RequesterLastName.id_for_label }}">Last Name:</label>
+            <label for="{{ form.RequesterLastName.id_for_label }}">L. Name:</label>
             {{ form.RequesterLastName }}
         </div>
         <div class="form-group ">
-            {{ form.SalesContactName.errors }}
-            <label for="{{ form.SalesContactName.id_for_label }}">Team:</label>
-            {{ form.SalesContactName }}
+            {{ form.team.errors }}
+            <label for="{{ form.team.id_for_label }}">Team:</label>
+            {{ form.team }}
         </div>
                                           </div>
-                                          <div class="col-md-6">
+                                        <div class="col-md-4">
         <div class="form-group">
             {{ form.date.errors }}
-            <label for="{{ form.date.id_for_label }}">Due Date:</label>
+            <label for="{{ form.date.id_for_label }}">DueDate:</label>
             {{ form.date }}
         </div>
          <div class="form-group ">
@@ -164,11 +260,77 @@
         </div>
          <div class="form-group ">
             {{ form.title.errors }}
-            <label for="{{ form.title.id_for_label }}">Name/ CodeName/ Title #:</label>
+            <label for="{{ form.title.id_for_label }}">Title:</label>
             {{ form.title }}
         </div>
+
+
+                                          </div>
+                                        <div class="col-md-4">
+            <div class="form-group">
+            {{ form.CustomerStatus.errors }}
+            <label for="{{ form.CustomerStatus.id_for_label }}">Status:</label>
+            {{ form.CustomerStatus }}
+        </div>
+                                                                                        <div class="form-group ">
+            {{ form.PricingStructureSelect.errors }}
+            <label for="{{ form.PricingStructureSelect.id_for_label }}">Pricing</label>
+            {{ form.PricingStructureSelect }}
+        </div>
+
+<!--            <div class="form-group">-->
+<!--            {{ form.Firm_Price_or_NBIE.errors }}-->
+<!--            <label for="{{ form.Firm_Price_or_NBIE.id_for_label }}">Firm_Price_or_NBIE:</label>-->
+<!--            {{ form.Firm_Price_or_NBIE }}-->
+<!--        </div>-->
+
+
+
+
                                           </div>
                                       </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                    {{ form.Questionnaire_num_consoles.errors }}
+                                    <label for="{{ form.Questionnaire_num_consoles.id_for_label }}"># of App/Consoles:</label>
+                                    {{ form.Questionnaire_num_consoles }}
+                                </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                    {{ form.Questionnaire_num_workstation.errors }}
+                                    <label for="{{ form.Questionnaire_num_workstation.id_for_label }}"># of Workstation:</label>
+                                    {{ form.Questionnaire_num_workstation }}
+                                </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                    {{ form.Questionnaire_num_server.errors }}
+                                    <label for="{{ form.Questionnaire_num_server.id_for_label }}"># of Servers :</label>
+                                    {{ form.Questionnaire_num_server }}
+                                </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                    {{ form.Questionnaire_num_ipaddress.errors }}
+                                    <label for="{{ form.Questionnaire_num_ipaddress.id_for_label }}"># of IP/Endpoints:</label>
+                                    {{ form.Questionnaire_num_ipaddress }}
+                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-3">
+                                             <div class="form-group">
+                                                {{ form.Questionnaire_num_total_endpoints.errors }}
+                                                <label for="{{ form.Questionnaire_num_total_endpoints.id_for_label }}"># Total Endpoints:</label>
+                                                {{ form.Questionnaire_num_total_endpoints }}
+                                            </div>
+                                        </div>
+                                    </div>
                                   </div>
                                   <!-- /.card-body -->
                                   <div class="card-footer">
@@ -185,28 +347,22 @@
             </fieldset>
             <fieldset class="active__form" id="form2">
                 <div class="sub__title__container">
-                    <p>Step 2/6</p>
+                    <p>Step 2/7</p>
                     <h2>ENTER: Customer's Information</h2>
                     <p>Please let us know what type of business best describes you as entreprenuer or businessman.</p>
                 </div>
                 </hr>
                 <div class="input__container" style="width: 600px">
+                                <div class="card bg-dark card-dark">
 
-                        <div class="card bg-dark">
-<!--                                  <div class="card-header">-->
-<!--                                    <h2 class="card-title">Customer Information</h2>-->
-<!--                                    <div class="card-tools">-->
-<!--                                      &lt;!&ndash; Buttons, labels, and many other things can be placed here! &ndash;&gt;-->
-<!--                                      &lt;!&ndash; Here is a label for example &ndash;&gt;-->
-<!--                                      <span class="badge badge-primary">help</span>-->
-<!--                                    </div>-->
-<!--                                    &lt;!&ndash; /.card-tools &ndash;&gt;-->
-<!--                                  </div>-->
-<!--                                  &lt;!&ndash; /.card-header &ndash;&gt;-->
+                                  <div class="card-body">
+                                    <div class="card bg-dark">
+
                                   <div class="card-body">
 
                                       <div class="row">
-                                          <div class="col-md-6">
+
+                                            <div class="col-md-4">
                                                          <div class="form-group">
             {{ form.CustomerName.errors }}
             <label for="{{ form.CustomerName.id_for_label }}">Customer / Account Name:</label>
@@ -222,16 +378,8 @@
             <label for="{{ form.rfs_num.id_for_label }}">RFS #:</label>
             {{ form.rfs_num }}
         </div>
-                  <div class="form-group ">
-            {{ form.Revenue_Structure_Select.errors }}
-            <label for="{{ form.Revenue_Structure_Select.id_for_label }}">Revenue Structure:</label>
-            {{ form.Revenue_Structure_Select }}
-        </div>
-                                                                <div class="form-group ">
-            {{ form.Solution_Design.errors }}
-            <label for="{{ form.Solution_Design.id_for_label }}">Solution Design:</label>
-            {{ form.Solution_Design }}
-        </div>
+
+
                                                                                                               <div class="form-group ">
             {{ form.Service_Delivery_Requirements.errors }}
             <label for="{{ form.Service_Delivery_Requirements.id_for_label }}">Service Delivery Requirements:</label>
@@ -239,10 +387,10 @@
         </div>
 
         </div>
-       <div class="col-md-6">
+                                            <div class="col-md-4">
                                                         <div class="form-group">
             {{ form.TranStartDate.errors }}
-            <label for="{{ form.TranStartDate.id_for_label }}">Transition / Transformation Date:</label>
+            <label for="{{ form.TranStartDate.id_for_label }}">Transition / Transformation:</label>
             {{ form.TranStartDate }}
         </div>
         <div class="form-group ">
@@ -255,25 +403,64 @@
             <label for="{{ form.appttus_num.id_for_label }}">Appttus / Atlas #:</label>
             {{ form.appttus_num }}
         </div>
-        <div class="form-group ">
-            {{ form.Revenue_Structure_Cost_Explain.errors }}
-            <label for="{{ form.Revenue_Structure_Cost_Explain.id_for_label }}">If "Cost Recovery" Explain-Provide Details :</label>
-            {{ form.Revenue_Structure_Cost_Explain }}
-        </div>
-        <div class="form-group ">
-            {{ form.Solution_Owner.errors }}
-            <label for="{{ form.Solution_Owner.id_for_label }}">Solution Owner:</label>
-            {{ form.Solution_Owner }}
-        </div>
+
+
        <div class="form-group ">
             {{ form.Restricted_Delivery.errors }}
             <label for="{{ form.Restricted_Delivery.id_for_label }}">Restricted Delivery:</label>
             {{ form.Restricted_Delivery }}
         </div>
                                           </div>
+                                            <div class="col-md-4">
+                                     <div class="form-group ">
+            {{ form.Revenue_Structure_Select.errors }}
+            <label for="{{ form.Revenue_Structure_Select.id_for_label }}">Revenue Structure:</label>
+            {{ form.Revenue_Structure_Select }}
+        </div>
+                                                <div class="form-group ">
+            {{ form.Revenue_Structure_Cost_Explain.errors }}
+            <label for="{{ form.Revenue_Structure_Cost_Explain.id_for_label }}">If "Cost Recovery" Explain/Details :</label>
+            {{ form.Revenue_Structure_Cost_Explain }}
+        </div>
+                                                <div class="form-group ">
+            {{ form.Solution_Design.errors }}
+            <label for="{{ form.Solution_Design.id_for_label }}">Solution Design:</label>
+            {{ form.Solution_Design }}
+        </div>
+                                                <div class="form-group ">
+            {{ form.Solution_Owner.errors }}
+            <label for="{{ form.Solution_Owner.id_for_label }}">Solution Owner:</label>
+            {{ form.Solution_Owner }}
+        </div>
+
+                                            </div>
                                       </div>
+<!--                                        <div class="container">-->
+<!--        <div class="form-group ">-->
+<!--            {{ form.Other_Features_or_Platforms.errors }}-->
+<!--            <label for="{{ form.Other_Features_or_Platforms.id_for_label }}">Other Features or Platforms:</label>-->
+<!--            {{ form.Other_Features_or_Platforms }}-->
+<!--        </div>-->
+<!--        <div class="form-group ">-->
 
+<!--            {{ form.Other_Features_or_Platforms_Note.errors }}-->
+<!--            <label for="{{ form.Other_Features_or_Platforms_Note.id_for_label }}">Other Features or Platforms Note:</label>-->
+<!--            {{ form.Other_Features_or_Platforms_Note }}-->
+<!--        </div>-->
+<!--  <script>-->
+<!--    CKEDITOR.replace('Other_Features_or_Platforms_Note', {-->
+<!--      width: '90%',-->
+<!--      height: 250,-->
+<!--      removeButtons: 'PasteFromWord'-->
+<!--    });-->
+<!--  </script>-->
 
+<!--                                        </div>-->
+
+                                  </div>
+                                  <!-- /.card-body -->
+
+                                </div>
                                   </div>
                                   <!-- /.card-body -->
                                   <div class="card-footer">
@@ -281,28 +468,49 @@
                                   </div>
                                   <!-- /.card-footer -->
                                 </div>
+
+
+
+<!--                        <div class="card bg-dark">-->
+<!--&lt;!&ndash;                                  <div class="card-header">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <h2 class="card-title">Customer Information</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="card-tools">&ndash;&gt;-->
+<!--&lt;!&ndash;                                      &lt;!&ndash; Buttons, labels, and many other things can be placed here! &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                      &lt;!&ndash; Here is a label for example &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                      <span class="badge badge-primary">help</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    &lt;!&ndash; /.card-tools &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                  &lt;!&ndash; /.card-header &ndash;&gt;&ndash;&gt;-->
+
+<!--                                  &lt;!&ndash; /.card-body &ndash;&gt;-->
+<!--                                  <div class="card-footer">-->
+<!--                                    <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" onclick="nextForm();">Next</a> </div>-->
+<!--                                  </div>-->
+<!--                                  &lt;!&ndash; /.card-footer &ndash;&gt;-->
+<!--                                </div>-->
                                 <!-- /.card -->
 
                 </div>
             </fieldset>
             <fieldset class="active__form" id="form3">
                 <div class="sub__title__container" style="width: 700px">
-                    <p>Step 3/6</p>
+                    <p>Step 3/7</p>
                     <h2>Select: Security Products and Services</h2>
                     <p>Please let us know what type of business best describes you as entreprenuer or businessman.</p>
                 </div>
                 <div class="input__container">
 
                     <div class="card card-dark bg-dark">
-                      <div class="card-header">
-                        <h2 class="card-title">Select All that Apply: Customer's Information</h2>
-                        <div class="card-tools">
-                          <!-- Buttons, labels, and many other things can be placed here! -->
-                          <!-- Here is a label for example -->
-                          <span class="badge badge-primary">Label</span>
-                        </div>
-                        <!-- /.card-tools -->
-                      </div>
+<!--                      <div class="card-header">-->
+<!--                        <h2 class="card-title">Select All that Apply: Customer's Information</h2>-->
+<!--                        <div class="card-tools">-->
+<!--                          &lt;!&ndash; Buttons, labels, and many other things can be placed here! &ndash;&gt;-->
+<!--                          &lt;!&ndash; Here is a label for example &ndash;&gt;-->
+<!--                          <span class="badge badge-primary">Label</span>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; /.card-tools &ndash;&gt;-->
+<!--                      </div>-->
                       <!-- /.card-header -->
                       <div class="card-body">
                      <div class="row">
@@ -364,304 +572,7 @@
                         </div>
     <hr>
 <p>Select the Security Technology types you are interested in for your Endpoints </p>
-<!--                    <div class="row">-->
-<!--                        <div class="col-md-2"></div>-->
-<!--                        <div class="col-md-5">-->
-<!--                                            <div class="form-group ">-->
-<!--                                                <div class="row">-->
-<!--                                                    <div class="col-md-8">-->
-<!--                                                        {{ form.AntiVirusMalware.errors }}-->
-<!--                     <label for="{{ form.AntiVirusMalware.id_for_label }}">AntiVirus / AntiMalware:</label>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="col-md-4">-->
-<!--                                                        {{ form.AntiVirusMalware }}-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
 
-<!--                </div>-->
-<!--                                            <div class="form-group ">-->
-<!--                                      <div class="row">-->
-<!--                                            <div class="col-md-8">-->
-<!--    {{ form.DLP_on_Workstations.errors }}-->
-<!--                    <label for="{{ form.DLP_on_Workstations.id_for_label }}">DLP on Workstations:</label>-->
-<!--                                            </div>-->
-<!--                                            <div class="col-md-4">-->
-<!--   {{ form.DLP_on_Workstations }}-->
-<!--                                            </div>-->
-<!--                                      </div>-->
-
-<!--                </div>-->
-<!--                                            <div class="form-group ">-->
-<!--                            <div class="row">-->
-<!--                                <div class="col-md-8">-->
-<!--                                    {{ form.DLP_on_Servers.errors }}-->
-<!--                                    <label for="{{ form.DLP_on_Servers.id_for_label }}">DLP on Servers:</label>-->
-<!--                                    </div>-->
-<!--                                <div class="col-md-4">-->
-<!--                                      {{ form.DLP_on_Servers }}-->
-<!--                                </div>-->
-<!--                            </div>-->
-
-
-
-<!--                </div>-->
-<!--                                            <div class="form-group ">-->
-<!--<div class="row">-->
-<!--	<div class="col-md-8">-->
-
-<!--                    {{ form.Encryption_on_Workstations.errors }}-->
-<!--                    <label for="{{ form.Encryption_on_Workstations.id_for_label }}">Encryption on Workstations:</label>-->
-
-<!--	</div>-->
-<!--	<div class="col-md-4">-->
-<!--		{{ form.Encryption_on_Workstations }}-->
-<!--	</div>-->
-<!--</div>-->
-
-
-<!--                </div>-->
-
-
-<!--                                            <div class="form-group ">-->
-<!--<div class="row">-->
-<!--	<div class="col-md-8">-->
-
-<!--                    {{ form.Encryption_on_Servers.errors }}-->
-<!--                    <label for="{{ form.Encryption_on_Servers.id_for_label }}">Encryption on Servers:</label>-->
-
-<!--	</div>-->
-<!--	<div class="col-md-4">-->
-<!--		{{ form.Encryption_on_Servers }}-->
-<!--	</div>-->
-<!--</div>-->
-
-
-<!--                </div>-->
-
-
-
-
-<!--                                            <div class="form-group ">-->
-<!--<div class="row">-->
-<!--	<div class="col-md-8">-->
-<!--		   {{ form.NAS_Storage.errors }}-->
-<!--                    <label for="{{ form.NAS_Storage.id_for_label }}">NAS Storage:</label>-->
-
-<!--	</div>-->
-<!--	<div class="col-md-4">-->
-<!--		{{ form.NAS_Storage }}-->
-<!--	</div>-->
-<!--</div>-->
-
-
-<!--                </div>-->
-
-
-
-<!--                                            <div class="form-group ">-->
-<!--<div class="row">-->
-<!--	<div class="col-md-8">-->
-<!--		                    {{ form.Windows.errors }}-->
-<!--                    <label for="{{ form.Windows.id_for_label }}">Windows:</label>-->
-<!--	</div>-->
-<!--	<div class="col-md-4">-->
-<!--		{{ form.Windows }}-->
-<!--	</div>-->
-<!--</div>-->
-
-
-
-<!--                </div>-->
-<!--                                            <div class="form-group ">-->
-<!--                                                <div class="row">-->
-<!--	<div class="col-md-8">-->
-<!--		  {{ form.AIX.errors }}-->
-<!--                    <label for="{{ form.AIX.id_for_label }}">AIX:</label>-->
-<!--	</div>-->
-<!--	<div class="col-md-4">-->
-<!--		{{ form.AIX }}-->
-<!--	</div>-->
-<!--</div>-->
-
-
-<!--                </div>-->
-<!--                                            <div class="form-group ">-->
-<!--                        <div class="row">-->
-<!--	<div class="col-md-8">-->
-<!--		{{ form.VDI.errors }}-->
-<!--                    <label for="{{ form.VDI.id_for_label }}">VDI:</label>-->
-<!--	</div>-->
-<!--	<div class="col-md-4">-->
-<!--		{{ form.VDI }}-->
-<!--	</div>-->
-<!--</div>-->
-
-
-<!--                </div>-->
-<!--                                            <div class="form-group ">-->
-<!--<div class="row">-->
-<!--	<div class="col-md-8">-->
-<!--		        {{ form.Other_Features_or_Platforms.errors }}-->
-<!--                    <label for="{{ form.Other_Features_or_Platforms.id_for_label }}">Other Features or Platforms:</label>-->
-
-<!--	</div>-->
-<!--	<div class="col-md-4">-->
-<!--		   {{ form.Other_Features_or_Platforms }}-->
-<!--	</div>-->
-<!--</div>-->
-
-
-<!--                </div>-->
-
-
-
-<!--                        </div>-->
-<!--                        <div class="col-md-5">-->
-<!--                             <div class="form-group ">-->
-
-<!--                                                        <div class="row">-->
-<!--                                                            <div class="col-md-8">-->
-<!--                                                                     {{ form.URL_Filtering.errors }}-->
-<!--                                        <label for="{{ form.URL_Filtering.id_for_label }}">URL Filtering:</label>-->
-<!--                                                            </div>-->
-<!--                                                            <div class="col-md-4">-->
-<!--                                                                 {{ form.URL_Filtering }}-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-
-
-<!--                                    </div>-->
-<!--                                                           <div class="form-group ">-->
-
-<!--                                                            <div class="row">-->
-<!--                                                                <div class="col-md-8">-->
-<!--                                                                      {{ form.HIPs_on_Workstations.errors }}-->
-<!--                                        <label for="{{ form.HIPs_on_Workstations.id_for_label }}">HIPs on Workstations:</label>-->
-<!--                                                                </div>-->
-<!--                                                                <div class="col-md-4">-->
-<!--                                                                    {{ form.HIPs_on_Workstations }}-->
-<!--                                                                </div>-->
-<!--                                                            </div>-->
-
-
-<!--                                    </div>-->
-<!--                                                           <div class="form-group ">-->
-<!--                                                               <div class="row">-->
-<!--                                                                    <div class="col-md-8">-->
-<!--                                                                          {{ form.HIPs_on_Servers.errors }}-->
-<!--                                        <label for="{{ form.HIPs_on_Servers.id_for_label }}">HIPs on Servers:</label>-->
-<!--                                                                    </div>-->
-<!--                                                                    <div class="col-md-4">-->
-<!--                                                                        {{ form.HIPs_on_Servers }}-->
-<!--                                                                    </div>-->
-<!--                                                                </div>-->
-
-
-<!--                                    </div>-->
-<!--                                                           <div class="form-group ">-->
-<!--                                                                 <div class="row">-->
-<!--                                                                    <div class="col-md-8">-->
-<!--                                                                         {{ form.Firewall_on_Workstations.errors }}-->
-<!--                                        <label for="{{ form.Firewall_on_Workstations.id_for_label }}">Firewall on Workstations:</label>-->
-<!--                                                                    </div>-->
-<!--                                                                    <div class="col-md-4">-->
-<!--                                                                        {{ form.Firewall_on_Workstations }}-->
-<!--                                                                    </div>-->
-<!--                                                                </div>-->
-
-
-<!--                                    </div>-->
-<!--                                                           <div class="form-group ">-->
-
-<!--                                                               <div class="row">-->
-<!--                                                                    <div class="col-md-8">-->
-<!--                                                                          {{ form.Firewall_on_Servers.errors }}-->
-<!--                                        <label for="{{ form.Firewall_on_Servers.id_for_label }}">Firewall on Servers:</label>-->
-<!--                                                                    </div>-->
-<!--                                                                    <div class="col-md-4">-->
-<!--                                                                         {{ form.Firewall_on_Servers }}-->
-<!--                                                                    </div>-->
-<!--                                                                </div>-->
-
-
-<!--                                    </div>-->
-<!--                                                           <div class="form-group ">-->
-<!--                                                              <div class="row">-->
-<!--                                                                    <div class="col-md-8">-->
-<!--                                                                             {{ form.BigFix_Patching_Scanning.errors }}-->
-<!--                                        <label for="{{ form.BigFix_Patching_Scanning.id_for_label }}">BigFix Patching Scanning:</label>-->
-<!--                                                                    </div>-->
-<!--                                                                    <div class="col-md-4">-->
-<!--                                                                        {{ form.BigFix_Patching_Scanning }}-->
-<!--                                                                    </div>-->
-<!--                                                                </div>-->
-
-
-<!--                                    </div>-->
-<!--                                                           <div class="form-group ">-->
-
-<!--                                                               <div class="row">-->
-<!--                                                                    <div class="col-md-8">-->
-<!--                                                                          {{ form.Linux.errors }}-->
-<!--                                        <label for="{{ form.Linux.id_for_label }}">Linux:</label>-->
-<!--                                                                    </div>-->
-<!--                                                                    <div class="col-md-4">-->
-<!--                                                                        {{ form.Linux }}-->
-<!--                                                                    </div>-->
-<!--                                                                </div>-->
-
-
-<!--                                    </div>-->
-<!--                                                           <div class="form-group ">-->
-<!--                                                               <div class="row">-->
-<!--                                                                    <div class="col-md-8">-->
-<!--                                                                               {{ form.Integrity_Monitoring.errors }}-->
-<!--                                        <label for="{{ form.Integrity_Monitoring.id_for_label }}">Integrity Monitoring:</label>-->
-<!--                                                                    </div>-->
-<!--                                                                    <div class="col-md-4">-->
-<!--                                                                         {{ form.Integrity_Monitoring }}-->
-<!--                                                                    </div>-->
-<!--                                                                </div>-->
-
-
-
-<!--                                    </div>-->
-<!--                                                           <div class="form-group ">-->
-<!--                                                              <div class="row">-->
-<!--                                                                    <div class="col-md-8">-->
-<!--                                                                              {{ form.Citrix.errors }}-->
-<!--                                        <label for="{{ form.Citrix.id_for_label }}">Citrix:</label>-->
-<!--                                                                    </div>-->
-<!--                                                                    <div class="col-md-4">-->
-<!--                                                                            {{ form.Citrix }}-->
-<!--                                                                    </div>-->
-<!--                                                                </div>-->
-
-
-<!--                                    </div>-->
-
-
-
-<!--                        </div>-->
-
-<!--    <div class="form-group ">-->
-<!--                                                              <div class="row">-->
-
-
-<!--                                                                              {{ form.Other_Features_or_Platforms_Note.errors }}-->
-<!--                                        <label for="{{ form.Other_Features_or_Platforms_Note.id_for_label }}">Other Features or Platforms Note:</label>-->
-
-
-<!--                                                                            {{ form.Other_Features_or_Platforms_Note }}-->
-
-<!--                                                                </div>-->
-<!--&lt;!&ndash;                                                           <div class="form-group ">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        {{ form.Other_Features_or_Platforms_Note.errors }}&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <label for="{{ form.Other_Features_or_Platforms_Note.id_for_label }}">Other Features or Platforms Note:</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        {{ form.Other_Features_or_Platforms_Note }}&ndash;&gt;-->
-<!--                                    </div>-->
-
-<!--                    </div>-->
       <div class="row">
                         <div class="col-md-4">
                             <div class="form-group ">
@@ -937,22 +848,22 @@
 
                         </div>
 
-    <div class="form-group ">
-                                                              <div class="row">
+<!--    <div class="form-group ">-->
+<!--                                                              <div class="row">-->
 
 
-                                                                              {{ form.Other_Features_or_Platforms_Note.errors }}
-                                        <label for="{{ form.Other_Features_or_Platforms_Note.id_for_label }}">Other Features or Platforms Note:</label>
-
-
-                                                                            {{ form.Other_Features_or_Platforms_Note }}
-
-                                                                </div>
-<!--                                                           <div class="form-group ">-->
-<!--                                        {{ form.Other_Features_or_Platforms_Note.errors }}-->
+<!--                                                                              {{ form.Other_Features_or_Platforms_Note.errors }}-->
 <!--                                        <label for="{{ form.Other_Features_or_Platforms_Note.id_for_label }}">Other Features or Platforms Note:</label>-->
-<!--                                        {{ form.Other_Features_or_Platforms_Note }}-->
-                                    </div>
+
+
+<!--                                                                            {{ form.Other_Features_or_Platforms_Note }}-->
+
+<!--                                                                </div>-->
+<!--&lt;!&ndash;                                                           <div class="form-group ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {{ form.Other_Features_or_Platforms_Note.errors }}&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <label for="{{ form.Other_Features_or_Platforms_Note.id_for_label }}">Other Features or Platforms Note:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {{ form.Other_Features_or_Platforms_Note }}&ndash;&gt;-->
+<!--                                    </div>-->
 
                     </div>
 </div>
@@ -1039,136 +950,73 @@ Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis 
             </fieldset>
             <fieldset class="active__form" id="form4">
                 <div class="sub__title__container" style="width : 700px">
-                    <p>Step 4/6</p>
-                    <h2>Please select your budget</h2>
+                    <p>Step 4/7</p>
+                    <h2>Product Notes and Delivery</h2>
                     <p>Please let us know budget for your project so yes are great that we can give the right quote thanks</p>
                 </div>
                 <div class="input__container">
-
-
-                    <input type="range" min="10000" max="500000" value="250000" class="slider">
-                    <div class="output__value"> </div>
+<!--                        <input type="range" min="10000" max="500000" value="250000" class="slider">-->
+<!--                    <div class="output__value"> </div>-->
                                 <div class="card bg-dark card-dark">
-                                  <div class="card-header">
-                                    <h3 class="card-title">Default Card Example</h3>
-                                    <div class="card-tools">
-                                      <!-- Buttons, labels, and many other things can be placed here! -->
-                                      <!-- Here is a label for example -->
-                                      <span class="badge badge-primary">Label</span>
-                                    </div>
-                                    <!-- /.card-tools -->
-                                  </div>
-                                  <!-- /.card-header -->
+
                                   <div class="card-body">
                                     <div class="card bg-dark">
-                                  <div class="card-header">
-                                    <h2 class="card-title">Customer Information</h2>
-                                    <div class="card-tools">
-                                      <!-- Buttons, labels, and many other things can be placed here! -->
-                                      <!-- Here is a label for example -->
-                                      <span class="badge badge-primary">help</span>
-                                    </div>
-                                    <!-- /.card-tools -->
-                                  </div>
-                                  <!-- /.card-header -->
+
                                   <div class="card-body">
+<div class="row">
+<div class="col-12 col-sm-12">
+<div class="card card-primary card-tabs">
+<div class="card-header p-0 pt-1">
+<ul class="nav nav-tabs" id="custom-tabs-main-tab" role="tablist">
+<li class="nav-item">
+<a class="nav-link active" id="custom-tabs-one-features-tab" data-toggle="pill" href="#custom-tabs-one-features" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Product notes</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="custom-tabs-one-environment-tab" data-toggle="pill" href="#custom-tabs-one-environment" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Environment Platform Notes</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="custom-tabs-one-restricted-delivery-tab" data-toggle="pill" href="#custom-tabs-one-delivery" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Delivery Notes</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="custom-tabs-one-mynotes-tab" data-toggle="pill" href="#custom-tabs-one-mynotes" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">My Notes</a>
+</li>
+</ul>
+</div>
+<div class="card-body">
+<div class="tab-content" id="custom-tabs-main-tabContent">
+<div class="tab-pane fade show active" id="custom-tabs-one-features" role="tabpanel" aria-labelledby="custom-tabs-one-features-tab">
 
-                                      <div class="row">
-
-                                            <div class="col-md-4">
-                                                         <div class="form-group">
-            {{ form.CustomerName.errors }}
-            <label for="{{ form.CustomerName.id_for_label }}">Customer / Account Name:</label>
-            {{ form.CustomerName }}
-        </div>
-                                                        <div class="form-group ">
-            {{ form.SalesContactName.errors }}
-            <label for="{{ form.SalesContactName.id_for_label }}">Sales Contact Name:</label>
-            {{ form.SalesContactName }}
-        </div>
-        <div class="form-group ">
-            {{ form.rfs_num.errors }}
-            <label for="{{ form.rfs_num.id_for_label }}">RFS #:</label>
-            {{ form.rfs_num }}
-        </div>
-
-
-                                                                                                              <div class="form-group ">
-            {{ form.Service_Delivery_Requirements.errors }}
-            <label for="{{ form.Service_Delivery_Requirements.id_for_label }}">Service Delivery Requirements:</label>
-            {{ form.Service_Delivery_Requirements }}
-        </div>
-
-        </div>
-                                            <div class="col-md-4">
-                                                        <div class="form-group">
-            {{ form.TranStartDate.errors }}
-            <label for="{{ form.TranStartDate.id_for_label }}">Transition / Transformation Date:</label>
-            {{ form.TranStartDate }}
-        </div>
-        <div class="form-group ">
-            {{ form.SalesContactEmail.errors }}
-            <label for="{{ form.SalesContactEmail.id_for_label }}">Sales Contact Email:</label>
-            {{ form.SalesContactEmail }}
-        </div>
-        <div class="form-group ">
-            {{ form.appttus_num.errors }}
-            <label for="{{ form.appttus_num.id_for_label }}">Appttus / Atlas #:</label>
-            {{ form.appttus_num }}
-        </div>
-
-
-       <div class="form-group ">
-            {{ form.Restricted_Delivery.errors }}
-            <label for="{{ form.Restricted_Delivery.id_for_label }}">Restricted Delivery:</label>
-            {{ form.Restricted_Delivery }}
-        </div>
-                                          </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group ">
-            {{ form.Revenue_Structure_Select.errors }}
-            <label for="{{ form.Revenue_Structure_Select.id_for_label }}">Revenue Structure:</label>
-            {{ form.Revenue_Structure_Select }}
-        </div>
-                                                <div class="form-group ">
-            {{ form.Revenue_Structure_Cost_Explain.errors }}
-            <label for="{{ form.Revenue_Structure_Cost_Explain.id_for_label }}">If "Cost Recovery" Explain/Details :</label>
-            {{ form.Revenue_Structure_Cost_Explain }}
-        </div>
-                                                <div class="form-group ">
-            {{ form.Solution_Design.errors }}
-            <label for="{{ form.Solution_Design.id_for_label }}">Solution Design:</label>
-            {{ form.Solution_Design }}
-        </div>
-                                                <div class="form-group ">
-            {{ form.Solution_Owner.errors }}
-            <label for="{{ form.Solution_Owner.id_for_label }}">Solution Owner:</label>
-            {{ form.Solution_Owner }}
-        </div>
-
-                                            </div>
-                                      </div>
-                                        <div class="container">
-        <div class="form-group ">
-            {{ form.Other_Features_or_Platforms.errors }}
-            <label for="{{ form.Other_Features_or_Platforms.id_for_label }}">Other Features or Platforms:</label>
-            {{ form.Other_Features_or_Platforms }}
-        </div>
-        <div class="form-group ">
-
-            {{ form.Other_Features_or_Platforms_Note.errors }}
-            <label for="{{ form.Other_Features_or_Platforms_Note.id_for_label }}">Other Features or Platforms Note:</label>
-            {{ form.Other_Features_or_Platforms_Note }}
-        </div>
-  <script>
-    CKEDITOR.replace('Other_Features_or_Platforms_Note', {
-      width: '90%',
-      height: 250,
-      removeButtons: 'PasteFromWord'
-    });
-  </script>
 
                                         </div>
+
+<!--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.-->
+</div>
+<div class="tab-pane fade" id="custom-tabs-one-environment" role="tabpanel" aria-labelledby="custom-tabs-one-environment-tab">
+
+
+                                        </div>
+
+</div>
+<div class="tab-pane fade" id="custom-tabs-one-delivery" role="tabpanel" aria-labelledby="custom-tabs-one-delivery-tab">
+Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
+</div>
+<div class="tab-pane fade" id="custom-tabs-one-mynotes" role="tabpanel" aria-labelledby="custom-tabs-one-mynotes-tab">
+Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
+</div>
+</div>
+</div>
+
+
+
+
+mynotes
+</nav>
+
+                </div>
+        </div>
+
+</div>
+
 
                                   </div>
                                   <!-- /.card-body -->
@@ -1185,23 +1033,41 @@ Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis 
 
 
                                 <!-- /.card -->
+<!--                    <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" onclick="nextForm();">Next</a> </div>-->
+
+
+
+
+
+
+
+            </fieldset>
+
+            <fieldset class="active__form" id="form5">
+                <div class="sub__title__container">
+                    <p>Step 5/7</p>
+                    <h2>RFS INFORMATION</h2>
+                    <p>Thanks for completing the form and for your time.Plss enter your email below and submit the form</p>
+                </div>
+                <div class="input__container"> <label for="Email">Enter your email</label> <input type="text">
+<!--                    <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" id="submitBtn" onclick="nextForm();">Next</a> </div>-->
                     <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" onclick="nextForm();">Next</a> </div>
                 </div>
             </fieldset>
-            <fieldset class="active__form" id="form5">
+            <fieldset class="active__form" id="form6">
                 <div class="sub__title__container">
-                    <p>Step 5/6</p>
-                    <h2>Complete Submission</h2>
+                    <p>Step 6/7</p>
+                    <h2>APPTUS: OFFERING CODES</h2>
                     <p>Thanks for completing the form and for your time.Plss enter your email below and submit the form</p>
                 </div>
                 <div class="input__container"> <label for="Email">Enter your email</label> <input type="text">
                     <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" id="submitBtn" onclick="nextForm();">Next</a> </div>
                 </div>
             </fieldset>
-            <fieldset class="active__form" id="form6">
+            <fieldset class="active__form" id="form7">
                 <div class="sub__title__container">
-                    <p>Step 6/56</p>
-                    <h2>Complete Submission</h2>
+                    <p>Step 7/7</p>
+                    <h2>GENERATE: PDF / EMAIL</h2>
                     <p>Thanks for completing the form and for your time.Plss enter your email below and submit the form</p>
                 </div>
                 <div class="input__container"> <label for="Email">Enter your email</label> <input type="text">
@@ -1271,7 +1137,7 @@ Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis 
 }
 
 .left__container {
-    width: 35%;
+    width: 25%;
     display: flex;
     justify-content: center;
     border-right: 1px solid #42434e;
@@ -1344,7 +1210,7 @@ Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis 
 }
 
 .right__container {
-    width: 65%;
+    width: 75%;
     display: flex;
     padding: 1.5rem 1.5rem
 }
@@ -1642,6 +1508,8 @@ const form2 = document.querySelector('#form2');
 const form3 = document.querySelector('#form3');
 const form4 = document.querySelector('#form4');
 const form5 = document.querySelector('#form5');
+const form6 = document.querySelector('#form6');
+const form7 = document.querySelector('#form7');
 
 
 const icon1 = document.querySelector('#icon1');
@@ -1649,6 +1517,8 @@ const icon2 = document.querySelector('#icon2');
 const icon3 = document.querySelector('#icon3');
 const icon4 = document.querySelector('#icon4');
 const icon5 = document.querySelector('#icon5');
+const icon6 = document.querySelector('#icon6');
+const icon7 = document.querySelector('#icon7');
 
 
 var viewId = 1;
@@ -1676,31 +1546,50 @@ icon2.classList.remove('active');
 icon3.classList.remove('active');
 icon4.classList.remove('active');
 icon5.classList.remove('active');
+icon6.classList.remove('active');
+icon7.classList.remove('active');
 }
 if(viewId===2){
 icon2.classList.add('active');
 icon3.classList.remove('active');
 icon4.classList.remove('active');
 icon5.classList.remove('active');
+icon6.classList.remove('active');
+icon7.classList.remove('active');
 }
 if(viewId===3){
 icon3.classList.add('active');
 icon4.classList.remove('active');
 icon5.classList.remove('active');
+icon6.classList.remove('active');
+icon7.classList.remove('active');
 }
 if(viewId===4){
 icon4.classList.add('active');
 icon5.classList.remove('active');
+icon6.classList.remove('active');
+icon7.classList.remove('active');
 }
 if(viewId===5){
 icon5.classList.add('active');
+icon6.classList.remove('active');
+icon7.classList.remove('active');
+}
+if(viewId===6){
+icon6.classList.add('active');
+icon7.classList.remove('active');
+}
+if(viewId===7){
+icon7.classList.add('active');
 nxtBtn.innerHTML = "Submit"
 }
-if(viewId>5){
+if(viewId>7){
 icon2.classList.remove('active');
 icon3.classList.remove('active');
 icon4.classList.remove('active');
 icon5.classList.remove('active');
+icon6.classList.remove('active');
+icon7.classList.remove('active');
 
 }
 }
@@ -1717,20 +1606,28 @@ icon4.classList.add('active');
 }
 if(viewId===5){
 icon5.classList.add('active');
+}
+if(viewId===6){
+icon6.classList.add('active');
+}
+if(viewId===7){
+icon7.classList.add('active');
 nxtBtn.innerHTML = "Submit"
 }
-if(viewId>5){
+if(viewId>7){
 icon2.classList.remove('active');
 icon3.classList.remove('active');
 icon4.classList.remove('active');
 icon5.classList.remove('active');
+icon6.classList.remove('active');
+icon7.classList.remove('active');
 
 }
 }
 
 function displayForms(){
 
-if(viewId>5){
+if(viewId>7){
 viewId=1;
 }
 
@@ -1740,6 +1637,8 @@ form2.style.display = 'none';
 form3.style.display = 'none';
 form4.style.display = 'none';
 form5.style.display = 'none';
+form6.style.display = 'none';
+form7.style.display = 'none';
 
 
 }else if(viewId === 2){
@@ -1748,6 +1647,8 @@ form2.style.display = 'block';
 form3.style.display = 'none';
 form4.style.display = 'none';
 form5.style.display = 'none';
+form6.style.display = 'none';
+form7.style.display = 'none';
 
 }else if(viewId === 3){
 form1.style.display = 'none';
@@ -1755,12 +1656,17 @@ form2.style.display = 'none';
 form3.style.display = 'block';
 form4.style.display = 'none';
 form5.style.display = 'none';
+form6.style.display = 'none';
+form7.style.display = 'none';
+
 }else if(viewId === 4){
 form1.style.display = 'none';
 form2.style.display = 'none';
 form3.style.display = 'none';
 form4.style.display = 'block';
 form5.style.display = 'none';
+form6.style.display = 'none';
+form7.style.display = 'none';
 
 }else if(viewId === 5){
 form1.style.display = 'none';
@@ -1768,6 +1674,27 @@ form2.style.display = 'none';
 form3.style.display = 'none';
 form4.style.display = 'none';
 form5.style.display = 'block';
+form6.style.display = 'none';
+form7.style.display = 'none';
+
+}else if(viewId === 6){
+form1.style.display = 'none';
+form2.style.display = 'none';
+form3.style.display = 'none';
+form4.style.display = 'none';
+form5.style.display = 'none';
+form6.style.display = 'block';
+form7.style.display = 'none';
+
+}else if(viewId === 7){
+form1.style.display = 'none';
+form2.style.display = 'none';
+form3.style.display = 'none';
+form4.style.display = 'none';
+form5.style.display = 'none';
+form6.style.display = 'none';
+form7.style.display = 'block';
+
 
 }
 }
@@ -1798,168 +1725,404 @@ output.innerHTML = this.value ;
 
 
 
-                            </form>
+<!--                            </form>-->
                         </div>
                     </div>
                 </div>
 
 
-                <div class=" row">
-                    <div class="col-md-12">
-                        <div class="card">
-                          <div class="card-header">
-                            <h3 class="card-title">Default Card Example</h3>
-                            <div class="card-tools">
-                              <!-- Buttons, labels, and many other things can be placed here! -->
-                              <!-- Here is a label for example -->
-                              <span class="badge badge-primary">Label</span>
-                            </div>
-                            <!-- /.card-tools -->
-                          </div>
-                          <!-- /.card-header -->
-                          <div class="card-body">
-                            The body of the card
-                          </div>
-                          <!-- /.card-body -->
-                          <div class="card-footer">
-                            The footer of the card
-                          </div>
-                          <!-- /.card-footer -->
-                        </div>
-                        <!-- /.card -->
 
-                    </div>
-                </div>
-                <!-- editor -->
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
+
+<!--          <div class="form-group">-->
+<!--            {{ form.date.errors }}-->
+<!--            <label for="{{ form.date.id_for_label }}">date:</label>-->
+<!--            {{ form.date }}-->
+<!--        </div>-->
+
+
+
+<!--            <div class="form-group">-->
+<!--            {{ form.timestamp.errors }}-->
+<!--            <label for="{{ form.timestamp.id_for_label }}">timestamp:</label>-->
+<!--            {{ form.timestamp }}-->
+<!--        </div>-->
+
+
+<!--            <div class="form-group">-->
+<!--            {{ form.title.errors }}-->
+<!--            <label for="{{ form.title.id_for_label }}">title:</label>-->
+<!--            {{ form.title }}-->
+<!--        </div>-->
+
+
+            <div class="form-group">
+            {{ form.rfs_num.errors }}
+            <label for="{{ form.rfs_num.id_for_label }}">rfs_num:</label>
+            {{ form.rfs_num }}
         </div>
-    </div>
-    <div class="col-md-1"></div>
+
+            <div class="form-group">
+            {{ form.sales_connect_num.errors }}
+            <label for="{{ form.sales_connect_num.id_for_label }}">sales_connect_num:</label>
+            {{ form.sales_connect_num }}
+        </div>
+
+
+
+            <div class="form-group">
+            {{ form.appttus_num.errors }}
+            <label for="{{ form.appttus_num.id_for_label }}">appttus_num:</label>
+            {{ form.appttus_num }}
+        </div>
+
+
+            <div class="form-group">
+            {{ form.sizingtype.errors }}
+            <label for="{{ form.sizingtype.id_for_label }}">sizingtype:</label>
+            {{ form.sizingtype }}
+        </div>
+
+            <div class="form-group">
+            {{ form.due_date.errors }}
+            <label for="{{ form.due_date.id_for_label }}">due_date:</label>
+            {{ form.due_date }}
+        </div>
+
+
+
+<!--            <div class="form-group">-->
+<!--            {{ form.PricingStructureSelect.errors }}-->
+<!--            <label for="{{ form.PricingStructureSelect.id_for_label }}">PricingStructureSelect:</label>-->
+<!--            {{ form.PricingStructureSelect }}-->
+<!--        </div>-->
+
+
+            <div class="form-group">
+            {{ form.team.errors }}
+            <label for="{{ form.date.id_for_label }}">team:</label>
+            {{ form.team }}
+        </div>
+
+
+            <div class="form-group">
+            {{ form.assigned_by.errors }}
+            <label for="{{ form.assigned_by.id_for_label }}">assigned_by:</label>
+            {{ form.assigned_by }}
+        </div>
+
+            <div class="form-group">
+            {{ form.assigned_to.errors }}
+            <label for="{{ form.assigned_to.id_for_label }}">assigned_to:</label>
+            {{ form.assigned_to }}
+        </div>
+
+
+<!--            <div class="form-group">-->
+<!--            {{ form.RequesterFirstName.errors }}-->
+<!--            <label for="{{ form.RequesterFirstName.id_for_label }}">RequesterFirstName:</label>-->
+<!--            {{ form.RequesterFirstName }}-->
+<!--        </div>-->
+
+
+<!--            <div class="form-group">-->
+<!--            {{ form.RequesterLastName.errors }}-->
+<!--            <label for="{{ form.RequesterLastName.id_for_label }}">RequesterLastName:</label>-->
+<!--            {{ form.RequesterLastName }}-->
+<!--        </div>-->
+
+<!--            <div class="form-group">-->
+<!--            {{ form.RequesterRole.errors }}-->
+<!--            <label for="{{ form.RequesterRole.id_for_label }}">RequesterRole:</label>-->
+<!--            {{ form.RequesterRole }}-->
+<!--        </div>-->
+
+<!--            <div class="form-group">-->
+<!--            {{ form.RequesterEmail.errors }}-->
+<!--            <label for="{{ form.RequesterEmail.id_for_label }}">RequesterEmail:</label>-->
+<!--            {{ form.RequesterEmail }}-->
+<!--        </div>-->
+
+<!--            <div class="form-group">-->
+<!--            {{ form.CustomerName.errors }}-->
+<!--            <label for="{{ form.CustomerName.id_for_label }}">CustomerName:</label>-->
+<!--            {{ form.CustomerName }}-->
+<!--        </div>-->
+
+<!--            <div class="form-group">-->
+<!--            {{ form.CustomerStatus.errors }}-->
+<!--            <label for="{{ form.CustomerStatus.id_for_label }}">CustomerStatus:</label>-->
+<!--            {{ form.CustomerStatus }}-->
+<!--        </div>-->
+
+<!--            <div class="form-group">-->
+<!--            {{ form.Solution_Design.errors }}-->
+<!--            <label for="{{ form.date.id_for_label }}">Solution_Design:</label>-->
+<!--            {{ form.Solution_Design }}-->
+<!--        </div>-->
+
+<!--            <div class="form-group">-->
+<!--            {{ form.SalesContactName.errors }}-->
+<!--            <label for="{{ form.SalesContactName.id_for_label }}">SalesContactName:</label>-->
+<!--            {{ form.SalesContactName }}-->
+<!--        </div>-->
+
+
+<!--            <div class="form-group">-->
+<!--            {{ form.SalesContactEmail.errors }}-->
+<!--            <label for="{{ form.SalesContactEmail.id_for_label }}">SalesContactEmail:</label>-->
+<!--            {{ form.SalesContactEmail }}-->
+<!--        </div>-->
+
+
+<!--            <div class="form-group">-->
+<!--            {{ form.TranStartDate.errors }}-->
+<!--            <label for="{{ form.TranStartDate.id_for_label }}">TranStartDate:</label>-->
+<!--            {{ form.TranStartDate }}-->
+<!--        </div>-->
+
+            <div Firm_Price_or_NBIElass="form-group">
+            {{ form..errors }}
+            <label for="{{ form.Firm_Price_or_NBIE.id_for_label }}">Firm_Price_or_NBIE:</label>
+            {{ form.Firm_Price_or_NBIE }}
+        </div>
+
+<!--            <div class="form-group">-->
+<!--            {{ form.Service_Delivery_Requirements.errors }}-->
+<!--            <label for="{{ form.Service_Delivery_Requirements.id_for_label }}">Service_Delivery_Requirements:</label>-->
+<!--            {{ form.Service_Delivery_Requirements }}-->
+<!--        </div>-->
+
+
+<!--            <div class="form-group">-->
+<!--            {{ form.Solution_Owner.errors }}-->
+<!--            <label for="{{ form.date.id_for_label }}">Solution_Owner:</label>-->
+<!--            {{ form.Solution_Owner }}-->
+<!--        </div>-->
+
+<!--            <div class="form-group">-->
+<!--            {{ form.Revenue_Structure_Select.errors }}-->
+<!--            <label for="{{ form.Revenue_Structure_Select.id_for_label }}">Revenue_Structure_Select:</label>-->
+<!--            {{ form.Revenue_Structure_Select }}-->
+<!--        </div>-->
+
+<!--            <div class="form-group">-->
+<!--            {{ form.Revenue_Structure_Cost_Explain.errors }}-->
+<!--            <label for="{{ form.Revenue_Structure_Cost_Explain.id_for_label }}">Revenue_Structure_Cost_Explain:</label>-->
+<!--            {{ form.Revenue_Structure_Cost_Explain }}-->
+<!--        </div>-->
+
+<!--            <div class="form-group">-->
+<!--            {{ form.Restricted_Delivery.errors }}-->
+<!--            <label for="{{ form.Restricted_Delivery.id_for_label }}">Restricted_Delivery:</label>-->
+<!--            {{ form.Restricted_Delivery }}-->
+<!--        </div>-->
+
+
+            <div class="form-group">
+            {{ form.Restricted_Delivery_Explanation.errors }}
+            <label for="{{ form.Restricted_Delivery_Explanation.id_for_label }}">Restricted_Delivery_Explanation:</label>
+            {{ form.Restricted_Delivery_Explanation }}
+        </div>
+
+
+<!--            <div class="form-group">-->
+<!--            {{ form.Questionnaire_num_consoles.errors }}-->
+<!--            <label for="{{ form.Questionnaire_num_consoles.id_for_label }}">Questionnaire_num_consoles:</label>-->
+<!--            {{ form.Questionnaire_num_consoles }}-->
+<!--        </div>-->
+
+
+<!--            <div class="form-group">-->
+<!--            {{ form.Questionnaire_num_workstation.errors }}-->
+<!--            <label for="{{ form.Questionnaire_num_workstation.id_for_label }}">Questionnaire_num_workstation:</label>-->
+<!--            {{ form.Questionnaire_num_workstation }}-->
+<!--        </div>-->
+
+<!--              <div class="form-group">-->
+<!--            {{ form.Questionnaire_num_server.errors }}-->
+<!--            <label for="{{ form.Questionnaire_num_server.id_for_label }}">Questionnaire_num_server:</label>-->
+<!--            {{ form.Questionnaire_num_server }}-->
+<!--        </div>-->
+
+<!--              <div class="form-group">-->
+<!--            {{ form.Questionnaire_num_ipaddress.errors }}-->
+<!--            <label for="{{ form.Questionnaire_num_ipaddress.id_for_label }}">Questionnaire_num_ipaddress:</label>-->
+<!--            {{ form.Questionnaire_num_ipaddress }}-->
+<!--        </div>-->
+
+<!--              <div class="form-group">-->
+<!--            {{ form.Questionnaire_num_total_endpoints.errors }}-->
+<!--            <label for="{{ form.Questionnaire_num_total_endpoints.id_for_label }}">Questionnaire_num_total_endpoints:</label>-->
+<!--            {{ form.Questionnaire_num_total_endpoints }}-->
+<!--        </div>-->
+
+<!--              <div class="form-group">-->
+<!--            {{ form.AntiVirusMalware.errors }}-->
+<!--            <label for="{{ form.AntiVirusMalware.id_for_label }}">AntiVirusMalware:</label>-->
+<!--            {{ form.AntiVirusMalware }}-->
+<!--        </div>-->
+
+
+<!--              <div class="form-group">-->
+<!--            {{ form.DLP_on_Workstations.errors }}-->
+<!--            <label for="{{ form.DLP_on_Workstations.id_for_label }}">DLP_on_Workstations:</label>-->
+<!--            {{ form.DLP_on_Workstations }}-->
+<!--        </div>-->
+
+<!--              <div class="form-group">-->
+<!--            {{ form.DLP_on_Servers.errors }}-->
+<!--            <label for="{{ form.DLP_on_Servers.id_for_label }}">DLP_on_Servers:</label>-->
+<!--            {{ form.DLP_on_Servers }}-->
+<!--        </div>-->
+
+<!--              <div class="form-group">-->
+<!--            {{ form.Encryption_on_Workstations.errors }}-->
+<!--            <label for="{{ form.Encryption_on_Workstations.id_for_label }}">Encryption_on_Workstations:</label>-->
+<!--            {{ form.Encryption_on_Workstations }}-->
+<!--        </div>-->
+
+<!--              <div class="form-group">-->
+<!--            {{ form.Encryption_on_Servers.errors }}-->
+<!--            <label for="{{ form.Encryption_on_Servers.id_for_label }}">Encryption_on_Servers:</label>-->
+<!--            {{ form.Encryption_on_Servers }}-->
+<!--        </div>-->
+
+
+<!--              <div class="form-group">-->
+<!--            {{ form.prodcomponent1_wkstn.errors }}-->
+<!--            <label for="{{ form.prodcomponent1_wkstn.id_for_label }}">prodcomponent1_wkstn:</label>-->
+<!--            {{ form.prodcomponent1_wkstn }}-->
+<!--        </div>-->
+
+
+<!--              <div class="form-group">-->
+<!--            {{ form.NAS_Storage.errors }}-->
+<!--            <label for="{{ form.NAS_Storage.id_for_label }}">NAS_Storage:</label>-->
+<!--            {{ form.NAS_Storage }}-->
+<!--        </div>-->
+
+
+<!--              <div class="form-group">-->
+<!--            {{ form.Windows.errors }}-->
+<!--            <label for="{{ form.date.Windows }}">Windows:</label>-->
+<!--            {{ form.Windows }}-->
+<!--        </div>-->
+
+
+<!--              <div class="form-group">-->
+<!--            {{ form.AIX.errors }}-->
+<!--            <label for="{{ form.AIX.id_for_label }}">AIX:</label>-->
+<!--            {{ form.AIX }}-->
+<!--        </div>-->
+
+
+<!--              <div class="form-group">-->
+<!--            {{ form.VDI.errors }}-->
+<!--            <label for="{{ form.VDI.id_for_label }}">VDI:</label>-->
+<!--            {{ form.VDI }}-->
+<!--        </div>-->
+
+<!--              <div class="form-group">-->
+<!--            {{ form.URL_Filtering.errors }}-->
+<!--            <label for="{{ form.URL_Filtering.id_for_label }}">URL_Filtering:</label>-->
+<!--            {{ form.URL_Filtering }}-->
+<!--        </div>-->
+
+
+<!--              <div class="form-group">-->
+<!--            {{ form.HIPs_on_Workstations.errors }}-->
+<!--            <label for="{{ form.date.HIPs_on_Workstations }}">HIPs_on_Workstations:</label>-->
+<!--            {{ form.HIPs_on_Workstations }}-->
+<!--        </div>-->
+
+
+<!--              <div class="form-group">-->
+<!--            {{ form.HIPs_on_Servers.errors }}-->
+<!--            <label for="{{ form.HIPs_on_Servers.id_for_label }}">HIPs_on_Servers:</label>-->
+<!--            {{ form.HIPs_on_Servers }}-->
+<!--        </div>-->
+
+<!--              <div class="form-group">-->
+<!--            {{ form.Firewall_on_Workstations.errors }}-->
+<!--            <label for="{{ form.Firewall_on_Workstations.id_for_label }}">Firewall_on_Workstations:</label>-->
+<!--            {{ form.Firewall_on_Workstations }}-->
+<!--        </div>-->
+
+
+
+<!--              <div class="form-group">-->
+<!--            {{ form.Firewall_on_Servers.errors }}-->
+<!--            <label for="{{ form.Firewall_on_Servers.id_for_label }}">Firewall_on_Servers:</label>-->
+<!--            {{ form.Firewall_on_Servers }}-->
+<!--        </div>-->
+
+<!--              <div class="form-group">-->
+<!--            {{ form.BigFix_Patching_Scanning.errors }}-->
+<!--            <label for="{{ form.date.id_for_label }}">BigFix_Patching_Scanning:</label>-->
+<!--            {{ form.BigFix_Patching_Scanning }}-->
+<!--        </div>-->
+
+<!--              <div class="form-group">-->
+<!--            {{ form.Linux.errors }}-->
+<!--            <label for="{{ form.Linux.id_for_label }}">Linux:</label>-->
+<!--            {{ form.Linux }}-->
+<!--        </div>-->
+
+
+<!--              <div class="form-group">-->
+<!--            {{ form.Integrity_Monitoring.errors }}-->
+<!--            <label for="{{ form.Integrity_Monitoring.id_for_label }}">Integrity_Monitoring:</label>-->
+<!--            {{ form.Integrity_Monitoring }}-->
+<!--        </div>-->
+
+<!--              <div class="form-group">-->
+<!--            {{ form.Citrix.errors }}-->
+<!--            <label for="{{ form.Citrix.id_for_label }}">Citrix:</label>-->
+<!--            {{ form.Citrix }}-->
+<!--        </div>-->
+
+
+<!--              <div class="form-group">-->
+<!--            {{ form.Other_Features_or_Platforms.errors }}-->
+<!--            <label for="{{ form.Other_Features_or_Platforms.id_for_label }}">Other_Features_or_Platforms:</label>-->
+<!--            {{ form.Other_Features_or_Platforms }}-->
+<!--        </div>-->
+
+<!--              <div class="form-group">-->
+<!--            {{ form.Other_Features_or_Platforms_Note.errors }}-->
+<!--            <label for="{{ form.Other_Features_or_Platforms_Note.id_for_label }}">Other_Features_or_Platforms_Note:</label>-->
+<!--            {{ form.Other_Features_or_Platforms_Note }}-->
+<!--        </div>-->
+
+<!--              <div class="form-group">-->
+<!--            {{ form.Environment_and_Platforms_Note.errors }}-->
+<!--            <label for="{{ form.Environment_and_Platforms_Note.id_for_label }}">Environment andPlatforms_Note:</label>-->
+<!--            {{ form.Environment_and_Platforms_Note }}-->
+<!--        </div>-->
+
+              <div class="form-group">
+            {{ form.EmsServiceRequested.errors }}
+            <label for="{{ form.EmsServiceRequested.id_for_label }}">EmsServiceRequested:</label>
+            {{ form.EmsServiceRequested }}
+        </div>
+
+  <input type="submit" value="Save" class="btn btn-primary">
+</form>
+
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+    The footer of the card
+  </div>
+  <!-- /.card-footer -->
+</div>
+
+</div>
+<div class="col-md-1">.</div>
+
 </div>
 
 
 
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
-    @* Product #2 Calc*@
-    <script type="text/javascript">
-        $(function () {
-           // $("#ddl_product2").change(function () {
-            $("#AvProductId1A").change(function () {
-              //  alert($(this).val() + " " + $(this).find("option:selected").html());
-                var id = $(this).val();
-                $.ajax({
-                    type: "Post",
-                    url: '@Url.Action("GetProductByID2", "SizingUserDashboard")',
-                    data: '{id: "' + id + '"}',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (data) {
-                        //alert(data.LastName);
 
-
-
-                        $("#txtAvProdId2").val(data.AvProductId);
-                        $("#txtProductName2").val(data.ProductName);
-                        $("#DescProduct_2").val(data.ProductName);
-                        $("#txtProductDesc2").val(data.ProductDesc);
-                        $("#txtProductComplexityFac2").val(data.ProductComplexityFac);
-                        $("#txtProductComplexityBase2").val(data.ProductComplexityBase);
-                        $("#txtTotalComplexity2").val(data.TotalComplexity);
-                        $("#txtComponent1Desc2").val(data.Component1Desc);
-                        $("#txtComponent2Desc2").val(data.Component2Desc);
-                        $("#txtComponent3Desc2").val(data.Component3Desc);
-                        $("#txtComponent4Desc2").val(data.Component4Desc);
-                        $("#txtComponent5Desc2").val(data.Component5Desc);
-                        $("#txtComponent6Desc2").val(data.Component6Desc);
-                        $("#txtComponent7Desc2").val(data.Component7Desc);
-                        $("#txtComponent8Desc2").val(data.Component8Desc);
-                        $("#txtComponent9Desc2").val(data.Component9Desc);
-                        $("#txtComponent10Desc2").val(data.Component10Desc);
-                        $("#txtComponent11Desc2").val(data.Component11Desc);
-                        $("#txtComponent12Desc2").val(data.Component12Desc);
-                        $("#txtComponent13Desc2").val(data.Component13Desc);
-                        $("#txtComponent14Desc2").val(data.Component14Desc);
-                        $("#txtComponent15Desc2").val(data.Component15Desc)
-
-
-                        $("#Prod2Compnent1Desc").val(data.Component1Desc);
-                        $("#Prod2Compnent2Desc").val(data.Component2Desc);
-                        $("#Prod2Compnent3Desc").val(data.Component3Desc);
-                        $("#Prod2Compnent4Desc").val(data.Component4Desc);
-                        $("#Prod2Compnent5Desc").val(data.Component5Desc);
-
-                        $("#Prod2Compnent6Desc").val(data.Component6Desc);
-                        $("#Prod2Compnent7Desc").val(data.Component7Desc);
-                        $("#Prod2Compnent8Desc").val(data.Component8Desc);
-                        $("#Prod2Compnent9Desc").val(data.Component9Desc);
-                        $("#Prod2Compnent10Desc").val(data.Component10Desc);
-
-                        $("#Prod2Compnent11Desc").val(data.Component11Desc);
-                        $("#Prod2Compnent12Desc").val(data.Component12Desc);
-                        $("#Prod2Compnent13Desc").val(data.Component13Desc);
-                        $("#Prod2Compnent14Desc").val(data.Component14Desc);
-                        $("#Prod2Compnent15Desc").val(data.Component15Desc);
-
-
-                        $("#Prod2ComponentComplexityFac1_1").val(data.ComponentComplexityFac1);
-                        $("#Prod2ComponentComplexityFac2_1").val(data.ComponentComplexityFac2);
-                        $("#Prod2ComponentComplexityFac3_1").val(data.ComponentComplexityFac3);
-                        $("#Prod2ComponentComplexityFac4_1").val(data.ComponentComplexityFac4);
-                        $("#Prod2ComponentComplexityFac5_1").val(data.ComponentComplexityFac5);
-                        $("#Prod2ComponentComplexityFac6_1").val(data.ComponentComplexityFac6);
-                        $("#Prod2ComponentComplexityFac7_1").val(data.ComponentComplexityFac7);
-                        $("#Prod2ComponentComplexityFac8_1").val(data.ComponentComplexityFac8);
-                        $("#Prod2ComponentComplexityFac9_1").val(data.ComponentComplexityFac9);
-                        $("#Prod2ComponentComplexityFac10_1").val(data.ComponentComplexityFac10);
-                        $("#Prod2ComponentComplexityFac11_1").val(data.ComponentComplexityFac11);
-                        $("#Prod2ComponentComplexityFac12_1").val(data.ComponentComplexityFac12);
-                        $("#Prod2ComponentComplexityFac13_1").val(data.ComponentComplexityFac13);
-                        $("#Prod2ComponentComplexityFac14_1").val(data.ComponentComplexityFac14);
-                        $("#Prod2ComponentComplexityFac15_1").val(data.ComponentComplexityFac15);
-
-                        $("#txtComponentComplexityFac1_2").val(data.ComponentComplexityFac1);
-
-                        $("#ComponentComplexityFac1_2").val(data.ComponentComplexityFac2);
-                        $("#txtComponentComplexityFac3_2").val(data.ComponentComplexityFac3);
-                        $("#txtComponentComplexityFac4_2").val(data.ComponentComplexityFac4);
-                        $("#txtComponentComplexityFac5_2").val(data.ComponentComplexityFac5);
-                        $("#txtComponentComplexityFac6_2").val(data.ComponentComplexityFac6);
-                        $("#txtComponentComplexityFac7_2").val(data.ComponentComplexityFac7);
-                        $("#txtComponentComplexityFac8_2").val(data.ComponentComplexityFac8);
-                        $("#txtComponentComplexityFac9_2").val(data.ComponentComplexityFac9);
-                        $("#txtComponentComplexityFac10_2").val(data.ComponentComplexityFac10);
-                        $("#txtComponentComplexityFac11_2").val(data.ComponentComplexityFac11);
-                        $("#txtComponentComplexityFac12_2").val(data.ComponentComplexityFac12);
-                        $("#txtComponentComplexityFac13_2").val(data.ComponentComplexityFac13);
-                        $("#txtComponentComplexityFac14_2").val(data.ComponentComplexityFac14);
-                        $("#txtComponentComplexityFac15_2").val(data.ComponentComplexityFac15);
-
-
-
-                    },
-
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        alert('Failed to retrieve Products.');
-                    }
-                });
-
-            });
-        });
-    </script>
 {% endblock content_wrapper %}

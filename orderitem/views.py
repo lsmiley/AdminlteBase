@@ -1,5 +1,3 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.contrib.admin.views.decorators import staff_member_required
 from django.views.generic import (
@@ -8,13 +6,12 @@ from django.views.generic import (
     UpdateView
 )
 from django.shortcuts import get_object_or_404, redirect, reverse, render
-from django.urls import reverse_lazy
 from django_tables2 import RequestConfig
 from rest_framework import viewsets
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from order.models import OrderItem, Order
-from order.tables import ProductTable, OrderItemTable
+from questionnaire.tables import ProductTable, QuestionnaireItemTable
 from product.models import Product
 from .serializers import OrderItemSerializer
 from .forms import OrderItemForm

@@ -1,27 +1,11 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import (
-    View,
-    CreateView,
-    UpdateView
-)
-from django.shortcuts import get_object_or_404, redirect, reverse, render
-from django.urls import reverse_lazy
-from django_tables2 import RequestConfig
-from rest_framework import viewsets
-from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from order.models import OrderItem, Order
-from order.tables import ProductTable, OrderItemTable
-from product.models import Product, Prodvendor, Category
-from .serializers import OrderItemSerializer
+from product.models import Product, Category
 from .forms import OrderItemForm
 from order.forms import NewOrderItemFormSet
-from order.forms import OrderEditForm
-from django_filters.views import FilterView
-from .filters import OrderItemFilter
 
-from django.forms import inlineformset_factory, Textarea, CharField, Select, NumberInput  # Facilitates multiple form in group
+from django.forms import inlineformset_factory, NumberInput  # Facilitates multiple form in group
 
 
 

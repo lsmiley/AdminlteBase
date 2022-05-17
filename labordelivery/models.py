@@ -1,5 +1,5 @@
 from django.db import models
-from labordeliverytype.models import *
+from labordeliverytype.models import Labordeliverytype
 
 
 class Labordelivery(models.Model):

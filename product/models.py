@@ -8,8 +8,6 @@ from .managers import ProductManager
 CURRENCY = settings.CURRENCY
 
 
-
-
 class Category(models.Model):
     title = models.CharField(max_length=150, unique=True)
     categoryname = models.CharField(

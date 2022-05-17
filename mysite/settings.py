@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'x&7$)!$nj9#ca(3s%xln!m_^18_$+=5nt$z8s^chlntq570m6u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '*', 'https://esstools-dev-099-lsmiley-dev.apps.sandbox.x8i5.p1.openshiftapps.com']
 
@@ -64,7 +64,9 @@ INSTALLED_APPS = [
     'sizingtype',
     'statusstate',
     'tntworksheet',
-    'sizing'
+    'sizing',
+    'questionnaire',
+    'testquestionnaire'
 
 
 ]
@@ -75,7 +77,8 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.permissions.AllowAny',
     ]
 }
 
@@ -87,6 +90,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'login_required.middleware.LoginRequiredMiddleware',  # middleware used for global login
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -121,31 +125,31 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # }
 
 # # **** Local Database Settings ****
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'adminltebase02db',
-#         'USER': 'sizingadmin',
-#         'PASSWORD': 'Malware12345',
-#         'HOST': '127.0.0.1',
-#         'PORT': '22551',
-#     }
-# }
-
-
-# **** Cloud Database Settings ****
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'adminltebase02db',
         'USER': 'sizingadmin',
         'PASSWORD': 'Malware12345',
-        'HOST': '172.30.231.45',
-        # 'HOST':  'adminltebase-05-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps',
-        'PORT': '3306',
+        'HOST': '127.0.0.1',
+        'PORT': '1091',
     }
 }
+
+
+# **** Cloud Database Settings ****
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'adminltebase02db',
+#         'USER': 'sizingadmin',
+#         'PASSWORD': 'Malware12345',
+#         'HOST': '172.30.231.45',
+#         # 'HOST':  'adminltebase-05-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps',
+#         'PORT': '3306',
+#     }
+# }
 
 # **** Cloud Database Settings #2 Dev  ****
 #

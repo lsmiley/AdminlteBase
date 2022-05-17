@@ -1,7 +1,7 @@
 import django_tables2 as tables
 
 from product.models import Product
-from .models import OrderItem, Order
+from order.models import OrderItem, Order
 
 
 class OrderTable(tables.Table):
@@ -16,7 +16,7 @@ class OrderTable(tables.Table):
 
 
 class ProductTable(tables.Table):
-    tag_final_value = tables.Column(orderable=False, verbose_name='Price')
+    tag_final_value = tables.Column(orderable=False, verbose_name='Base Hrs:')
     action = tables.TemplateColumn(
 
         '<a <button class="btn btn-info add_button" data-href="{% url "ajax_add" instance.id record.id %}">Add!</a>',
@@ -48,8 +48,10 @@ class OrderItemTable(tables.Table):
     Options = tables.TemplateColumn('''
       
             <a href="{% url 'orderitem' %}orderitem/{{ record.id }}/edit" class="btn btn-block btn-info btn-xs">Details</a>
-           
-            
+            <button data-href="{% url "ajax_modify" record.id "add" %}" class="btn btn-success edit_button btn-xs"><i class="fa fa-arrow-up"></i></button>
+            <button data-href="{% url "ajax_modify" record.id "remove" %}" class="btn btn-warning edit_button btn-xs"><i class="fa fa-arrow-down"></i></button>
+            <button data-href="{% url "ajax_modify" record.id "delete" %}" class="btn btn-danger edit_button btn-xs"><i class="fa fa-trash"></i></button>
+          
            
            
     ''', orderable=False)
@@ -57,4 +59,4 @@ class OrderItemTable(tables.Table):
     class Meta:
         model = OrderItem
         template_name = 'django_tables2/bootstrap.html'
-        fields = ['product', 'qty', 'tag_final_price']
+        fields = ['product', 'qty']

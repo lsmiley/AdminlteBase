@@ -1,30 +1,24 @@
-from django.contrib.messages.views import SuccessMessageMixin
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import ListView, CreateView, UpdateView, View
+from django.views.generic import ListView
 from django.utils.decorators import method_decorator
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import get_object_or_404, redirect, reverse, render
-from django.urls import reverse_lazy
 from django.db.models import Q
 from django.template import loader
 from django.contrib import messages
 from django.template.loader import render_to_string
 from django.http import JsonResponse, HttpResponse, QueryDict, HttpResponseRedirect
 from django.db.models import Sum
-from django.views.generic.detail import SingleObjectMixin
 from django_tables2 import RequestConfig
 from rest_framework.templatetags.rest_framework import data
 
-from django.core.files.storage import FileSystemStorage
-
 from order.models import Order, OrderItem, CURRENCY
 from order.forms import OrderCreateForm, OrderEditForm, OrderItemEditForm, OrderItemForm
-from product.models import Product, Category, Prodvendor
-from order.tables import ProductTable, OrderItemTable, OrderTable
+from product.models import Product, Prodvendor
+from questionnaire.tables import ProductTable, QuestionnaireItemTable, QuestionnaireTable
 from order.utils import set_pagination
 
 from django.views.generic.edit import (
-    FormView,
     View,
     CreateView,
     UpdateView

@@ -275,6 +275,7 @@ monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-rend
                                 <div class="card card-body">
 
                                     <form method="get">
+                                        {% csrf_token %}
                                         {{dashboard_mainFilter.form}}
 
                                     <button class="btn btn-primary" type="submit">Search</button>

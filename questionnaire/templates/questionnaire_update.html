@@ -1,0 +1,3860 @@
+{% extends 'base.html' %} {% load render_table from django_tables2 %}
+
+{% load static %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--<script-->
+<!--			  src="https://code.jquery.com/jquery-3.6.0.js"-->
+<!--			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="-->
+<!--			  crossorigin="anonymous">-->
+
+<!--</script>-->
+
+
+{% block content_wrapper %}
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-10">
+            <div class="page-wrapper">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <h4 class="page-title">{{ instance.date }} - {{ instance }}</h4>
+                    <div class="ml-auto text-right">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ instance }}</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid">
+             <div class="row">
+                 <div class="col-md-3">
+                    <div class="card">
+                        <div class="header">
+                            <h5 class="card-title">Transition / Transformation</h5>
+
+                        </div>
+                        <div class="card-body" >
+                                      <div class="row">
+                                          <div class="col-md-7" style="font-size:17px; color:#007bff">Desc.</div>
+                                          <div class="col-md-5" style="font-size:17px; color:#007bff">Hrs</div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-7" style="font-size:12px">1st-Ln Mgr.</div>
+                                          <div class="col-md-5" style="font-size:12px">0</div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-7" style="font-size:12px">2nd-Ln Mgr.</div>
+                                          <div class="col-md-5" style="font-size:12px">0</div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-7" style="font-size:12px"># Weeks</div>
+                                          <div class="col-md-5" style="font-size:12px">12</div>
+                                      </div>
+                                    <span class="info-box-number">
+                                          <div class="row">
+                                          <div class="col-md-7" style="font-size:10px">Total Hours</div>
+                                          <div class="col-md-5" style="font-size:10px; color:#ffd800"><span class="info-box-number">4,410</span></div>
+                                      </div>
+                                    </span>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-3">
+                    <div class="card">
+                        <div class="header">
+                            <h5 class="card-title">Services & Components:</h5>
+
+                        </div>
+                        <div class="card-body" >
+                                   <div class="row">
+                                          <div class="col-md-6" style="font-size:17px; color:#007bff">Desc.</div>
+                                          <div class="col-md-3" style="font-size:17px; color:#ffd800">Hrs</div>
+                                          <div class="col-md-3" style="font-size:17px; color:#007bff">FTE</div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-6" style="font-size:12px">Combined Svcs</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-6" style="font-size:12px">Components</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-6" style="font-size:12px">Custom Optns</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                      </div>
+                                   <span class="info-box-number">
+                                          <div class="row">
+                                          <div class="col-md-6" style="font-size:10px">Total Hours</div>
+                                          <div class="col-md-3" style="font-size:10px; color:#ffd800"><span class="info-box-number">3,410</span></div>
+                                          <div class="col-md-3" style="font-size:10px"><span class="info-box-number">410</span></div>
+                                      </div>
+                                    </span>
+
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-3">
+                    <div class="card">
+                        <div class="header">
+                            <h5 class="card-title">Add'l Svc & Mgmnt:</h5>
+
+                        </div>
+                        <div class="card-body" >
+                                      <div class="row">
+                                          <div class="col-md-6" style="font-size:16px; color:#007bff">Desc.</div>
+                                          <div class="col-md-3" style="font-size:16px; color:#ffd800">Hrs</div>
+                                          <div class="col-md-3" style="font-size:16px; color:#007bff">FTE</div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-6" style="font-size:12px">Add'l Services</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-6" style="font-size:12px">1st-Ln Mgr.</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-6" style="font-size:12px">2nd-Ln Mgr</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                      </div>
+                                   <span class="info-box-number">
+                                          <div class="row">
+                                          <div class="col-md-6" style="font-size:10px">Total Hours</div>
+                                          <div class="col-md-3" style="font-size:10px; color:#ffd800"><span class="info-box-number">4,410</span></div>
+                                          <div class="col-md-3" style="font-size:10px"><span class="info-box-number">1.5</span></div>
+
+                                      </div>
+                                    </span>
+
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-3">
+                    <div class="card">
+                        <div class="header">
+                            <h5 class="card-title">Product & Delivery:</h5>
+
+                        </div>
+                        <div class="card-body" >
+                                      <div class="row">
+                                          <div class="col-md-6" style="font-size:16px; color:#007bff">Desc.</div>
+                                          <div class="col-md-3" style="font-size:16px; color:#ffd800">Hrs</div>
+                                          <div class="col-md-3" style="font-size:16px; color:#007bff">FTE</div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-6" style="font-size:12px">Products</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-6" style="font-size:12px">Labor</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-6" style="font-size:12px">2nd-Ln Mgr</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                          <div class="col-md-3" style="font-size:12px">0</div>
+                                      </div>
+                                   <span class="info-box-number">
+                                          <div class="row">
+                                          <div class="col-md-6" style="font-size:10px">Total Hours</div>
+                                          <div class="col-md-3" style="font-size:10px; color:#ffd800"><span class="info-box-number">4,410</span></div>
+                                          <div class="col-md-3" style="font-size:10px"><span class="info-box-number">2.5</span></div>
+                                      </div>
+                                    </span>
+
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+
+
+
+
+
+                                  <hr />
+
+
+
+            <div class="row">
+
+
+
+<!-- Modal Add Security Products -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Security Products</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+             <div class="card">
+                        <div class="header">
+                            <h5 class="card-title">Products</h5>
+                            <input data-href='{% url "ajax-search" instance.id %}' type="text" class="form-control search_button" placeholder="Search">
+                        </div>
+                        <div class="card-body" id="product_container">
+
+                            {% include 'include/product_container.html' %}
+                        </div>
+                    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Update/Edit - Transition and Transformation Worksheet  -->
+<div class="modal fade" id="tntWorksheetModal" tabindex="-1" role="dialog" aria-labelledby="tntWorksheetModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tntWorksheetModalLabel">Update/Edit - Transition and Transformation Worksheet</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>Tn
+      </div>
+      <div class="modal-body">
+             <div class="card">
+                        <div class="header">
+                            <h5 class="card-title">Tnt Worksheet</h5>
+
+                        </div>
+                        <div class="card-body" id="tntworksheet_container">
+                        	<div class="container-fluid">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="card">
+											<h5 class="card-header">
+												'Infrastructure and EndPoint Security Sizing Transition & Transformation Worksheet'
+											</h5>
+											<div class="card-body">
+												<p class="card-text">
+
+
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10"><h3>'Infrastructure and EndPoint Security Sizing Transition & Transformation Worksheet</h3></div>
+                        <div class="col-md-1"><br>
+         <button type="submit" class="btn btn-success">Save</button></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                        </div>
+
+                    </div>
+                    <div class="row"  style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">#</div>
+                        <div class="col-md-6">Description</div>
+                        <div class="col-md-1">Count</div>
+                        <div class="col-md-1">Transition Hrs/Item</div>
+                        <div class="col-md-1">Transition Hrs</div>
+                        <div class="col-md-1">Transformation Hrs/Item</div>
+                        <div class="col-md-1">Transformation Hrs</div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">1</div>
+                        <div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">Execute transition plan, task tracking, conferences, minutes, communication, status reporting, etc</div>
+                        <div class="col-md-1" >
+                                         <div class="form-group ">
+
+                                          {{ form.executetransitionplan_count.errors }}
+
+            {{ form.executetransitionplan_count }}
+
+        </div>
+
+                        </div>
+                        <div class="col-md-1" >
+                                          <div class="form-group"  style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+            {{ form.executetransitionplan_transitionhoursitem.errors }}
+
+            {{ form.executetransitionplan_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                          <div class="form-group ">
+            {{ form.executetransitionplan_transitionhours.errors }}
+
+            {{ form.executetransitionplan_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.executetransitionplan_transformationhoursitem.errors }}
+
+            {{ form.executetransitionplan_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.executetransitionplan_transformationhours.errors }}
+
+            {{ form.executetransitionplan_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">2</div>
+                        <div class="col-md-6">Create (best practice/custom), Review, Deploy and Document initial policies (incl. QA test of policies on endpoints)</div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.createbestpracticecustom_count.errors }}
+
+            {{ form.createbestpracticecustom_count }}
+        </div>
+                        </div>
+
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.createbestpracticecustom_transitionhoursitem.errors }}
+
+            {{ form.createbestpracticecustom_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+            {{ form.createbestpracticecustom_transitionhours.errors }}
+
+            {{ form.createbestpracticecustom_transitionhours }}
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.createbestpracticecustom_transformationhoursitem.errors }}
+
+            {{ form.createbestpracticecustom_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.createbestpracticecustom_transformationhours.errors }}
+
+            {{ form.createbestpracticecustom_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row"  style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">3</div>
+                        <div class="col-md-6">Test infrastructure (POC test, non-production data test, stress test, server/console failover, etc.).</div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.testinfrastructurepoc_count.errors }}
+
+            {{ form.testinfrastructurepoc_count }}
+        </div>
+                        </div>
+
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.testinfrastructurepoc_transitionhoursitem.errors }}
+
+            {{ form.testinfrastructurepoc_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                     <div class="form-group ">
+            {{ form.testinfrastructurepoc_transitionhours.errors }}
+
+            {{ form.testinfrastructurepoc_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.testinfrastructurepoc_transformationhoursitem.errors }}
+
+            {{ form.testinfrastructurepoc_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.testinfrastructurepoc_transformationhours.errors }}
+
+            {{ form.testinfrastructurepoc_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+        <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">4</div>
+                        <div class="col-md-6">Troubleshoot/tune infrastructure. Engage vendor and other teams as needed</div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.troubleshoottune_count.errors }}
+
+            {{ form.troubleshoottune_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                         <div class="form-group ">
+            {{ form.troubleshoottune_transitionhoursitem.errors }}
+
+            {{ form.troubleshoottune_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                <div class="form-group ">
+            {{ form.troubleshoottune_transitionhours.errors }}
+
+            {{ form.troubleshoottune_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.troubleshoottune_transformationhoursitem.errors }}
+
+            {{ form.troubleshoottune_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                   <div class="form-group ">
+            {{ form.troubleshoottune_transformationhours.errors }}
+
+            {{ form.troubleshoottune_transformationhours }}
+        </div>
+
+                        </div>
+                    </div>
+                   	<div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">5</div>
+                        <div class="col-md-6">Install/configure product on infrastructure servers; patch or hotfix</div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.installconfigure_count.errors }}
+
+            {{ form.installconfigure_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                         <div class="form-group ">
+            {{ form.installconfigure_transitionhoursitem.errors }}
+
+            {{ form.installconfigure_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                <div class="form-group ">
+            {{ form.installconfigure_transitionhours.errors }}
+
+            {{ form.installconfigure_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.installconfigure_transformationhoursitem.errors }}
+
+            {{ form.installconfigure_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                   <div class="form-group ">
+            {{ form.installconfigure_transformationhours.errors }}
+
+            {{ form.installconfigure_transformationhours }}
+        </div>
+
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">6</div>
+                        <div class="col-md-6">Administrator training of GDC pooled resources</div>
+                        <div class="col-md-1">
+							<div class="form-group ">
+            {{ form.administratortraining_count.errors }}
+
+            {{ form.administratortraining_count }}
+        </div>
+
+                        </div>
+                        <div class="col-md-1">
+                               <div class="form-group ">
+            {{ form.administratortraining_transitionhoursitem.errors }}
+
+            {{ form.administratortraining_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                           <div class="form-group ">
+            {{ form.administratortraining_transitionhours.errors }}
+
+            {{ form.administratortraining_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                     <div class="form-group ">
+            {{ form.administratortraining_transformationhoursitem.errors }}
+
+            {{ form.administratortraining_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                         <div class="form-group ">
+            {{ form.administratortraining_transformationhours.errors }}
+
+            {{ form.administratortraining_transformationhours }}
+        </div>
+                        </div>
+
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">7</div>
+                        <div class="col-md-6">Develop Service Responsibility Matrix; review among stakeholders</div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.developserviceresponsibilitymatrix_count.errors }}
+
+            {{ form.developserviceresponsibilitymatrix_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.developserviceresponsibilitymatrix_transitionhoursitem.errors }}
+
+            {{ form.developserviceresponsibilitymatrix_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.developserviceresponsibilitymatrix_transitionhours.errors }}
+
+            {{ form.developserviceresponsibilitymatrix_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.developserviceresponsibilitymatrix_transformationhoursitem.errors }}
+
+            {{ form.developserviceresponsibilitymatrix_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                      <div class="form-group ">
+            {{ form.developserviceresponsibilitymatrix_transformationhours.errors }}
+
+            {{ form.developserviceresponsibilitymatrix_transformationhours }}
+        </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">8</div>
+                        <div class="col-md-6">Establish any needed service accounts, business justifications, approval processes, testing.</div>
+                        <div class="col-md-1">
+                                     <div class="form-group ">
+            {{ form.establishanyneededserviceaccounts_count.errors }}
+
+            {{ form.establishanyneededserviceaccounts_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                        <div class="form-group ">
+            {{ form.establishanyneededserviceaccounts_transitionhoursitem.errors }}
+
+            {{ form.establishanyneededserviceaccounts_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                        <div class="form-group ">
+            {{ form.establishanyneededserviceaccounts_transitionhoursitem.errors }}
+
+            {{ form.establishanyneededserviceaccounts_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.establishanyneededserviceaccounts_transformationhoursitem.errors }}
+
+                       {{ form.establishanyneededserviceaccounts_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                     <div class="form-group ">
+            {{ form.establishanyneededserviceaccounts_transformationhours.errors }}
+
+            {{ form.establishanyneededserviceaccounts_transformationhours }}
+        </div>
+                        </div>
+
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">9</div>
+                        <div class="col-md-6">Research and setup email automation (SMTP or via special triggers) - includes alerts, failure notifications, etc. as needed.</div>
+                        <div class="col-md-1">
+                                           <div class="form-group ">
+            {{ form.researchandsetupemailautomation_count.errors }}
+
+            {{ form.researchandsetupemailautomation_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                           <div class="form-group ">
+            {{ form.researchandsetupemailautomation_transitionhoursitem.errors }}
+
+            {{ form.researchandsetupemailautomation_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.researchandsetupemailautomation_transitionhours.errors }}
+
+            {{ form.researchandsetupemailautomation_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                       <div class="form-group ">
+            {{ form.researchandsetupemailautomation_transformationhoursitem.errors }}
+
+            {{ form.researchandsetupemailautomation_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.researchandsetupemailautomation_transformationhours.errors }}
+
+            {{ form.researchandsetupemailautomation_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">10</div>
+                        <div class="col-md-6">Install/configure remote consoles</div>
+                        <div class="col-md-1">
+                                           <div class="form-group ">
+            {{ form.installconfigureremoteconsoles_count.errors }}
+
+            {{ form.installconfigureremoteconsoles_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.installconfigureremoteconsoles_transitionhoursitem.errors }}
+
+            {{ form.installconfigureremoteconsoles_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                          <div class="form-group ">
+            {{ form.installconfigureremoteconsoles_transitionhours.errors }}
+
+            {{ form.installconfigureremoteconsoles_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                      <div class="form-group ">
+            {{ form.installconfigureremoteconsoles_transformationhoursitem.errors }}
+
+            {{ form.installconfigureremoteconsoles_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                           <div class="form-group ">
+            {{ form.installconfigureremoteconsoles_transformationhours.errors }}
+
+            {{ form.installconfigureremoteconsoles_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">11</div>
+                        <div class="col-md-6">Work with SECOPS to ensure proper performance; understanding of error codes, baseline performance expectation, etc.</div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.workwithsecops_count.errors }}
+
+            {{ form.workwithsecops_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+
+                                            <div class="form-group ">
+            {{ form.workwithsecops_transitionhoursitem.errors }}
+
+            {{ form.workwithsecops_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.workwithsecops_transitionhours.errors }}
+
+            {{ form.workwithsecops_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.workwithsecops_transformationhoursitem.errors }}
+
+            {{ form.workwithsecops_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                           <div class="form-group ">
+            {{ form.workwithsecops_transformationhours.errors }}
+
+            {{ form.workwithsecops_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">12</div>
+                        <div class="col-md-6">Staffing (coordinating)</div>
+                        <div class="col-md-1">
+                                          <div class="form-group ">
+            {{ form.staffingccoordinating_count.errors }}
+
+            {{ form.staffingccoordinating_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                         <div class="form-group ">
+            {{ form.staffingccoordinating_transitionhoursitem.errors }}
+
+            {{ form.staffingccoordinating_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                  <div class="form-group ">
+            {{ form.staffingccoordinating_transitionhours.errors }}
+
+            {{ form.staffingccoordinating_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.staffingccoordinating_transformationhoursitem.errors }}
+
+            {{ form.staffingccoordinating_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.staffingccoordinating_transformationhours.errors }}
+
+            {{ form.staffingccoordinating_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">13</div>
+                        <div class="col-md-6">Identify/test/document onboarding procedures.</div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.identifytestdocument_count.errors }}
+
+            {{ form.identifytestdocument_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.identifytestdocument_transitionhoursitem.errors }}
+
+            {{ form.identifytestdocument_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                    <div class="form-group ">
+            {{ form.identifytestdocument_transitionhours.errors }}
+
+            {{ form.identifytestdocument_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.identifytestdocument_transformationhoursitem.errors }}
+
+            {{ form.identifytestdocument_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.identifytestdocument_transformationhours.errors }}
+
+            {{ form.identifytestdocument_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">14</div>
+                        <div class="col-md-6">Obtain network and OS access - Wave 1 (Initial staffing needed for Knowledge Transfer)</div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.obtainnetworkandosaccesswave1_count.errors }}
+
+            {{ form.obtainnetworkandosaccesswave1_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.obtainnetworkandosaccesswave1_transitionhoursitem.errors }}
+
+            {{ form.obtainnetworkandosaccesswave1_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.obtainnetworkandosaccesswave1_transitionhours.errors }}
+
+            {{ form.obtainnetworkandosaccesswave1_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.obtainnetworkandosaccesswave1_transformationhoursitem.errors }}
+
+            {{ form.obtainnetworkandosaccesswave1_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.obtainnetworkandosaccesswave1_transformationhours.errors }}
+
+            {{ form.obtainnetworkandosaccesswave1_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">15</div>
+                        <div class="col-md-6">Obtain network and OS access - Wave 2 (Staffing needed for Steady State)</div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.obtainnetworkandosaccesswave2_count.errors }}
+
+            {{ form.obtainnetworkandosaccesswave2_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.obtainnetworkandosaccesswave2_transitionhoursitem.errors }}
+
+            {{ form.obtainnetworkandosaccesswave2_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                           <div class="form-group ">
+            {{ form.obtainnetworkandosaccesswave2_transitionhours.errors }}
+
+            {{ form.obtainnetworkandosaccesswave2_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.obtainnetworkandosaccesswave2_transformationhoursitem.errors }}
+
+            {{ form.obtainnetworkandosaccesswave2_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.obtainnetworkandosaccesswave2_transformationhours.errors }}
+
+            {{ form.obtainnetworkandosaccesswave2_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">16</div>
+                        <div class="col-md-6">Develop/provide agent to software deployment group; oversee agent deployment (manual install required)</div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.developprovideagentsoftware_count.errors }}
+
+            {{ form.developprovideagentsoftware_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                          <div class="form-group ">
+            {{ form.developprovideagentsoftware_transitionhoursitem.errors }}
+
+            {{ form.developprovideagentsoftware_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                        <div class="form-group ">
+            {{ form.developprovideagentsoftware_transitionhours.errors }}
+
+            {{ form.developprovideagentsoftware_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.developprovideagentsoftware_transformationhoursitem.errors }}
+
+            {{ form.developprovideagentsoftware_transformationhoursitem }}
+        </div>
+
+                        </div>
+                        <div class="col-md-1">
+                                         <div class="form-group ">
+            {{ form.developprovideagentsoftware_transformationhours.errors }}
+
+            {{ form.developprovideagentsoftware_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">17</div>
+                        <div class="col-md-6">Install/configure ODBC or other connectors to metaconsoles; </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.installconfigureodbc_count.errors }}
+
+            {{ form.installconfigureodbc_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.installconfigureodbc_transitionhoursitem.errors }}
+
+            {{ form.installconfigureodbc_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.installconfigureodbc_transitionhours.errors }}
+
+            {{ form.installconfigureodbc_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                         <div class="form-group ">
+            {{ form.installconfigureodbc_transformationhoursitem.errors }}
+
+            {{ form.installconfigureodbc_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.installconfigureodbc_transformationhours.errors }}
+
+            {{ form.installconfigureodbc_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">18</div>
+                        <div class="col-md-6">Customer review and sign-off on infrastructure set up, test results, etc.</div>
+                        <div class="col-md-1">
+                                           <div class="form-group ">
+            {{ form.customerreviewsignoff_count.errors }}
+
+            {{ form.customerreviewsignoff_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.customerreviewsignoff_transitionhoursitem.errors }}
+
+            {{ form.customerreviewsignoff_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.customerreviewsignoff_transitionhours.errors }}
+
+            {{ form.customerreviewsignoff_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.customerreviewsignoff_transformationhoursitem.errors }}
+
+            {{ form.customerreviewsignoff_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                         <div class="form-group ">
+            {{ form.customerreviewsignoff_transformationhours.errors }}
+
+            {{ form.customerreviewsignoff_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">19</div>
+                        <div class="col-md-6">Establish Health check regimen for product and infrastructure</div>
+                        <div class="col-md-1">
+                                           <div class="form-group ">
+            {{ form.establishhealthcheck_count.errors }}
+
+            {{ form.establishhealthcheck_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.establishhealthcheck_transitionhoursitem.errors }}
+
+            {{ form.establishhealthcheck_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                          <div class="form-group ">
+            {{ form.establishhealthcheck_transitionhours.errors }}
+
+            {{ form.establishhealthcheck_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.establishhealthcheck_transformationhoursitem.errors }}
+
+            {{ form.establishhealthcheck_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.establishhealthcheck_transformationhours.errors }}
+
+            {{ form.establishhealthcheck_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">20</div>
+                        <div class="col-md-6">Develop workflows for patch management, change management, incident management, policy review</div>
+                        <div class="col-md-1">
+							                <div class="form-group ">
+            {{ form.developworkflows_count.errors }}
+
+            {{ form.developworkflows_count }}
+        </div>
+
+                        </div>
+                        <div class="col-md-1">
+                                           <div class="form-group ">
+            {{ form.developworkflows_transitionhoursitem.errors }}
+
+            {{ form.developworkflows_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.developworkflows_transitionhours.errors }}
+
+            {{ form.developworkflows_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                        <div class="form-group ">
+            {{ form.developworkflows_transformationhoursitem.errors }}
+
+            {{ form.developworkflows_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.developworkflows_transformationhours.errors }}
+
+            {{ form.developworkflows_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">21</div>
+                        <div class="col-md-6">Operational documentation</div>
+                        <div class="col-md-1">
+                                          <div class="form-group ">
+            {{ form.operationaldocumentation_count.errors }}
+
+            {{ form.operationaldocumentation_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.operationaldocumentation_transitionhoursitem.errors }}
+
+            {{ form.operationaldocumentation_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.operationaldocumentation_transitionhours.errors }}
+
+            {{ form.operationaldocumentation_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.operationaldocumentation_transformationhoursitem.errors }}
+
+            {{ form.operationaldocumentation_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+							                <div class="form-group ">
+            {{ form.operationaldocumentation_transformationhours.errors }}
+
+            {{ form.operationaldocumentation_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">22</div>
+                        <div class="col-md-6">Shadow/Establish/Review all procedures, monitoring of console, health check, support ticket queue, etc.</div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.shadowestablishreviewallprocedures_count.errors }}
+
+            {{ form.shadowestablishreviewallprocedures_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                 <div class="form-group ">
+									{{ form.shadowestablishreviewallprocedures_transitionhoursitem.errors }}
+
+									{{ form.shadowestablishreviewallprocedures_transitionhoursitem }}
+								</div>
+                        </div>
+                        <div class="col-md-1">
+								<div class="form-group ">
+								{{ form.shadowestablishreviewallprocedures_transitionhours.errors }}
+
+								{{ form.shadowestablishreviewallprocedures_transitionhours }}
+        						</div>
+                        </div>
+                        <div class="col-md-1">
+							<div class="form-group ">
+							{{ form.shadowestablishreviewallprocedures_transformationhoursitem.errors }}
+
+            {{ form.shadowestablishreviewallprocedures_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.shadowestablishreviewallprocedures_transformationhours.errors }}
+
+            {{ form.shadowestablishreviewallprocedures_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">23</div>
+                        <div class="col-md-6">Other (details available in project plan)</div>
+                        <div class="col-md-1">
+
+                        <div class="form-group ">
+							{{ form.otherdetail_count.errors }}
+
+							{{ form.otherdetail_count }}
+        				</div>
+
+					</div>
+                        <div class="col-md-1">
+
+							<div class="form-group ">
+								{{ form.otherdetail_transitionhoursitem.errors }}
+
+								{{ form.otherdetail_transitionhoursitem }}
+							</div>
+                        </div>
+                        <div class="col-md-1">
+							<div class="form-group ">
+								{{ form.otherdetail_transitionhours.errors }}
+
+								{{ form.otherdetail_transitionhours }}
+							</div>
+                        </div>
+                        <div class="col-md-1">
+							<div class="form-group ">
+								{{ form.otherdetail_transformationhoursitem.errors }}
+
+								{{ form.otherdetail_transformationhoursitem }}
+							</div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.otherdetail_transformationhours.errors }}
+
+            {{ form.otherdetail_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">24</div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                {{ form.SpecialItemsDesc1.errors }}
+
+                                {{ form.SpecialItemsDesc1 }}
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.specialitem1_count.errors }}
+
+            {{ form.specialitem1_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                          <div class="form-group ">
+            {{ form.specialitem1_transitionhoursitem.errors }}
+
+            {{ form.specialitem1_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                          <div class="form-group ">
+            {{ form.specialitem1_transitionhours.errors }}
+
+            {{ form.specialitem1_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                           <div class="form-group ">
+            {{ form.specialitem1_transformationhoursitem.errors }}
+
+            {{ form.specialitem1_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.specialitem1_transformationhours.errors }}
+
+            {{ form.specialitem1_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">25</div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                {{ form.SpecialItemsDesc2.errors }}
+
+                                {{ form.SpecialItemsDesc2 }}
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                                         <div class="form-group ">
+            {{ form.specialitem2_count.errors }}
+
+            {{ form.specialitem2_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                        <div class="form-group ">
+            {{ form.specialitem2_transitionhoursitem.errors }}
+
+            {{ form.specialitem2_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                                    <div class="form-group ">
+            {{ form.specialitem2_transitionhours.errors }}
+
+            {{ form.specialitem2_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.specialitem2_transformationhoursitem.errors }}
+
+            {{ form.specialitem2_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                           <div class="form-group ">
+            {{ form.specialitem2_transformationhours.errors }}
+
+            {{ form.specialitem2_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+
+                        <div class="col-md-1">26</div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                {{ form.SpecialItemsDesc3.errors }}
+
+                                {{ form.SpecialItemsDesc3 }}
+                            </div>
+
+                        </div>
+                        <div class="col-md-1">
+                                                 <div class="form-group ">
+            {{ form.specialitem3_count.errors }}
+
+            {{ form.specialitem3_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.specialitem3_transitionhoursitem.errors }}
+
+            {{ form.specialitem3_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                          <div class="form-group ">
+            {{ form.specialitem3_transitionhours.errors }}
+
+            {{ form.specialitem3_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                                   <div class="form-group ">
+            {{ form.specialitem3_transformationhoursitem.errors }}
+
+            {{ form.specialitem3_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                           <div class="form-group ">
+            {{ form.specialitem3_transformationhours.errors }}
+
+            {{ form.specialitem3_transformationhours }}
+        </div>
+                        </div>
+
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">27</div>
+                        <div class="col-md-6">
+                             <div class="form-group ">
+                                {{ form.SpecialItemsDesc4.errors }}
+
+                                {{ form.SpecialItemsDesc4 }}
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                                           <div class="form-group ">
+            {{ form.specialitem4_count.errors }}
+
+            {{ form.specialitem4_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                                    <div class="form-group ">
+            {{ form.specialitem4_transitionhoursitem.errors }}
+
+            {{ form.specialitem4_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                                   <div class="form-group ">
+            {{ form.specialitem4_transitionhoursitem.errors }}
+
+            {{ form.specialitem4_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                    <div class="form-group ">
+            {{ form.specialitem4_transformationhoursitem.errors }}
+
+            {{ form.specialitem4_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                                    <div class="form-group ">
+            {{ form.specialitem4_transformationhours.errors }}
+
+            {{ form.specialitem4_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+                        <div class="col-md-1">28</div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                {{ form.SpecialItemsDesc5.errors }}
+
+                                {{ form.SpecialItemsDesc5 }}
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.specialitem5_count.errors }}
+
+            {{ form.specialitem5_count }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.specialitem5_transitionhoursitem.errors }}
+
+            {{ form.specialitem5_transitionhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                                   <div class="form-group ">
+            {{ form.specialitem5_transitionhours.errors }}
+
+            {{ form.specialitem5_transitionhours }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                            <div class="form-group ">
+            {{ form.specialitem5_transformationhoursitem.errors }}
+
+            {{ form.specialitem5_transformationhoursitem }}
+        </div>
+                        </div>
+                        <div class="col-md-1">
+                                           <div class="form-group ">
+            {{ form.specialitem5_transformationhours.errors }}
+
+            {{ form.specialitem5_transformationhours }}
+        </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">.</div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6"></div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6"></div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-6"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1" style="font-weight:bold; font-family:Arial; font-size:x-small">Transition Hrs</div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1" style="font-weight:bold; font-family:Arial; font-size:x-small">Tranform Hrs</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">.</div>
+                        <div class="col-md-6">.</div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1" style="font-weight:bold; font-family:Arial; font-size:12px">
+                            <p>{{ instance.calculate_totaltransitionhoursitem }} :Hrs</p>
+
+                            {{ form.totaltransitionhoursitem.errors }}
+
+                            {{ form.totaltransitionhoursitem }}
+
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1" style="font-weight:bold; font-family:Arial; font-size:12px">
+                            <p>{{ instance.calculate_totaltransformationhoursitem }} :Hrs</p>
+
+                            {{ form.totaltransformationhoursitem.errors }}
+
+                            {{ form.totaltransformationhoursitem }}
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">.</div>
+                        <div class="col-md-6">.</div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1" style="font-weight:bold; font-family:Arial">
+                            T
+                            {{ tnt_transition_total.errors }}
+
+                            {{ tnt_transition_total }}
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1" style="font-weight:bold; font-family:Arial">
+                            T
+                        </div>
+
+                    </div>
+
+												</p>
+											</div>
+											<div class="card-footer">
+												Card footer
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Update/Edit - Update Sizing Detail  -->
+<div class="modal fade" id="updateSizingleModal" tabindex="-1" role="dialog" aria-labelledby="updateSizingLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl  modal-dialog-scrollable " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateSizingLabel">Update Sizing Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+             <div class="card">
+                        <div class="header">
+                            <h5 class="card-title">Update/Add: RFS, Sales Connect, Contract length Etc.</h5>
+
+                        </div>
+                        <div class="card-body" id="updateSizing_container">
+
+
+                        </div>
+                    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+                <!-- Modal Add  Modifiers -->
+<div class="modal fade" id="wkstn_modifierModal" tabindex="-1" role="dialog" aria-labelledby="wkstn_modifierModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="wkstn_modifierModalLabel">Modifiers</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+             <div class="card">
+                        <div class="header">
+                            <h5 class="card-title">Modifier</h5>
+
+                        </div>
+                        <div class="card-body" id="wkstn_modifier_container">
+                            <div class="container-fluid">
+
+</div>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Modify Workstation</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Modify Server</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Modify Whole Sizing</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<h5 class="card-header">
+					Workstations Scale/Count Modifiers
+				</h5>
+				<div class="card-body">
+					<p class="card-text">
+						<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Select: A Percentage to Scale Workstation Hours Down to compensate for inconsistent Hours Calculated by Tool.</legend>
+
+<!-- Multiple Radios -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="radios_workstations">Modify Workstations:</label>
+  <div class="col-md-4">
+  <div class="radio">
+    <label for="radios_workstations-0">
+      <input type="radio" name="radios_workstations" id="radios_workstations-0" value="0.02" checked="checked">
+      2%
+    </label>
+	</div>
+  <div class="radio">
+    <label for="radios_workstations-1">
+      <input type="radio" name="radios_workstations" id="radios_workstations-1" value="0.05">
+      5%
+    </label>
+	</div>
+  <div class="radio">
+    <label for="radios_workstations-2">
+      <input type="radio" name="radios_workstations" id="radios_workstations-2" value="0.07">
+      7%
+    </label>
+	</div>
+  <div class="radio">
+    <label for="radios_workstations-3">
+      <input type="radio" name="radios_workstations" id="radios_workstations-3" value="0.10">
+      10%
+    </label>
+	</div>
+  <div class="radio">
+    <label for="radios_workstations-4">
+      <input type="radio" name="radios_workstations" id="radios_workstations-4" value="0.12">
+      12%
+    </label>
+	</div>
+  <div class="radio">
+    <label for="radios_workstations-5">
+      <input type="radio" name="radios_workstations" id="radios_workstations-5" value="0.17">
+      17%
+    </label>
+	</div>
+  <div class="radio">
+    <label for="radios_workstations-6">
+      <input type="radio" name="radios_workstations" id="radios_workstations-6" value="0.20">
+      20%
+    </label>
+	</div>
+  </div>
+</div>
+
+</fieldset>
+</form>
+					</p>
+				</div>
+				<div class="card-footer">
+					Usage: - To decrease Hours Calculation for high number of Enpoints. i.e. 30,000 Wkstns may require adjustment to be inline with previous Sizings, or Support Schemas.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<h5 class="card-header">
+					Servers Scale/Count Modifiers
+				</h5>
+				<div class="card-body">
+					<p class="card-text">
+						<legend>Select: A Percentage to Scale Server Hours Down to compensate for inconsistent Hours Calculated by Tool.</legend>
+
+
+<!-- Multiple Radios -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="radios_servers">Modify Servers:</label>
+  <div class="col-md-4">
+  <div class="radio">
+    <label for="radios_servers-0">
+      <input type="radio" name="radios_servers" id="radios_servers-0" value="1.0" checked="checked">
+      none
+    </label>
+	</div>
+
+  <div class="radio">
+    <label for="radios_servers-1">
+      <input type="radio" name="radios_servers" id="radios_servers-1" value="0.02">
+      2%
+    </label>
+	</div>
+
+  <div class="radio">
+    <label for="radios_servers-2">
+      <input type="radio" name="radios_servers" id="radios_servers-2" value="0.05">
+      5%
+    </label>
+	</div>
+
+  <div class="radio">
+    <label for="radios_servers-3">
+      <input type="radio" name="radios_servers" id="radios_servers-3" value="0.7">
+      7%
+    </label>
+	</div>
+
+  <div class="radio">
+    <label for="radios_servers-4">
+      <input type="radio" name="radios_servers" id="radios_servers-4" value="0.10">
+      10%
+    </label>
+	</div>
+
+  <div class="radio">
+    <label for="radios_servers-5">
+      <input type="radio" name="radios_servers" id="radios_servers-5" value="0.12">
+      12%
+    </label>
+	</div>
+
+  <div class="radio">
+    <label for="radios_servers-6">
+      <input type="radio" name="radios_servers" id="radios_servers-6" value="0.17">
+      17%
+    </label>
+	</div>
+
+    <div class="radio">
+
+    <label for="radios_servers-7">
+      <input type="radio" name="radios_servers" id="radios_servers-7" value="0.20">
+      20%
+    </label>
+	</div>
+  </div>
+</div>
+
+</fieldset>
+</form>
+					</p>
+				</div>
+				<div class="card-footer">
+					Usage: - To decrease Hours Calculation for high number of Enpoints. i.e. 5,000 or more may require adjustment to be inline with previous Sizings or changes in Support Schemas.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+  </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<h5 class="card-header">
+					Scale whole Sizings
+				</h5>
+				<div class="card-body">
+					<p class="card-text">
+
+<fieldset>
+
+						<form class="form-horizontal">
+
+                            <!-- Form Name -->
+                            <legend>Scale Whole Sizing</legend>
+
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+
+
+                            <!-- Multiple Radios -->
+                            <div class="form-group">
+                              <label class="col-md-4 control-label" for="radios">Scale:Whole Sizing</label>
+                              <div class="col-md-4">
+                              <div class="radio">
+                                <label for="radios-0">
+                                  <input type="radio" name="radios1" id="radios-0" value="0.02" checked="checked">
+                                  2%
+                                </label>
+                                </div>
+                              <div class="radio">
+                                <label for="radios-1">
+                                  <input type="radio" name="radios1" id="radios-1" value="0.05">
+                                  5%
+                                </label>
+                                </div>
+                              <div class="radio">
+                                <label for="radios-2">
+                                  <input type="radio" name="radios1" id="radios-2" value="0.07">
+                                  7%
+                                </label>
+                                </div>
+                              <div class="radio">
+                                <label for="radios-3">
+                                  <input type="radio" name="radios1" id="radios-3" value="0.10">
+                                  10%
+                                </label>
+                                </div>
+                              <div class="radio">
+                                <label for="radios-4">
+                                  <input type="radio" name="radios1" id="radios-4" value="0.12">
+                                  12%
+                                </label>
+                                </div>
+                              <div class="radio">
+                                <label for="radios-5">
+                                  <input type="radio" name="radios1" id="radios-5" value="0.17">
+                                  15%
+                                </label>
+                                </div>
+                              <div class="radio">
+                                <label for="radios-6">
+                                  <input type="radio" name="radios1" id="radios-6" value="0.20">
+                                  17%
+                                </label>
+                                </div>
+                              <div class="radio">
+                                <label for="radios-7">
+                                  <input type="radio" name="radios1" id="radios-7" value="">
+                                  20%
+                                </label>
+                                </div>
+                              </div>
+                            </div>
+
+
+
+
+                            </div>
+
+                            <div class="col-md-8">
+
+                                                            <!-- Select Multiple -->
+                            <div class="form-group">
+
+                                <div class="row">
+                                    <label class="col-md-12 control-label" for="modifier_scale_whole_sizing_percentage">Reason/Explaination:</label>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                <select id="modifier_scale_whole_sizing_percentage" name="modifier_scale_whole_sizing_percentage" class="form-control" multiple="multiple">
+                                  <option value="none">--- Select ---</option>
+                                  <option value="Meet Sales Goals">Meet Sales Goals</option>
+                                  <option value="Meet Competitive Bid/Quote">Meet Competitive Bid/Quote</option>
+                                  <option value="Meet FTE Goals">Meet FTE Goals</option>
+                                  <option value="Add-On to existing Business">Add-On to existing Business</option>
+                                  <option value="Extension of existing Business">Extension of existing Business</option>
+                                  <option value="Endpoint Scale too High">Endpoint Scale too High</option>
+                                  <option value="Compensate For:">Compensate For:</option>
+                                </select>
+                              </div>
+                                </div>
+                                <div class="row">
+                                    <!-- Textarea -->
+                                    <div class="form-group">
+                                      <label class="col-md-12 control-label" for="textarea">Text Area</label>
+
+                                        <textarea class="form-control" id="textarea" name="textarea">Select Reason/Explanation to Pre-populate Form:</textarea>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Button (Double) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="button_save_scaleWhole">Save / Cancel</label>
+  <div class="col-md-8">
+    <button id="button_save_scaleWhole" name="button_save_scaleWhole" class="btn btn-success">Save</button>
+    <button id="buttons_cancel_scaleWhole" name="buttons_cancel_scaleWhole" class="btn btn-danger">Cancel</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+					</p>
+				</div>
+				<div class="card-footer">
+					Card footer
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+  </div>
+</div>
+
+
+
+
+
+                        </div>
+                    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+            </div>
+            <div class="row">
+
+
+                <div class="col-md-1">
+
+                    <div class="row">
+                        <!-- Button trigger modal -->
+                          Tools
+<!--                        </button>-->
+                    </div>
+                   <div class="row">.
+<a href="{% url 'orderitem_mgr_app:create' order.id %}" class="btn btn-info btn-sm"><i class="fas fa-plus"></i></a>
+                   </div>
+                    <div class="row" content="align-center">
+                           <!-- Button trigger modal -->
+                       <button type="<button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateSizingleModal">
+                          Update Sizing-Info
+                        </button>
+                    </div>
+                    <div class="row">.</div>
+                    <div class="row">
+                         <!-- Button trigger modal -->
+                       <button type="<button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                            Add Products
+                        </button>
+                    </div>
+                    <div class="row">.</div>
+                    <div class="row">
+                          <!-- Button trigger modal -->
+                       <button type="<button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tntWorksheetModal">
+                          T&T WorkSheet
+                        </button>
+                    </div>
+
+                    <div class="row">.</div>
+                    <div class="row">
+                                                   <!-- Button trigger modal -->
+                       <button type="<button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                          Overview
+                        </button>
+                    </div>
+                    <div class="row">.</div>
+                    <div class="row">
+                        <!-- Button trigger modal -->
+                       <button type="<button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#wkstn_modifierModal">
+                          Modifiers
+                        </button></div>
+                    <div class="row">.</div>
+                    <div class="row">
+                           <!-- Button trigger modal -->
+                       <button type="<button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                          GBO View
+                        </button>
+                    </div>
+                    <div class="row"></div>
+
+
+
+
+                </div>
+                <div class="col-md-10">
+                    <div class="card">
+                        <div id='order_item_container' class="card-body">
+                            <div class="container-fluid">
+    <form method="post" class="form">{% csrf_token %}
+<!--        <br>-->
+<!--         <button type="submit" class="btn btn-success">Save</button>-->
+
+        	<div class="row">
+		<div class="col-md-12">
+			<div id="card-102243">
+				<div class="card">
+					<div class="card-header">
+						 <a class="card-link collapsed" data-toggle="collapse" data-parent="#card-102243" href="#card-element-940780">T & T Worksheet</a>
+					</div>
+					<div id="card-element-940780" class="collapse">
+						<div class="card-body">
+<!--							<div class="container-fluid">-->
+<!--								<div class="row">-->
+<!--									<div class="col-md-12">-->
+<!--										<div class="card">-->
+<!--											<h5 class="card-header">-->
+<!--												'Infrastructure and EndPoint Security Sizing Transition & Transformation Worksheet'-->
+<!--											</h5>-->
+<!--											<div class="card-body">-->
+<!--												<p class="card-text">-->
+
+
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-1"></div>-->
+<!--                        <div class="col-md-10"><h3>'Infrastructure and EndPoint Security Sizing Transition & Transformation Worksheet</h3></div>-->
+<!--                        <div class="col-md-1"><br>-->
+<!--         <button type="submit" class="btn btn-success">Save</button></div>-->
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-12">-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                    <div class="row"  style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">#</div>-->
+<!--                        <div class="col-md-6">Description</div>-->
+<!--                        <div class="col-md-1">Count</div>-->
+<!--                        <div class="col-md-1">Transition Hrs/Item</div>-->
+<!--                        <div class="col-md-1">Transition Hrs</div>-->
+<!--                        <div class="col-md-1">Transformation Hrs/Item</div>-->
+<!--                        <div class="col-md-1">Transformation Hrs</div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">1</div>-->
+<!--                        <div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">Execute transition plan, task tracking, conferences, minutes, communication, status reporting, etc</div>-->
+<!--                        <div class="col-md-1" >-->
+<!--                                         <div class="form-group ">-->
+
+<!--                                          {{ form.executetransitionplan_count.errors }}-->
+
+<!--            {{ form.executetransitionplan_count }}-->
+
+<!--        </div>-->
+
+<!--                        </div>-->
+<!--                        <div class="col-md-1" >-->
+<!--                                          <div class="form-group"  style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--            {{ form.executetransitionplan_transitionhoursitem.errors }}-->
+
+<!--            {{ form.executetransitionplan_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                          <div class="form-group ">-->
+<!--            {{ form.executetransitionplan_transitionhours.errors }}-->
+
+<!--            {{ form.executetransitionplan_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.executetransitionplan_transformationhoursitem.errors }}-->
+
+<!--            {{ form.executetransitionplan_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.executetransitionplan_transformationhours.errors }}-->
+
+<!--            {{ form.executetransitionplan_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">2</div>-->
+<!--                        <div class="col-md-6">Create (best practice/custom), Review, Deploy and Document initial policies (incl. QA test of policies on endpoints)</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.createbestpracticecustom_count.errors }}-->
+
+<!--            {{ form.createbestpracticecustom_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.createbestpracticecustom_transitionhoursitem.errors }}-->
+
+<!--            {{ form.createbestpracticecustom_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--            {{ form.createbestpracticecustom_transitionhours.errors }}-->
+
+<!--            {{ form.createbestpracticecustom_transitionhours }}-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.createbestpracticecustom_transformationhoursitem.errors }}-->
+
+<!--            {{ form.createbestpracticecustom_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.createbestpracticecustom_transformationhours.errors }}-->
+
+<!--            {{ form.createbestpracticecustom_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row"  style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">3</div>-->
+<!--                        <div class="col-md-6">Test infrastructure (POC test, non-production data test, stress test, server/console failover, etc.).</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.testinfrastructurepoc_count.errors }}-->
+
+<!--            {{ form.testinfrastructurepoc_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.testinfrastructurepoc_transitionhoursitem.errors }}-->
+
+<!--            {{ form.testinfrastructurepoc_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                     <div class="form-group ">-->
+<!--            {{ form.testinfrastructurepoc_transitionhours.errors }}-->
+
+<!--            {{ form.testinfrastructurepoc_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.testinfrastructurepoc_transformationhoursitem.errors }}-->
+
+<!--            {{ form.testinfrastructurepoc_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.testinfrastructurepoc_transformationhours.errors }}-->
+
+<!--            {{ form.testinfrastructurepoc_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--        <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">4</div>-->
+<!--                        <div class="col-md-6">Troubleshoot/tune infrastructure. Engage vendor and other teams as needed</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.troubleshoottune_count.errors }}-->
+
+<!--            {{ form.troubleshoottune_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                         <div class="form-group ">-->
+<!--            {{ form.troubleshoottune_transitionhoursitem.errors }}-->
+
+<!--            {{ form.troubleshoottune_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                <div class="form-group ">-->
+<!--            {{ form.troubleshoottune_transitionhours.errors }}-->
+
+<!--            {{ form.troubleshoottune_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.troubleshoottune_transformationhoursitem.errors }}-->
+
+<!--            {{ form.troubleshoottune_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                   <div class="form-group ">-->
+<!--            {{ form.troubleshoottune_transformationhours.errors }}-->
+
+<!--            {{ form.troubleshoottune_transformationhours }}-->
+<!--        </div>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                   	<div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">5</div>-->
+<!--                        <div class="col-md-6">Install/configure product on infrastructure servers; patch or hotfix</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.installconfigure_count.errors }}-->
+
+<!--            {{ form.installconfigure_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                         <div class="form-group ">-->
+<!--            {{ form.installconfigure_transitionhoursitem.errors }}-->
+
+<!--            {{ form.installconfigure_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                <div class="form-group ">-->
+<!--            {{ form.installconfigure_transitionhours.errors }}-->
+
+<!--            {{ form.installconfigure_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.installconfigure_transformationhoursitem.errors }}-->
+
+<!--            {{ form.installconfigure_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                   <div class="form-group ">-->
+<!--            {{ form.installconfigure_transformationhours.errors }}-->
+
+<!--            {{ form.installconfigure_transformationhours }}-->
+<!--        </div>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">6</div>-->
+<!--                        <div class="col-md-6">Administrator training of GDC pooled resources</div>-->
+<!--                        <div class="col-md-1">-->
+<!--							<div class="form-group ">-->
+<!--            {{ form.administratortraining_count.errors }}-->
+
+<!--            {{ form.administratortraining_count }}-->
+<!--        </div>-->
+
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                               <div class="form-group ">-->
+<!--            {{ form.administratortraining_transitionhoursitem.errors }}-->
+
+<!--            {{ form.administratortraining_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                           <div class="form-group ">-->
+<!--            {{ form.administratortraining_transitionhours.errors }}-->
+
+<!--            {{ form.administratortraining_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                     <div class="form-group ">-->
+<!--            {{ form.administratortraining_transformationhoursitem.errors }}-->
+
+<!--            {{ form.administratortraining_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                         <div class="form-group ">-->
+<!--            {{ form.administratortraining_transformationhours.errors }}-->
+
+<!--            {{ form.administratortraining_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">7</div>-->
+<!--                        <div class="col-md-6">Develop Service Responsibility Matrix; review among stakeholders</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.developserviceresponsibilitymatrix_count.errors }}-->
+
+<!--            {{ form.developserviceresponsibilitymatrix_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.developserviceresponsibilitymatrix_transitionhoursitem.errors }}-->
+
+<!--            {{ form.developserviceresponsibilitymatrix_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.developserviceresponsibilitymatrix_transitionhours.errors }}-->
+
+<!--            {{ form.developserviceresponsibilitymatrix_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.developserviceresponsibilitymatrix_transformationhoursitem.errors }}-->
+
+<!--            {{ form.developserviceresponsibilitymatrix_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                      <div class="form-group ">-->
+<!--            {{ form.developserviceresponsibilitymatrix_transformationhours.errors }}-->
+
+<!--            {{ form.developserviceresponsibilitymatrix_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+
+
+
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">8</div>-->
+<!--                        <div class="col-md-6">Establish any needed service accounts, business justifications, approval processes, testing.</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                     <div class="form-group ">-->
+<!--            {{ form.establishanyneededserviceaccounts_count.errors }}-->
+
+<!--            {{ form.establishanyneededserviceaccounts_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                        <div class="form-group ">-->
+<!--            {{ form.establishanyneededserviceaccounts_transitionhoursitem.errors }}-->
+
+<!--            {{ form.establishanyneededserviceaccounts_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                        <div class="form-group ">-->
+<!--            {{ form.establishanyneededserviceaccounts_transitionhoursitem.errors }}-->
+
+<!--            {{ form.establishanyneededserviceaccounts_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.establishanyneededserviceaccounts_transformationhoursitem.errors }}-->
+
+<!--                       {{ form.establishanyneededserviceaccounts_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                     <div class="form-group ">-->
+<!--            {{ form.establishanyneededserviceaccounts_transformationhours.errors }}-->
+
+<!--            {{ form.establishanyneededserviceaccounts_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">9</div>-->
+<!--                        <div class="col-md-6">Research and setup email automation (SMTP or via special triggers) - includes alerts, failure notifications, etc. as needed.</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                           <div class="form-group ">-->
+<!--            {{ form.researchandsetupemailautomation_count.errors }}-->
+
+<!--            {{ form.researchandsetupemailautomation_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                           <div class="form-group ">-->
+<!--            {{ form.researchandsetupemailautomation_transitionhoursitem.errors }}-->
+
+<!--            {{ form.researchandsetupemailautomation_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.researchandsetupemailautomation_transitionhours.errors }}-->
+
+<!--            {{ form.researchandsetupemailautomation_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                       <div class="form-group ">-->
+<!--            {{ form.researchandsetupemailautomation_transformationhoursitem.errors }}-->
+
+<!--            {{ form.researchandsetupemailautomation_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.researchandsetupemailautomation_transformationhours.errors }}-->
+
+<!--            {{ form.researchandsetupemailautomation_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">10</div>-->
+<!--                        <div class="col-md-6">Install/configure remote consoles</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                           <div class="form-group ">-->
+<!--            {{ form.installconfigureremoteconsoles_count.errors }}-->
+
+<!--            {{ form.installconfigureremoteconsoles_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.installconfigureremoteconsoles_transitionhoursitem.errors }}-->
+
+<!--            {{ form.installconfigureremoteconsoles_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                          <div class="form-group ">-->
+<!--            {{ form.installconfigureremoteconsoles_transitionhours.errors }}-->
+
+<!--            {{ form.installconfigureremoteconsoles_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                      <div class="form-group ">-->
+<!--            {{ form.installconfigureremoteconsoles_transformationhoursitem.errors }}-->
+
+<!--            {{ form.installconfigureremoteconsoles_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                           <div class="form-group ">-->
+<!--            {{ form.installconfigureremoteconsoles_transformationhours.errors }}-->
+
+<!--            {{ form.installconfigureremoteconsoles_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">11</div>-->
+<!--                        <div class="col-md-6">Work with SECOPS to ensure proper performance; understanding of error codes, baseline performance expectation, etc.</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.workwithsecops_count.errors }}-->
+
+<!--            {{ form.workwithsecops_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.workwithsecops_transitionhoursitem.errors }}-->
+
+<!--            {{ form.workwithsecops_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.workwithsecops_transitionhours.errors }}-->
+
+<!--            {{ form.workwithsecops_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.workwithsecops_transformationhoursitem.errors }}-->
+
+<!--            {{ form.workwithsecops_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                           <div class="form-group ">-->
+<!--            {{ form.workwithsecops_transformationhours.errors }}-->
+
+<!--            {{ form.workwithsecops_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">12</div>-->
+<!--                        <div class="col-md-6">Staffing (coordinating)</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                          <div class="form-group ">-->
+<!--            {{ form.staffingccoordinating_count.errors }}-->
+
+<!--            {{ form.staffingccoordinating_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                         <div class="form-group ">-->
+<!--            {{ form.staffingccoordinating_transitionhoursitem.errors }}-->
+
+<!--            {{ form.staffingccoordinating_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                  <div class="form-group ">-->
+<!--            {{ form.staffingccoordinating_transitionhours.errors }}-->
+
+<!--            {{ form.staffingccoordinating_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.staffingccoordinating_transformationhoursitem.errors }}-->
+
+<!--            {{ form.staffingccoordinating_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.staffingccoordinating_transformationhours.errors }}-->
+
+<!--            {{ form.staffingccoordinating_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">13</div>-->
+<!--                        <div class="col-md-6">Identify/test/document onboarding procedures.</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.identifytestdocument_count.errors }}-->
+
+<!--            {{ form.identifytestdocument_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.identifytestdocument_transitionhoursitem.errors }}-->
+
+<!--            {{ form.identifytestdocument_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                    <div class="form-group ">-->
+<!--            {{ form.identifytestdocument_transitionhours.errors }}-->
+
+<!--            {{ form.identifytestdocument_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.identifytestdocument_transformationhoursitem.errors }}-->
+
+<!--            {{ form.identifytestdocument_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.identifytestdocument_transformationhours.errors }}-->
+
+<!--            {{ form.identifytestdocument_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">14</div>-->
+<!--                        <div class="col-md-6">Obtain network and OS access - Wave 1 (Initial staffing needed for Knowledge Transfer)</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.obtainnetworkandosaccesswave1_count.errors }}-->
+
+<!--            {{ form.obtainnetworkandosaccesswave1_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.obtainnetworkandosaccesswave1_transitionhoursitem.errors }}-->
+
+<!--            {{ form.obtainnetworkandosaccesswave1_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.obtainnetworkandosaccesswave1_transitionhours.errors }}-->
+
+<!--            {{ form.obtainnetworkandosaccesswave1_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.obtainnetworkandosaccesswave1_transformationhoursitem.errors }}-->
+
+<!--            {{ form.obtainnetworkandosaccesswave1_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.obtainnetworkandosaccesswave1_transformationhours.errors }}-->
+
+<!--            {{ form.obtainnetworkandosaccesswave1_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">15</div>-->
+<!--                        <div class="col-md-6">Obtain network and OS access - Wave 2 (Staffing needed for Steady State)</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.obtainnetworkandosaccesswave2_count.errors }}-->
+
+<!--            {{ form.obtainnetworkandosaccesswave2_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.obtainnetworkandosaccesswave2_transitionhoursitem.errors }}-->
+
+<!--            {{ form.obtainnetworkandosaccesswave2_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                           <div class="form-group ">-->
+<!--            {{ form.obtainnetworkandosaccesswave2_transitionhours.errors }}-->
+
+<!--            {{ form.obtainnetworkandosaccesswave2_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.obtainnetworkandosaccesswave2_transformationhoursitem.errors }}-->
+
+<!--            {{ form.obtainnetworkandosaccesswave2_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.obtainnetworkandosaccesswave2_transformationhours.errors }}-->
+
+<!--            {{ form.obtainnetworkandosaccesswave2_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">16</div>-->
+<!--                        <div class="col-md-6">Develop/provide agent to software deployment group; oversee agent deployment (manual install required)</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.developprovideagentsoftware_count.errors }}-->
+
+<!--            {{ form.developprovideagentsoftware_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                          <div class="form-group ">-->
+<!--            {{ form.developprovideagentsoftware_transitionhoursitem.errors }}-->
+
+<!--            {{ form.developprovideagentsoftware_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                        <div class="form-group ">-->
+<!--            {{ form.developprovideagentsoftware_transitionhours.errors }}-->
+
+<!--            {{ form.developprovideagentsoftware_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.developprovideagentsoftware_transformationhoursitem.errors }}-->
+
+<!--            {{ form.developprovideagentsoftware_transformationhoursitem }}-->
+<!--        </div>-->
+
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                         <div class="form-group ">-->
+<!--            {{ form.developprovideagentsoftware_transformationhours.errors }}-->
+
+<!--            {{ form.developprovideagentsoftware_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+
+
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">17</div>-->
+<!--                        <div class="col-md-6">Install/configure ODBC or other connectors to metaconsoles; </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.installconfigureodbc_count.errors }}-->
+
+<!--            {{ form.installconfigureodbc_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.installconfigureodbc_transitionhoursitem.errors }}-->
+
+<!--            {{ form.installconfigureodbc_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.installconfigureodbc_transitionhours.errors }}-->
+
+<!--            {{ form.installconfigureodbc_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                         <div class="form-group ">-->
+<!--            {{ form.installconfigureodbc_transformationhoursitem.errors }}-->
+
+<!--            {{ form.installconfigureodbc_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.installconfigureodbc_transformationhours.errors }}-->
+
+<!--            {{ form.installconfigureodbc_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">18</div>-->
+<!--                        <div class="col-md-6">Customer review and sign-off on infrastructure set up, test results, etc.</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                           <div class="form-group ">-->
+<!--            {{ form.customerreviewsignoff_count.errors }}-->
+
+<!--            {{ form.customerreviewsignoff_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.customerreviewsignoff_transitionhoursitem.errors }}-->
+
+<!--            {{ form.customerreviewsignoff_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.customerreviewsignoff_transitionhours.errors }}-->
+
+<!--            {{ form.customerreviewsignoff_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.customerreviewsignoff_transformationhoursitem.errors }}-->
+
+<!--            {{ form.customerreviewsignoff_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                         <div class="form-group ">-->
+<!--            {{ form.customerreviewsignoff_transformationhours.errors }}-->
+
+<!--            {{ form.customerreviewsignoff_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">19</div>-->
+<!--                        <div class="col-md-6">Establish Health check regimen for product and infrastructure</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                           <div class="form-group ">-->
+<!--            {{ form.establishhealthcheck_count.errors }}-->
+
+<!--            {{ form.establishhealthcheck_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.establishhealthcheck_transitionhoursitem.errors }}-->
+
+<!--            {{ form.establishhealthcheck_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                          <div class="form-group ">-->
+<!--            {{ form.establishhealthcheck_transitionhours.errors }}-->
+
+<!--            {{ form.establishhealthcheck_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.establishhealthcheck_transformationhoursitem.errors }}-->
+
+<!--            {{ form.establishhealthcheck_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.establishhealthcheck_transformationhours.errors }}-->
+
+<!--            {{ form.establishhealthcheck_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">20</div>-->
+<!--                        <div class="col-md-6">Develop workflows for patch management, change management, incident management, policy review</div>-->
+<!--                        <div class="col-md-1">-->
+<!--							                <div class="form-group ">-->
+<!--            {{ form.developworkflows_count.errors }}-->
+
+<!--            {{ form.developworkflows_count }}-->
+<!--        </div>-->
+
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                           <div class="form-group ">-->
+<!--            {{ form.developworkflows_transitionhoursitem.errors }}-->
+
+<!--            {{ form.developworkflows_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.developworkflows_transitionhours.errors }}-->
+
+<!--            {{ form.developworkflows_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                        <div class="form-group ">-->
+<!--            {{ form.developworkflows_transformationhoursitem.errors }}-->
+
+<!--            {{ form.developworkflows_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.developworkflows_transformationhours.errors }}-->
+
+<!--            {{ form.developworkflows_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">21</div>-->
+<!--                        <div class="col-md-6">Operational documentation</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                          <div class="form-group ">-->
+<!--            {{ form.operationaldocumentation_count.errors }}-->
+
+<!--            {{ form.operationaldocumentation_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.operationaldocumentation_transitionhoursitem.errors }}-->
+
+<!--            {{ form.operationaldocumentation_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.operationaldocumentation_transitionhours.errors }}-->
+
+<!--            {{ form.operationaldocumentation_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.operationaldocumentation_transformationhoursitem.errors }}-->
+
+<!--            {{ form.operationaldocumentation_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--							                <div class="form-group ">-->
+<!--            {{ form.operationaldocumentation_transformationhours.errors }}-->
+
+<!--            {{ form.operationaldocumentation_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">22</div>-->
+<!--                        <div class="col-md-6">Shadow/Establish/Review all procedures, monitoring of console, health check, support ticket queue, etc.</div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.shadowestablishreviewallprocedures_count.errors }}-->
+
+<!--            {{ form.shadowestablishreviewallprocedures_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                 <div class="form-group ">-->
+<!--									{{ form.shadowestablishreviewallprocedures_transitionhoursitem.errors }}-->
+
+<!--									{{ form.shadowestablishreviewallprocedures_transitionhoursitem }}-->
+<!--								</div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--								<div class="form-group ">-->
+<!--								{{ form.shadowestablishreviewallprocedures_transitionhours.errors }}-->
+
+<!--								{{ form.shadowestablishreviewallprocedures_transitionhours }}-->
+<!--        						</div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--							<div class="form-group ">-->
+<!--							{{ form.shadowestablishreviewallprocedures_transformationhoursitem.errors }}-->
+
+<!--            {{ form.shadowestablishreviewallprocedures_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.shadowestablishreviewallprocedures_transformationhours.errors }}-->
+
+<!--            {{ form.shadowestablishreviewallprocedures_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">23</div>-->
+<!--                        <div class="col-md-6">Other (details available in project plan)</div>-->
+<!--                        <div class="col-md-1">-->
+
+<!--                        <div class="form-group ">-->
+<!--							{{ form.otherdetail_count.errors }}-->
+
+<!--							{{ form.otherdetail_count }}-->
+<!--        				</div>-->
+
+<!--					</div>-->
+<!--                        <div class="col-md-1">-->
+
+<!--							<div class="form-group ">-->
+<!--								{{ form.otherdetail_transitionhoursitem.errors }}-->
+
+<!--								{{ form.otherdetail_transitionhoursitem }}-->
+<!--							</div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--							<div class="form-group ">-->
+<!--								{{ form.otherdetail_transitionhours.errors }}-->
+
+<!--								{{ form.otherdetail_transitionhours }}-->
+<!--							</div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--							<div class="form-group ">-->
+<!--								{{ form.otherdetail_transformationhoursitem.errors }}-->
+
+<!--								{{ form.otherdetail_transformationhoursitem }}-->
+<!--							</div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.otherdetail_transformationhours.errors }}-->
+
+<!--            {{ form.otherdetail_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">24</div>-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group ">-->
+<!--                                {{ form.SpecialItemsDesc1.errors }}-->
+
+<!--                                {{ form.SpecialItemsDesc1 }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.specialitem1_count.errors }}-->
+
+<!--            {{ form.specialitem1_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                          <div class="form-group ">-->
+<!--            {{ form.specialitem1_transitionhoursitem.errors }}-->
+
+<!--            {{ form.specialitem1_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                          <div class="form-group ">-->
+<!--            {{ form.specialitem1_transitionhours.errors }}-->
+
+<!--            {{ form.specialitem1_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                           <div class="form-group ">-->
+<!--            {{ form.specialitem1_transformationhoursitem.errors }}-->
+
+<!--            {{ form.specialitem1_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.specialitem1_transformationhours.errors }}-->
+
+<!--            {{ form.specialitem1_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">25</div>-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group ">-->
+<!--                                {{ form.SpecialItemsDesc2.errors }}-->
+
+<!--                                {{ form.SpecialItemsDesc2 }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                         <div class="form-group ">-->
+<!--            {{ form.specialitem2_count.errors }}-->
+
+<!--            {{ form.specialitem2_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                        <div class="form-group ">-->
+<!--            {{ form.specialitem2_transitionhoursitem.errors }}-->
+
+<!--            {{ form.specialitem2_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                                    <div class="form-group ">-->
+<!--            {{ form.specialitem2_transitionhours.errors }}-->
+
+<!--            {{ form.specialitem2_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.specialitem2_transformationhoursitem.errors }}-->
+
+<!--            {{ form.specialitem2_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                           <div class="form-group ">-->
+<!--            {{ form.specialitem2_transformationhours.errors }}-->
+
+<!--            {{ form.specialitem2_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+
+<!--                        <div class="col-md-1">26</div>-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group ">-->
+<!--                                {{ form.SpecialItemsDesc3.errors }}-->
+
+<!--                                {{ form.SpecialItemsDesc3 }}-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                                 <div class="form-group ">-->
+<!--            {{ form.specialitem3_count.errors }}-->
+
+<!--            {{ form.specialitem3_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.specialitem3_transitionhoursitem.errors }}-->
+
+<!--            {{ form.specialitem3_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                          <div class="form-group ">-->
+<!--            {{ form.specialitem3_transitionhours.errors }}-->
+
+<!--            {{ form.specialitem3_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                                   <div class="form-group ">-->
+<!--            {{ form.specialitem3_transformationhoursitem.errors }}-->
+
+<!--            {{ form.specialitem3_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                           <div class="form-group ">-->
+<!--            {{ form.specialitem3_transformationhours.errors }}-->
+
+<!--            {{ form.specialitem3_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">27</div>-->
+<!--                        <div class="col-md-6">-->
+<!--                             <div class="form-group ">-->
+<!--                                {{ form.SpecialItemsDesc4.errors }}-->
+
+<!--                                {{ form.SpecialItemsDesc4 }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                           <div class="form-group ">-->
+<!--            {{ form.specialitem4_count.errors }}-->
+
+<!--            {{ form.specialitem4_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                                    <div class="form-group ">-->
+<!--            {{ form.specialitem4_transitionhoursitem.errors }}-->
+
+<!--            {{ form.specialitem4_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                                   <div class="form-group ">-->
+<!--            {{ form.specialitem4_transitionhoursitem.errors }}-->
+
+<!--            {{ form.specialitem4_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                    <div class="form-group ">-->
+<!--            {{ form.specialitem4_transformationhoursitem.errors }}-->
+
+<!--            {{ form.specialitem4_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                                    <div class="form-group ">-->
+<!--            {{ form.specialitem4_transformationhours.errors }}-->
+
+<!--            {{ form.specialitem4_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">-->
+<!--                        <div class="col-md-1">28</div>-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group ">-->
+<!--                                {{ form.SpecialItemsDesc5.errors }}-->
+
+<!--                                {{ form.SpecialItemsDesc5 }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.specialitem5_count.errors }}-->
+
+<!--            {{ form.specialitem5_count }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.specialitem5_transitionhoursitem.errors }}-->
+
+<!--            {{ form.specialitem5_transitionhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                                   <div class="form-group ">-->
+<!--            {{ form.specialitem5_transitionhours.errors }}-->
+
+<!--            {{ form.specialitem5_transitionhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                            <div class="form-group ">-->
+<!--            {{ form.specialitem5_transformationhoursitem.errors }}-->
+
+<!--            {{ form.specialitem5_transformationhoursitem }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1">-->
+<!--                                           <div class="form-group ">-->
+<!--            {{ form.specialitem5_transformationhours.errors }}-->
+
+<!--            {{ form.specialitem5_transformationhours }}-->
+<!--        </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-8">.</div>-->
+<!--                        <div class="col-md-4"></div>-->
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-6"></div>-->
+<!--                        <div class="col-md-6"></div>-->
+
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-6"></div>-->
+<!--                        <div class="col-md-6"></div>-->
+
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-1"></div>-->
+<!--                        <div class="col-md-6"></div>-->
+<!--                        <div class="col-md-1"></div>-->
+<!--                        <div class="col-md-1"></div>-->
+<!--                        <div class="col-md-1" style="font-weight:bold; font-family:Arial; font-size:x-small">Transition Hrs</div>-->
+<!--                        <div class="col-md-1"></div>-->
+<!--                        <div class="col-md-1" style="font-weight:bold; font-family:Arial; font-size:x-small">Tranform Hrs</div>-->
+<!--                    </div>-->
+
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-1">.</div>-->
+<!--                        <div class="col-md-6">.</div>-->
+<!--                        <div class="col-md-1"></div>-->
+<!--                        <div class="col-md-1"></div>-->
+<!--                        <div class="col-md-1" style="font-weight:bold; font-family:Arial; font-size:12px">-->
+<!--                            <p>{{ instance.calculate_totaltransitionhoursitem }} :Hrs</p>-->
+
+<!--                            {{ form.totaltransitionhoursitem.errors }}-->
+
+<!--                            {{ form.totaltransitionhoursitem }}-->
+
+<!--                        </div>-->
+<!--                        <div class="col-md-1"></div>-->
+<!--                        <div class="col-md-1" style="font-weight:bold; font-family:Arial; font-size:12px">-->
+<!--                            <p>{{ instance.calculate_totaltransformationhoursitem }} :Hrs</p>-->
+
+<!--                            {{ form.totaltransformationhoursitem.errors }}-->
+
+<!--                            {{ form.totaltransformationhoursitem }}-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-1">.</div>-->
+<!--                        <div class="col-md-6">.</div>-->
+<!--                        <div class="col-md-1"></div>-->
+<!--                        <div class="col-md-1"></div>-->
+<!--                        <div class="col-md-1" style="font-weight:bold; font-family:Arial">-->
+<!--                            T-->
+<!--                            {{ tnt_transition_total.errors }}-->
+
+<!--                            {{ tnt_transition_total }}-->
+<!--                        </div>-->
+<!--                        <div class="col-md-1"></div>-->
+<!--                        <div class="col-md-1" style="font-weight:bold; font-family:Arial">-->
+<!--                            T-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--												</p>-->
+<!--											</div>-->
+<!--											<div class="card-footer">-->
+<!--												Card footer-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header">
+						 <a class="card-link collapsed" data-toggle="collapse" data-parent="#card-102243" href="#card-element-694488">Details: Endpoint, Bands Hours and FTE</a>
+					</div>
+					<div id="card-element-694488" class="collapse">
+						<div class="card-body">
+							<div class="table-responsive">
+      <!--                          *** Endpoint / Count / Hours/ Band /  Information ****-->
+                                            <div class="row">
+<!--                                    <div class="col-md-1"></div>-->
+                                    <div class="col-md-12">
+                                    <div class="form-group-sm" style="font:500">
+
+
+
+											<div class="row" style="font-weight:bold; font-family:Arial; font-size:12px">
+												<div class="col-md-2" style="background-color:#3c3737; color:#ffd800">EndPoint Info:</div>
+												<div class="col-md-1" style="background-color:#3c3737; color:#FFFFFF">Count</div>
+												<div class="col-md-1" style="background-color:#3c3737; color:#ffd800">Hours</div>
+												<div class="col-md-1" style="background-color:#3c3737; color:#FFFFFF">FTE Band3</div>
+												<div class="col-md-1" style="background-color:#3c3737; color:#FFFFFF">FTE Band4</div>
+												<div class="col-md-1" style="background-color:#3c3737; color:#FFFFFF">FTE Band5</div>
+												<div class="col-md-1" style="background-color:#3c3737; color:#FFFFFF">FTE Band6</div>
+												<div class="col-md-1" style="background-color:#3c3737; color:#FFFFFF">FTE Band7</div>
+												<div class="col-md-1" style="background-color:#3c3737; color:#FFFFFF">FTE Band8</div>
+												<div class="col-md-1" style="background-color:#3c3737; color:#FFFFFF">FTE Band9</div>
+												<div class="col-md-1" style="background-color:#3c3737; color:#ffd800">Total FTE</div>
+
+											</div>
+											<div class="row" style="font-weight:bold; font-family:Arial; font-size:12px">
+												<div class="col-md-2">:</div>
+												<div class="col-md-3" style="background-color:#ffcc99;font-weight:bold">.</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">. </div>
+												<div class="col-md-1" style="background-color:#ffcc99;">. </div>
+												<div class="col-md-1" style="background-color:#ffcc99;">. </div>
+												<div class="col-md-1" style="background-color:#ffcc99;">. </div>
+												<div class="col-md-1" style="background-color:#ffcc99;">. </div>
+												<div class="col-md-1" style="background-color:#ffcc99;">. </div>
+												<div class="col-md-1" style="background-color:#ffcc99;">. </div>
+
+											</div>
+
+											<div class="row" style="font-weight:normal; font-family:Arial; font-size:12px">
+												<div class="col-md-2">Workstations:</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">{{ instance.tag_num_workstation }}</div>
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">{{ instance.tag_sum_wkstnshourscalc }}</div>
+												</div>
+
+												<div class="col-md-1" style="background-color:#ffcc99">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99; align-content:center">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+
+												<div class="col-md-1" style="background-color:#ffcc99; font-weight:bold; font-family:Arial">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+												</div>
+											</div>
+
+											<div class="row" style="font-weight:normal; font-family:Arial; font-size:12px">
+												<div class="col-md-2">Servers:</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">{{ instance.tag_num_server }}</div>
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">{{ instance.tag_sum_srvshourscalc }}</div>
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+
+												<div class="col-md-1" style="background-color:#ffcc99; font-weight:bold; font-family:Arial;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+												</div>
+											</div>
+
+											<div class="row" style="font-weight:normal; font-family:Arial; font-size:12px">
+												<div class="col-md-2">IP / EndPoints:</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">{{ instance.tag_num_ipaddress }}</div>
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">{{ instance.tag_sum_ipshourscalc }}</div>
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.125</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.125</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+
+												<div class="col-md-1" style="background-color:#ffcc99; font-weight:bold; font-family:Arial;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+												</div>
+											</div>
+
+											<div class="row" style="font-weight:normal; font-family:Arial; font-size:12px">
+												<div class="col-md-2">Additional Consoles:</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">{{ instance.tag_num_console }}</div>
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">{{ instance.tag_sum_consolehourscalc }}</div>
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.00</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+												<div class="col-md-1" style="background-color:#ffcc99;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+
+												</div>
+
+
+												<div class="col-md-1" style="background-color:#ffcc99; font-weight:bold; font-family:Arial;">
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px;">0.000</div>
+												</div>
+											</div>
+											<div class="row" style="font-weight:bold; font-family:Arial; font-size:12px">
+												<div class="col-md-4" style="background-color:#C6E2EE;font-weight:normal">.</div>
+												<div class="col-md-1" style="background-color:#C6E2EE;">.</div>
+												<div class="col-md-1" style="background-color:#C6E2EE;">.</div>
+												<div class="col-md-1" style="background-color:#C6E2EE;">.</div>
+												<div class="col-md-1" style="background-color:#C6E2EE;">.</div>
+												<div class="col-md-1" style="background-color:#C6E2EE;">.</div>
+												<div class="col-md-1" style="background-color:#C6E2EE;">.</div>
+												<div class="col-md-1" style="background-color:#C6E2EE;">.</div>
+												<div class="col-md-1" style="background-color:#C6E2EE;">.</div>
+											</div>
+
+											<div class="row" style="font-family:Arial; font-size:12px">
+												<div class="col-md-3"></div>
+												<div class="col-md-1">
+
+													<div style="background-color:#eaeae9; font-weight:bold; height:23px; text-align:center; padding: 5px 3px 3px 3px;">265.000</div>
+												</div>
+												<div class="col-md-7"></div>
+												<div class="col-md-1">
+
+													<div style="background-color:#eaeae9; height:23px; text-align:center; padding: 5px 3px 3px 3px; font-weight:bold">0.250</div>
+												</div>
+
+											</div>
+										</div>
+
+                                    </div>
+<!--                                    <div class="col-md-1"></div>-->
+
+
+
+                                            </div>
+
+
+<!--    {% render_table order_items %}-->
+</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+    <form>
+
+
+</div>
+                            {% include 'include/order_container.html' %}
+                        </div>
+                    </div>
+
+<!--                    <div class="card">-->
+<!--                        <div class="header">Edit</div>-->
+<!--                        <div class="card-body">-->
+<!--                            <form method="post" class="form">{% csrf_token %}-->
+
+<!--                                pppp-->
+<!--                                {{ form }}-->
+<!--                                <br>-->
+<!--                                <button type="submit" class="btn btn-success">Save</button>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                    <div class="card">
+                        <div class="header">Edit</div>
+                        <div class="card-body">
+                            <form method="post" class="form">{% csrf_token %}
+                                {{ form.non_field_errors }}
+
+                                  {{ form.source.errors }}
+                                  {{ form.source }}
+                                    <table border="1">
+
+                                          <tr>
+                                            <th>{{ form.date.label_tag }}</th>
+                                            <td>
+                                              {{ form.date.errors }}
+                                              {{ form.date }}
+                                            </td>
+                                          </tr>
+
+                                          <tr>
+                                            <th>{{ form.title.label_tag }}</th>
+                                            <td>
+                                              {{ form.title.errors }}
+                                              {{ form.title }}
+                                            </td>
+                                          </tr>
+
+                                          <tr>
+                                            <th>{{ form.value.label_tag }}</th>
+                                            <td>
+                                              {{ form.value.errors }}
+                                              {{ form.value }}
+                                              <br />
+                                              {{ form.value.help_text }}
+                                            </td>
+                                          </tr>
+                                                                                  <tr>
+                                            <th>{{ form.is_paid.label_tag }}</th>
+                                            <td>
+                                              {{ form.is_paid.errors }}
+                                              {{ form.is_paid }}
+                                              <br />
+                                              {{ form.is_paid.help_text }}
+                                            </td>
+                                          </tr>
+
+                                      </table>
+
+
+                                <br>
+                                <button type="submit" class="btn btn-success">Save</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+                <div class="col-md-1"></div>
+
+
+        </div>
+        </div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+<!--            <style>-->
+<!--            @media screen and (min-width: 676px) {-->
+<!--                .modal-dialog {-->
+<!--                  max-width: 1100px; /* New width for default modal */-->
+<!--                }-->
+<!--            }-->
+<!--        </style>-->
+			 <a id="modal-833820" href="#modal-container-833820" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+
+			<div class="modal fade" id="modal-container-833820" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="myModalLabel">
+								Modal title
+							</h5>
+							<button type="button" class="close" data-dismiss="modal">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							...
+						</div>
+						<div class="modal-footer">
+
+							<button type="button" class="btn btn-primary">
+								Save changes
+							</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">
+								Close
+							</button>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<!-- Modal Add/Update Sizing Detail -->
+        <div  class="modal fade" id="AddOrderitem" role="dialog" aria-hidden="true">
+    <!-- Button trigger modal -->
+
+    <form method="POST">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Add/Update Sizing Detail</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                  <div class="modal-body">
+                    {% csrf_token %}
+                    <input type="hidden" name="orderitemid" id="orderitemid" /><!--i use this for edit and delete-->
+
+                    <a>Edit Sizing Detail</a>
+
+          <fieldset>
+        <legend></legend>
+
+        <div id="div_id_orderitem.numserver" class="ctrlHolder">
+            <label for="id_orderitem.numserver" class="requiredField">Enter/Adjust the # of Servers?<span class="asteriskField">*</span></label>
+            <input id="id_orderitem.numserver" class="textinput textInput" type="text" name="numserver" maxlength="80" required="required" />
+        </div>
+        <div id="div_id_numworkstation" class="ctrlHolder">
+            <label for="id_numworkstation" class="requiredField">Enter/Adjust the # of Workstations?<span class="asteriskField">*</span></label>
+            <input id="id_numworkstation" class="textinput textInput" type="text" name="numworkstation" maxlength="80" required="required" />
+        </div>
+        <div id="div_id_numipaddress" class="ctrlHolder">
+            <label for="id_numipaddress">Enter/Adjust the # of Ip Addresses/EndPoints?</label>
+            <input id="id_numipaddress" type="text" name="numipaddress" class="textinput textInput" />
+        </div>
+
+    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <div class="alert alert-success" id="ins_success" style="display:none">
+
+                    </div>
+                     <div class="alert alert-danger" id="ins_error" style="display:none">
+
+                    </div>
+                </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" id="btn-insert-data" class="btn btn-success">Save</button>
+                       <div id="msg" class="alert alert-danger" style="display:none"></div>
+                     </div>
+
+              </div>
+        </div>
+    </form>
+
+</div>
+
+<hr>
+
+
+{% endblock content_wrapper %}
+
+{% block extra_js %}
+    {% include 'include/ajax_calls.html' %}
+{% endblock %}
+
+
+<script>
+$('#exampleModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
+
+<script>
+    $(document).ready(function () {
+
+      /* Functions */
+
+      var loadForm = function () {
+
+        var btn = $(this);
+        $.ajax({
+          url: btn.attr("data-url"),
+
+          type: 'get',
+          dataType: 'json',
+          beforeSend: function () {
+
+            $("#modal-orderitem .modal-content").html("");//optional--html() return innerHtml of selected elements
+            $("#modal-orderitem").modal("show");
+          },
+          success: function (data) {
+
+            $("#modal-orderitem .modal-content").html(data.html_form);//model-orderitem and model content is in index.html below tabel which will show form pop up
+
+          }
+        });
+      };
+
+      var saveForm = function () {
+        var form = $(this);
+        console.log(form.serialize())
+        $.ajax({
+          headers: {'X-CSRFToken': csrftoken},
+          url: form.attr("action"),//sending request to this url by passing form input data
+          data: form.serialize(),
+          type: form.attr("method"),
+          dataType: 'json',
+          // async : 'false',
+          // dataType: "script",
+
+
+
+          success : function (data) {//this is the response after data is save to database
+
+            if (data.form_is_valid) {//means if data['form_is_valid'] = True in views.py
+
+            alert("successful")
+            // console.log(data.html_orderitem_list)
+
+             $("#modal-orderitem .close").click();// Close the modal form
+
+
+
+             $("#orderitem-table tbody").html('').append(jQuery.parseHTML(data.html_orderitem_list));
+
+            // html('').append(jQuery.parseHTML(data, document, true));
+            // <-- Replace the table body
+              //Goto id="orderitem-table"  tbody and then pass data in tbody contain in data.html_orderitem_list
+
+            //  $("#modal-orderitem").modal('hide');//--similar but differ in some version
+            }
+
+            else {// data['form_is_valid'] = False
+            //if false then show the same form with respective warning
+
+              $("#modal-orderitem .modal-content").html(data.html_form);//$("#server-results").html(response);
+            }
+
+          }
+        });
+        return false;
+      };
+
+
+      $(".js-orderitem-create").click(loadForm);
+      $("#modal-orderitem").on("submit", ".js-orderitem-create-form", saveForm);
+
+
+      $("#orderitem-table").on("click", ".js-orderitem-update", loadForm);
+      $("#modal-orderitem").on("submit", ".js-orderitem-update-form", saveForm);
+
+
+      $("#orderitem-table").on("click", ".js-orderitem-delete", loadForm);
+      $("#modal-orderitem").on("submit", ".js-orderitem-delete-form", saveForm);
+
+    });
+
+    getCookie = (name) => {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+              const cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+  const csrftoken = getCookie('csrftoken');
+
+
+
+</script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script>
+    $("#prod_vendor").change(function () {
+        const prodvendor_id = $(this).val();  // get the selected subject ID from the HTML dropdown list
+        $.ajax({                       // initialize an AJAX request
+            type: "POST",
+            url: '{% url "ajax_get_products" %}',
+            data: {
+                'prodvendor_id': id,       // add the country id to the POST parameters
+                'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function (data) {   // `data` is from `ajax_get_products` view function
+                let html_data = '<option value="">---------</option>';
+                data.forEach(function (data) {
+                    html_data += `<option value="${data.id}">${data.vendorname}</option>`
+                });
+                $("#avproduct").html(html_data); // replace the contents of the topic input with the data that came from the server
+            }
+        });
+    });
+</script>
+
+
+{% block javascript %}
+
+{% endblock javascript %}
+

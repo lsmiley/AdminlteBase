@@ -458,68 +458,68 @@ class Order(models.Model):
     transition_fte = models.FloatField(default='0.0')
     transformation_fte = models.FloatField(default='0.0')
     total_fte  = models.FloatField(default='0.0')
-
-    # Questionaire Extra Fields
-
-    # Requester Information section
-    RequesterFirstName = models.CharField(blank=True, max_length=150)
-    RequesterLastName = models.CharField(blank=True, max_length=150)
-    RequesterRole = models.CharField(blank=True, max_length=150)
-    RequesterEmail = models.CharField(blank=True, max_length=150)
-
-    # Customer Information section
-    CustomerName = models.CharField(blank=True, max_length=150)
-    CustomerStatus = models.CharField(max_length=150, choices=Customer_Status_CHOICES, default='Select-One')
-
-    Solution_Design = models.CharField(max_length=150, choices=Solution_Design_CHOICES, default='Select-One')
-    SalesContactName = models.CharField(blank=True, max_length=150)
-    SalesContactEmail = models.CharField(blank=True, max_length=150)
-    TranStartDate = models.DateTimeField(default=timezone.now)
-    Firm_Price_or_NBIE = models.CharField(max_length=150, choices=Firm_Price_NBIE_CHOICES, default='Select-One')
-    Service_Delivery_Requirements = models.CharField(max_length=150, choices=Service_Delivery_Requirement_CHOICES, default='Select-One')
-    Solution_Owner = models.CharField(blank=True, max_length=150)
-
-    Revenue_Structure_Select = models.CharField(max_length=150, choices=Revenue_CHOICES, default='Select-One')
-    Revenue_Structure_Cost_Explain = models.CharField(blank=True, max_length=150)
-
-    Restricted_Delivery = models.BooleanField(default=False)
-    Restricted_Delivery_Explanation = models.CharField(blank=True, max_length=150)
-
-    Questionaire_num_consoles = models.IntegerField(default='0')
-    Questionaire_num_workstation = models.IntegerField(default='0')
-    Questionaire_num_server = models.IntegerField(db_column='Numserver', default='0')
-    Questionaire_num_ipaddress = models.IntegerField(default='0')
-    Questionaire_num_total_endpoints = models.IntegerField(default='0')
-
-    # Questionaire - Endpoint Security section
-    AntiVirusMalware = models.BooleanField(default=False,)
-    DLP_on_Workstations = models.BooleanField(default=False,)
-    DLP_on_Servers = models.BooleanField(default=False,)
-    Encryption_on_Workstations = models.BooleanField(default=False,)
-    Encryption_on_Servers = models.BooleanField(default=False,)
-    prodcomponent1_wkstn = models.BooleanField(default=False,)
-    NAS_Storage = models.BooleanField(default=False,)
-    Windows = models.BooleanField(default=False,)
-    AIX = models.BooleanField(default=False,)
-    VDI = models.BooleanField(default=False,)
-    URL_Filtering = models.BooleanField(default=False,)
-    HIPs_on_Workstations = models.BooleanField(default=False,)
-    HIPs_on_Servers = models.BooleanField(default=False,)
-    Firewall_on_Workstations = models.BooleanField(default=False,)
-    Firewall_on_Servers = models.BooleanField(default=False,)
-    BigFix_Patching_Scanning = models.BooleanField(default=False,)
-    Linux = models.BooleanField(default=False,)
-    Integrity_Monitoring = models.BooleanField(default=False,)
-    Citrix = models.BooleanField(default=False,)
-    Other_Features_or_Platforms = models.BooleanField(default=False,)
-    Other_Features_or_Platforms_Note = RichTextUploadingField(blank=True, null=True, default=' Explain Other Features and Platform Requirements?')
-
-    # Questionaire - Environment and Platforms Section
-    Environment_and_Platforms_Note = RichTextUploadingField(blank=True, null=True)
-
-    # Questionaire Endpoint Managed Security on Cloud (EMS) Section
-    EmsServiceRequested = models.BooleanField(default=False,)
-    # Ems_Level_requested
+    #
+    # # Questionnaire Extra Fields
+    #
+    # # Requester Information section
+    # RequesterFirstName = models.CharField(blank=True, max_length=150)
+    # RequesterLastName = models.CharField(blank=True, max_length=150)
+    # RequesterRole = models.CharField(blank=True, max_length=150)
+    # RequesterEmail = models.CharField(blank=True, max_length=150)
+    #
+    # # Customer Information section
+    # CustomerName = models.CharField(blank=True, max_length=150)
+    # CustomerStatus = models.CharField(max_length=150, choices=Customer_Status_CHOICES, default='Select-One')
+    #
+    # Solution_Design = models.CharField(max_length=150, choices=Solution_Design_CHOICES, default='Select-One')
+    # SalesContactName = models.CharField(blank=True, max_length=150)
+    # SalesContactEmail = models.CharField(blank=True, max_length=150)
+    # TranStartDate = models.DateTimeField(default=timezone.now)
+    # Firm_Price_or_NBIE = models.CharField(max_length=150, choices=Firm_Price_NBIE_CHOICES, default='Select-One')
+    # Service_Delivery_Requirements = models.CharField(max_length=150, choices=Service_Delivery_Requirement_CHOICES, default='Select-One')
+    # Solution_Owner = models.CharField(blank=True, max_length=150)
+    #
+    # Revenue_Structure_Select = models.CharField(max_length=150, choices=Revenue_CHOICES, default='Select-One')
+    # Revenue_Structure_Cost_Explain = models.CharField(blank=True, max_length=150)
+    #
+    # Restricted_Delivery = models.BooleanField(default=False)
+    # Restricted_Delivery_Explanation = models.CharField(blank=True, max_length=150)
+    #
+    # Questionaire_num_consoles = models.IntegerField(default='0')
+    # Questionaire_num_workstation = models.IntegerField(default='0')
+    # Questionaire_num_server = models.IntegerField(db_column='Numserver', default='0')
+    # Questionaire_num_ipaddress = models.IntegerField(default='0')
+    # Questionaire_num_total_endpoints = models.IntegerField(default='0')
+    #
+    # # Questionnaire - Endpoint Security section
+    # AntiVirusMalware = models.BooleanField(default=False,)
+    # DLP_on_Workstations = models.BooleanField(default=False,)
+    # DLP_on_Servers = models.BooleanField(default=False,)
+    # Encryption_on_Workstations = models.BooleanField(default=False,)
+    # Encryption_on_Servers = models.BooleanField(default=False,)
+    # prodcomponent1_wkstn = models.BooleanField(default=False,)
+    # NAS_Storage = models.BooleanField(default=False,)
+    # Windows = models.BooleanField(default=False,)
+    # AIX = models.BooleanField(default=False,)
+    # VDI = models.BooleanField(default=False,)
+    # URL_Filtering = models.BooleanField(default=False,)
+    # HIPs_on_Workstations = models.BooleanField(default=False,)
+    # HIPs_on_Servers = models.BooleanField(default=False,)
+    # Firewall_on_Workstations = models.BooleanField(default=False,)
+    # Firewall_on_Servers = models.BooleanField(default=False,)
+    # BigFix_Patching_Scanning = models.BooleanField(default=False,)
+    # Linux = models.BooleanField(default=False,)
+    # Integrity_Monitoring = models.BooleanField(default=False,)
+    # Citrix = models.BooleanField(default=False,)
+    # Other_Features_or_Platforms = models.BooleanField(default=False,)
+    # Other_Features_or_Platforms_Note = RichTextUploadingField(blank=True, null=True, default=' Explain Other Features and Platform Requirements?')
+    #
+    # # Questionnaire - Environment and Platforms Section
+    # Environment_and_Platforms_Note = RichTextUploadingField(blank=True, null=True)
+    #
+    # # Questionnaire Endpoint Managed Security on Cloud (EMS) Section
+    # EmsServiceRequested = models.BooleanField(default=False,)
+    # # Ems_Level_requested
 
 
     class Meta:
@@ -1271,163 +1271,167 @@ class OrderItem(models.Model):
 
         # Server Hours Calculations
 
-        enterednumserver = self.numserver
+        enterednumserver = int(self.numserver)
+        calc_nummonths = float(self.nummonths)
+        calc_productcomplexityfac = float(self.productcomplexityfac)
+        # enterednumserver = self.numserver
         # Hours Calculation for Server Line Item
 
         if enterednumserver >= 200500:
             self.srvshourscalc = (
-                                         ((0.0285 * self.productcomplexityfac) * self.numserver) * (
+                                         ((0.0285 * calc_productcomplexityfac) * calc_nummonths) * (
                                          self.productcomplexityfac * self.nummonths) / 12) + self.base
         elif enterednumserver > 200000:
             self.srvshourscalc = (
-                                         ((0.0275 * self.productcomplexityfac) * self.numserver) * (
+                                         ((0.0275 * calc_productcomplexityfac) * calc_nummonths) * (
                                          self.productcomplexityfac * self.nummonths) / 12) + self.base
         elif enterednumserver >= 150000:
             self.srvshourscalc = (
-                                         ((0.055 * self.productcomplexityfac) * self.numserver) * (
+                                         ((0.055 * calc_productcomplexityfac) * calc_nummonths) * (
                                          self.productcomplexityfac * self.nummonths) / 12) + self.base
         elif enterednumserver >= 100000:
-            self.srvshourscalc = (self.numserver * .14 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .14 / 12) * calc_nummonths
         elif enterednumserver >= 100000:
-            self.srvshourscalc = (self.numserver * .14 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .14 / 12) * calc_nummonths
         elif enterednumserver >= 85000:
-            self.srvshourscalc = (self.numserver * .1425 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .1425 / 12) * calc_nummonths
         elif enterednumserver >= 75000:
-            self.srvshourscalc = (self.numserver * .145 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .145 / 12) * calc_nummonths
         elif enterednumserver >= 50000:
-            self.srvshourscalc = (self.numserver * .135 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .135 / 12) * calc_nummonths
         elif enterednumserver >= 42000:
-            self.srvshourscalc = (self.numserver * .16 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .16 / 12) * calc_nummonths
         elif enterednumserver >= 37000:
-            self.srvshourscalc = (self.numserver * .163 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .163 / 12) * calc_nummonths
         elif enterednumserver >= 35000:
-            self.srvshourscalc = (self.numserver * .165 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .165 / 12) * calc_nummonths
         elif enterednumserver >= 25000:
-            self.srvshourscalc = (self.numserver * .17 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .17 / 12) * calc_nummonths
         elif enterednumserver >= 15000:
-            self.srvshourscalc = (self.numserver * .18 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .18 / 12) * calc_nummonths
         elif enterednumserver >= 10000:
-            self.srvshourscalc = (self.numserver * .19 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .19 / 12) * calc_nummonths
         elif enterednumserver >= 5000:
-            self.srvshourscalc = (self.numserver * .195 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .195 / 12) * calc_nummonths
         elif enterednumserver >= 3000:
-            self.srvshourscalc = (self.numserver * .2 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .2 / 12) * calc_nummonths
         elif enterednumserver >= 2601:
-            self.srvshourscalc = (self.numserver * .21 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .21 / 12) * calc_nummonths
         elif enterednumserver >= 2600:
-            self.srvshourscalc = (self.numserver * .22 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .22 / 12) * calc_nummonths
         elif enterednumserver >= 2000:
-            self.srvshourscalc = (self.numserver * .23 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .23 / 12) * calc_nummonths
         elif enterednumserver >= 1500:
-            self.srvshourscalc = (self.numserver * .24 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .24 / 12) * calc_nummonths
         elif enterednumserver >= 1000:
-            self.srvshourscalc = (self.numserver * .25 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .25 / 12) * calc_nummonths
         elif enterednumserver >= 750:
-            self.srvshourscalc = (self.numserver * .26 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .26 / 12) * calc_nummonths
         elif enterednumserver >= 500:
-            self.srvshourscalc = (self.numserver * .27 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .27 / 12) * calc_nummonths
         elif enterednumserver >= 250:
-            self.srvshourscalc = (self.numserver * .28 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .28 / 12) * calc_nummonths
         elif enterednumserver >= 200:
-            self.srvshourscalc = (self.numserver * .29 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .29 / 12) * calc_nummonths
         elif enterednumserver >= 100:
-            self.srvshourscalc = (self.numserver * .30 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .30 / 12) * calc_nummonths
         elif enterednumserver >= 50:
-            self.srvshourscalc = (self.numserver * .31 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .31 / 12) * calc_nummonths
         elif enterednumserver <= 50:
-            self.srvshourscalc = (self.numserver * .31 / 12) * self.nummonths
+            self.srvshourscalc = (enterednumserver * .31 / 12) * calc_nummonths
         # else:
         #     self.srvshourscalc = self.base
 
         # Workstation Hours Calculation
 
         enterednumworkstation = int(self.numworkstation)
+        # enterednumserver = int(self.numserver)
         # Hours Calculation for Workstation Line Item
 
         if enterednumworkstation >= 200500:
             self.wkstnshourscalc = int(
-                ((0.0285 * self.productcomplexityfac) * self.numworkstation) * (
-                        self.productcomplexityfac * self.nummonths) / 12) + self.base
+                ((0.0285 * calc_productcomplexityfac) * enterednumworkstation) * (
+                        calc_productcomplexityfac * calc_nummonths) / 12) + self.base
         elif enterednumworkstation > 200000:
             self.wkstnshourscalc = (
-                                           ((0.0275 * self.productcomplexityfac) * self.numworkstation) * (
-                                           self.productcomplexityfac * self.nummonths) / 12) + self.base
+                                           ((0.0275 * calc_productcomplexityfac) * enterednumworkstation) * (
+                                           calc_productcomplexityfac * calc_nummonths) / 12) + self.base
         elif enterednumworkstation >= 150000:
             self.wkstnshourscalc = (
-                                           ((0.055 * self.productcomplexityfac) * self.numworkstation) * (
-                                           self.productcomplexityfac * self.nummonths) / 12) + self.base
+                                           ((0.055 * calc_productcomplexityfac) * enterednumworkstation) * (
+                                           calc_productcomplexityfac * calc_nummonths) / 12) + self.base
         elif enterednumworkstation >= 100000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .14 / 12) * self.nummonths
+                                           enterednumworkstation * .14 / 12) * calc_nummonths
         elif enterednumworkstation >= 100000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .14 / 12) * self.nummonths
+                                           enterednumworkstation * .14 / 12) * calc_nummonths
         elif enterednumworkstation >= 85000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .1425 / 12) * self.nummonths
+                                           enterednumworkstation * .1425 / 12) * calc_nummonths
         elif enterednumworkstation >= 75000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .145 / 12) * self.nummonths
+                                           enterednumworkstation * .145 / 12) * calc_nummonths
         elif enterednumworkstation >= 50000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .135 / 12) * self.nummonths
+                                           enterednumworkstation * .135 / 12) * calc_nummonths
         elif enterednumworkstation >= 42000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .16 / 12) * self.nummonths
+                                           enterednumworkstation * .16 / 12) * calc_nummonths
         elif enterednumworkstation >= 37000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .163 / 12) * self.nummonths
+                                           enterednumworkstation * .163 / 12) * calc_nummonths
         elif enterednumworkstation >= 35000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .165 / 12) * self.nummonths
+                                           enterednumworkstation * .165 / 12) * calc_nummonths
         elif enterednumworkstation >= 25000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .17 / 12) * self.nummonths
+                                           enterednumworkstation * .17 / 12) * calc_nummonths
         elif enterednumworkstation >= 15000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .18 / 12) * self.nummonths
+                                           enterednumworkstation * .18 / 12) * calc_nummonths
         elif enterednumworkstation >= 10000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .19 / 12) * self.nummonths
+                                           enterednumworkstation * .19 / 12) * calc_nummonths
         elif enterednumworkstation >= 5000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .195 / 12) * self.nummonths
+                                           enterednumworkstation * .195 / 12) * calc_nummonths
         elif enterednumworkstation >= 3000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .2 / 12) * self.nummonths
+                                           enterednumworkstation * .2 / 12) * calc_nummonths
         elif enterednumworkstation >= 2601:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .21 / 12) * self.nummonths
+                                           enterednumworkstation * .21 / 12) * calc_nummonths
         elif enterednumworkstation >= 2600:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .22 / 12) * self.nummonths
+                                           enterednumworkstation * .22 / 12) *calc_nummonths
         elif enterednumworkstation >= 2000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .23 / 12) * self.nummonths
+                                           enterednumworkstation * .23 / 12) * calc_nummonths
         elif enterednumworkstation >= 1500:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .24 / 12) * self.nummonths
+                                           enterednumworkstation * .24 / 12) * calc_nummonths
         elif enterednumworkstation >= 1000:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .25 / 12) * self.nummonths
+                                           enterednumworkstation * .25 / 12) * calc_nummonths
         elif enterednumworkstation >= 750:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .26 / 12) * self.nummonths
+                                           enterednumworkstation * .26 / 12) * calc_nummonths
         elif enterednumworkstation >= 500:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .27 / 12) * self.nummonths
+                                           enterednumworkstation * .27 / 12) * calc_nummonths
         elif enterednumworkstation >= 250:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .28 / 12) * self.nummonths
+                                           enterednumworkstation * .28 / 12) * calc_nummonths
         elif enterednumworkstation >= 200:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .29 / 12) * self.nummonths
+                                           enterednumworkstation* .29 / 12) * calc_nummonths
         elif enterednumworkstation >= 100:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .30 / 12) * self.nummonths
+                                           enterednumworkstation * .30 / 12) * calc_nummonths
         elif enterednumworkstation >= 50:
             self.wkstnshourscalc = (
-                                           self.numworkstation * .31 / 12) * self.nummonths
+                                           enterednumworkstation * .31 / 12) * calc_nummonths
         # else:
         #     self.wkstnshourscalc = self.base
 
@@ -1438,70 +1442,70 @@ class OrderItem(models.Model):
 
         if enterednumipaddress >= 200500:
             self.ipshourscalc = int(
-                ((0.0285 * self.productcomplexityfac) * self.numipaddress) * (
-                        self.productcomplexityfac * self.nummonths) / 12) + self.base
+                ((0.0285 * calc_productcomplexityfac) * enterednumipaddress) * (
+                        calc_productcomplexityfac * calc_nummonths) / 12) + self.base
         elif enterednumipaddress > 200000:
             self.ipshourscalc = (
-                                        ((0.0275 * self.productcomplexityfac) * self.numipaddress) * (
-                                        self.productcomplexityfac * self.nummonths) / 12) + self.base
+                                        ((0.0275 * calc_productcomplexityfac) * enterednumipaddress) * (
+                                        calc_productcomplexityfac * calc_nummonths) / 12) + self.base
         elif enterednumipaddress >= 150000:
             self.ipshourscalc = (
-                                        ((0.055 * self.productcomplexityfac) * self.numipaddress) * (
-                                        self.productcomplexityfac * self.nummonths) / 12) + self.base
+                                        ((0.055 * calc_productcomplexityfac) * enterednumipaddress) * (
+                                        calc_productcomplexityfac * calc_nummonths) / 12) + self.base
         elif enterednumipaddress >= 100000:
-            self.ipshourscalc = (self.numipaddress * .14 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .14 / 12) * calc_nummonths
         elif enterednumipaddress >= 100000:
-            self.ipshourscalc = (self.numipaddress * .14 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .14 / 12) * calc_nummonths
         elif enterednumipaddress >= 85000:
             self.ipshourscalc = (
-                                        self.numipaddress * .1425 / 12) * self.nummonths
+                                        enterednumipaddress * .1425 / 12) * calc_nummonths
         elif enterednumipaddress >= 75000:
             self.ipshourscalc = (
-                                        self.numipaddress * .145 / 12) * self.nummonths
+                                        enterednumipaddress * .145 / 12) * calc_nummonths
         elif enterednumipaddress >= 50000:
             self.ipshourscalc = (
-                                        self.numipaddress * .135 / 12) * self.nummonths
+                                        enterednumipaddress * .135 / 12) * calc_nummonths
         elif enterednumipaddress >= 42000:
-            self.ipshourscalc = (self.numipaddress * .16 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .16 / 12) * calc_nummonths
         elif enterednumipaddress >= 37000:
             self.ipshourscalc = (
-                                        self.numipaddress * .163 / 12) * self.nummonths
+                                        enterednumipaddress * .163 / 12) * calc_nummonths
         elif enterednumipaddress >= 35000:
             self.ipshourscalc = (
-                                        self.numipaddress * .165 / 12) * self.nummonths
+                                        enterednumipaddress * .165 / 12) * calc_nummonths
         elif enterednumipaddress >= 25000:
-            self.ipshourscalc = (self.numipaddress * .17 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .17 / 12) * calc_nummonths
         elif enterednumipaddress >= 15000:
-            self.ipshourscalc = (self.numipaddress * .18 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .18 / 12) * calc_nummonths
         elif enterednumipaddress >= 10000:
-            self.ipshourscalc = (self.numipaddress * .19 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .19 / 12) * calc_nummonths
         elif enterednumipaddress >= 5000:
             self.ipshourscalc = (
-                                        self.numipaddress * .195 / 12) * self.nummonths
+                                        enterednumipaddress * .195 / 12) * calc_nummonths
         elif enterednumipaddress >= 3000:
-            self.ipshourscalc = (self.numipaddress * .2 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .2 / 12) * calc_nummonths
         elif enterednumipaddress >= 2601:
-            self.ipshourscalc = (self.numipaddress * .21 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .21 / 12) * calc_nummonths
         elif enterednumipaddress >= 2600:
-            self.ipshourscalc = (self.numipaddress * .22 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .22 / 12) * calc_nummonths
         elif enterednumipaddress >= 2000:
-            self.ipshourscalc = (self.numipaddress * .23 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .23 / 12) * calc_nummonths
         elif enterednumipaddress >= 1500:
-            self.ipshourscalc = (self.numipaddress * .24 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .24 / 12) * calc_nummonths
         elif enterednumipaddress >= 1000:
-            self.ipshourscalc = (self.numipaddress * .25 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .25 / 12) * calc_nummonths
         elif enterednumipaddress >= 750:
-            self.ipshourscalc = (self.numipaddress * .26 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .26 / 12) * calc_nummonths
         elif enterednumipaddress >= 500:
-            self.ipshourscalc = (self.numipaddress * .27 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .27 / 12) * calc_nummonths
         elif enterednumipaddress >= 250:
-            self.ipshourscalc = (self.numipaddress * .28 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .28 / 12) * calc_nummonths
         elif enterednumipaddress >= 200:
-            self.ipshourscalc = (self.numipaddress * .29 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .29 / 12) * calc_nummonths
         elif enterednumipaddress >= 100:
-            self.ipshourscalc = (self.numipaddress * .30 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .30 / 12) * calc_nummonths
         elif enterednumipaddress >= 50:
-            self.ipshourscalc = (self.numipaddress * .31 / 12) * self.nummonths
+            self.ipshourscalc = (enterednumipaddress * .31 / 12) * calc_nummonths
         # else:
         #     self.wkstnshourscalc = self.base
 
@@ -1512,64 +1516,64 @@ class OrderItem(models.Model):
 
         if enterednumConsole >= 200500:
             self.addlconhourscalc = int(
-                ((0.0285 * self.productcomplexityfac) * self.qty) * (
-                        self.productcomplexityfac * self.nummonths) / 12) + self.base
+                ((0.0285 * calc_productcomplexityfac) * enterednumConsole) * (
+                        calc_productcomplexityfac * calc_nummonths) / 12) + self.base
         elif enterednumConsole > 200000:
             self.addlconhourscalc = (
-                                            ((0.0275 * self.productcomplexityfac) * self.qty) * (
-                                            self.productcomplexityfac * self.nummonths) / 12) + self.base
+                                            ((0.0275 * calc_productcomplexityfac) * enterednumConsole) * (
+                                            calc_productcomplexityfac * calc_nummonths) / 12) + self.base
         elif enterednumConsole >= 150000:
             self.addlconhourscalc = (
-                                            ((0.055 * self.productcomplexityfac) * self.qty) * (
-                                            self.productcomplexityfac * self.nummonths) / 12) + self.base
+                                            ((0.055 * calc_productcomplexityfac) * enterednumConsole) * (
+                                            calc_productcomplexityfac * calc_nummonths) / 12) + self.base
         elif enterednumConsole >= 100000:
-            self.addlconhourscalc = (self.qty * .14 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .14 / 12) * calc_nummonths
         elif enterednumConsole >= 100000:
-            self.addlconhourscalc = (self.qty * .14 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .14 / 12) * calc_nummonths
         elif enterednumConsole >= 85000:
-            self.addlconhourscalc = (self.qty * .1425 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .1425 / 12) * calc_nummonths
         elif enterednumConsole >= 75000:
-            self.addlconhourscalc = (self.qty * .145 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .145 / 12) * calc_nummonths
         elif enterednumConsole >= 50000:
-            self.addlconhourscalc = (self.qty * .135 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .135 / 12) * calc_nummonths
         elif enterednumConsole >= 42000:
-            self.addlconhourscalc = (self.qty * .16 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole* .16 / 12) * calc_nummonths
         elif enterednumConsole >= 37000:
-            self.addlconhourscalc = (self.qty * .163 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .163 / 12) * calc_nummonths
         elif enterednumConsole >= 35000:
-            self.addlconhourscalc = (self.qty * .165 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .165 / 12) * calc_nummonths
         elif enterednumConsole >= 25000:
-            self.addlconhourscalc = (self.qty * .17 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .17 / 12) * calc_nummonths
         elif enterednumConsole >= 15000:
-            self.addlconhourscalc = (self.qty * .18 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .18 / 12) * calc_nummonths
         elif enterednumConsole >= 10000:
-            self.addlconhourscalc = (self.qty * .19 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .19 / 12) * calc_nummonths
         elif enterednumConsole >= 5000:
-            self.addlconhourscalc = (self.qty * .195 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .195 / 12) * calc_nummonths
         elif enterednumConsole >= 3000:
-            self.addlconhourscalc = (self.qty * .2 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .2 / 12) * calc_nummonths
         elif enterednumConsole >= 2601:
-            self.addlconhourscalc = (self.qty * .21 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .21 / 12) * calc_nummonths
         elif enterednumConsole >= 2600:
-            self.addlconhourscalc = (self.qty * .22 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .22 / 12) * calc_nummonths
         elif enterednumConsole >= 2000:
-            self.addlconhourscalc = (self.qty * .23 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .23 / 12) * calc_nummonths
         elif enterednumConsole >= 1500:
-            self.addlconhourscalc = (self.qty * .24 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .24 / 12) * calc_nummonths
         elif enterednumConsole >= 1000:
-            self.addlconhourscalc = (self.qty * .25 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole* .25 / 12) * calc_nummonths
         elif enterednumConsole >= 750:
-            self.addlconhourscalc = (self.qty * .26 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole* .26 / 12) * calc_nummonths
         elif enterednumConsole >= 500:
-            self.addlconhourscalc = (self.qty * .27 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .27 / 12) * calc_nummonths
         elif enterednumConsole >= 250:
-            self.addlconhourscalc = (self.qty * .28 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .28 / 12) * calc_nummonths
         elif enterednumConsole >= 200:
-            self.addlconhourscalc = (self.qty * .29 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .29 / 12) * calc_nummonths
         elif enterednumConsole >= 100:
-            self.addlconhourscalc = (self.qty * .30 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .30 / 12) * calc_nummonths
         elif enterednumConsole >= 50:
-            self.addlconhourscalc = (self.qty * .31 / 12) * self.nummonths
+            self.addlconhourscalc = (enterednumConsole * .31 / 12) * calc_nummonths
         # else:
         #     self.enterednumConsole = self.base
 

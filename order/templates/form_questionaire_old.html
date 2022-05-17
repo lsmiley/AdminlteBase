@@ -1,0 +1,1700 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content_wrapper %}
+    <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+
+<div class="row" xmlns="http://www.w3.org/1999/html">
+    <div class="col-md-2"></div>
+    <div class="col-md-9">
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">{{ form_title }}</h4>
+                        <div class="ml-auto text-right">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">{{ form_title }}</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="card">
+                            <form method="post" class="form-horizontal" > {% csrf_token %}
+                                                                                        <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-11">
+                                <div class="form__container">
+    <div class="title__container">
+
+        <div class="row">
+            <div class="col-md-9"><h1>IBM Endpoint Security Services | Questionnaire</h1></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2"><img src="{% static 'images/ibm/IBM_Secuirty-Small-2018-10-16_18-57-34.gif' %}" alt="MSS" style="opacity: .8"></div>
+<!--            <div class="col-md-1"><img src="{% static 'images/ibm/ESS_Tools_Logo4.png' %}" alt="MSS" style="opacity: .8"></div>-->
+
+        </div>
+
+        <p>Follow the 4 simple steps to complete your service request</p>
+    </div>
+    <div class="body__container">
+        <div class="left__container">
+            <div class="side__titles">
+                <div class="title__name">
+                    <h3>REQUESTOR'S INFORMATION</h3>
+                    <p>Enter & press next</p>
+                </div>
+                <div class="title__name">
+                    <h3>CUSTOMER'S INFORMATION</h3>
+                    <p>select & press next</p>
+                </div>
+                <div class="title__name">
+                    <h3>PRODUCT SELECTIONS</h3>
+                    <p>select & press next</p>
+                </div>
+                <div class="title__name">
+                    <h3>DELIVERY NOTES</h3>
+                    <p>Select & press next</p>
+                </div>
+                <div class="title__name">
+                    <h3>RFS INFORMATION</h3>
+                    <p>Select & press next</p>
+                </div>
+                <div class="title__name">
+                    <h3>APPTUS: OFFERING CODES</h3>
+                    <p>Finally press submit</p>
+                </div>
+                <div class="title__name">
+                    <h3>GENERATE PDF / EMAIL</h3>
+                    <p>View Send and or Save as a PDF</p>
+                </div>
+            </div>
+            <div class="progress__bar__container">
+                <ul>
+                    <li class="active" id="icon1">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </li>
+                    <li id="icon2">
+                        <ion-icon name="book-outline"></ion-icon>
+                    </li>
+                    <li id="icon3">
+                        <ion-icon name="layers-outline"></ion-icon>
+                    </li>
+                    <li id="icon4">
+                        <ion-icon name="pricetag-outline"></ion-icon>
+                    </li>
+                    <li id="icon5">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </li>
+                    <li id="icon6">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </li>
+                   <li id="icon7">
+                         <ion-icon name="newspaper-outline"></ion-icon>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="right__container">
+            <fieldset id="form1">
+                <div class="sub__title__container ">
+                    <p>Step 1/7</p>
+                    <h2>ENTER: Requesters Information</h2>
+                    <p>Please fill the details below so that we can we can get in contacat with you about our product</p>
+                </div>
+                <div class="input__container">
+<!--                    <label for="name">Enter your name</label> -->
+<!--                    <input type="text"> <a class="nxt__btn" onclick="nextForm();"> Next</a>-->
+                      <div class="card bg-dark">
+                                  <div class="card-header">
+                                    <h3 class="card-title">Requester's Information</h3>
+                                    <div class="card-tools">
+                                      <!-- Buttons, labels, and many other things can be placed here! -->
+                                      <!-- Here is a label for example -->
+                                      <span class="badge badge-primary">Help</span>
+                                    </div>
+                                    <!-- /.card-tools -->
+                                  </div>
+                                  <!-- /.card-header -->
+                                  <div class="card-body">
+                                    <div class="row">
+                                          <div class="col-md-6">
+        <div class="form-group">
+            {{ form.RequesterFirstName.errors }}
+            <label for="{{ form.RequesterFirstName.id_for_label }}">First Name:</label>
+            {{ form.RequesterFirstName }}
+        </div>
+        <div class="form-group ">
+            {{ form.RequesterLastName.errors }}
+            <label for="{{ form.RequesterLastName.id_for_label }}">Last Name:</label>
+            {{ form.RequesterLastName }}
+        </div>
+        <div class="form-group ">
+            {{ form.SalesContactName.errors }}
+            <label for="{{ form.SalesContactName.id_for_label }}">Team:</label>
+            {{ form.SalesContactName }}
+        </div>
+                                          </div>
+                                          <div class="col-md-6">
+        <div class="form-group">
+            {{ form.date.errors }}
+            <label for="{{ form.date.id_for_label }}">Due Date:</label>
+            {{ form.date }}
+        </div>
+         <div class="form-group ">
+            {{ form.RequesterEmail.errors }}
+            <label for="{{ form.RequesterEmail.id_for_label }}">Email:</label>
+            {{ form.RequesterEmail }}
+        </div>
+         <div class="form-group ">
+            {{ form.title.errors }}
+            <label for="{{ form.title.id_for_label }}">Name/ CodeName/ Title #:</label>
+            {{ form.title }}
+        </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!-- /.card-body -->
+                                  <div class="card-footer">
+                                    <div class="buttons">  <a class="nxt__btn" onclick="nextForm();">Next</a> </div>
+                                  </div>
+                                  <!-- /.card-footer -->
+                                </div>
+                                <!-- /.card -->
+
+
+
+                </div>
+
+            </fieldset>
+            <fieldset class="active__form" id="form2">
+                <div class="sub__title__container">
+                    <p>Step 2/7</p>
+                    <h2>ENTER: Customer's Information</h2>
+                    <p>Please let us know what type of business best describes you as entreprenuer or businessman.</p>
+                </div>
+                </hr>
+                <div class="input__container" style="width: 600px">
+                                <div class="card bg-dark card-dark">
+
+                                  <div class="card-body">
+                                    <div class="card bg-dark">
+
+                                  <div class="card-body">
+
+                                      <div class="row">
+
+                                            <div class="col-md-4">
+                                                         <div class="form-group">
+            {{ form.CustomerName.errors }}
+            <label for="{{ form.CustomerName.id_for_label }}">Customer / Account Name:</label>
+            {{ form.CustomerName }}
+        </div>
+                                                        <div class="form-group ">
+            {{ form.SalesContactName.errors }}
+            <label for="{{ form.SalesContactName.id_for_label }}">Sales Contact Name:</label>
+            {{ form.SalesContactName }}
+        </div>
+        <div class="form-group ">
+            {{ form.rfs_num.errors }}
+            <label for="{{ form.rfs_num.id_for_label }}">RFS #:</label>
+            {{ form.rfs_num }}
+        </div>
+
+
+                                                                                                              <div class="form-group ">
+            {{ form.Service_Delivery_Requirements.errors }}
+            <label for="{{ form.Service_Delivery_Requirements.id_for_label }}">Service Delivery Requirements:</label>
+            {{ form.Service_Delivery_Requirements }}
+        </div>
+
+        </div>
+                                            <div class="col-md-4">
+                                                        <div class="form-group">
+            {{ form.TranStartDate.errors }}
+            <label for="{{ form.TranStartDate.id_for_label }}">Transition / Transformation:</label>
+            {{ form.TranStartDate }}
+        </div>
+        <div class="form-group ">
+            {{ form.SalesContactEmail.errors }}
+            <label for="{{ form.SalesContactEmail.id_for_label }}">Sales Contact Email:</label>
+            {{ form.SalesContactEmail }}
+        </div>
+        <div class="form-group ">
+            {{ form.appttus_num.errors }}
+            <label for="{{ form.appttus_num.id_for_label }}">Appttus / Atlas #:</label>
+            {{ form.appttus_num }}
+        </div>
+
+
+       <div class="form-group ">
+            {{ form.Restricted_Delivery.errors }}
+            <label for="{{ form.Restricted_Delivery.id_for_label }}">Restricted Delivery:</label>
+            {{ form.Restricted_Delivery }}
+        </div>
+                                          </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group ">
+            {{ form.Revenue_Structure_Select.errors }}
+            <label for="{{ form.Revenue_Structure_Select.id_for_label }}">Revenue Structure:</label>
+            {{ form.Revenue_Structure_Select }}
+        </div>
+                                                <div class="form-group ">
+            {{ form.Revenue_Structure_Cost_Explain.errors }}
+            <label for="{{ form.Revenue_Structure_Cost_Explain.id_for_label }}">If "Cost Recovery" Explain/Details :</label>
+            {{ form.Revenue_Structure_Cost_Explain }}
+        </div>
+                                                <div class="form-group ">
+            {{ form.Solution_Design.errors }}
+            <label for="{{ form.Solution_Design.id_for_label }}">Solution Design:</label>
+            {{ form.Solution_Design }}
+        </div>
+                                                <div class="form-group ">
+            {{ form.Solution_Owner.errors }}
+            <label for="{{ form.Solution_Owner.id_for_label }}">Solution Owner:</label>
+            {{ form.Solution_Owner }}
+        </div>
+
+                                            </div>
+                                      </div>
+<!--                                        <div class="container">-->
+<!--        <div class="form-group ">-->
+<!--            {{ form.Other_Features_or_Platforms.errors }}-->
+<!--            <label for="{{ form.Other_Features_or_Platforms.id_for_label }}">Other Features or Platforms:</label>-->
+<!--            {{ form.Other_Features_or_Platforms }}-->
+<!--        </div>-->
+<!--        <div class="form-group ">-->
+
+<!--            {{ form.Other_Features_or_Platforms_Note.errors }}-->
+<!--            <label for="{{ form.Other_Features_or_Platforms_Note.id_for_label }}">Other Features or Platforms Note:</label>-->
+<!--            {{ form.Other_Features_or_Platforms_Note }}-->
+<!--        </div>-->
+<!--  <script>-->
+<!--    CKEDITOR.replace('Other_Features_or_Platforms_Note', {-->
+<!--      width: '90%',-->
+<!--      height: 250,-->
+<!--      removeButtons: 'PasteFromWord'-->
+<!--    });-->
+<!--  </script>-->
+
+<!--                                        </div>-->
+
+                                  </div>
+                                  <!-- /.card-body -->
+
+                                </div>
+                                  </div>
+                                  <!-- /.card-body -->
+                                  <div class="card-footer">
+                                    <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" onclick="nextForm();">Next</a> </div>
+                                  </div>
+                                  <!-- /.card-footer -->
+                                </div>
+
+
+
+<!--                        <div class="card bg-dark">-->
+<!--&lt;!&ndash;                                  <div class="card-header">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <h2 class="card-title">Customer Information</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="card-tools">&ndash;&gt;-->
+<!--&lt;!&ndash;                                      &lt;!&ndash; Buttons, labels, and many other things can be placed here! &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                      &lt;!&ndash; Here is a label for example &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                      <span class="badge badge-primary">help</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    &lt;!&ndash; /.card-tools &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                  &lt;!&ndash; /.card-header &ndash;&gt;&ndash;&gt;-->
+
+<!--                                  &lt;!&ndash; /.card-body &ndash;&gt;-->
+<!--                                  <div class="card-footer">-->
+<!--                                    <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" onclick="nextForm();">Next</a> </div>-->
+<!--                                  </div>-->
+<!--                                  &lt;!&ndash; /.card-footer &ndash;&gt;-->
+<!--                                </div>-->
+                                <!-- /.card -->
+
+                </div>
+            </fieldset>
+            <fieldset class="active__form" id="form3">
+                <div class="sub__title__container" style="width: 700px">
+                    <p>Step 3/7</p>
+                    <h2>Select: Security Products and Services</h2>
+                    <p>Please let us know what type of business best describes you as entreprenuer or businessman.</p>
+                </div>
+                <div class="input__container">
+
+                    <div class="card card-dark bg-dark">
+<!--                      <div class="card-header">-->
+<!--                        <h2 class="card-title">Select All that Apply: Customer's Information</h2>-->
+<!--                        <div class="card-tools">-->
+<!--                          &lt;!&ndash; Buttons, labels, and many other things can be placed here! &ndash;&gt;-->
+<!--                          &lt;!&ndash; Here is a label for example &ndash;&gt;-->
+<!--                          <span class="badge badge-primary">Label</span>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; /.card-tools &ndash;&gt;-->
+<!--                      </div>-->
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                     <div class="row">
+<div class="col-12">
+
+</div>
+</div>
+
+<div class="row">
+<div class="col-12">
+<div class="card bg-dark card-tabs">
+<div class="card-header p-0 pt-1">
+<ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+<li class="nav-item">
+<a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Endpoint Security</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Endpoint Managed Security on Cloud (EMS)</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Managed Detection & Response</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Container Security</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="custom-tabs-one-illumino-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Adaptive Security (Illumio)</a>
+</li>
+</ul>
+</div>
+<div class="card-body">
+<div class="tab-content" id="custom-tabs-one-tabContent">
+<div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+<p>Enter the number and the Types of Endpoints you would like to protect!</p>
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3">
+                                    <div class="form-group ">
+                                        {{ form.Questionaire_num_consoles.errors }}
+                                        <label for="{{ form.Questionaire_num_consoles.id_for_label }}">Number of Consoles:</label>
+                                        {{ form.Questionaire_num_consoles }}
+                                    </div>
+                        </div>
+                        <div class="col-md-3">
+                                    <div class="form-group ">
+                                        {{ form.Questionaire_num_server.errors }}
+                                        <label for="{{ form.Questionaire_num_server.id_for_label }}">Number of Servers:</label>
+                                        {{ form.Questionaire_num_server }}
+                                    </div>
+                        </div>
+                        <div class="col-md-3">
+                                    <div class="form-group ">
+                                        {{ form.Questionaire_num_workstation.errors }}
+                                        <label for="{{ form.Questionaire_num_workstation.id_for_label }}">Number of_Workstations:</label>
+                                        {{ form.Questionaire_num_workstation }}
+                                    </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        </div>
+    <hr>
+<p>Select the Security Technology types you are interested in for your Endpoints </p>
+
+      <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group ">
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        {{ form.AntiVirusMalware.errors }}
+                     <label for="{{ form.AntiVirusMalware.id_for_label }}">AntiVirus / AntiMalware:</label>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        {{ form.AntiVirusMalware }}
+                                                    </div>
+                                                </div>
+
+                </div>
+                            <div class="form-group ">
+                                                                 <div class="row">
+                                                                    <div class="col-md-8">
+                                                                         {{ form.Firewall_on_Workstations.errors }}
+                                        <label for="{{ form.Firewall_on_Workstations.id_for_label }}">Firewall on Workstations:</label>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        {{ form.Firewall_on_Workstations }}
+                                                                    </div>
+                                                                </div>
+
+
+                                    </div>
+                            <div class="form-group ">
+
+                                                               <div class="row">
+                                                                    <div class="col-md-8">
+                                                                          {{ form.Firewall_on_Servers.errors }}
+                                        <label for="{{ form.Firewall_on_Servers.id_for_label }}">Firewall on Servers:</label>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                         {{ form.Firewall_on_Servers }}
+                                                                    </div>
+                                                                </div>
+
+
+                                    </div>
+                            <div class="form-group ">
+                                      <div class="row">
+                                            <div class="col-md-8">
+    {{ form.DLP_on_Workstations.errors }}
+                    <label for="{{ form.DLP_on_Workstations.id_for_label }}">DLP on Workstations:</label>
+                                            </div>
+                                            <div class="col-md-4">
+   {{ form.DLP_on_Workstations }}
+                                            </div>
+                                      </div>
+
+                </div>
+                            <div class="form-group ">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    {{ form.DLP_on_Servers.errors }}
+                                    <label for="{{ form.DLP_on_Servers.id_for_label }}">DLP on Servers:</label>
+                                    </div>
+                                <div class="col-md-4">
+                                      {{ form.DLP_on_Servers }}
+                                </div>
+                            </div>
+
+
+
+                </div>
+
+                        </div>
+                        <div class="col-md-4">
+
+                                            <div class="form-group ">
+<div class="row">
+	<div class="col-md-8">
+
+                    {{ form.Encryption_on_Workstations.errors }}
+                    <label for="{{ form.Encryption_on_Workstations.id_for_label }}">Encryption on Workstations:</label>
+
+	</div>
+	<div class="col-md-4">
+		{{ form.Encryption_on_Workstations }}
+	</div>
+</div>
+
+
+                </div>
+                                            <div class="form-group ">
+<div class="row">
+	<div class="col-md-8">
+
+                    {{ form.Encryption_on_Servers.errors }}
+                    <label for="{{ form.Encryption_on_Servers.id_for_label }}">Encryption on Servers:</label>
+
+	</div>
+	<div class="col-md-4">
+		{{ form.Encryption_on_Servers }}
+	</div>
+</div>
+
+
+                </div>
+                                            <div class="form-group ">
+<div class="row">
+	<div class="col-md-8">
+		   {{ form.NAS_Storage.errors }}
+                    <label for="{{ form.NAS_Storage.id_for_label }}">NAS Storage:</label>
+
+	</div>
+	<div class="col-md-4">
+		{{ form.NAS_Storage }}
+	</div>
+</div>
+
+
+                </div>
+                                            <div class="form-group ">
+<div class="row">
+	<div class="col-md-8">
+		                    {{ form.Windows.errors }}
+                    <label for="{{ form.Windows.id_for_label }}">Windows:</label>
+	</div>
+	<div class="col-md-4">
+		{{ form.Windows }}
+	</div>
+</div>
+
+
+
+                </div>
+                                            <div class="form-group ">
+                                                <div class="row">
+	<div class="col-md-8">
+		  {{ form.AIX.errors }}
+                    <label for="{{ form.AIX.id_for_label }}">AIX:</label>
+	</div>
+	<div class="col-md-4">
+		{{ form.AIX }}
+	</div>
+</div>
+
+
+                </div>
+                                            <div class="form-group ">
+                        <div class="row">
+	<div class="col-md-8">
+		{{ form.VDI.errors }}
+                    <label for="{{ form.VDI.id_for_label }}">VDI:</label>
+	</div>
+	<div class="col-md-4">
+		{{ form.VDI }}
+	</div>
+</div>
+
+
+                </div>
+                                            <div class="form-group ">
+<div class="row">
+	<div class="col-md-8">
+		        {{ form.Other_Features_or_Platforms.errors }}
+                    <label for="{{ form.Other_Features_or_Platforms.id_for_label }}">Other Features or Platforms:</label>
+
+	</div>
+	<div class="col-md-4">
+		   {{ form.Other_Features_or_Platforms }}
+	</div>
+</div>
+
+
+                </div>
+
+
+
+                        </div>
+                        <div class="col-md-4">
+                             <div class="form-group ">
+
+                                                        <div class="row">
+                                                            <div class="col-md-8">
+                                                                     {{ form.URL_Filtering.errors }}
+                                        <label for="{{ form.URL_Filtering.id_for_label }}">URL Filtering:</label>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                 {{ form.URL_Filtering }}
+                                                            </div>
+                                                        </div>
+
+
+                                    </div>
+                                                           <div class="form-group ">
+
+                                                            <div class="row">
+                                                                <div class="col-md-8">
+                                                                      {{ form.HIPs_on_Workstations.errors }}
+                                        <label for="{{ form.HIPs_on_Workstations.id_for_label }}">HIPs on Workstations:</label>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    {{ form.HIPs_on_Workstations }}
+                                                                </div>
+                                                            </div>
+
+
+                                    </div>
+                                                           <div class="form-group ">
+                                                               <div class="row">
+                                                                    <div class="col-md-8">
+                                                                          {{ form.HIPs_on_Servers.errors }}
+                                        <label for="{{ form.HIPs_on_Servers.id_for_label }}">HIPs on Servers:</label>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        {{ form.HIPs_on_Servers }}
+                                                                    </div>
+                                                                </div>
+
+
+                                    </div>
+
+                                                           <div class="form-group ">
+                                                              <div class="row">
+                                                                    <div class="col-md-8">
+                                                                             {{ form.BigFix_Patching_Scanning.errors }}
+                                        <label for="{{ form.BigFix_Patching_Scanning.id_for_label }}">BigFix Patching Scanning:</label>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        {{ form.BigFix_Patching_Scanning }}
+                                                                    </div>
+                                                                </div>
+
+
+                                    </div>
+                                                           <div class="form-group ">
+
+                                                               <div class="row">
+                                                                    <div class="col-md-8">
+                                                                          {{ form.Linux.errors }}
+                                        <label for="{{ form.Linux.id_for_label }}">Linux:</label>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        {{ form.Linux }}
+                                                                    </div>
+                                                                </div>
+
+
+                                    </div>
+                                                           <div class="form-group ">
+                                                               <div class="row">
+                                                                    <div class="col-md-8">
+                                                                               {{ form.Integrity_Monitoring.errors }}
+                                        <label for="{{ form.Integrity_Monitoring.id_for_label }}">Integrity Monitoring:</label>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                         {{ form.Integrity_Monitoring }}
+                                                                    </div>
+                                                                </div>
+
+
+
+                                    </div>
+                                                           <div class="form-group ">
+                                                              <div class="row">
+                                                                    <div class="col-md-8">
+                                                                              {{ form.Citrix.errors }}
+                                        <label for="{{ form.Citrix.id_for_label }}">Citrix:</label>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                            {{ form.Citrix }}
+                                                                    </div>
+                                                                </div>
+
+
+                                    </div>
+
+
+
+                        </div>
+
+<!--    <div class="form-group ">-->
+<!--                                                              <div class="row">-->
+
+
+<!--                                                                              {{ form.Other_Features_or_Platforms_Note.errors }}-->
+<!--                                        <label for="{{ form.Other_Features_or_Platforms_Note.id_for_label }}">Other Features or Platforms Note:</label>-->
+
+
+<!--                                                                            {{ form.Other_Features_or_Platforms_Note }}-->
+
+<!--                                                                </div>-->
+<!--&lt;!&ndash;                                                           <div class="form-group ">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {{ form.Other_Features_or_Platforms_Note.errors }}&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <label for="{{ form.Other_Features_or_Platforms_Note.id_for_label }}">Other Features or Platforms Note:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {{ form.Other_Features_or_Platforms_Note }}&ndash;&gt;-->
+<!--                                    </div>-->
+
+                    </div>
+</div>
+<div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Default Card Example</h3>
+    <div class="card-tools">
+      <!-- Buttons, labels, and many other things can be placed here! -->
+      <!-- Here is a label for example -->
+      <span class="badge badge-primary">Label</span>
+    </div>
+    <!-- /.card-tools -->
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+
+
+       Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
+
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+    The footer of the card
+  </div>
+  <!-- /.card-footer -->
+</div>
+<!-- /.card -->
+
+</div>
+<div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Default Card Example</h3>
+    <div class="card-tools">
+      <!-- Buttons, labels, and many other things can be placed here! -->
+      <!-- Here is a label for example -->
+      <span class="badge badge-primary">Label</span>
+    </div>
+    <!-- /.card-tools -->
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+
+
+       Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
+
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+    The footer of the card
+  </div>
+  <!-- /.card-footer -->
+</div>
+<!-- /.card -->
+
+
+
+</div>
+<div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
+</div>
+<div class="tab-pane fade" id="custom-tabs-one-illumino" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<!--<div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" onclick="nextForm();">Next</a> </div>-->
+
+                      </div>
+                      <!-- /.card-body -->
+                      <div class="card-footer">
+                        <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" onclick="nextForm();">Next</a> </div>
+                      </div>
+                      <!-- /.card-footer -->
+                    </div>
+                    <!-- /.card -->
+
+
+                </div>
+            </fieldset>
+            <fieldset class="active__form" id="form4">
+                <div class="sub__title__container" style="width : 700px">
+                    <p>Step 4/7</p>
+                    <h2>Product Notes and Delivery</h2>
+                    <p>Please let us know budget for your project so yes are great that we can give the right quote thanks</p>
+                </div>
+                <div class="input__container">
+
+
+<!--                    <input type="range" min="10000" max="500000" value="250000" class="slider">-->
+<!--                    <div class="output__value"> </div>-->
+                                <div class="card bg-dark card-dark">
+
+                                  <div class="card-body">
+                                    <div class="card bg-dark">
+
+                                  <div class="card-body">
+
+                                        <div class="container">
+        <div class="form-group ">
+            {{ form.Other_Features_or_Platforms.errors }}
+            <label for="{{ form.Other_Features_or_Platforms.id_for_label }}">Other Features or Platforms:</label>
+            {{ form.Other_Features_or_Platforms }}
+        </div>
+        <div class="form-group ">
+
+            {{ form.Other_Features_or_Platforms_Note.errors }}
+            <label for="{{ form.Other_Features_or_Platforms_Note.id_for_label }}">Other Features or Platforms Note:</label>
+            {{ form.Other_Features_or_Platforms_Note }}
+        </div>
+  <script>
+    CKEDITOR.replace('Other_Features_or_Platforms_Note', {
+      width: '90%',
+      height: 250,
+      removeButtons: 'PasteFromWord'
+    });
+  </script>
+
+                                        </div>
+
+                                  </div>
+                                  <!-- /.card-body -->
+
+                                </div>
+                                  </div>
+                                  <!-- /.card-body -->
+                                  <div class="card-footer">
+                                    <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" onclick="nextForm();">Next</a> </div>
+                                  </div>
+                                  <!-- /.card-footer -->
+                                </div>
+                                <!-- /.card -->
+
+
+                                <!-- /.card -->
+<!--                    <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" onclick="nextForm();">Next</a> </div>-->
+                </div>
+            </fieldset>
+            <fieldset class="active__form" id="form5">
+                <div class="sub__title__container">
+                    <p>Step 5/7</p>
+                    <h2>RFS INFORMATION</h2>
+                    <p>Thanks for completing the form and for your time.Plss enter your email below and submit the form</p>
+                </div>
+                <div class="input__container"> <label for="Email">Enter your email</label> <input type="text">
+<!--                    <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" id="submitBtn" onclick="nextForm();">Next</a> </div>-->
+                    <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" onclick="nextForm();">Next</a> </div>
+                </div>
+            </fieldset>
+            <fieldset class="active__form" id="form6">
+                <div class="sub__title__container">
+                    <p>Step 6/7</p>
+                    <h2>APPTUS: OFFERING CODES</h2>
+                    <p>Thanks for completing the form and for your time.Plss enter your email below and submit the form</p>
+                </div>
+                <div class="input__container"> <label for="Email">Enter your email</label> <input type="text">
+                    <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" id="submitBtn" onclick="nextForm();">Next</a> </div>
+                </div>
+            </fieldset>
+            <fieldset class="active__form" id="form7">
+                <div class="sub__title__container">
+                    <p>Step 7/7</p>
+                    <h2>GENERATE: PDF / EMAIL</h2>
+                    <p>Thanks for completing the form and for your time.Plss enter your email below and submit the form</p>
+                </div>
+                <div class="input__container"> <label for="Email">Enter your email</label> <input type="text">
+                    <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" id="submitBtn" onclick="nextForm();">Next</a> </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+</div>
+
+
+
+               <style>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif
+}
+
+:root {
+    --primary-color: #343a40;
+    --primary-color-old: #02044A;
+    --secondery-color: #25CC88;
+    --shadow-color: #9d9fb3
+}
+
+<!--body {-->
+<!--    display: flex;-->
+<!--    align-items: center;-->
+<!--    justify-content: center-->
+<!--}-->
+
+.form__container {
+    margin-top: 4rem;
+    background-color: var(--primary-color);
+    border-radius: 2rem;
+    padding: 1rem
+}
+
+.title__container {
+    width: 100%;
+    height: 4.5rem;
+    padding: 0.6rem 1.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #42434e
+}
+
+.title__container h1 {
+    letter-spacing: 2px;
+    color: white;
+    font-size: 1.25rem;
+    margin-bottom: 0.4rem
+}
+
+.title__container p {
+    color: var(--shadow-color);
+    font-size: 0.75rem
+}
+
+.body__container {
+    display: flex
+}
+
+.left__container {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    border-right: 1px solid #42434e;
+    padding: 1.25rem 0;
+    margin-right: 2rem;
+    padding-right: 1.8rem
+}
+
+.side__titles {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
+}
+
+.title__name {
+    padding: 0.6rem 0.1rem;
+    margin-bottom: 0.25rem
+}
+
+.title__name h3 {
+    margin-bottom: 0.20rem;
+    text-align: right;
+    color: #ffffff;
+    font-size: 0.8rem;
+    letter-spacing: 1px
+}
+
+.title__name p {
+    text-align: right;
+    color: var(--shadow-color);
+    font-size: 0.75rem
+}
+
+.progress__bar__container {
+    padding-top: 0.6rem
+}
+
+.progress__bar__container ul .active {
+    background-color: var(--secondery-color)
+}
+
+.progress__bar__container ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    background: var(--shadow-color);
+    padding: 0.5rem 0.6rem;
+    margin-bottom: 1.2rem;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin-left: 2rem
+}
+
+.progress__bar__container ul li::before {
+    content: '';
+    width: 1px;
+    height: 11vh;
+    position: absolute;
+    background-color: var(--shadow-color)
+}
+
+.progress__bar__container ul .active::before {
+    content: '';
+    width: 1px;
+    height: 11vh;
+    position: absolute;
+    background-color: var(--secondery-color)
+}
+
+.right__container {
+    width: 75%;
+    display: flex;
+    padding: 1.5rem 1.5rem
+}
+
+.right__container fieldset {
+    border: none
+}
+
+.sub__title__container {
+    padding: 1rem 0 1.2rem 0;
+    border-bottom: 1px solid #42434e
+}
+
+.sub__title__container h2 {
+    letter-spacing: 2px;
+    color: #ffffff;
+    margin: 0.4rem 0
+}
+
+.sub__title__container p {
+    font-size: 0.75rem;
+    color: var(--shadow-color)
+}
+
+.active__form {
+    display: none
+}
+
+.input__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.25rem
+}
+
+.input__container label {
+    color: #ffffff;
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem
+}
+
+.input__container input {
+    padding: 0.5rem;
+    font-size: 1.4rem;
+    border-radius: 0.75rem;
+    background: none;
+    border: 1px solid var(--secondery-color);
+    margin-bottom: 1.2rem;
+    outline: none;
+    color: #ffffff
+}
+
+.nxt__btn {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 2rem;
+    background: var(--secondery-color);
+    color: #ffffff
+}
+
+.nxt__btn:hover {
+    transform: scale(1.03);
+    background: #1cd68c;
+    cursor: pointer
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0
+}
+
+.prev__btn {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer
+}
+
+.selection {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--shadow-color);
+    padding: 0.5rem 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    width: 100%
+}
+
+.selection:hover {
+    border: 1px solid var(--secondery-color);
+    background-color: var(--primary-color);
+    cursor: pointer
+}
+
+.imoji {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0.4rem;
+    margin: 0 0.2rem;
+    margin-right: 0.4rem;
+    font-size: 2rem;
+    font-weight: 900;
+    color: yellow;
+    border-radius: 50%;
+    background: var(--shadow-color)
+}
+
+.descriptionTitle h3 {
+    color: #ffffff;
+    margin-bottom: 4px
+}
+
+.descriptionTitle p {
+    font-size: 0.75rem;
+    color: var(--shadow-color)
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 0.75rem;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    position: relative;
+    margin-top: 3rem
+}
+
+.slider:hover {
+    opacity: 1
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--secondery-color);
+    cursor: pointer;
+    position: relative
+}
+
+.slider::-webkit-range-thumb {
+    width: 50px;
+    height: 50px;
+    background: var(--secondery-color);
+    cursor: pointer;
+    position: relative
+}
+
+.output__value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    border-radius: 2em;
+    padding: 0.8rem 0.8rem;
+    position: absolute;
+    background-color: var(--secondery-color)
+}
+
+.output__value::after {
+    content: '';
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: black;
+    transform: rotate(45deg);
+    position: absolute;
+    margin-top: 40px;
+    background-color: var(--secondery-color)
+}
+
+@media only screen and (max-width: 800px) {
+    body {
+        background-color: var(--primary-color)
+    }
+
+    .form__container {
+        margin: 0;
+        padding: 0
+    }
+
+    .body__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0
+    }
+
+    .right__container {
+        width: 90%;
+        margin: 0
+    }
+
+    .title__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem
+    }
+
+    .left__container {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        border: none
+    }
+
+    .buttons {
+        justify-content: space-between
+    }
+
+    .descriptionTitle h3 {
+        font-size: 1rem
+    }
+
+    .descriptionTitle p {
+        font-size: 0.6rem
+    }
+
+    .side__titles {
+        display: none;
+        flex-direction: row;
+        justify-content: space-evenly
+    }
+
+    .title__name h3 {
+        font-size: 0.75rem
+    }
+
+    .title__name p {
+        font-size: 0.5rem
+    }
+
+    .progress__bar__container {
+        margin-bottom: 0
+    }
+
+    .progress__bar__container ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0;
+        padding: 0 2rem
+    }
+
+    .progress__bar__container ul::before {
+        height: 5vh
+    }
+
+    .progress__bar__container ul li {
+        margin: 10px;
+        padding: 10px
+    }
+
+    .progress__bar__container ul .active::before {
+        transform: rotate(90deg)
+    }
+}</style>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+                                <script type='text/javascript' src=''></script>
+                                <script type='text/javascript' src=''></script>
+                                <script type='text/javascript' src=''></script>
+
+                                <script type='text/Javascript'>const nxtBtn = document.querySelector('#submitBtn');
+const form1 = document.querySelector('#form1');
+const form2 = document.querySelector('#form2');
+const form3 = document.querySelector('#form3');
+const form4 = document.querySelector('#form4');
+const form5 = document.querySelector('#form5');
+const form6 = document.querySelector('#form6');
+const form7 = document.querySelector('#form7');
+
+
+const icon1 = document.querySelector('#icon1');
+const icon2 = document.querySelector('#icon2');
+const icon3 = document.querySelector('#icon3');
+const icon4 = document.querySelector('#icon4');
+const icon5 = document.querySelector('#icon5');
+const icon6 = document.querySelector('#icon6');
+const icon7 = document.querySelector('#icon7');
+
+
+var viewId = 1;
+function nextForm(){
+console.log("hellonext");
+viewId=viewId+1;
+progressBar();
+displayForms();
+
+console.log(viewId);
+
+}
+
+function prevForm(){
+console.log("helloprev");
+viewId=viewId-1;
+console.log(viewId);
+progressBar1();
+displayForms();
+}
+function progressBar1(){
+if(viewId===1){
+icon2.classList.add('active');
+icon2.classList.remove('active');
+icon3.classList.remove('active');
+icon4.classList.remove('active');
+icon5.classList.remove('active');
+icon6.classList.remove('active');
+icon7.classList.remove('active');
+}
+if(viewId===2){
+icon2.classList.add('active');
+icon3.classList.remove('active');
+icon4.classList.remove('active');
+icon5.classList.remove('active');
+icon6.classList.remove('active');
+icon7.classList.remove('active');
+}
+if(viewId===3){
+icon3.classList.add('active');
+icon4.classList.remove('active');
+icon5.classList.remove('active');
+icon6.classList.remove('active');
+icon7.classList.remove('active');
+}
+if(viewId===4){
+icon4.classList.add('active');
+icon5.classList.remove('active');
+icon6.classList.remove('active');
+icon7.classList.remove('active');
+}
+if(viewId===5){
+icon5.classList.add('active');
+icon6.classList.remove('active');
+icon7.classList.remove('active');
+}
+if(viewId===6){
+icon6.classList.add('active');
+icon7.classList.remove('active');
+}
+if(viewId===7){
+icon7.classList.add('active');
+nxtBtn.innerHTML = "Submit"
+}
+if(viewId>7){
+icon2.classList.remove('active');
+icon3.classList.remove('active');
+icon4.classList.remove('active');
+icon5.classList.remove('active');
+icon6.classList.remove('active');
+icon7.classList.remove('active');
+
+}
+}
+
+function progressBar(){
+if(viewId===2){
+icon2.classList.add('active');
+}
+if(viewId===3){
+icon3.classList.add('active');
+}
+if(viewId===4){
+icon4.classList.add('active');
+}
+if(viewId===5){
+icon5.classList.add('active');
+}
+if(viewId===6){
+icon6.classList.add('active');
+}
+if(viewId===7){
+icon7.classList.add('active');
+nxtBtn.innerHTML = "Submit"
+}
+if(viewId>7){
+icon2.classList.remove('active');
+icon3.classList.remove('active');
+icon4.classList.remove('active');
+icon5.classList.remove('active');
+icon6.classList.remove('active');
+icon7.classList.remove('active');
+
+}
+}
+
+function displayForms(){
+
+if(viewId>7){
+viewId=1;
+}
+
+if(viewId ===1){
+form1.style.display = 'block';
+form2.style.display = 'none';
+form3.style.display = 'none';
+form4.style.display = 'none';
+form5.style.display = 'none';
+form6.style.display = 'none';
+form7.style.display = 'none';
+
+
+}else if(viewId === 2){
+form1.style.display = 'none';
+form2.style.display = 'block';
+form3.style.display = 'none';
+form4.style.display = 'none';
+form5.style.display = 'none';
+form6.style.display = 'none';
+form7.style.display = 'none';
+
+}else if(viewId === 3){
+form1.style.display = 'none';
+form2.style.display = 'none';
+form3.style.display = 'block';
+form4.style.display = 'none';
+form5.style.display = 'none';
+form6.style.display = 'none';
+form7.style.display = 'none';
+
+}else if(viewId === 4){
+form1.style.display = 'none';
+form2.style.display = 'none';
+form3.style.display = 'none';
+form4.style.display = 'block';
+form5.style.display = 'none';
+form6.style.display = 'none';
+form7.style.display = 'none';
+
+}else if(viewId === 5){
+form1.style.display = 'none';
+form2.style.display = 'none';
+form3.style.display = 'none';
+form4.style.display = 'none';
+form5.style.display = 'block';
+form6.style.display = 'none';
+form7.style.display = 'none';
+
+}else if(viewId === 6){
+form1.style.display = 'none';
+form2.style.display = 'none';
+form3.style.display = 'none';
+form4.style.display = 'none';
+form5.style.display = 'none';
+form6.style.display = 'block';
+form7.style.display = 'none';
+
+}else if(viewId === 7){
+form1.style.display = 'none';
+form2.style.display = 'none';
+form3.style.display = 'none';
+form4.style.display = 'none';
+form5.style.display = 'none';
+form6.style.display = 'none';
+form7.style.display = 'block';
+
+
+}
+}
+
+// for slider
+
+var slider = document.querySelector(".slider");
+var output = document.querySelector(".output__value");
+output.innerHTML = slider.value ;
+
+slider.oninput = function() {
+output.innerHTML = this.value ;
+
+
+}</script>
+
+<!--                                <div class="card-body">-->
+<!--                                    <h4 class="card-title">Personal Info</h4>-->
+<!--                                    {{ form }}-->
+
+
+<!--                                </div>-->
+                                <div class="border-top">
+                                    <div class="card-body">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class=" row">
+                    <div class="col-md-12">
+                        <div class="card">
+                          <div class="card-header">
+                            <h3 class="card-title">Default Card Example</h3>
+                            <div class="card-tools">
+                              <!-- Buttons, labels, and many other things can be placed here! -->
+                              <!-- Here is a label for example -->
+                              <span class="badge badge-primary">Label</span>
+                            </div>
+                            <!-- /.card-tools -->
+                          </div>
+                          <!-- /.card-header -->
+                          <div class="card-body">
+                            The body of the card
+                          </div>
+                          <!-- /.card-body -->
+                          <div class="card-footer">
+                            The footer of the card
+                          </div>
+                          <!-- /.card-footer -->
+                        </div>
+                        <!-- /.card -->
+
+                    </div>
+                </div>
+                <!-- editor -->
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+
+
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    @* Product #2 Calc*@
+    <script type="text/javascript">
+        $(function () {
+           // $("#ddl_product2").change(function () {
+            $("#AvProductId1A").change(function () {
+              //  alert($(this).val() + " " + $(this).find("option:selected").html());
+                var id = $(this).val();
+                $.ajax({
+                    type: "Post",
+                    url: '@Url.Action("GetProductByID2", "SizingUserDashboard")',
+                    data: '{id: "' + id + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        //alert(data.LastName);
+
+
+
+                        $("#txtAvProdId2").val(data.AvProductId);
+                        $("#txtProductName2").val(data.ProductName);
+                        $("#DescProduct_2").val(data.ProductName);
+                        $("#txtProductDesc2").val(data.ProductDesc);
+                        $("#txtProductComplexityFac2").val(data.ProductComplexityFac);
+                        $("#txtProductComplexityBase2").val(data.ProductComplexityBase);
+                        $("#txtTotalComplexity2").val(data.TotalComplexity);
+                        $("#txtComponent1Desc2").val(data.Component1Desc);
+                        $("#txtComponent2Desc2").val(data.Component2Desc);
+                        $("#txtComponent3Desc2").val(data.Component3Desc);
+                        $("#txtComponent4Desc2").val(data.Component4Desc);
+                        $("#txtComponent5Desc2").val(data.Component5Desc);
+                        $("#txtComponent6Desc2").val(data.Component6Desc);
+                        $("#txtComponent7Desc2").val(data.Component7Desc);
+                        $("#txtComponent8Desc2").val(data.Component8Desc);
+                        $("#txtComponent9Desc2").val(data.Component9Desc);
+                        $("#txtComponent10Desc2").val(data.Component10Desc);
+                        $("#txtComponent11Desc2").val(data.Component11Desc);
+                        $("#txtComponent12Desc2").val(data.Component12Desc);
+                        $("#txtComponent13Desc2").val(data.Component13Desc);
+                        $("#txtComponent14Desc2").val(data.Component14Desc);
+                        $("#txtComponent15Desc2").val(data.Component15Desc)
+
+
+                        $("#Prod2Compnent1Desc").val(data.Component1Desc);
+                        $("#Prod2Compnent2Desc").val(data.Component2Desc);
+                        $("#Prod2Compnent3Desc").val(data.Component3Desc);
+                        $("#Prod2Compnent4Desc").val(data.Component4Desc);
+                        $("#Prod2Compnent5Desc").val(data.Component5Desc);
+
+                        $("#Prod2Compnent6Desc").val(data.Component6Desc);
+                        $("#Prod2Compnent7Desc").val(data.Component7Desc);
+                        $("#Prod2Compnent8Desc").val(data.Component8Desc);
+                        $("#Prod2Compnent9Desc").val(data.Component9Desc);
+                        $("#Prod2Compnent10Desc").val(data.Component10Desc);
+
+                        $("#Prod2Compnent11Desc").val(data.Component11Desc);
+                        $("#Prod2Compnent12Desc").val(data.Component12Desc);
+                        $("#Prod2Compnent13Desc").val(data.Component13Desc);
+                        $("#Prod2Compnent14Desc").val(data.Component14Desc);
+                        $("#Prod2Compnent15Desc").val(data.Component15Desc);
+
+
+                        $("#Prod2ComponentComplexityFac1_1").val(data.ComponentComplexityFac1);
+                        $("#Prod2ComponentComplexityFac2_1").val(data.ComponentComplexityFac2);
+                        $("#Prod2ComponentComplexityFac3_1").val(data.ComponentComplexityFac3);
+                        $("#Prod2ComponentComplexityFac4_1").val(data.ComponentComplexityFac4);
+                        $("#Prod2ComponentComplexityFac5_1").val(data.ComponentComplexityFac5);
+                        $("#Prod2ComponentComplexityFac6_1").val(data.ComponentComplexityFac6);
+                        $("#Prod2ComponentComplexityFac7_1").val(data.ComponentComplexityFac7);
+                        $("#Prod2ComponentComplexityFac8_1").val(data.ComponentComplexityFac8);
+                        $("#Prod2ComponentComplexityFac9_1").val(data.ComponentComplexityFac9);
+                        $("#Prod2ComponentComplexityFac10_1").val(data.ComponentComplexityFac10);
+                        $("#Prod2ComponentComplexityFac11_1").val(data.ComponentComplexityFac11);
+                        $("#Prod2ComponentComplexityFac12_1").val(data.ComponentComplexityFac12);
+                        $("#Prod2ComponentComplexityFac13_1").val(data.ComponentComplexityFac13);
+                        $("#Prod2ComponentComplexityFac14_1").val(data.ComponentComplexityFac14);
+                        $("#Prod2ComponentComplexityFac15_1").val(data.ComponentComplexityFac15);
+
+                        $("#txtComponentComplexityFac1_2").val(data.ComponentComplexityFac1);
+
+                        $("#ComponentComplexityFac1_2").val(data.ComponentComplexityFac2);
+                        $("#txtComponentComplexityFac3_2").val(data.ComponentComplexityFac3);
+                        $("#txtComponentComplexityFac4_2").val(data.ComponentComplexityFac4);
+                        $("#txtComponentComplexityFac5_2").val(data.ComponentComplexityFac5);
+                        $("#txtComponentComplexityFac6_2").val(data.ComponentComplexityFac6);
+                        $("#txtComponentComplexityFac7_2").val(data.ComponentComplexityFac7);
+                        $("#txtComponentComplexityFac8_2").val(data.ComponentComplexityFac8);
+                        $("#txtComponentComplexityFac9_2").val(data.ComponentComplexityFac9);
+                        $("#txtComponentComplexityFac10_2").val(data.ComponentComplexityFac10);
+                        $("#txtComponentComplexityFac11_2").val(data.ComponentComplexityFac11);
+                        $("#txtComponentComplexityFac12_2").val(data.ComponentComplexityFac12);
+                        $("#txtComponentComplexityFac13_2").val(data.ComponentComplexityFac13);
+                        $("#txtComponentComplexityFac14_2").val(data.ComponentComplexityFac14);
+                        $("#txtComponentComplexityFac15_2").val(data.ComponentComplexityFac15);
+
+
+
+                    },
+
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('Failed to retrieve Products.');
+                    }
+                });
+
+            });
+        });
+    </script>
+{% endblock content_wrapper %}

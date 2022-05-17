@@ -1,0 +1,180 @@
+{% extends 'base.html' %}  {% load render_table from django_tables2 %}
+{% load static %}
+
+{% block content_wrapper %}
+<div class="page-wrapper">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <h4 class="page-title">Questionnaire List</h4>
+                    <div class="ml-auto text-right">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">List</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">List</h4>
+                        </div>
+                        <div class="comment-widgets scrollable">
+                               <div class="row" style="color: #ea2088; font-style: bold; font-size: 3rem; ">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">Questionnaire List</div>
+        <div class="col-md-3">
+            <div style="float:right;"> <a class="btn ghost-blue" href="{% url 'new-testquestionnaire' %}">Add New Questionnaire</a> </div>
+        </div>
+    </div>
+
+    <div style="border-bottom: 1px solid white;"></div>
+
+    <br>
+
+    <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-9">
+                    <div class="card card-dark">
+                      <div class="card-header">
+                        <h3 class="card-title">Questionnaires</h3>
+                        <div class="card-tools">
+                          <!-- Buttons, labels, and many other things can be placed here! -->
+                          <!-- Here is a label for example -->
+                          <span class="badge badge-primary">Label</span>
+                        </div>
+                        <!-- /.card-tools -->
+                      </div>
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                       <table class="table table-css">
+
+        <form method="get">
+            <div class="input-group search">
+
+                <div class="input-group-append">
+                   <button type="submit" class="btn btn-pink"> Search </button>
+                </div>
+            </div>
+        </form>
+
+        <br>
+
+        <thead class="thead-inverse align-middle">
+            <tr>
+                <th width="10%">Date</th>
+                <th width="12">Title</th>
+                <th width="12%">Prepared-By</th>
+                <th width="10%">Customer</th>
+                <th width="6%"># Wkns.</th>
+                <th width="6%"># Svrs.</th>
+                <th width="6%"># IP/EP</th>
+                <th width="8%"># Endpoints</th>
+                <th width="8%">RFS #</th>
+                <th width="8%">Sales Con. #</th>
+                <th width="8%">Pricing</th>
+                <th width="12%">Options:</th>
+
+
+            </tr>
+        </thead>
+
+{% if object_list %}
+
+        <tbody>
+            {% for testquestionnaire in object_list %}
+                <tr>
+                    <td class="align-middle">{{ testquestionnaire.date }}</td>
+                    <td class="align-middle"><h4>{{ testquestionnaire.title }}</h4></td>
+                    <td class="align-middle">{{ testquestionnaire.prepardedby }}</td>
+                    <td class="align-middle">{{ testquestionnaire.CustomerName }}</td>
+                    <td class="align-middle">{{ testquestionnaire.Questionnaire_num_workstation }}</td>
+                    <td class="align-middle">{{ testquestionnaire.Questionnaire_num_server }}</td>
+                    <td class="align-middle">{{ testquestionnaire.Questionnaire_num_ipaddress }}</td>
+                    <td class="align-middle">{{ testquestionnaire.Questionnaire_num_total_endpoints }}</td>
+                    <td class="align-middle">{{ testquestionnaire.rfs_num }}</td>
+                    <td class="align-middle">{{ testquestionnaire.sales_connect_num }}</td>
+                    <td class="align-middle">{{ testquestionnaire.PricingStructureSelect }}</td>
+
+
+
+
+                    <td class="align-middle">
+<!--                        <a href="{% url 'edit-testquestionnaire' testquestionnaire.pk %}" class="btn btn-app btn-xs"><i class="fas fa-edit"></i> Edit</a>-->
+                        <a href="{% url 'edit-testquestionnaire' testquestionnaire.pk %}" class="btn btn-success edit_button btn-xs"><i class="fa fa-edit"></i></a>
+                        <a href="{% url 'delete-testquestionnaire' testquestionnaire.pk %}" class="btn btn-danger edit_button btn-xs"><i class="fa fa-trash"></i></a>
+                        <a href="{% url 'homepage' %}" class="btn btn-danger edit_button btn-xs"><i class="fa fa-file-pdf"></i></a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+                      </div>
+                      <!-- /.card-body -->
+                      <div class="card-footer">
+                        The footer of the card
+                      </div>
+                      <!-- /.card-footer -->
+                    </div>
+                    <!-- /.card -->
+
+
+                </div>
+                <div class="col-md-1"></div>
+
+    </div>
+
+
+
+    <div class="align-middle">
+        {% if is_paginated %}
+
+            {% if page_obj.has_previous %}
+                <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            {% endif %}
+
+        {% endif %}
+    </div>
+
+{% else %}
+
+        <tbody></tbody>
+    </table>
+
+    <br><br><br><br><br><br><br><br>
+    <div style="color: #ea2088; font-style: bold; font-size: 1.5rem; text-align: center;">WOW, SUCH EMPTY</div>
+    </div>
+{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</div>
+
+
+
+{% endblock content_wrapper %}
