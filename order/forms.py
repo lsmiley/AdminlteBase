@@ -6,7 +6,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 import labordelivery
 from django.forms import inlineformset_factory  # Facilitates multiple form in group
 from .models import Order, OrderItem
-
+from product.models import Product, Category
 
 class BaseForm(forms.Form):
 
@@ -619,7 +619,16 @@ class OrderEditForm(BaseForm, forms.ModelForm):
         self.fields['totaltransitionhoursitem'].widget.attrs['style'] = 'width:80px; height:20px; font-size: 10px;'
         self.fields['totaltransitionhoursitem'].disabled = True
 
-
+        # self.fields['product'].queryset = Product.objects.none()
+        #
+        # if 'category' in self.data:
+        #     try:
+        #         category_id = int(self.data.get('category'))
+        #         self.fields['product'].queryset = Product.objects.filter(category_id=category_id).order_by('categoryname')
+        #     except (ValueError, TypeError):
+        #         pass  # invalid input from the client; ignore and fallback to empty City queryset
+        # elif self.instance.pk:
+        #     self.fields['product'].queryset = self.instance.country.city_set.order_by('productname')
 
 
 class OrderItemEditForm(BaseForm, forms.ModelForm):
@@ -629,19 +638,53 @@ class OrderItemEditForm(BaseForm, forms.ModelForm):
         fields = '__all__'
 
 
-
 class OrderItemForm(forms.ModelForm):
 
     class Meta:
         model = OrderItem
         fields = '__all__'
 
+# ***** Start for Dependent DropDown List ******
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['product'].queryset = Product.objects.none()
+
+        if 'category' in self.data:
+            try:
+                category_id = int(self.data.get('category'))
+                self.fields['product'].queryset = Product.objects.filter(category_id=category_id).order_by('name')
+            except (ValueError, TypeError):
+                pass  # invalid input from the client; ignore and fallback to empty Product queryset
+        elif self.instance.pk:
+            self.fields['product'].queryset = self.instance.category.product_set.order_by('productname')
+# ****** End for Dependent DropDown List
+
 
 NewOrderItemFormSet = inlineformset_factory(Order, OrderItem,
                                  # # fields='__all__',
-                                 fields=['product', 'labordelivery', 'qty', 'numworkstation', 'numserver', 'numipaddress', ],
+                                 fields=['product', 'labordelivery', 'qty', 'numworkstation', 'numserver', 'numipaddress', 'desc'],
                                  # exclude=('total_price',),
-                        extra=1)  # access both customer and order form
+                        extra=5)  # access both customer and order form
+
+
+# ***** Start for Dependent DropDown List ******
+#                         def __init__(self, *args, **kwargs):
+#                             super().__init__(*args, **kwargs)
+#                             self.fields['product'].queryset = Product.objects.none()
+#
+#                             if 'category' in self.data:
+#                                 try:
+#                                     category_id = int(self.data.get('category'))
+#                                     self.fields['product'].queryset = Product.objects.filter(category_id=category_id).order_by('name')
+#                                 except (ValueError, TypeError):
+#                                     pass  # invalid input from the client; ignore and fallback to empty Product queryset
+#                             elif self.instance.pk:
+#                                 self.fields['product'].queryset = self.instance.category.product_set.order_by('productname')
+    # ****** End for Dependent DropDown List
+
+
+
+
     # def __init__(self, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
     #
@@ -655,4 +698,6 @@ NewOrderItemFormSet = inlineformset_factory(Order, OrderItem,
     #     self.fields['numipaddress'].widget.attrs['style'] = 'width:80px; height:20px; font-size: 10px;',
     #
     #
+
+
 

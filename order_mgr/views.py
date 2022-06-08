@@ -14,6 +14,7 @@ from rest_framework.templatetags.rest_framework import data
 
 from order.models import Order, OrderItem, CURRENCY
 from order.forms import OrderCreateForm, OrderEditForm, OrderItemEditForm, OrderItemForm
+from order.tables import OrderTable
 from product.models import Product, Prodvendor
 from questionnaire.tables import ProductTable, QuestionnaireItemTable, QuestionnaireTable
 from order.utils import set_pagination
@@ -199,141 +200,6 @@ def done_order_view(request, pk):
     return redirect(reverse('homepage'))
 
 
-@staff_member_required
-def ajax_add_product(request, pk, dk):
-    instance = get_object_or_404(Order, id=pk)
-    product = get_object_or_404(Product, id=dk)
-    order_item, created = OrderItem.objects.get_or_create(order=instance, product=product)
-    if created:
-        order_item.qty = 1
-        order_item.price = product.value
-        order_item.discount_price = product.discount_value
-    else:
-        order_item.qty += 1
-    order_item.save()
-    product.qty -= 1
-    product.save()
-    instance.refresh_from_db()
-    order_items = OrderItemTable(instance.order_items.all())
-    RequestConfig(request).configure(order_items)
-    data = dict()
-    data['result'] = render_to_string(template_name='include/order_container.html',
-                                      request=request,
-                                      context={'instance': instance,
-                                               'order_items': order_items
-                                               }
-                                    )
-    return JsonResponse(data)
-
-
-@staff_member_required
-def ajax_modify_order_item(request, pk, action):
-    order_item = get_object_or_404(OrderItem, id=pk)
-    product = order_item.product
-    instance = order_item.order
-    if action == 'remove':
-        order_item.qty -= 1
-        product.qty += 1
-        if order_item.qty < 1: order_item.qty = 1
-    if action == 'add':
-        order_item.qty += 1
-        product.qty -= 1
-    product.save()
-    order_item.save()
-    if action == 'delete':
-        order_item.delete()
-    data = dict()
-    instance.refresh_from_db()
-    order_items = OrderItemTable(instance.order_items.all())
-    RequestConfig(request).configure(order_items)
-    data['result'] = render_to_string(template_name='include/order_container.html',
-                                      request=request,
-                                      context={
-                                          'instance': instance,
-                                          'order_items': order_items
-                                      }
-                                      )
-    return JsonResponse(data)
-
-
-@staff_member_required
-def ajax_search_products(request, pk):
-    instance = get_object_or_404(Order, id=pk)
-    q = request.GET.get('q', None)
-    products = Product.broswer.active().filter(title__startswith=q) if q else Product.broswer.active()
-    products = products[:12]
-    products = ProductTable(products)
-    RequestConfig(request).configure(products)
-    data = dict()
-    data['products'] = render_to_string(template_name='include/product_container.html',
-                                        request=request,
-                                        context={
-                                            'products': products,
-                                            'instance': instance
-                                        })
-    return JsonResponse(data)
-
-
-@staff_member_required
-def ajax_get_products(request):
-    def ajax_get_products(request):
-        if request.method == "POST":
-            prodvendor_id = request.POST['prodvendor_id']
-            try:
-                prodvendor = Prodvendor.objects.filter(id=prodvendor_id).first()
-                product = Product.objects.filter(prodvendor=prodvendor)
-            except Exception:
-                data['error_message'] = 'error'
-                return JsonResponse(data)
-            return JsonResponse(list(product.values('id', 'title')), safe=False)
-
-
-
-
-@staff_member_required
-def order_action_view(request, pk, action):
-    instance = get_object_or_404(Order, id=pk)
-    if action == 'is_paid':
-        instance.is_paid = True
-        instance.save()
-    if action == 'delete':
-        instance.delete()
-    return redirect(reverse('homepage'))
-
-
-@staff_member_required
-def ajax_calculate_results_view(request):
-    orders = Order.filter_data(request, Order.objects.all())
-    total_value, total_paid_value, remaining_value, data = 0, 0, 0, dict()
-    if orders.exists():
-        total_value = orders.aggregate(Sum('final_value'))['final_value__sum']
-        total_paid_value = orders.filter(is_paid=True).aggregate(Sum('final_value'))['final_value__sum'] if\
-            orders.filter(is_paid=True) else 0
-        remaining_value = total_value - total_paid_value
-    total_value, total_paid_value, remaining_value = f'{total_value} {CURRENCY}',\
-                                                     f'{total_paid_value} {CURRENCY}', f'{remaining_value} {CURRENCY}'
-    data['result'] = render_to_string(template_name='include/result_container.html',
-                                      request=request,
-                                      context=locals())
-    return JsonResponse(data)
-
-
-@staff_member_required
-def ajax_calculate_category_view(request):
-    orders = Order.filter_data(request, Order.objects.all())
-    order_items = OrderItem.objects.filter(order__in=orders)
-    category_analysis = order_items.values_list('product__category__title').annotate(qty=Sum('qty'),
-                                                                                      total_incomes=Sum('total_price')
-                                                                                      )
-    data = dict()
-    category, currency = True, CURRENCY
-    data['result'] = render_to_string(template_name='include/result_container.html',
-                                      request=request,
-                                      context=locals()
-                                      )
-    return JsonResponse(data)
-
-
 # @login_required(login_url="/login_user/")
 def edit_orderitem(request):
     if request.method!="POST":
@@ -356,9 +222,6 @@ def edit_orderitem(request):
             return HttpResponseRedirect("update1/"+str(order_num)+"")
 
 
-
-
-
 class OrderItemUpdateView(UpdateView):
     model = OrderItem
     fields = '__all__'
@@ -371,23 +234,6 @@ class OrderItemUpdateView(UpdateView):
         self.object.refresh_from_db()
         return reverse('edit_orderitem', kwargs={'pk': self.object.id})
         # return reverse('update_orderitem', kwargs={'pk': self.object.id})
-
-# class OrderItemUpdateView(SuccessMessageMixin,
-#                              UpdateView):  # updateview class to edit orderitem, mixin used to display message
-#     model = OrderItem  # setting 'OrderItem' model as model
-#     form_class = OrderItemForm  # setting 'OrderItemForm' form as form
-#     template_name = "edit_orderitem.html"  # 'edit_orderitem.html' used as the template
-#     success_url = 'orderitem'  # redirects to 'orderitem' page in the url after submitting the form
-#     success_message = "OrderItem has been updated successfully"  # displays message when form is submitted
-#
-#     def get_context_data(self, **kwargs):  # used to send additional context
-#         context = super().get_context_data(**kwargs)
-#         context["title"] = 'Edit OrderItem'
-#         context["savebtn"] = 'Update OrderItem'
-#         context["delbtn"] = 'Delete OrderItem'
-#         # return context
-#         return reverse('update_orderitem', kwargs={'pk': self.object.id})
-
 
 
 class OrderItemView(View):
@@ -500,86 +346,9 @@ class OrderItemView(View):
         return False, 'Error Occurred. Please try again.'
 
 
-def edit(request):
-    print("edit is click ----------------------")
-    if request.method == "POST":
-        id = request.POST.get('pid')
-        # print(id)
-        orderitem = OrderItem.objects.get(pk=id)
-        orderitem_data = {
-            "id": orderitem.id,
-            "numworkstation": orderitem.numworkstation,
-            "numserver": orderitem.numserver,
-            "numipaddress": orderitem.numipaddress}
-
-        return JsonResponse(orderitem_data)
-
-
-# def productData(request, cid):
-#     productData = []
-#     cus = Customer.objects.get(pk=cid)
-#     # # customers = cus.values('name','created_at')
-#
-#     order = cus.order_set.all()
-#     # order =  Order.objects.values('created_at','product__price')
-#     # productData = serializers.serialize('json',order)
-#     # productData = productData['name']
-#
-#     for i in order:
-#         # right is value(can be value or string) and left(always string cannot
-#         # be number) is keys in dict
-#         productData.append({i.customer.name: i.product.price})
-#         # Date.append(i['created_at'])
-#         # productPrice.append(i['product__price'])
-#
-#     print(productData)
-#     return JsonResponse(productData, safe=False)
-
-@csrf_exempt
-def saveorderitem(request):
-    id = request.POST.get('id', '')
-    type = request.POST.get('type', '')
-    value = request.POST.get('value', '')
-    orderitem = OrderItem.objects.get(id=id)
-    if type == "numworkstation":
-       orderitem.numworkstation = value
-
-    if type == "numserver":
-        orderitem.numserver = value
-
-    if type == "numipaddress":
-        orderitem.numipaddress = value
-
-    if type == "nummonths":
-        orderitem.nummonths = value
-
-    if type == "labordelivery":
-        orderitem.labordelivery = value
-
-    orderitem.save()
-    return JsonResponse({"success": "Updated"})
-
-
-def sizing_ord_view(request, oid):
-    # order = Order.objects.filter(customer__first_name="Shankar")
-    # -->I am retrieving  the order the  particular person
-
-    order = get_object_or_404(Order, pk=oid)  # use to get beautiful error -u can also use below
-    # customer = Customer.objects.get(pk = cid)#return a particular customer name according to choosen primary key
-    orderitem = order.orderitem_set.all()  # particular customer ko particular order select garxa--It is possible with customer id
-    # here order in  order_set is attribute
-    # Order ma Customer is foreign key so ot os possible to use order_set with customer
-    orderitem_count = orderitem.count()
-    orderitem_count = orderitem.count()
-    order_total_orderitem_price = 0.00
-
-    for orderitem in order.orderitem_set.all():
-        per_total_price = float(orderitem.product.price) * orderitem.quantity
-        # customer.per_total = per_total_price--to get the price of respective products
-        # return value of first product i.e first row
-        order_total_orderitem_price += per_total_price
-
-    context = {'order_total_price': order_total_orderitem_price, 'order': order, 'orderitem': orderitem,
-               'orderitem_count': orderitem_count, 'orderitem_num': orderitem_count}
-    return render(request, 'order/list.html', context)
+# AJAX
+def load_products(request):
+    category_id = request.GET.get('category_id')
+    products = Product.objects.filter(category_id=category_id).all()
+    return render(request, 'orderitem_mgr/product_dropdown_list_options.html', {'products': products})
 

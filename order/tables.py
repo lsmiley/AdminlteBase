@@ -15,6 +15,7 @@ class OrderTable(tables.Table):
         fields = ['date', 'title', 'tag_final_value']
 
 
+# noinspection PyPackageRequirements
 class ProductTable(tables.Table):
     tag_final_value = tables.Column(orderable=False, verbose_name='Base Hrs:')
     action = tables.TemplateColumn(
@@ -28,6 +29,7 @@ class ProductTable(tables.Table):
         model = Product
         template_name = 'django_tables2/bootstrap.html'
         fields = ['title', 'category', 'tag_final_value']
+
 
 
 class OrderItemTable(tables.Table):

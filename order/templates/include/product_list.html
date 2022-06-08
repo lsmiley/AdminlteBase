@@ -1,14 +1,14 @@
 
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!--	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
 
-	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+<!--	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">-->
 
 	<style type="text/css">
-		body{
-		  background: rgb(54,217,182);
-		  background: linear-gradient(90deg, rgba(54,217,182,1) 0%, rgba(32,152,126,1) 43%, rgba(0,212,255,1) 100%);
-		}
+<!--		body{-->
+<!--		  background: rgb(54,217,182);-->
+<!--		  background: linear-gradient(90deg, rgba(54,217,182,1) 0%, rgba(32,152,126,1) 43%, rgba(0,212,255,1) 100%);-->
+<!--		}-->
 
 
 		h1, h2, h3, h4, h5, p, span, strike{
@@ -18,7 +18,7 @@
 
 
 		#task-container{
-		  max-width:600px;
+		  max-width:1100px;
 		  margin:0 auto;
 		  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 		  background-color: #fff;
@@ -63,16 +63,30 @@
 
 	</style>
 
-</head>
-<body>
+
 	<div class="container">
 
 		<div id="task-container">
 			<div id="form-wrapper">
 				<form id="form">
 					<div class="flex-wrapper">
-						<div style="flex: 6">
-							<input id="title" class="form-control" type="text" name="title" placeholder="Add task">
+						<div style="flex: 3">
+							<input id="product" class="form-control" type="text" name="product" placeholder="Add task">
+						</div>
+						<div style="flex: 2">
+							<input id="qty" class="form-control" type="text" name="qty" placeholder="Add'l Console">
+						</div>
+						<div style="flex: 1">
+							<input id="numserver" class="form-control" type="text" name="numserver" placeholder="# Svrs.">
+						</div>
+						<div style="flex: 1">
+							<input id="numworkstation" class="form-control" type="text" name="numworkstation" placeholder="# Wkstns.">
+						</div>
+						<div style="flex: 1">
+							<input id="base" class="form-control" type="text" name="base" placeholder="Base">
+						</div>
+						<div style="flex: 1">
+							<input id="productcomplexityfac" class="form-control" type="text" name="productcomplexityfac" placeholder="Fac">
 						</div>
 						<div style="flex: 1">
 							<input id="submit" class="btn" type="submit" >
@@ -102,7 +116,7 @@
 			5 - Cross out completed task - Event handle updated item
 
 			NOTES:
-			-- Add event handlers to "edit", "delete", "title"
+			-- Add event handlers to "edit", "delete", "product"
 			-- Render with strike through items completed
 			-- Remove extra data on re-render
 			-- CSRF Token
@@ -136,7 +150,8 @@
 
 
 
-			var url = 'http://127.0.0.1:8000/api/task-list/'
+			var url = 'http://127.0.0.1:8000/api/orderitem-list/'
+<!--			var url = 'http://127.0.0.1:8000/api/orderitem-list/?order=order.id'-->
 
 			fetch(url)
 			.then((resp) => resp.json())
@@ -155,15 +170,40 @@
 
 
 
-					var title = `<span class="title">${list[i].title}</span>`
+					var product = `<span class="product">${list[i].product}</span>`
+					var qty = `<span class="qty">${list[i].qty}</span>`
+					var numserver = `<span class="numserver">${list[i].numserver}</span>`
+					var numworkstation = `<span class="numworkstation">${list[i].numworkstation}</span>`
+					var base = `<span class="base">${list[i].base}</span>`
+                    var productcomplexityfac = `<span class="productcomplexityfac">${list[i].productcomplexityfac}</span>`
 					if (list[i].completed == true){
-						title = `<strike class="title">${list[i].title}</strike>`
+						product = `<strike class="product">${list[i].product}</strike>`
+						qty = `<strike class="qty">${list[i].qty}</strike>`
+						numserver = `<strike class="numserver">${list[i].numserver}</strike>`
+						numworkstation = `<<strike class="numworkstation">${list[i].numworkstation}</strike>`
+						base = `<strike class="base">${list[i].base}</strike>`
+						productcomplexityfac = `<strike class="productcomplexityfac">${list[i].productcomplexityfac}</strike>`
 					}
 
 					var item = `
 						<div id="data-row-${i}" class="task-wrapper flex-wrapper">
-							<div style="flex:7">
-								${title}
+							<div style="flex:4">
+								${product}
+							</div>
+							<div style="flex:2">
+								${qty}
+							</div>
+							<div style="flex:1">
+								${numserver}
+							</div>
+							<div style="flex:1">
+								${numworkstation}
+							</div>
+							<div style="flex:1">
+								${base}
+							</div>
+							<div style="flex:1">
+								${productcomplexityfac}
 							</div>
 							<div style="flex:1">
 								<button class="btn btn-sm btn-outline-info edit">Edit </button>
@@ -190,7 +230,8 @@
 				for (var i in list){
 					var editBtn = document.getElementsByClassName('edit')[i]
 					var deleteBtn = document.getElementsByClassName('delete')[i]
-					var title = document.getElementsByClassName('title')[i]
+					var product = document.getElementsByClassName('product')[i]
+
 
 
 					editBtn.addEventListener('click', (function(item){
@@ -209,7 +250,7 @@
 
 
 
-					title.addEventListener('click', (function(item){
+					product.addEventListener('click', (function(item){
 						return function(){
 							strikeUnstrike(item)
 						}
@@ -227,22 +268,34 @@
 		form.addEventListener('submit', function(e){
 			e.preventDefault()
 			console.log('Form submitted')
-			var url = 'http://127.0.0.1:8000/api/task-create/'
+			var url = 'http://127.0.0.1:8000/api/orderitem-create/'
 			if (activeItem != null){
-				var url = `http://127.0.0.1:8000/api/task-update/${activeItem.id}/`
+				var url = `http://127.0.0.1:8000/api/orderitem-update/${activeItem.id}/`
 				activeItem = null
 			}
 
 
 
-			var title = document.getElementById('title').value
+			var product = document.getElementById('product').value
+			var qty = document.getElementById('qty').value
+			var numserver = document.getElementById('numserver').value
+            var numworkstation = document.getElementById('numworkstation').value
+            var base = document.getElementById('base').value
+            var productcomplexityfac = document.getElementById('productcomplexityfac').value
 			fetch(url, {
 				method:'POST',
 				headers:{
 					'Content-type':'application/json',
 					'X-CSRFToken':csrftoken,
 				},
-				body:JSON.stringify({'title':title})
+				body: JSON.stringify({
+					'title': title,
+					'qty': qty,
+					'numserver': numserver,
+                    'numworkstation': numworkstation,
+					'base': base,
+                    'productcomplexityfac': productcomplexityfac,})
+
 			}
 			).then(function(response){
 				buildList()
@@ -256,13 +309,18 @@
 		function editItem(item){
 			console.log('Item clicked:', item)
 			activeItem = item
-			document.getElementById('title').value = activeItem.title
+			document.getElementById('product').value = activeItem.product
+			document.getElementById('qty').value = activeItem.qty
+			document.getElementById('numserver').value = activeItem.numserver
+			document.getElementById('numworkstation').value = activeItem.numworkstation
+			document.getElementById('base').value = activeItem.base
+            document.getElementById('productcomplexityfac').value = activeItem.productcomplexityfac
 		}
 
 
 		function deleteItem(item){
 			console.log('Delete clicked')
-			fetch(`http://127.0.0.1:8000/api/task-delete/${item.id}/`, {
+			fetch(`http://127.0.0.1:8000/api/orderitem-delete/${item.id}/`, {
 				method:'DELETE',
 				headers:{
 					'Content-type':'application/json',
@@ -277,13 +335,13 @@
 			console.log('Strike clicked')
 
 			item.completed = !item.completed
-			fetch(`http://127.0.0.1:8000/api/task-update/${item.id}/`, {
+			fetch(`http://127.0.0.1:8000/api/orderitem-update/${item.id}/`, {
 				method:'POST',
 				headers:{
 					'Content-type':'application/json',
 					'X-CSRFToken':csrftoken,
 				},
-				body:JSON.stringify({'title':item.title, 'completed':item.completed})
+				body:JSON.stringify({'product':item.product, 'completed':item.completed})
 			}).then((response) => {
 				buildList()
 			})

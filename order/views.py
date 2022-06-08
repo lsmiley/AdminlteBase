@@ -181,7 +181,7 @@ class CreateOrderView(CreateView):
 @method_decorator(staff_member_required, name='dispatch')
 class OrderUpdateView(UpdateView):
     model = Order
-    template_name = 'order_update2.html'
+    template_name = 'order_update.html'
     form_class = OrderEditForm
     order_num = Order.id
 
@@ -234,10 +234,10 @@ class OrderUpdate2View(UpdateView):
         return context
 
 
-def load_products(request):
-    category_id = request.GET.get('category')
-    products = Product.objects.filter(category_id=category_id).order_by('categoryname')
-    return render(request, 'product_dropdown_list_options.html', {'products': products})
+# def load_products(request):
+#     category_id = request.GET.get('category')
+#     products = Product.objects.filter(category_id=category_id).order_by('categoryname')
+#     return render(request, 'product_dropdown_list_options.html', {'products': products})
 
 
 
@@ -808,3 +808,29 @@ def sizing_ord_view(request, oid):
                'orderitem_count': orderitem_count, 'orderitem_num': orderitem_count}
     return render(request, 'order/list.html', context)
 
+
+# AJAX
+def load_products(request):
+    category_id = request.GET.get('category_id')
+    products = Product.objects.filter(category_id=category_id).all()
+    return render(request, 'product_dropdown_list_options.html', {'products': products})
+    # return JsonResponse(list(cities.values('id', 'name')), safe=False)
+
+
+def get_products_ajax(request):
+    if request.method == "POST":
+        category_id = request.POST['category_id']
+        try:
+            category = Category.objects.filter(id=category_id).first()
+            products = Product.objects.filter(category=category)
+        except Exception:
+            data['error_message'] = 'error'
+            return JsonResponse(data)
+        return JsonResponse(list(products.values('id', 'product')), safe=False)
+
+
+# def load_cities(request):
+#     country_id = request.GET.get('country_id')
+#     cities = City.objects.filter(country_id=country_id).all()
+#     return render(request, 'persons/city_dropdown_list_options.html', {'cities': cities})
+#     # return JsonResponse(list(cities.values('id', 'name')), safe=False)

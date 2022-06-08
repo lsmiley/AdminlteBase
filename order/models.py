@@ -2026,6 +2026,10 @@ class OrderItem(models.Model):
         return f'{Decimal(self.qty) * Decimal(self.price)}'
 
 
+
+
+
+
 @receiver(post_delete, sender=OrderItem)
 def delete_order_item(sender, instance, **kwargs):
     product = instance.product

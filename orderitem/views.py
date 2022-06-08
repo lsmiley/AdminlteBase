@@ -190,28 +190,28 @@ class OrderItemUpdateView(SuccessMessageMixin,
         return context
 
 # ************** Start - Code to return to Update View  *************
-@method_decorator(staff_member_required, name='dispatch')
-class OrderUpdateView(UpdateView):
-    model = Order
-    template_name = 'order_update.html'
-    form_class = OrderEditForm
-    order_num = Order.id
-
-    def get_success_url(self):
-        return reverse('update_order', kwargs={'pk': self.object.id})
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        instance = self.object
-        qs_p = Product.objects.filter(active=True)[:12]
-        products = ProductTable(qs_p)
-        order_items = OrderItemTable(instance.order_items.all())
-        # orderitems = OrderItem.objects.all()  # show the list
-        # orderitem_count = orderitems.count()
-        RequestConfig(self.request).configure(products)
-        RequestConfig(self.request).configure(order_items)
-        context.update(locals())
-        return context
+# @method_decorator(staff_member_required, name='dispatch')
+# class OrderUpdateView(UpdateView):
+#     model = Order
+#     template_name = 'order_update.html'
+#     form_class = OrderEditForm
+#     order_num = Order.id
+#
+#     def get_success_url(self):
+#         return reverse('update_order', kwargs={'pk': self.object.id})
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         instance = self.object
+#         qs_p = Product.objects.filter(active=True)[:12]
+#         products = ProductTable(qs_p)
+#         order_items = OrderItemTable(instance.order_items.all())
+#         # orderitems = OrderItem.objects.all()  # show the list
+#         # orderitem_count = orderitems.count()
+#         RequestConfig(self.request).configure(products)
+#         RequestConfig(self.request).configure(order_items)
+#         context.update(locals())
+#         return context
 
 # ************** End - Code to return to Update View  *************
 
@@ -235,23 +235,31 @@ class OrderItemDeleteView(View):  # view class to delete orderitem
         serializer_class = OrderItemSerializer
 
 
-class OrderUpdate2View(UpdateView):
-    model = Order
-    template_name = 'order_update.html'
-    form_class = OrderEditForm
+# class OrderUpdate2View(UpdateView):
+#     model = Order
+#     template_name = 'order_update.html'
+#     form_class = OrderEditForm
+#
+#     def get_success_url(self):
+#         return reverse('update_order2', kwargs={'pk': self.object.id})
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         instance = self.object
+#         qs_p = Product.objects.filter(active=True)[:12]
+#         products = ProductTable(qs_p)
+#         order_items = OrderItemTable(instance.order_items.all())
+#         # orderitems = OrderItem.objects.all()  # show the list
+#         # orderitem_count = orderitems.count()
+#         RequestConfig(self.request).configure(products)
+#         RequestConfig(self.request).configure(order_items)
+#         context.update(locals())
+#         return context
 
-    def get_success_url(self):
-        return reverse('update_order2', kwargs={'pk': self.object.id})
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        instance = self.object
-        qs_p = Product.objects.filter(active=True)[:12]
-        products = ProductTable(qs_p)
-        order_items = OrderItemTable(instance.order_items.all())
-        # orderitems = OrderItem.objects.all()  # show the list
-        # orderitem_count = orderitems.count()
-        RequestConfig(self.request).configure(products)
-        RequestConfig(self.request).configure(order_items)
-        context.update(locals())
-        return context
+# AJAX
+def load_products(request):
+    category_id = request.GET.get('category_id')
+    products = Product.objects.filter(category_id=category_id).all()
+    return render(request, '/product_dropdown_list_options.html', {'products': products})
+    # return JsonResponse(list(cities.values('id', 'name')), safe=False)
