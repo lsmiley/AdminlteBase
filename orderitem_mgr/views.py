@@ -21,13 +21,15 @@ def create(request, oid):
                                                      'numserver',
                                                      'numipaddress',
                                                      'srvshourscalc',
-                                                     'nummonths'],
+                                                     'nummonths',
+                                                     'base'],
                                              widgets={'qty': NumberInput(attrs={'style': 'width: 50px'}),
                                                       'numworkstation': NumberInput(attrs={'style': 'width: 75px'}),
                                                       'numserver': NumberInput(attrs={'style': 'width: 75px'}),
                                                       'numipaddress': NumberInput(attrs={'style': 'width: 75px'}),
                                                       'srvshourscalc': NumberInput(attrs={'type': 'hidden'}),
                                                       'nummonths': NumberInput(attrs={'style': 'width: 50px'}),
+                                                      'base': NumberInput(attrs={'style': 'width: 50px'}),
                                                       },
 
                                              exclude=('total_price',),
@@ -52,6 +54,19 @@ def create(request, oid):
     # queryset =Order.objects.none() la --> already bhako product inline form ma show hudaina maila Add order ma jada
     # form = OrderForm(initial={'customer':cus})#right customer is in model--comment this wh
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['product'].queryset = Product.objects.none()
+
+        if 'country' in self.data:
+            try:
+                category_id = int(self.data.get('category'))
+                self.fields['product'].queryset = Product.objects.filter(category_id=category_id).order_by('productname')
+            except (ValueError, TypeError):
+                pass  # invalid input from the client; ignore and fallback to empty City queryset
+        elif self.instance.pk:
+            self.fields['product'].queryset = self.instance.category.product_set.order_by('productname')
+
     if request.method == 'POST':
         # form = OrderForm(request.POST)
         formset = OrderItemFormSet(request.POST, instance=ordr)
@@ -64,10 +79,34 @@ def create(request, oid):
     return render(request, 'orderitem/create.html', {'formset': formset, 'order': ordr, 'category': category_context, 'product' :product_context})
 
 
+# def load_products(request):
+#     category_id = request.GET.get('category_id')
+#     products = Product.objects.filter(category_id=category_id).order_by('productname')
+#     return render(request, 'c.html', {'products': products})
+
+
+#  ***** Start od Sample Code  *****
+
+# def load_discipline_details(request):
+#     institute_id = request.GET.get('institute_id')
+#     disciplines = Discipline.objects.filter(institute=institute_id).order_by('name')
+#     return render(request, 'load_discipline_dropdown_list.html', {'disciplines': disciplines})
+#
+#
+# def load_macro_details(request):
+#     discipline_id = request.GET.get('discipline_id')
+#     disciplinemacrocontents = DisciplineMacroContent.objects.filter(discipline=discipline_id).order_by('macro_content')
+#     return render(request, 'load_macro_dropdown_list.html', {'disciplinemacrocontents': disciplinemacrocontents})
+
+#  ***** End of Sample Code  *****
+
+
 def load_products(request):
-    category_id = request.GET.get('category')
-    products = Product.objects.filter(category_id=category_id).order_by('productname')
-    return render(request, 'c.html', {'products': products})
+    category_id = request.GET.get('category_id')
+    products = Product.objects.filter(category_id=category_id).all()
+    return render(request, 'orderitem_mgr/product_dropdown_list_options.html', {'products': products})
+
+
 
 def createnew(request, oid):
     '''Below I replace OrderForm with'''

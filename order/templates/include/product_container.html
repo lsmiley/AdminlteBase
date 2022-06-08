@@ -1,6 +1,28 @@
 {% load render_table from django_tables2 %}
 
 <div class="table-responsive">
+    <div class="row">
+<div class="col-md-6">
+  <div class="form-group">
+    <label for="inputStatus">Category</label>
+    <select id="pick-a-category" class="form-control-sm custom-select">
+      <option selected disabled>Choose a Category</option>
+      {% for category in categorys%}
+      <option value="{{category.id}}">{{category.categoryname}}</option>
+      {% endfor %}
+    </select>
+  </div>
+</div>
+<div class="col-md-6">
+  <div class="form-group">
+    <label for="inputStatus">Product</label>
+    <select id="pick-a-product" class="form-control-sm custom-select" name="product">
+      <option selected disabled>Choose a Product</option>
+    </select>
+  </div>
+</div>
+
+</div>
     {% render_table products %}
 </div>
 

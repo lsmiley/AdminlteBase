@@ -146,6 +146,7 @@ urlpatterns = [
     path('ajax/modify-product/<int:pk>/<slug:action>', ajax_modify_order_item, name='ajax_modify'),
     path('ajax/calculate-results/', ajax_calculate_results_view, name='ajax_calculate_result'),
     path('ajax/calculate-category-results/', ajax_calculate_category_view, name='ajax_category_result'),
+    path('ajax/load-products/', views.load_products, name='ajax_load_products'),  # AJAX
 
     #  API_calls
     # path('saveorderitem', saveorderitem, name='saveorderitem'),

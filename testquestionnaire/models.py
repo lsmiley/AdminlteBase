@@ -1563,3 +1563,4 @@ class TestquestionnaireItem(models.Model):
 
     def tag_line_base_hours(self):
         return f'{Decimal(self.qty) * Decimal(self.price)}'
+

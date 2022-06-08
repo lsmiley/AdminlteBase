@@ -1,10 +1,13 @@
-from django.shortcuts import render
+from django.db.models import Prefetch
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
+from rest_framework import generics
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import OrderSerializer, OrderItemSerializer, CategorySerializer, ProdvendorSerializer, ProductSerializer, LabordeliverySerializer, LabordeliverytypeSerializer, StatusstateSerializer, SizingtypeSerializer
 from order.models import Order, OrderItem
+from order.tables import OrderItemTable
 from product.models import Category, Prodvendor, Product
 from labordelivery.models import Labordelivery
 from labordeliverytype.models import Labordeliverytype
@@ -398,6 +401,7 @@ def orderDelete(request, pk):
 
 @api_view(['GET'])
 def orderitemList(request):
+    orderitems = OrderItem.objects.all().order_by('-id')
     orderitems = OrderItem.objects.all().order_by('-id')
     serializer = OrderItemSerializer(orderitems, many=True)
     return Response(serializer.data)
