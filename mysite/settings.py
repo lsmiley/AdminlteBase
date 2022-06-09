@@ -137,7 +137,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # }
 
 
-# **** Cloud Database Settings ****
+# ******** Cloud Database Settings ********
 
 DATABASES = {
     'default': {
