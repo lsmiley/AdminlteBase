@@ -1,0 +1,90 @@
+{% load render_table from django_tables2 %}
+
+<div class="table-responsive">
+    <div class="row">
+<div class="col-md-6">
+  <div class="form-group">
+    <label for="inputStatus">Category</label>
+    <select id="pick-a-category" class="form-control-sm custom-select">
+      <option selected disabled>Choose a Category</option>
+      {% for category in categorys%}
+      <option value="{{category.id}}">{{category.categoryname}}</option>
+      {% endfor %}
+    </select>
+  </div>
+</div>
+<div class="col-md-6">
+  <div class="form-group">
+    <label for="inputStatus">Product</label>
+    <select id="pick-a-product" class="form-control-sm custom-select" name="product">
+      <option selected disabled>Choose a Product</option>
+    </select>
+  </div>
+</div>
+
+</div>
+    {% render_table products %}
+</div>
+
+
+<script type="text/javascript">
+    $('.add_button').click(function (evt) {
+        evt.preventDefault();
+        const btn = $(this);
+        const url = btn.attr('data-href');
+        $.ajax({
+            method: 'GET',
+            dataType: 'json',
+            url: url,
+            success : function (data) {
+                $('#order_item_container').html(data.result)
+            }
+        })
+    });
+
+</script>
+
+<!--<script type="text/javascript">-->
+<!--    $('#add_button').click(function (evt) {-->
+<!--        evt.preventDefault();-->
+<!--&lt;!&ndash;        const btn = $(this);&ndash;&gt;-->
+<!--&lt;!&ndash;        const url = btn.attr('data-href');&ndash;&gt;-->
+<!--        var const btn = $(this).serialize()-->
+<!--        var const url = btn.attr('data-href') window.location-->
+<!--        $.ajax({-->
+<!--            method: 'GET',-->
+<!--            dataType: 'json',-->
+<!--            url: url,-->
+<!--            success : function (data) {-->
+<!--                $('#order_item_container').html(data.result)-->
+<!--            }-->
+<!--        })-->
+<!--    });-->
+
+<!--</script>-->
+
+
+<!--<script type="text/javascript">-->
+<!--&lt;!&ndash;    $('.add_button').click(function (evt) {&ndash;&gt;-->
+<!--&lt;!&ndash;        evt.preventDefault();&ndash;&gt;-->
+<!--&lt;!&ndash;        const btn = $(this);&ndash;&gt;-->
+<!--&lt;!&ndash;        const url = btn.attr('data-href');&ndash;&gt;-->
+<!--&lt;!&ndash;        $.ajax({&ndash;&gt;-->
+<!--&lt;!&ndash;          url: url,&ndash;&gt;-->
+<!--&lt;!&ndash;          type: "Get",&ndash;&gt;-->
+<!--&lt;!&ndash;          dataType: "json",&ndash;&gt;-->
+<!--&lt;!&ndash;          data: JSON.stringify({payload: payload,}),&ndash;&gt;-->
+<!--&lt;!&ndash;          headers: {&ndash;&gt;-->
+<!--&lt;!&ndash;            "X-Requested-With": "XMLHttpRequest",&ndash;&gt;-->
+<!--&lt;!&ndash;            "X-CSRFToken": getCookie("csrftoken"),  // don't forget to include the 'getCookie' function&ndash;&gt;-->
+<!--&lt;!&ndash;          },&ndash;&gt;-->
+<!--&lt;!&ndash;          success: (data) => {&ndash;&gt;-->
+<!--&lt;!&ndash;            console.log(data);&ndash;&gt;-->
+<!--&lt;!&ndash;          },&ndash;&gt;-->
+<!--&lt;!&ndash;          error: (error) => {&ndash;&gt;-->
+<!--&lt;!&ndash;            console.log(error);&ndash;&gt;-->
+<!--&lt;!&ndash;          }&ndash;&gt;-->
+<!--&lt;!&ndash;        });&ndash;&gt;-->
+
+
+<!--</script>-->

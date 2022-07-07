@@ -1,0 +1,1263 @@
+{% extends 'base.html' %} {% load render_table from django_tables2 %}
+
+
+
+<div class="row">
+
+    <div class="col-md-1">.</div>
+    <div class="col-md-10">
+        <div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Default Card Example</h3>
+    <div class="card-tools">
+      <!-- Buttons, labels, and many other things can be placed here! -->
+      <!-- Here is a label for example -->
+      <span class="badge badge-primary">Label</span>
+    </div>
+    <!-- /.card-tools -->
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+          <div class="row">
+          <div class="col-md-1" >1</div>
+
+          <div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+          Execute transition plan, task tracking, conferences, minutes, communication, status reporting, etc
+          </div>
+
+          <div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+          <div class="form-group">
+              {{ form.executetransitionplan_count }}
+          </div>
+          </div>
+
+          <div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+          <div class="form-group">
+
+              {{ form.executetransitionplan_transitionhoursitem }}
+          </div>
+          </div>
+
+          <div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+          <div class="form-group">
+
+            {{ form.executetransitionplan_transitionhours }}
+          </div>
+          </div>
+
+          <div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+          <div class="form-group">
+
+              {{ form.executetransitionplan_transformationhoursitem }}
+          </div>
+          </div>
+
+          <div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+          <div class="form-group">
+
+                {{ form.executetransitionplan_transformationhours }}
+          </div>
+          </div>
+          </div>
+          <div class="row">
+<div class="col-md-1" >2</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Create (best practice/custom), Review, Deploy and Document initial policies (incl. QA test of policies on endpoints)
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.createbestpracticecustom_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.createbestpracticecustom_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.createbestpracticecustom_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.createbestpracticecustom_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.createbestpracticecustom_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >3</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Test infrastructure (POC test, non-production data test, stress test, server/console failover, etc.).
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.testinfrastructurepoc_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.testinfrastructurepoc_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.testinfrastructurepoc_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.testinfrastructurepoc_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.testinfrastructurepoc_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >4</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Troubleshoot/tune infrastructure. Engage vendor and other teams as needed
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.troubleshoottune_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.troubleshoottune_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.troubleshoottune_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.troubleshoottune_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.troubleshoottune_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >5</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Install/configure product on infrastructure servers; patch or hotfix
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.installconfigure_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.installconfigure_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.installconfigure_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.installconfigure_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.installconfigure_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >6</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Administrator training of GDC pooled resources
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.executetransitionplan_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.administratortraining_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.administratortraining_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.administratortraining_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.administratortraining_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >7</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Develop Service Responsibility Matrix; review among stakeholders
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.developserviceresponsibilitymatrix_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.developserviceresponsibilitymatrix_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.developserviceresponsibilitymatrix_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.developserviceresponsibilitymatrix_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.developserviceresponsibilitymatrix_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >8</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Establish any needed service accounts, business justifications, approval processes, testing.
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.establishanyneededserviceaccounts_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.establishanyneededserviceaccounts_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.establishanyneededserviceaccounts_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.establishanyneededserviceaccounts_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.establishanyneededserviceaccounts_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >9</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Research and setup email automation (SMTP or via special triggers) - includes alerts, failure notifications, etc. as needed.
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.researchandsetupemailautomation_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.researchandsetupemailautomation_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.researchandsetupemailautomation_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.researchandsetupemailautomation_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.researchandsetupemailautomation_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >10</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Install/configure remote consoles
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.installconfigureremoteconsoles_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.installconfigureremoteconsoles_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.installconfigureremoteconsoles_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.installconfigureremoteconsoles_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.installconfigureremoteconsoles_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >11</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Work with SECOPS to ensure proper performance; understanding of error codes, baseline performance expectation, etc.
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.workwithsecops_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.workwithsecops_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.workwithsecops_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.workwithsecops_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.workwithsecops_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >12</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Staffing (coordinating)
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.staffingccoordinating_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.staffingccoordinating_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.staffingccoordinating_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.staffingccoordinating_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.staffingccoordinating_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >13</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Identify/test/document onboarding procedures.
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.identifytestdocument_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.identifytestdocument_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.identifytestdocument_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.identifytestdocument_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.identifytestdocument_transformationhours }}
+  </div>
+</div>
+</div>
+
+          <div class="row">
+<div class="col-md-1" >14</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Obtain network and OS access - Wave 1 (Initial staffing needed for Knowledge Transfer)
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.obtainnetworkandosaccesswave1_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.obtainnetworkandosaccesswave1_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.obtainnetworkandosaccesswave1_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.obtainnetworkandosaccesswave1_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.obtainnetworkandosaccesswave1_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >15   </div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Obtain network and OS access - Wave 2 (Staffing needed for Steady State)
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.obtainnetworkandosaccesswave2_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.obtainnetworkandosaccesswave2_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.obtainnetworkandosaccesswave2_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.obtainnetworkandosaccesswave2_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.obtainnetworkandosaccesswave2_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >16</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Develop/provide agent to software deployment group; oversee agent deployment (manual install required)
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.developprovideagentsoftware_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.developprovideagentsoftware_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.developprovideagentsoftware_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.developprovideagentsoftware_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.developprovideagentsoftware_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >17</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+ Install/configure ODBC or other connectors to metaconsoles;
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.installconfigureodbc_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.installconfigureodbc_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.installconfigureodbc_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.installconfigureodbc_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.installconfigureodbc_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >18</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Customer review and sign-off on infrastructure set up, test results, etc.
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.customerreviewsignoff_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.customerreviewsignoff_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.customerreviewsignoff_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.customerreviewsignoff_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.customerreviewsignoff_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >19</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Establish Health check regimen for product and infrastructure
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.establishhealthcheck_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.establishhealthcheck_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.establishhealthcheck_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.establishhealthcheck_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.establishhealthcheck_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >20</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Develop workflows for patch management, change management, incident management, policy review
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.developworkflows_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.developworkflows_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.developworkflows_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.developworkflows_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.developworkflows_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >21</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Operational documentation
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.operationaldocumentation_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.operationaldocumentation_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.operationaldocumentation_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.operationaldocumentation_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.operationaldocumentation_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >22</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+Shadow/Establish/Review all procedures, monitoring of console, health check, support ticket queue, etc.
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.shadowestablishreviewallprocedures_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.shadowestablishreviewallprocedures_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.shadowestablishreviewallprocedures_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.shadowestablishreviewallprocedures_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.shadowestablishreviewallprocedures_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >23</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  Other (details available in project plan)
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.otherdetail_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.otherdetail_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.otherdetail_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.otherdetail_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.otherdetail_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >24</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  SpecialItemsDesc1
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.specialitem1_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.specialitem1_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.specialitem1_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.specialitem1_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.specialitem1_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >25</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  SpecialItemsDesc2
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.specialitem2_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.specialitem2_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.specialitem2_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.specialitem2_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.specialitem2_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >26</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  SpecialItemsDesc3
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.specialitem3_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.specialitem3_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.specialitem3_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.specialitem3_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.specialitem3_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+<div class="col-md-1" >27</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  SpecialItemsDesc4
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.specialitem4_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.specialitem4_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.specialitem4_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.specialitem4_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.specialitem4_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+
+<div class="col-md-1" >28</div>
+
+<div class="col-md-6" style="font-weight:bold; font-family:Arial; font-size:11px; color:darkblue">
+  SpecialItemsDesc5
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+      {{ form.specialitem5_count }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.specialitem5_transitionhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+    {{ form.specialitem5_transitionhours }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+      {{ form.specialitem5_transformationhoursitem }}
+  </div>
+</div>
+
+<div class="col-md-1" style="width:80px; height:20px; font-size: 10px;">
+  <div class="form-group">
+
+        {{ form.specialitem5_transformationhours }}
+  </div>
+</div>
+</div>
+          <div class="row">
+            <div class="col-md-8">.</div>
+            <div class="col-md-4"></div>
+        </div>
+          <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6"></div>
+
+        </div>
+          <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6"></div>
+
+        </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-6"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1" style="font-weight:bold; font-family:Arial; font-size:x-small">Transition Hrs</div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1" style="font-weight:bold; font-family:Arial; font-size:x-small">Tranform Hrs</div>
+        </div>
+
+          <div class="row">
+            <div class="col-md-1">.</div>
+            <div class="col-md-6">.</div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1" style="font-weight:bold; font-family:Arial; font-size:12px">
+                <p>{{ instance.calculate_totaltransitionhoursitem }} :Hrs</p>
+
+                {{ form.totaltransitionhoursitem.errors }}
+
+                {{ form.totaltransitionhoursitem }}
+
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1" style="font-weight:bold; font-family:Arial; font-size:12px">
+                <p>{{ instance.calculate_totaltransformationhoursitem }} :Hrs</p>
+
+                {{ form.totaltransformationhoursitem.errors }}
+
+                {{ form.totaltransformationhoursitem }}
+            </div>
+
+        </div>
+
+          <div class="row">
+            <div class="col-md-1">.</div>
+            <div class="col-md-6">.</div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1" style="font-weight:bold; font-family:Arial">
+                T
+                {{ form.tnt_transition_total.errors }}
+
+                {{ form.tnt_transition_total }}
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1" style="font-weight:bold; font-family:Arial">
+                T
+            </div>
+
+        </div>
+
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+
+
+
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+    The footer of the card
+  </div>
+  <!-- /.card-footer -->
+</div>
+<!-- /.card -->
+    </div>
+    <div class="col-md-1">.</div>
+
+
+</div>
+
+
+
+

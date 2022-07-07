@@ -11,13 +11,13 @@ from django.template.loader import render_to_string
 from django.db.models import Sum
 from django_tables2 import RequestConfig
 from rest_framework.templatetags.rest_framework import data
-
+from django.contrib.messages.views import SuccessMessageMixin
 from .models import Order, OrderItem, CURRENCY
 
 from django_filters.views import FilterView
 from .filters import OrderFilter
 
-from .forms import OrderCreateForm, OrderEditForm, OrderItemEditForm, OrderItemForm
+from .forms import OrderCreateForm, OrderEditForm, OrderItemEditForm, OrderItemForm, SizingForm
 from product.models import Product, Category, Prodvendor
 from acctcust.models import Acctcust
 from order.tables import ProductTable, OrderItemTable, OrderTable
@@ -203,7 +203,6 @@ class OrderUpdateView(UpdateView):
         categories = Category.objects.all()
         total_categories = categories.count()
 
-
         prods = Product.objects.all()
         total_prods = prods.count()
 
@@ -212,6 +211,12 @@ class OrderUpdateView(UpdateView):
 
         context.update(locals())
         return context
+
+    def save(self, *args, **kwargs):
+
+        super().save(*args, **kwargs)
+        self.order.save()
+
 
 @method_decorator(staff_member_required, name='dispatch')
 class OrderUpdate2View(UpdateView):
@@ -233,6 +238,19 @@ class OrderUpdate2View(UpdateView):
         context.update(locals())
         return context
 
+class SizingyUpdateView(SuccessMessageMixin, UpdateView):  # updateview class to edit category, mixin used to display message
+    model = Category  # setting 'Sizing' model as model
+    form_class = SizingForm  # setting 'CategoryForm' form as form
+    template_name = "edit_sizing.html"  # 'edit_order.html' used as the template
+    success_url = '/order'  # redirects to 'order' page in the url after submitting the form
+    success_message = "Sizing has been updated successfully"  # displays message when form is submitted
+
+    def get_context_data(self, **kwargs):  # used to send additional context
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Edit Sizing'
+        context["savebtn"] = 'Update Sizing'
+        context["delbtn"] = 'Delete Sizing'
+        return context
 
 # def load_products(request):
 #     category_id = request.GET.get('category')

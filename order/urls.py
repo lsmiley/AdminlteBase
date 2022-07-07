@@ -9,6 +9,6 @@ app_name = 'order_app'
 
 urlpatterns = [
 
-    path('update/<int:pk>/', OrderUpdateView.as_view(), name='update_order'),
+    # path('update/<int:pk>/', OrderUpdateView.as_view(), name='update_order'),
 
 ]

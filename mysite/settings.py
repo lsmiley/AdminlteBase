@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'statusstate',
     'tntworksheet',
     'sizing',
+    'sizer.apps.SizerConfig',
     'questionnaire',
     'testquestionnaire'
 
@@ -125,31 +126,31 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # }
 
 # # **** Local Database Settings ****
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'adminltebase02db',
-#         'USER': 'sizingadmin',
-#         'PASSWORD': 'Malware12345',
-#         'HOST': '127.0.0.1',
-#         'PORT': '3306',
-#     }
-# }
-
-
-# ******** Cloud Database Settings ********
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'adminltebase02db',
         'USER': 'sizingadmin',
         'PASSWORD': 'Malware12345',
-        'HOST': '172.30.239.128',
-        # 'HOST':  'adminltebase-05-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps',
-        'PORT': '3306',
+        'HOST': '127.0.0.1',
+        'PORT': '10052',
     }
 }
+
+
+# ******** Cloud Database Settings ********
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'adminltebase02db',
+#         'USER': 'sizingadmin',
+#         'PASSWORD': 'Malware12345',
+#         'HOST': '172.30.239.128',
+#         # 'HOST':  'adminltebase-05-lsmiley-stage.apps.sandbox-m2.ll9k.p1.openshiftapps',
+#         'PORT': '3306',
+#     }
+# }
 
 # **** Cloud Database Settings #2 Dev  ****
 #

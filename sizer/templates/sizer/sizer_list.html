@@ -1,0 +1,33 @@
+{% extends 'index.html' %} {% load render_table from django_tables2 %}
+{% load static %}
+{% block content_wrapper %}
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-9">
+          <h2>Here are all Your Sizings: </h2>
+    <div>
+        <ul>
+            {% for sizer in object_list %}
+                <li>{{ sizer.title }} {{ sizer.date }} |
+                    <a href="{% url 'sizer-update' sizer.pk %}">edit</a>
+                    <a href="{% url 'sizer-delete' sizer.pk %}">delete</a>
+                </li>
+            {% empty %}
+                <li>No Sizings yet.</li>
+            {% endfor %}
+
+        </ul>
+        <p>
+            <a href="{% url 'sizer-add' %}">add a Sizing</a>
+        </p>
+    </div>
+
+    </div>
+    <div class="col-md-1"></div>
+
+
+</div>
+
+
+{% endblock content_wrapper %}

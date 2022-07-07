@@ -53,7 +53,7 @@ class OrderItemTable(tables.Table):
             <button data-href="{% url "ajax_modify" record.id "add" %}" class="btn btn-success edit_button btn-xs"><i class="fa fa-arrow-up"></i></button>
             <button data-href="{% url "ajax_modify" record.id "remove" %}" class="btn btn-warning edit_button btn-xs"><i class="fa fa-arrow-down"></i></button>
             <button data-href="{% url "ajax_modify" record.id "delete" %}" class="btn btn-danger edit_button btn-xs"><i class="fa fa-trash"></i></button>
-          
+
            
            
     ''', orderable=False)

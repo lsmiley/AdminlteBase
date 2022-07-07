@@ -58,7 +58,7 @@ def create(request, oid):
         super().__init__(*args, **kwargs)
         self.fields['product'].queryset = Product.objects.none()
 
-        if 'country' in self.data:
+        if 'category' in self.data:
             try:
                 category_id = int(self.data.get('category'))
                 self.fields['product'].queryset = Product.objects.filter(category_id=category_id).order_by('productname')
@@ -76,7 +76,7 @@ def create(request, oid):
         # return redirect('customer_app:view', oid)
         return redirect('update_order', oid)
 
-    return render(request, 'orderitem/create.html', {'formset': formset, 'order': ordr, 'category': category_context, 'product' :product_context})
+    return render(request, 'orderitem/create.html', {'formset': formset, 'order': ordr, 'category': category_context, 'product':product_context})
 
 
 # def load_products(request):

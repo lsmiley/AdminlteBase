@@ -59,6 +59,7 @@ urlpatterns = [
 
     path('', HomepageView.as_view(), name='homepage'),
     path('sizing/', include('sizing.urls')),
+    path('sizer/', include('sizer.urls')),
     path('polls/', include('polls.urls')),
     path('category/', include('category.urls')),
     path('acctcust/', include('acctcust.urls')),
@@ -77,10 +78,7 @@ urlpatterns = [
     # path('orders/', include('orders.urls', namespace="order_app")),
     path('order/', include('order.urls', namespace="order_app")),
     path('order-id-<int:cid>/orderitem/', views.sizing_ord_view, name="view"),
-    path(
-        'dashboard-main/',
-        DashboardMainView.as_view(),
-        name='dashboard_main'),
+    path('dashboard-main/', DashboardMainView.as_view(), name='dashboard_main'),
     path('order-list/', OrderListView.as_view(), name='order_list'),
     path('create/', CreateOrderView.as_view(), name='create-order'),
     path('create-auto/', auto_create_order_view, name='create_auto'),

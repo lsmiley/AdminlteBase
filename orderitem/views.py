@@ -11,8 +11,9 @@ from rest_framework import viewsets
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from order.models import OrderItem, Order
+from order.tables import OrderItemTable
 from questionnaire.tables import ProductTable, QuestionnaireItemTable
-from product.models import Product
+from product.models import Product, Category
 from .serializers import OrderItemSerializer
 from .forms import OrderItemForm
 from order.forms import OrderEditForm, NewOrderItemFormSet
@@ -170,24 +171,66 @@ class OrderItemCreateView(SuccessMessageMixin,
 #             return HttpResponseRedirect("order/"+str(order.id)+"")
 # ************ End Of: Inserted as a Test ****************
 
-class OrderItemUpdateView(SuccessMessageMixin,
-                             UpdateView):  # updateview class to edit orderitem, mixin used to display message
-    model = OrderItem  # setting 'OrderItem' model as model
-    form_class = OrderItemForm  # setting 'OrderItemForm' form as form
+# class OrderItemUpdateView(SuccessMessageMixin,
+#                              UpdateView):  # updateview class to edit orderitem, mixin used to display message
+#     model = OrderItem  # setting 'OrderItem' model as model
+#     form_class = OrderItemForm  # setting 'OrderItemForm' form as form
+#     order_num = Order.id
+#
+#     template_name = "edit_orderitem.html"  # 'edit_orderitem.html' used as the template
+#     success_url = '/update_order order.id'  # redirects to 'orderitem' page in the url after submitting the form
+#     # success_url = HttpResponseRedirect(next)
+#     success_message = "OrderItem has been updated successfully"  # displays message when form is submitted
+#
+#
+#     def get_context_data(self, **kwargs):  # used to send additional context
+#         context = super().get_context_data(**kwargs)
+#         context["title"] = 'Edit OrderItem'
+#         context["savebtn"] = 'Update OrderItem'
+#         context["delbtn"] = 'Delete OrderItem'
+#         return context
+
+@method_decorator(staff_member_required, name='dispatch')
+class OrderItemUpdateView(UpdateView):
+    model = Order
+    template_name = 'order_update.html'
+    form_class = OrderEditForm
     order_num = Order.id
 
-    template_name = "edit_orderitem.html"  # 'edit_orderitem.html' used as the template
-    success_url = '/update_order order.id'  # redirects to 'orderitem' page in the url after submitting the form
-    # success_url = HttpResponseRedirect(next)
-    success_message = "OrderItem has been updated successfully"  # displays message when form is submitted
+    categories = Category.objects.all()
+    total_categories = categories.count()
 
+    def get_success_url(self):
+        return reverse('update_order', kwargs={'pk': self.object.id})
 
-    def get_context_data(self, **kwargs):  # used to send additional context
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = 'Edit OrderItem'
-        context["savebtn"] = 'Update OrderItem'
-        context["delbtn"] = 'Delete OrderItem'
+        instance = self.object
+        qs_p = Product.objects.filter(active=True)[:1000]
+        products = ProductTable(qs_p)
+        order_items = OrderItemTable(instance.order_items.all())
+        # orderitems = OrderItem.objects.all()  # show the list
+        # orderitem_count = orderitems.count()
+
+        categories = Category.objects.all()
+        total_categories = categories.count()
+
+
+        prods = Product.objects.all()
+        total_prods = prods.count()
+
+        RequestConfig(self.request).configure(products)
+        RequestConfig(self.request).configure(order_items)
+
+        context.update(locals())
         return context
+
+    def save(self, *args, **kwargs):
+
+        super().save(*args, **kwargs)
+        self.order.save()
+
+
 
 # ************** Start - Code to return to Update View  *************
 # @method_decorator(staff_member_required, name='dispatch')
